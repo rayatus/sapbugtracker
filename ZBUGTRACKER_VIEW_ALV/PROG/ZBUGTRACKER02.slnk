@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-16"?>
+<PROG NAME="ZBUGTRACKER02" VARCL="X" SUBC="1" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20101228" VERN="000004" RMAND="001" RLOAD="E" FIXPT="X" SDATE="20120903" STIME="233141" IDATE="20101228" ITIME="000122" UCCHECK="X">
+ <textPool>
+  <language SPRAS="E">
+   <textElement ID="I" KEY="001" ENTRY="Modify" LENGTH="6 "/>
+   <textElement ID="I" KEY="002" ENTRY="Display" LENGTH="7 "/>
+   <textElement ID="R" ENTRY="SAPBugTracker: Display/Modify Bug" LENGTH="33 "/>
+   <textElement ID="S" KEY="P_BUG" ENTRY="D       ." LENGTH="11 "/>
+   <textElement ID="S" KEY="P_PROD" ENTRY="D       ." LENGTH="16 "/>
+  </language>
+ </textPool>
+ <pfstatus>
+  <pfstatus_tit CODE="T001" TEXT="BugTracker: &amp; Bug"/>
+ </pfstatus>
+ <source>*&amp;---------------------------------------------------------------------*
+*&amp; Report  ZBUGTRACKER02
+*&amp;
+*&amp;---------------------------------------------------------------------*
+*&amp;
+*&amp;
+*&amp;---------------------------------------------------------------------*
+
+REPORT  zbugtracker02.
+
+DATA: display_mode TYPE flag,
+      o_bug        TYPE REF TO zcl_bug,
+      o_prod       TYPE REF TO zcl_producto.
+
+INITIALIZATION.
+  CASE sy-tcode.
+    WHEN &apos;ZBUGTRACKER02&apos;.
+      SET TITLEBAR &apos;T001&apos; WITH text-001.
+      display_mode = space.
+    WHEN OTHERS.
+      SET TITLEBAR &apos;T001&apos; WITH text-002.
+      display_mode = &apos;X&apos;.
+  ENDCASE.
+
+  SELECTION-SCREEN BEGIN OF BLOCK a WITH FRAME.
+  PARAMETERS: p_prod TYPE zbt_bug-producto OBLIGATORY MEMORY ID zbt_bug_id,
+              p_bug  TYPE zbt_bug-bug OBLIGATORY MEMORY ID zbt_product_id.
+  SELECTION-SCREEN END OF BLOCK a.
+
+
+AT SELECTION-SCREEN ON p_prod.
+  TRY .
+      o_prod = zcl_producto_controller=&gt;find_by_key( p_prod ).
+
+    CATCH zcx_not_found_exception.
+      MESSAGE e001(zbugtracker_msg) WITH p_prod.
+  ENDTRY.
+
+AT SELECTION-SCREEN ON BLOCK a.
+  TRY .
+      o_bug = zcl_bug_controller=&gt;find_by_key(
+          id       = p_bug
+          producto = o_prod
+        ).
+    CATCH zcx_not_found_exception.
+      MESSAGE e002(zbugtracker_msg) WITH p_bug.
+  ENDTRY.
+
+START-OF-SELECTION.
+
+
+
+END-OF-SELECTION.
+
+  CALL FUNCTION &apos;ZBT_DISPLAY_BUG&apos;
+    EXPORTING
+      bug          = o_bug
+      display_mode = display_mode.</source>
+</PROG>

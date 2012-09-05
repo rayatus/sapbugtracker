@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-16"?>
+<CLAS CLSNAME="ZCL_BUGTRACKERWDA_CTRL" VERSION="1" LANGU="E" DESCRIPT="SAPBugTracker WDA Ctrl" UUID="080027EE3DEB1ED096E39BBCA3D56F8A" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20110430" CHANGEDON="00000000" CHGDANYON="00000000" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="702" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 " REFCLSNAME="CL_WD_COMPONENT_ASSISTANCE">
+ <publicSection>class ZCL_BUGTRACKERWDA_CTRL definition
+  public
+  inheriting from CL_WD_COMPONENT_ASSISTANCE
+  final
+  create public .
+
+public section.
+*&quot;* public components of class ZCL_BUGTRACKERWDA_CTRL
+*&quot;* do not include other source files here!!!
+
+  data BUG_HEADER type ZBT_WDA_BUG_HEADER read-only .
+
+  methods CONSTRUCTOR
+    importing
+      !BUG type ZBT_ID_BUG
+      !PRODUCTO type ZBT_ID_PRODUCTO .
+  methods SET_BUG_HEADER
+    importing
+      !BUG_HEADER type ZBT_WDA_BUG_HEADER .
+  methods SAVE
+    raising
+      ZCX_BUGTRACKER_SYSTEM .
+  methods DELETE .</publicSection>
+ <protectedSection>protected section.
+*&quot;* protected components of class ZCL_BUGTRACKERWDA_CTRL
+*&quot;* do not include other source files here!!!</protectedSection>
+ <privateSection>private section.
+*&quot;* private components of class ZCL_BUGTRACKERWDA_CTRL
+*&quot;* do not include other source files here!!!
+
+  data O_BUG type ref to ZCL_BUG .
+
+  methods ENTITY_TO_WDA_STRUCTURE .
+  methods SEARCH_BUG
+    returning
+      value(BUG) type ref to ZCL_BUG .
+  class-methods WDA_STRUCTURE_TO_ENTITY .</privateSection>
+ <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+ <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <attribute CLSNAME="ZCL_BUGTRACKERWDA_CTRL" CMPNAME="BUG_HEADER" VERSION="1" LANGU="E" DESCRIPT="SAPBugTracker WDA Bug Header" EXPOSURE="2" STATE="1" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20110331" CHANGEDBY="BCUSER" CHANGEDON="20110331" ATTDECLTYP="0" ATTRDONLY="X" ATTEXPVIRT="0" TYPTYPE="1" TYPE="ZBT_WDA_BUG_HEADER" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="702" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_BUGTRACKERWDA_CTRL" CMPNAME="O_BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="BCUSER" CREATEDON="20110401" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_BUG" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="702" TYPESRC_LENG="0 "/>
+ <inheritance CLSNAME="ZCL_BUGTRACKERWDA_CTRL" REFCLSNAME="CL_WD_COMPONENT_ASSISTANCE" VERSION="1" STATE="1" AUTHOR="BCUSER" CREATEDON="20110430" CHANGEDON="00000000"/>
+ <method CLSNAME="ZCL_BUGTRACKERWDA_CTRL" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110331" CHANGEDBY="BCUSER" CHANGEDON="20110401" MTDTYPE="2" MTDDECLTYP="0" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUGTRACKERWDA_CTRL" CMPNAME="CONSTRUCTOR" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110331" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_ID_BUG"/>
+  <parameter CLSNAME="ZCL_BUGTRACKERWDA_CTRL" CMPNAME="CONSTRUCTOR" SCONAME="PRODUCTO" VERSION="1" LANGU="E" DESCRIPT="Producto" CMPTYPE="1" MTDTYPE="2" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110331" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_ID_PRODUCTO"/>
+  <source>METHOD constructor.
+
+  super-&gt;constructor( ).
+
+  me-&gt;bug_header-bug      = bug.
+  me-&gt;bug_header-producto = producto.
+
+  o_bug = search_bug( ).
+
+  entity_to_wda_structure( ).
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUGTRACKERWDA_CTRL" CMPNAME="DELETE" VERSION="1" LANGU="E" DESCRIPT="Delete" EXPOSURE="2" STATE="1" EDITORDER="6 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110401" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <source>method DELETE.
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_BUGTRACKERWDA_CTRL" CMPNAME="ENTITY_TO_WDA_STRUCTURE" VERSION="1" LANGU="E" DESCRIPT="Entity to WDA Structure" EXPOSURE="0" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110331" CHANGEDBY="BCUSER" CHANGEDON="20110429" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <source>METHOD entity_to_wda_structure.
+  DATA: l_str        TYPE zbt_bug,
+        lo_user      TYPE REF TO zcl_usuario,
+        lo_component TYPE REF TO zcl_componente,
+        lo_estado    TYPE REF TO zcl_estado,
+        lo_btype     TYPE REF TO zcl_bugtype,
+        lo_bstype    TYPE REF TO zcl_bugstype,
+        lo_producto  TYPE REF TO zcl_producto.
+
+  lo_producto = o_bug-&gt;get_producto( ).
+
+  l_str = zcl_bug_controller=&gt;entity_to_structure( o_bug ).
+  MOVE-CORRESPONDING l_str TO me-&gt;bug_header.
+  me-&gt;bug_header-product_txt     = lo_producto-&gt;get_descripcion( ).
+
+  lo_user = o_bug-&gt;get_reporter( ).
+  IF lo_user IS BOUND.
+    me-&gt;bug_header-reporter_txt    = lo_user-&gt;get_name( ).
+  ENDIF.
+  lo_user = o_bug-&gt;get_developer( ).
+  IF lo_user IS BOUND.
+    me-&gt;bug_header-developer_txt   = lo_user-&gt;get_name( ).
+  ENDIF.
+  lo_user = o_bug-&gt;get_tester( ).
+  IF lo_user IS BOUND.
+    me-&gt;bug_header-tester_txt      = lo_user-&gt;get_name( ).
+  ENDIF.
+
+  lo_estado = o_bug-&gt;get_estado( ).
+  IF lo_estado IS BOUND.
+    me-&gt;bug_header-estado_txt      = lo_estado-&gt;get_descripcion( ).
+    me-&gt;bug_header-estado_icon     = lo_estado-&gt;get_wdaicon( ).
+  ENDIF.
+
+  lo_component = o_bug-&gt;get_componente( ).
+  IF lo_component IS BOUND.
+    me-&gt;bug_header-componente_text = lo_component-&gt;get_descripcion( ).
+  ENDIF.
+
+  lo_btype = o_bug-&gt;get_bug_type( ) .
+  IF lo_btype IS BOUND.
+    me-&gt;bug_header-bugtype_txt     = lo_btype-&gt;get_descripcion( ).
+  ENDIF.
+
+  lo_bstype = o_bug-&gt;get_bug_subtype( ).
+  IF lo_bstype IS BOUND.
+    me-&gt;bug_header-bugstype_txt    = lo_bstype-&gt;get_descripcion( ).
+  ENDIF.
+
+  lo_user = o_bug-&gt;get_aenam( ).
+  IF lo_user IS BOUND.
+    me-&gt;bug_header-aenam_txt       = lo_user-&gt;get_name( ).
+  ENDIF.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUGTRACKERWDA_CTRL" CMPNAME="SAVE" VERSION="1" LANGU="E" DESCRIPT="Save" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110401" CHANGEDBY="BCUSER" CHANGEDON="20110429" MTDTYPE="0" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <exception CLSNAME="ZCL_BUGTRACKERWDA_CTRL" CMPNAME="SAVE" SCONAME="ZCX_BUGTRACKER_SYSTEM" VERSION="1" LANGU="E" DESCRIPT="Excepcion base" MTDTYPE="0" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20110429" CHANGEDBY="BCUSER" CHANGEDON="20110429"/>
+  <source>METHOD save.
+  DATA: lo_exception TYPE REF TO zcx_bugtracker_system.
+
+  IF zcl_bug_controller=&gt;exist( o_bug ) = abap_true.
+    zcl_bug_controller=&gt;update( o_bug  ).
+  ELSE.
+    zcl_bug_controller=&gt;create( o_bug  ).
+  ENDIF.
+
+*  COMMIT WORK AND WAIT.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUGTRACKERWDA_CTRL" CMPNAME="SEARCH_BUG" VERSION="1" LANGU="E" DESCRIPT="Searches Data" EXPOSURE="0" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110401" CHANGEDBY="BCUSER" CHANGEDON="20110401" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUGTRACKERWDA_CTRL" CMPNAME="SEARCH_BUG" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110401" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <source>METHOD SEARCH_BUG.
+  DATA: lt_bugs    TYPE zbt_bugs,
+        l_bugs     TYPE LINE OF zbt_bugs,
+        r_bug      TYPE zbt_bug_range,
+        lr_bug     TYPE LINE OF zbt_bug_range,
+        r_product  TYPE zbt_producto_range,
+        lr_product TYPE LINE OF zbt_producto_range.
+
+
+  lr_product-sign   = lr_bug-sign    = &apos;I&apos;.
+  lr_product-option = lr_bug-option  = &apos;EQ&apos;.
+  lr_bug-low        = bug_header-bug.
+  lr_product-low    = bug_header-producto.
+
+  lt_bugs = zcl_bug_controller=&gt;search( bug             = r_bug[]
+                                        producto        = r_product[] ).
+
+  READ TABLE lt_bugs INDEX 1 INTO l_bugs.
+  bug = l_bugs-oref.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUGTRACKERWDA_CTRL" CMPNAME="SET_BUG_HEADER" VERSION="1" LANGU="E" DESCRIPT="sets Bug Header Data" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110331" CHANGEDBY="BCUSER" CHANGEDON="20110401" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUGTRACKERWDA_CTRL" CMPNAME="SET_BUG_HEADER" SCONAME="BUG_HEADER" VERSION="1" LANGU="E" DESCRIPT="SAPBugTracker WDA Bug Header" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110331" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_WDA_BUG_HEADER"/>
+  <source>METHOD set_bug_header.
+  me-&gt;bug_header = bug_header.
+
+  wda_structure_to_entity( ).
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUGTRACKERWDA_CTRL" CMPNAME="WDA_STRUCTURE_TO_ENTITY" VERSION="1" LANGU="E" DESCRIPT="WDA Structure to Entity" EXPOSURE="0" STATE="1" EDITORDER="7 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110401" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <source>METHOD wda_structure_to_entity.
+*
+*  DATA:   l_str        TYPE zbt_bug,
+*          lo_user      TYPE REF TO zcl_usuario,
+*          lo_component TYPE REF TO zcl_componente,
+*          lo_estado    TYPE REF TO zcl_estado,
+*          lo_btype     TYPE REF TO zcl_bugtype,
+*          lo_bstype    TYPE REF TO zcl_bugstype,
+*          lo_producto  TYPE REF TO zcl_producto.
+*
+*  lo_producto = o_bug-&gt;get_producto( ).
+*
+*  l_str = zcl_bug_controller=&gt;entity_to_structure( o_bug ).
+*  MOVE-CORRESPONDING l_str TO me-&gt;bug_header.
+*  me-&gt;bug_header-product_txt     = lo_producto-&gt;get_descripcion( ).
+*
+*  lo_user = o_bug-&gt;get_reporter( ).
+*  IF lo_user IS BOUND.
+*    me-&gt;bug_header-reporter_txt    = lo_user-&gt;get_name( ).
+*  ENDIF.
+*  lo_user = o_bug-&gt;get_developer( ).
+*  IF lo_user IS BOUND.
+*    me-&gt;bug_header-developer_txt   = lo_user-&gt;get_name( ).
+*  ENDIF.
+*  lo_user = o_bug-&gt;get_tester( ).
+*  IF lo_user IS BOUND.
+*    me-&gt;bug_header-tester_txt      = lo_user-&gt;get_name( ).
+*  ENDIF.
+*
+*  lo_estado = o_bug-&gt;get_estado( ).
+*  IF lo_estado IS BOUND.
+*    me-&gt;bug_header-estado_txt      = lo_estado-&gt;get_descripcion( ).
+*    me-&gt;bug_header-estado_icon     = lo_estado-&gt;get_wdaicon( ).
+*  ENDIF.
+*
+*  lo_component = o_bug-&gt;get_componente( ).
+*  IF lo_component IS BOUND.
+*    me-&gt;bug_header-componente_text = lo_component-&gt;get_descripcion( ).
+*  ENDIF.
+*
+*  lo_btype = o_bug-&gt;get_bug_type( ) .
+*  IF lo_btype IS BOUND.
+*    me-&gt;bug_header-bugtype_txt     = lo_btype-&gt;get_descripcion( ).
+*  ENDIF.
+*
+*  lo_bstype = o_bug-&gt;get_bug_subtype( ).
+*  IF lo_bstype IS BOUND.
+*    me-&gt;bug_header-bugstype_txt    = lo_bstype-&gt;get_descripcion( ).
+*  ENDIF.
+*
+*  lo_user = o_bug-&gt;get_aenam( ).
+*  IF lo_user IS BOUND.
+*    me-&gt;bug_header-aenam_txt       = lo_user-&gt;get_name( ).
+*  ENDIF.
+
+ENDMETHOD.</source>
+ </method>
+</CLAS>

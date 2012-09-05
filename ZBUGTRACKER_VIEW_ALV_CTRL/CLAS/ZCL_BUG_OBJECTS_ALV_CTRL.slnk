@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-16"?>
+<CLAS CLSNAME="ZCL_BUG_OBJECTS_ALV_CTRL" VERSION="1" LANGU="E" DESCRIPT="Bug&apos;s Objects ALV Controller" UUID="080027EE3DEB1ED09385937534B4CF81" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20110311" CHANGEDON="00000000" CHGDANYON="00000000" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="702" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+ <publicSection>class ZCL_BUG_OBJECTS_ALV_CTRL definition
+  public
+  final
+  create public .
+
+public section.
+*&quot;* public components of class ZCL_BUG_OBJECTS_ALV_CTRL
+*&quot;* do not include other source files here!!!
+  type-pools TRWBO .
+
+  methods CONSTRUCTOR
+    importing
+      !CONTAINER type ref to CL_GUI_CONTAINER
+      !BUG type ref to ZCL_BUG .
+  methods GET_OBJECTS
+    returning
+      value(CONTENT) type ZBT_BUG_OBJECT_ALV_TBL .
+  methods DISPLAY .</publicSection>
+ <protectedSection>protected section.
+*&quot;* protected components of class ZCL_BUG_OBJECTS_ALV_CTRL
+*&quot;* do not include other source files here!!!</protectedSection>
+ <privateSection>private section.
+*&quot;* private components of class ZCL_BUG_OBJECTS_ALV_CTRL
+*&quot;* do not include other source files here!!!
+
+  data O_GRID type ref to CL_SALV_TABLE .
+  data O_CONTAINER type ref to CL_GUI_CONTAINER .
+  data O_BUG type ref to ZCL_BUG .
+  data OBJECTS type ZBT_BUG_OBJECT_ALV_TBL .
+
+  methods RETRIEVE_OBJECTS .</privateSection>
+ <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+ <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <typeUsage CLSNAME="ZCL_BUG_OBJECTS_ALV_CTRL" TYPEGROUP="TRWBO" VERSION="1" TPUTYPE="0" EXPLICIT="X"/>
+ <forwardDeclaration>TRWBO</forwardDeclaration>
+ <attribute CLSNAME="ZCL_BUG_OBJECTS_ALV_CTRL" CMPNAME="OBJECTS" VERSION="1" LANGU="E" DESCRIPT="Relation of Bug&apos;s Objects" EXPOSURE="0" STATE="1" EDITORDER="4 " AUTHOR="BCUSER" CREATEDON="20110311" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="ZBT_BUG_OBJECT_ALV_TBL" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="702" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_BUG_OBJECTS_ALV_CTRL" CMPNAME="O_BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" EXPOSURE="0" STATE="1" EDITORDER="3 " AUTHOR="BCUSER" CREATEDON="20110311" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_BUG" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="702" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_BUG_OBJECTS_ALV_CTRL" CMPNAME="O_CONTAINER" VERSION="1" LANGU="E" DESCRIPT="Abstract Container for GUI Controls" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="BCUSER" CREATEDON="20110311" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="CL_GUI_CONTAINER" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="702" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_BUG_OBJECTS_ALV_CTRL" CMPNAME="O_GRID" VERSION="1" LANGU="E" DESCRIPT="Basis Class for Simple Tables" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20110311" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="CL_SALV_TABLE" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="702" TYPESRC_LENG="0 "/>
+ <method CLSNAME="ZCL_BUG_OBJECTS_ALV_CTRL" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110311" CHANGEDON="00000000" MTDTYPE="2" MTDDECLTYP="0" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_OBJECTS_ALV_CTRL" CMPNAME="CONSTRUCTOR" SCONAME="CONTAINER" VERSION="1" LANGU="E" DESCRIPT="Abstract Container for GUI Controls" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110311" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="CL_GUI_CONTAINER"/>
+  <parameter CLSNAME="ZCL_BUG_OBJECTS_ALV_CTRL" CMPNAME="CONSTRUCTOR" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="2" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110311" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <source>METHOD constructor.
+
+  o_container = container.
+  o_bug       = bug.
+
+  retrieve_objects( ).
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_OBJECTS_ALV_CTRL" CMPNAME="DISPLAY" VERSION="1" LANGU="E" DESCRIPT="Displays Bug Objects in ALV" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110311" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <source>METHOD display.
+  DATA: lo_cols     TYPE REF TO cl_salv_columns_table,
+        lo_col      TYPE REF TO cl_salv_column,
+        lo_fcodes   TYPE REF TO cl_salv_functions_list,
+        l_title     TYPE lvc_title,
+        lo_settings TYPE REF TO cl_salv_display_settings.
+
+
+  TRY.
+      CALL METHOD cl_salv_table=&gt;factory
+        EXPORTING
+          list_display = if_salv_c_bool_sap=&gt;false
+          r_container  = o_container
+        IMPORTING
+          r_salv_table = o_grid
+        CHANGING
+          t_table      = objects[].
+
+      lo_cols = o_grid-&gt;get_columns( ).
+      lo_cols-&gt;set_optimize( ).
+
+      lo_col = lo_cols-&gt;get_column( &apos;COUNTER&apos; ).
+*      lo_col-&gt;set_technical( &apos;X&apos; ).
+
+      lo_settings = o_grid-&gt;get_display_settings( ).
+      lo_settings-&gt;set_striped_pattern( &apos;X&apos; ).
+      l_title = &apos;Content&apos;(001).
+      lo_settings-&gt;set_list_header( l_title ).
+
+      lo_fcodes = o_grid-&gt;get_functions( ).
+      lo_fcodes-&gt;set_all( &apos;X&apos; ).
+
+      o_grid-&gt;display( ).
+    CATCH cx_salv_msg .
+
+  ENDTRY.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_OBJECTS_ALV_CTRL" CMPNAME="GET_OBJECTS" VERSION="1" LANGU="E" DESCRIPT="Gets Bug&apos;s Object" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110311" CHANGEDBY="BCUSER" CHANGEDON="20110311" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_OBJECTS_ALV_CTRL" CMPNAME="GET_OBJECTS" SCONAME="CONTENT" VERSION="1" LANGU="E" DESCRIPT="Relation of Bug&apos;s Objects" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110311" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_BUG_OBJECT_ALV_TBL"/>
+  <source>METHOD get_objects.
+  content[] = objects[].
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_OBJECTS_ALV_CTRL" CMPNAME="RETRIEVE_OBJECTS" VERSION="1" LANGU="E" DESCRIPT="Retrieves Objects" EXPOSURE="0" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110311" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <source>METHOD retrieve_objects.
+  DATA: l_request      TYPE trwbo_request,
+        lt_transports  TYPE zbt_transport_tbl,
+        l_tr           TYPE LINE OF zbt_transport_tbl,
+        l_alv_object   TYPE LINE OF zbt_bug_object_alv_tbl,
+        l_object       TYPE LINE OF tr_objects,
+        l_key          TYPE LINE OF tr_keys,
+        lt_objects     TYPE tr_objects,
+        lt_keys        TYPE tr_keys.
+
+  CLEAR objects.
+
+  lt_transports[] = o_bug-&gt;get_transports( ) .
+
+  LOOP AT lt_transports INTO l_tr.
+    CLEAR: l_request.
+
+    l_request-h-trkorr = l_tr-oref-&gt;get_id( ).
+    CALL FUNCTION &apos;TRINT_READ_REQUEST_HEADER&apos;
+      EXPORTING
+        iv_read_e070   = &apos;X&apos;
+        iv_read_e07t   = &apos;X&apos;
+        iv_read_e070c  = &apos;X&apos;
+        iv_read_e070m  = &apos;X&apos;
+      CHANGING
+        cs_request     = l_request-h
+      EXCEPTIONS
+        empty_trkorr   = 1
+        not_exist_e070 = 2
+        OTHERS         = 3.
+
+    CALL FUNCTION &apos;TR_GET_OBJECTS_OF_REQ_AN_TASKS&apos;
+      EXPORTING
+        is_request_header      = l_request-h
+        iv_condense_objectlist = &apos;X&apos;
+      IMPORTING
+        et_objects             = l_request-objects
+        et_keys                = l_request-keys
+      EXCEPTIONS
+        invalid_input          = 1
+        OTHERS                 = 2.
+
+    INSERT LINES OF l_request-objects INTO TABLE lt_objects.
+    INSERT LINES OF l_request-keys    INTO TABLE lt_keys.
+
+  ENDLOOP.
+
+  LOOP AT lt_objects INTO l_object.
+    MOVE-CORRESPONDING l_object TO l_alv_object.
+    l_alv_object-trkorr   = l_request-h-trkorr.
+    l_alv_object-as4text  = l_request-h-as4text.
+    l_alv_object-trstatus = l_request-h-trstatus.
+    l_alv_object-as4user  = l_request-h-as4user.
+    COLLECT l_alv_object INTO objects.
+  ENDLOOP.
+
+  LOOP AT lt_keys INTO l_key.
+    MOVE-CORRESPONDING l_key TO l_alv_object.
+    l_alv_object-trkorr   = l_request-h-trkorr.
+    l_alv_object-as4text  = l_request-h-as4text.
+    l_alv_object-trstatus = l_request-h-trstatus.
+    l_alv_object-as4user  = l_request-h-as4user.
+    COLLECT l_alv_object INTO objects.
+  ENDLOOP.
+
+ENDMETHOD.</source>
+ </method>
+</CLAS>

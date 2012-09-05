@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-16"?>
+<CLAS CLSNAME="ZCL_ENTITY" VERSION="1" LANGU="E" DESCRIPT="Entity" UUID="080027EE3DEB1ED188CB1A12BCD26FBB" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20111209" CHANGEDBY="BCUSER" CHANGEDON="20111209" CHGDANYON="00000000" CLSABSTRCT="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="702" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+ <publicSection>class ZCL_ENTITY definition
+  public
+  abstract
+  create public .
+
+public section.
+*&quot;* public components of class ZCL_ENTITY
+*&quot;* do not include other source files here!!!
+
+  methods GET_HASH
+    returning
+      value(HASH) type HASH160 .</publicSection>
+ <protectedSection>protected section.
+*&quot;* protected components of class ZCL_ENTITY
+*&quot;* do not include other source files here!!!
+
+  methods PREPARE_HASH_STRUCTURE
+  abstract
+    returning
+      value(VALUES) type ZBT_OBJECTVALUE_HASH_CALCUL .</protectedSection>
+ <privateSection>private section.
+*&quot;* private components of class ZCL_ENTITY
+*&quot;* do not include other source files here!!!
+
+  methods CALCULATE_HASH
+    importing
+      !VALUES type ZBT_OBJECTVALUE_HASH_CALCUL
+    preferred parameter VALUES
+    returning
+      value(HASH) type HASH160 .</privateSection>
+ <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+ <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <method CLSNAME="ZCL_ENTITY" CMPNAME="CALCULATE_HASH" VERSION="1" LANGU="E" DESCRIPT="Calculates Hash value" EXPOSURE="0" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20111209" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_ENTITY" CMPNAME="CALCULATE_HASH" SCONAME="VALUES" VERSION="1" LANGU="E" DESCRIPT="Object&apos;s Attribute value for Hash Calculation" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20111209" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_OBJECTVALUE_HASH_CALCUL" PARPREFERD="X"/>
+  <parameter CLSNAME="ZCL_ENTITY" CMPNAME="CALCULATE_HASH" SCONAME="HASH" VERSION="1" LANGU="E" DESCRIPT="Hash Value (160 Bits)" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20111209" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="HASH160"/>
+  <source>METHOD calculate_hash.
+  DATA: string TYPE string,
+        raw    TYPE xstring.
+
+  CALL FUNCTION &apos;SOTR_SERV_TABLE_TO_STRING&apos;
+    IMPORTING
+      text     = string
+    TABLES
+      text_tab = values[].
+
+  CALL FUNCTION &apos;SCMS_STRING_TO_XSTRING&apos;
+    EXPORTING
+      text   = string
+    IMPORTING
+      buffer = raw
+    EXCEPTIONS
+      OTHERS = 9.
+
+
+  CALL FUNCTION &apos;CALCULATE_HASH_FOR_RAW&apos;
+    EXPORTING
+      alg            = &apos;SHA1&apos;
+      data           = raw
+    IMPORTING
+      hash           = hash
+*     HASHLEN        =
+*     HASHX          =
+*     HASHXLEN       =
+*     HASHSTRING     =
+*     HASHXSTRING    =
+*     HASHB64STRING  =
+    EXCEPTIONS
+      unknown_alg    = 1
+      param_error    = 2
+      internal_error = 3
+      OTHERS         = 4.
+
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_ENTITY" CMPNAME="GET_HASH" VERSION="1" LANGU="E" DESCRIPT="Returns Hash value" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20111209" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_ENTITY" CMPNAME="GET_HASH" SCONAME="HASH" VERSION="1" LANGU="E" DESCRIPT="Hash Value (160 Bits)" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20111209" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="HASH160"/>
+  <source>METHOD get_hash.
+  DATA: values TYPE zbt_objectvalue_hash_calcul.
+
+  values[] = prepare_hash_structure( ).
+
+  hash = calculate_hash( values[] ).
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_ENTITY" CMPNAME="PREPARE_HASH_STRUCTURE" VERSION="1" LANGU="E" DESCRIPT="Prepares Structure for Hash calculationg" EXPOSURE="1" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20111209" CHANGEDBY="BCUSER" CHANGEDON="20111209" MTDTYPE="0" MTDDECLTYP="0" MTDABSTRCT="X" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_ENTITY" CMPNAME="PREPARE_HASH_STRUCTURE" SCONAME="VALUES" VERSION="1" LANGU="E" DESCRIPT="Object&apos;s Attribute value for Hash Calculation" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20111209" CHANGEDBY="BCUSER" CHANGEDON="20111209" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_OBJECTVALUE_HASH_CALCUL" PARPREFERD="X"/>
+ </method>
+</CLAS>

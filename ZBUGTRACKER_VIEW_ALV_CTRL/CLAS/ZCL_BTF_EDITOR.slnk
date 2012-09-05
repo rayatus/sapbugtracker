@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-16"?>
+<CLAS CLSNAME="ZCL_BTF_EDITOR" VERSION="1" LANGU="E" DESCRIPT="Customized BTF Editor" UUID="DFD5E9E879AA9AF192C4080027E6C24E" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDON="20101225" CHGDANYON="00000000" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="701" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+ <publicSection>class ZCL_BTF_EDITOR definition
+  public
+  create public .
+
+public section.
+*&quot;* public components of class ZCL_BTF_EDITOR
+*&quot;* do not include other source files here!!!
+
+  methods CONSTRUCTOR
+    importing
+      !CONTAINER type ref to CL_GUI_CONTAINER
+      !TITLE type VTEXT optional
+      value(DISPLAY_MODE) type FLAG optional
+      !SASH type I default 12
+    raising
+      CX_BTF_RUNTIME_ERROR
+      CX_BTF_SYSTEM_ERROR .
+  methods GET_TITLE
+    returning
+      value(TITLE) type VTEXT .
+  methods SET_TITLE
+    importing
+      !TITLE type VTEXT .
+  methods DISPLAY .
+  methods FREE .
+  methods GET_CONTENT
+    exporting
+      !LANGUAGE type TDSPRAS
+      !ENCODING type STRING
+      !TEXT type XSTRING .
+  methods SET_CONTENT
+    importing
+      !TEXT type XSTRING
+      !ENCODING type STRING default &apos;utf-8&apos;
+      !CLEAN type I default 0 .
+  methods GET_CONTENT_AS_STRING
+    returning
+      value(STRING) type STRING .
+  methods SET_DISPLAY_MODE
+    importing
+      !DISPLAY_MODE type FLAG default &apos;X&apos; .
+  methods SET_CONTENT_AS_STRING
+    importing
+      !STRING type STRING .</publicSection>
+ <protectedSection>*&quot;* protected components of class ZCL_BTF_EDITOR
+*&quot;* do not include other source files here!!!
+protected section.</protectedSection>
+ <privateSection>*&quot;* private components of class ZCL_BTF_EDITOR
+*&quot;* do not include other source files here!!!
+private section.
+
+  data EDITOR type ref to IF_BTF_EDITOR .
+  data CONTAINER_TITLE type ref to CL_GUI_CONTAINER .
+  data BTF type ref to IF_BTF .
+  data BTF_DOC type ref to IF_BTF_DOCUMENT .
+  data CONTAINER_EDITOR type ref to CL_GUI_CONTAINER .
+  data SPLITTER type ref to CL_GUI_EASY_SPLITTER_CONTAINER .
+  data TITLE type VTEXT value &apos;BTF Editor&apos;. &quot;#EC NOTEXT .
+  data DISPLAY_MODE type FLAG value SPACE. &quot;#EC NOTEXT .
+
+  class-methods WRITE_HTML_TITLE
+    importing
+      !CONTAINER type ref to CL_GUI_CONTAINER
+      !TITLE type VTEXT .</privateSection>
+ <localImplementation>*&quot;* local class implementation for public class
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes</localImplementation>
+ <localTypes>*&quot;* use this source file for any type declarations (class
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <attribute CLSNAME="ZCL_BTF_EDITOR" CMPNAME="BTF" VERSION="1" LANGU="E" DESCRIPT="SAP BTF Interface" EXPOSURE="0" STATE="1" EDITORDER="3 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="IF_BTF" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_BTF_EDITOR" CMPNAME="BTF_DOC" VERSION="1" LANGU="E" DESCRIPT="SAP BTF Document Interface" EXPOSURE="0" STATE="1" EDITORDER="4 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="IF_BTF_DOCUMENT" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_BTF_EDITOR" CMPNAME="CONTAINER_EDITOR" VERSION="1" LANGU="E" DESCRIPT="Abstract Container for GUI Controls" EXPOSURE="0" STATE="1" EDITORDER="5 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="CL_GUI_CONTAINER" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_BTF_EDITOR" CMPNAME="CONTAINER_TITLE" VERSION="1" LANGU="E" DESCRIPT="Abstract Container for GUI Controls" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="CL_GUI_CONTAINER" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_BTF_EDITOR" CMPNAME="DISPLAY_MODE" VERSION="1" LANGU="E" DESCRIPT="Display Mode" EXPOSURE="0" STATE="1" EDITORDER="8 " AUTHOR="BCUSER" CREATEDON="20101213" CHANGEDON="20101225" ATTDECLTYP="0" ATTVALUE="SPACE" ATTEXPVIRT="0" TYPTYPE="1" TYPE="FLAG" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_BTF_EDITOR" CMPNAME="EDITOR" VERSION="1" LANGU="E" DESCRIPT="SAP BTF Editor Interface" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="IF_BTF_EDITOR" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_BTF_EDITOR" CMPNAME="SPLITTER" VERSION="1" LANGU="E" DESCRIPT="Splitter Container" EXPOSURE="0" STATE="1" EDITORDER="6 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="CL_GUI_EASY_SPLITTER_CONTAINER" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_BTF_EDITOR" CMPNAME="TITLE" VERSION="1" LANGU="E" DESCRIPT="Editor Title" EXPOSURE="0" STATE="1" EDITORDER="7 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="0" ATTVALUE="&apos;BTF Editor&apos;" ATTEXPVIRT="0" TYPTYPE="1" TYPE="VTEXT" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <method CLSNAME="ZCL_BTF_EDITOR" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="2" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BTF_EDITOR" CMPNAME="CONSTRUCTOR" SCONAME="CONTAINER" VERSION="1" LANGU="E" DESCRIPT="Abstract Container for GUI Controls" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="CL_GUI_CONTAINER"/>
+  <parameter CLSNAME="ZCL_BTF_EDITOR" CMPNAME="CONSTRUCTOR" SCONAME="TITLE" VERSION="1" LANGU="E" DESCRIPT="Description" CMPTYPE="1" MTDTYPE="2" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="VTEXT" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BTF_EDITOR" CMPNAME="CONSTRUCTOR" SCONAME="DISPLAY_MODE" VERSION="1" LANGU="E" DESCRIPT="Display Mode" CMPTYPE="1" MTDTYPE="2" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101213" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="0" TYPTYPE="1" TYPE="FLAG" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BTF_EDITOR" CMPNAME="CONSTRUCTOR" SCONAME="SASH" VERSION="1" LANGU="E" DESCRIPT="Sash" CMPTYPE="1" MTDTYPE="2" EDITORDER="4 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110628" CHANGEDBY="BCUSER" CHANGEDON="20110628" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="I" PARVALUE="12"/>
+  <exception CLSNAME="ZCL_BTF_EDITOR" CMPNAME="CONSTRUCTOR" SCONAME="CX_BTF_RUNTIME_ERROR" VERSION="1" LANGU="E" DESCRIPT="BTF Exception: Runtime Error" MTDTYPE="2" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDON="00000000"/>
+  <exception CLSNAME="ZCL_BTF_EDITOR" CMPNAME="CONSTRUCTOR" SCONAME="CX_BTF_SYSTEM_ERROR" VERSION="1" LANGU="E" DESCRIPT="BTF Exception: System Error" MTDTYPE="2" EDITORDER="2 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDON="00000000"/>
+  <source>METHOD constructor.
+
+  DATA: l_exception         TYPE REF TO cx_btf_runtime_error,
+        l_system_exception  TYPE REF TO cx_btf_system_error.
+
+
+* Separates main container in to subContainers
+  CREATE OBJECT me-&gt;splitter
+    EXPORTING
+      sash_position = 25
+      parent        = container
+      orientation   = cl_gui_easy_splitter_container=&gt;orientation_vertical.
+
+  me-&gt;splitter-&gt;set_sash_position( sash ).
+
+  me-&gt;container_title = me-&gt;splitter-&gt;top_left_container.
+  me-&gt;container_editor = me-&gt;splitter-&gt;bottom_right_container.
+
+  me-&gt;btf     = cl_btf=&gt;get_reference( ).
+  me-&gt;btf_doc = me-&gt;btf-&gt;create_document( sy-langu ).
+  me-&gt;editor  = me-&gt;btf-&gt;create_editor( me-&gt;btf_doc ).
+
+  CALL METHOD me-&gt;editor-&gt;initialize
+    EXPORTING
+      ctrl_parent = me-&gt;container_editor.
+
+  IF NOT title IS INITIAL.
+    me-&gt;set_title( title ).
+  ELSE.
+    CLEAR me-&gt;title.
+  ENDIF.
+
+  set_display_mode( display_mode ).
+
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BTF_EDITOR" CMPNAME="DISPLAY" VERSION="1" LANGU="E" DESCRIPT="Displays BTF Editor" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <source>METHOD display.
+
+  IF NOT me-&gt;title IS INITIAL.
+    write_html_title( container = me-&gt;container_title title = me-&gt;title ).
+  ELSE.
+    me-&gt;container_title-&gt;set_visible( cl_gui_control=&gt;visible_false ) .
+    me-&gt;splitter-&gt;set_sash_position( 0 ).
+  ENDIF.
+
+
+  set_display_mode( me-&gt;display_mode ).
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BTF_EDITOR" CMPNAME="FREE" VERSION="1" LANGU="E" DESCRIPT="Free Object" EXPOSURE="2" STATE="1" EDITORDER="6 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <source>METHOD free.
+  DATA: l_valid TYPE i.
+*  me-&gt;btf-&gt;free( ).
+
+  me-&gt;container_editor-&gt;is_valid( IMPORTING result = l_valid ).
+  IF NOT l_valid IS INITIAL.
+    me-&gt;container_editor-&gt;free( ).
+  ENDIF.
+  me-&gt;container_title-&gt;is_valid( IMPORTING result = l_valid ).
+  IF NOT l_valid IS INITIAL.
+    me-&gt;container_title-&gt;free( ).
+  ENDIF.
+  me-&gt;splitter-&gt;is_valid( IMPORTING result = l_valid ).
+  IF NOT l_valid IS INITIAL.
+    me-&gt;splitter-&gt;free( ).
+  ENDIF.
+
+
+  CLEAR: me-&gt;btf,
+         me-&gt;btf_doc,
+         me-&gt;editor,
+         me-&gt;container_editor,
+         me-&gt;container_title,
+         me-&gt;splitter.
+
+  FREE:  me-&gt;btf,
+         me-&gt;btf_doc,
+         me-&gt;editor,
+         me-&gt;container_editor,
+         me-&gt;container_title,
+         me-&gt;splitter.
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BTF_EDITOR" CMPNAME="GET_CONTENT" VERSION="1" LANGU="E" DESCRIPT="Get Content" EXPOSURE="2" STATE="1" EDITORDER="7 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101031" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BTF_EDITOR" CMPNAME="GET_CONTENT" SCONAME="LANGUAGE" VERSION="1" LANGU="E" DESCRIPT="Language key" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101031" CHANGEDBY="BCUSER" CHANGEDON="20101031" PARDECLTYP="1" PARPASSTYP="1" TYPTYPE="1" TYPE="TDSPRAS"/>
+  <parameter CLSNAME="ZCL_BTF_EDITOR" CMPNAME="GET_CONTENT" SCONAME="ENCODING" VERSION="1" LANGU="E" DESCRIPT="Encoding" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101031" CHANGEDBY="BCUSER" CHANGEDON="20101031" PARDECLTYP="1" PARPASSTYP="1" TYPTYPE="1" TYPE="STRING"/>
+  <parameter CLSNAME="ZCL_BTF_EDITOR" CMPNAME="GET_CONTENT" SCONAME="TEXT" VERSION="1" LANGU="E" DESCRIPT="Text" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101031" CHANGEDBY="BCUSER" CHANGEDON="20101031" PARDECLTYP="1" PARPASSTYP="1" TYPTYPE="1" TYPE="XSTRING" PARPREFERD="X"/>
+  <source>METHOD get_content.
+  editor-&gt;get_content( ).
+  btf_doc-&gt;get_content(
+    IMPORTING text     = text
+              encoding = encoding
+              language = language ).
+
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BTF_EDITOR" CMPNAME="GET_CONTENT_AS_STRING" VERSION="1" LANGU="E" DESCRIPT="Get Content as String" EXPOSURE="2" STATE="1" EDITORDER="9 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101212" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BTF_EDITOR" CMPNAME="GET_CONTENT_AS_STRING" SCONAME="STRING" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101212" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="STRING"/>
+  <source>METHOD get_content_as_string.
+  DATA: l_xstring TYPE xstring.
+
+  get_content( IMPORTING text = l_xstring ).
+  CALL FUNCTION &apos;ECATT_CONV_XSTRING_TO_STRING&apos;
+    EXPORTING
+      im_xstring = l_xstring
+    IMPORTING
+      ex_string  = string.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BTF_EDITOR" CMPNAME="GET_TITLE" VERSION="1" LANGU="E" DESCRIPT="Gets Editor Title" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BTF_EDITOR" CMPNAME="GET_TITLE" SCONAME="TITLE" VERSION="1" LANGU="E" DESCRIPT="Title" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="VTEXT"/>
+  <source>METHOD get_title.
+  title = me-&gt;title.
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BTF_EDITOR" CMPNAME="SET_CONTENT" VERSION="1" LANGU="E" DESCRIPT="Set Content" EXPOSURE="2" STATE="1" EDITORDER="8 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101031" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BTF_EDITOR" CMPNAME="SET_CONTENT" SCONAME="TEXT" VERSION="1" LANGU="E" DESCRIPT="Document Text" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101031" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="XSTRING"/>
+  <parameter CLSNAME="ZCL_BTF_EDITOR" CMPNAME="SET_CONTENT" SCONAME="ENCODING" VERSION="1" LANGU="E" DESCRIPT="Document Coding (for example, &apos;utf-8&apos;)" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101031" CHANGEDBY="BCUSER" CHANGEDON="20101031" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="STRING" PARVALUE="&apos;utf-8&apos;"/>
+  <parameter CLSNAME="ZCL_BTF_EDITOR" CMPNAME="SET_CONTENT" SCONAME="CLEAN" VERSION="1" LANGU="E" DESCRIPT="Use Tidy &apos;0&apos; or &apos;1&apos;" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101031" CHANGEDBY="BCUSER" CHANGEDON="20110629" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="I" PARVALUE="0"/>
+  <source>METHOD set_content.
+  btf_doc-&gt;set_content(
+    EXPORTING text     = text
+              encoding = encoding
+              clean    = clean ).
+  editor-&gt;set_content( ).
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BTF_EDITOR" CMPNAME="SET_CONTENT_AS_STRING" VERSION="1" LANGU="E" DESCRIPT="Set Content as String" EXPOSURE="2" STATE="1" EDITORDER="11 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110628" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BTF_EDITOR" CMPNAME="SET_CONTENT_AS_STRING" SCONAME="STRING" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110628" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="STRING"/>
+  <source>METHOD set_content_as_string.
+  DATA: l_xstring TYPE xstring,
+        l_len     type i.
+
+  CALL FUNCTION &apos;ECATT_CONV_STRING_TO_XSTRING&apos;
+    EXPORTING
+      im_string  = string
+      im_encoding = &apos;UTF-8&apos;
+    IMPORTING
+      ex_xstring = l_xstring
+      ex_len     = l_len.
+
+  set_content( EXPORTING text = l_xstring encoding = &apos;UTF-8&apos; ).
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BTF_EDITOR" CMPNAME="SET_DISPLAY_MODE" VERSION="1" LANGU="E" DESCRIPT="Set&apos;s Display Mode" EXPOSURE="2" STATE="1" EDITORDER="10 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101213" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BTF_EDITOR" CMPNAME="SET_DISPLAY_MODE" SCONAME="DISPLAY_MODE" VERSION="1" LANGU="E" DESCRIPT="General Flag" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101213" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="FLAG" PARVALUE="&apos;X&apos;"/>
+  <source>METHOD set_display_mode.
+  me-&gt;display_mode = display_mode.
+
+  IF me-&gt;display_mode IS INITIAL .
+    editor-&gt;set_design_mode( if_btf_editor_constants=&gt;co_design_mode_on ).
+  ELSE.
+    editor-&gt;set_design_mode( if_btf_editor_constants=&gt;co_design_mode_off ).
+  ENDIF.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BTF_EDITOR" CMPNAME="SET_TITLE" VERSION="1" LANGU="E" DESCRIPT="Sets Editor Title" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BTF_EDITOR" CMPNAME="SET_TITLE" SCONAME="TITLE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="VTEXT"/>
+  <source>METHOD set_title.
+  me-&gt;title = title.
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BTF_EDITOR" CMPNAME="WRITE_HTML_TITLE" VERSION="1" LANGU="E" DESCRIPT="Writes title as HTML Dynamic Document" EXPOSURE="0" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BTF_EDITOR" CMPNAME="WRITE_HTML_TITLE" SCONAME="CONTAINER" VERSION="1" LANGU="E" DESCRIPT="Abstract Container for GUI Controls" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="CL_GUI_CONTAINER"/>
+  <parameter CLSNAME="ZCL_BTF_EDITOR" CMPNAME="WRITE_HTML_TITLE" SCONAME="TITLE" VERSION="1" LANGU="E" DESCRIPT="Title" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="VTEXT"/>
+  <source>METHOD write_html_title.
+
+  DATA: lo_document  TYPE REF TO cl_dd_document,
+        lo_col       TYPE REF TO cl_dd_area,
+        lo_table     TYPE REF TO cl_dd_table_element.
+
+  DATA: l_text      TYPE sdydo_text_element,
+        l_color     TYPE sdydo_attribute.
+
+  l_text = title.
+
+  CREATE OBJECT lo_document.
+  lo_document-&gt;add_text(
+    text          = l_text
+*    SAP_STYLE     = l_sap_style
+*    SAP_COLOR     =
+    sap_fontsize  = cl_dd_area=&gt;large
+*    SAP_FONTSTYLE =
+    sap_emphasis = cl_dd_area=&gt;strong
+    ).
+
+  lo_document-&gt;merge_document( ).
+  lo_document-&gt;display_document( parent = container ).
+
+ENDMETHOD.</source>
+ </method>
+</CLAS>

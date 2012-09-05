@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="utf-16"?>
+<CLAS CLSNAME="ZCL_USUARIO_PERSIST" VERSION="1" LANGU="E" DESCRIPT="Usuario" UUID="DF33B3D29FBED1F19286080027E6C24E" CATEGORY="10" EXPOSURE="1" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDON="20120903" CHGDANYON="00000000" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="701" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+ <friends CLSNAME="ZCL_USUARIO_PERSIST" REFCLSNAME="ZCB_USUARIO_PERSIST" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="BCUSER" CREATEDON="20120828" CHANGEDON="00000000"/>
+ <implementing CLSNAME="ZCL_USUARIO_PERSIST" REFCLSNAME="IF_OS_STATE" VERSION="1" EXPOSURE="2" STATE="1" AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDON="20120903" RELTYPE="1" EDITORDER="0 "/>
+ <publicSection>class ZCL_USUARIO_PERSIST definition
+  public
+  final
+  create protected
+
+  global friends ZCB_USUARIO_PERSIST .
+
+public section.
+*&quot;* public components of class ZCL_USUARIO_PERSIST
+*&quot;* do not include other source files here!!!
+
+  interfaces IF_OS_STATE .
+
+  methods GET_IS_ASSIGNED
+    returning
+      value(RESULT) type ZBT_IS_ASSIGNED
+    raising
+      CX_OS_OBJECT_NOT_FOUND .
+  methods GET_IS_DEVELOPER
+    returning
+      value(RESULT) type ZBT_IS_DEVELOPER
+    raising
+      CX_OS_OBJECT_NOT_FOUND .
+  methods GET_IS_REPORTER
+    returning
+      value(RESULT) type ZBT_IS_REPORTER
+    raising
+      CX_OS_OBJECT_NOT_FOUND .
+  methods GET_IS_TESTER
+    returning
+      value(RESULT) type ZBT_IS_TESTER
+    raising
+      CX_OS_OBJECT_NOT_FOUND .
+  methods GET_MAIL
+    returning
+      value(RESULT) type ZBT_EMAIL
+    raising
+      CX_OS_OBJECT_NOT_FOUND .
+  methods GET_USUARIO
+    returning
+      value(RESULT) type XUBNAME
+    raising
+      CX_OS_OBJECT_NOT_FOUND .
+  methods SET_IS_ASSIGNED
+    importing
+      !I_IS_ASSIGNED type ZBT_IS_ASSIGNED
+    raising
+      CX_OS_OBJECT_NOT_FOUND .
+  methods SET_IS_DEVELOPER
+    importing
+      !I_IS_DEVELOPER type ZBT_IS_DEVELOPER
+    raising
+      CX_OS_OBJECT_NOT_FOUND .
+  methods SET_IS_REPORTER
+    importing
+      !I_IS_REPORTER type ZBT_IS_REPORTER
+    raising
+      CX_OS_OBJECT_NOT_FOUND .
+  methods SET_IS_TESTER
+    importing
+      !I_IS_TESTER type ZBT_IS_TESTER
+    raising
+      CX_OS_OBJECT_NOT_FOUND .
+  methods SET_MAIL
+    importing
+      !I_MAIL type ZBT_EMAIL
+    raising
+      CX_OS_OBJECT_NOT_FOUND .
+  class CL_OS_SYSTEM definition load .</publicSection>
+ <protectedSection>protected section.
+*&quot;* protected components of class ZCL_USUARIO_PERSIST
+*&quot;* do not include other source files here!!!
+
+  data IS_ASSIGNED type ZBT_IS_ASSIGNED .
+  data IS_DEVELOPER type ZBT_IS_DEVELOPER .
+  data IS_REPORTER type ZBT_IS_REPORTER .
+  data IS_TESTER type ZBT_IS_TESTER .
+  data MAIL type ZBT_EMAIL .
+  data USUARIO type XUBNAME .</protectedSection>
+ <privateSection>private section.
+*&quot;* private components of class ZCL_USUARIO_PERSIST
+*&quot;* do not include other source files here!!!</privateSection>
+ <localImplementation>*&quot;* local class implementation for public class
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes</localImplementation>
+ <localTypes>*&quot;* use this source file for any type declarations (class
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <attribute CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="IS_ASSIGNED" VERSION="1" LANGU="E" DESCRIPT="Assigned User" EXPOSURE="1" STATE="1" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20120828" CHANGEDON="20120903" ATTDECLTYP="0" ATTPERSIST="X" ATTEXPVIRT="2" TYPTYPE="1" TYPE="ZBT_IS_ASSIGNED" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="702" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="IS_DEVELOPER" VERSION="1" LANGU="E" DESCRIPT="Usuario es desarrollador" EXPOSURE="1" STATE="1" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120903" ATTDECLTYP="0" ATTPERSIST="X" ATTEXPVIRT="2" TYPTYPE="1" TYPE="ZBT_IS_DEVELOPER" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="IS_REPORTER" VERSION="1" LANGU="E" DESCRIPT="Usuario reporta Incidencias" EXPOSURE="1" STATE="1" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120903" ATTDECLTYP="0" ATTPERSIST="X" ATTEXPVIRT="2" TYPTYPE="1" TYPE="ZBT_IS_REPORTER" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="IS_TESTER" VERSION="1" LANGU="E" DESCRIPT="Usuario es Tester" EXPOSURE="1" STATE="1" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120903" ATTDECLTYP="0" ATTPERSIST="X" ATTEXPVIRT="2" TYPTYPE="1" TYPE="ZBT_IS_TESTER" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="MAIL" VERSION="1" LANGU="E" DESCRIPT="eMail" EXPOSURE="1" STATE="1" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120903" ATTDECLTYP="0" ATTPERSIST="X" ATTEXPVIRT="2" TYPTYPE="1" TYPE="ZBT_EMAIL" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="USUARIO" VERSION="1" LANGU="E" DESCRIPT="User Name in User Master Record" EXPOSURE="1" STATE="1" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120903" ATTDECLTYP="0" ATTPERSIST="X" ATTEXPVIRT="7" TYPTYPE="1" TYPE="XUBNAME" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <interfaceMethod CLSNAME="ZCL_USUARIO_PERSIST" CPDNAME="IF_OS_STATE~GET">
+  <source>method IF_OS_STATE~GET.
+***BUILD 051401
+     &quot; returning result type ref to object
+************************************************************************
+* Purpose        : Get state.
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : -
+*
+* OO Exceptions  : -
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-07   : (BGR) Initial Version 2.0
+************************************************************************
+* GENERATED: Do not modify
+************************************************************************
+
+  data: STATE_OBJECT type ref to CL_OS_STATE.
+
+  create object STATE_OBJECT.
+  call method STATE_OBJECT-&gt;SET_STATE_FROM_OBJECT( ME ).
+  result = STATE_OBJECT.
+
+endmethod.</source>
+ </interfaceMethod>
+ <interfaceMethod CLSNAME="ZCL_USUARIO_PERSIST" CPDNAME="IF_OS_STATE~HANDLE_EXCEPTION">
+  <source>method IF_OS_STATE~HANDLE_EXCEPTION.
+***BUILD 051401
+     &quot; importing I_EXCEPTION type ref to IF_OS_EXCEPTION_INFO optional
+     &quot; importing I_EX_OS type ref to CX_OS_OBJECT_NOT_FOUND optional
+************************************************************************
+* Purpose        : Handles exceptions during attribute access.
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : -
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : If an exception is raised during attribut access,
+*                  this method is called and the exception is passed
+*                  as a paramater. The default is to raise the exception
+*                  again, so that the caller can handle the exception.
+*                  But it is also possible to handle the exception
+*                  here in the callee.
+*
+************************************************************************
+* Changelog:
+* - 2000-03-07   : (BGR) Initial Version 2.0
+* - 2000-08-02   : (SB)  OO Exceptions
+************************************************************************
+* Modify if you like
+************************************************************************
+
+  if i_ex_os is not initial.
+    raise exception i_ex_os.
+  endif.
+
+endmethod.</source>
+ </interfaceMethod>
+ <interfaceMethod CLSNAME="ZCL_USUARIO_PERSIST" CPDNAME="IF_OS_STATE~INIT">
+  <source>method IF_OS_STATE~INIT.
+***BUILD 051401
+************************************************************************
+* Purpose        : Initialisation of the transient state partition.
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : Transient state is initial.
+*
+* OO Exceptions  : -
+*
+* Implementation : Caution!: Avoid Throwing ACCESS Events.
+*
+************************************************************************
+* Changelog:
+* - 2000-03-07   : (BGR) Initial Version 2.0
+************************************************************************
+* Modify if you like
+************************************************************************
+
+endmethod.</source>
+ </interfaceMethod>
+ <interfaceMethod CLSNAME="ZCL_USUARIO_PERSIST" CPDNAME="IF_OS_STATE~INVALIDATE">
+  <source>method IF_OS_STATE~INVALIDATE.
+***BUILD 051401
+************************************************************************
+* Purpose        : Do something before all persistent attributes are
+*                  cleared.
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : -
+*
+* OO Exceptions  : -
+*
+* Implementation : Whatever you like to do.
+*
+************************************************************************
+* Changelog:
+* - 2000-03-07   : (BGR) Initial Version 2.0
+************************************************************************
+* Modify if you like
+************************************************************************
+
+endmethod.</source>
+ </interfaceMethod>
+ <interfaceMethod CLSNAME="ZCL_USUARIO_PERSIST" CPDNAME="IF_OS_STATE~SET">
+  <source>method IF_OS_STATE~SET.
+***BUILD 051401
+     &quot; importing I_STATE type ref to object
+************************************************************************
+* Purpose        : Set state.
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : -
+*
+* OO Exceptions  : -
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-07   : (BGR) Initial Version 2.0
+************************************************************************
+* GENERATED: Do not modify
+************************************************************************
+
+  data: STATE_OBJECT type ref to CL_OS_STATE.
+
+  STATE_OBJECT ?= I_STATE.
+  call method STATE_OBJECT-&gt;SET_OBJECT_FROM_STATE( ME ).
+
+endmethod.</source>
+ </interfaceMethod>
+ <method CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="GET_IS_ASSIGNED" VERSION="1" LANGU="E" DESCRIPT="Liest das Attribut IS_ASSIGNED" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20120828" CHANGEDON="20120903" MTDTYPE="4" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="GET_IS_ASSIGNED" SCONAME="RESULT" VERSION="1" LANGU="E" DESCRIPT="Attributwert" CMPTYPE="1" MTDTYPE="4" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20120828" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_IS_ASSIGNED"/>
+  <exception CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="GET_IS_ASSIGNED" SCONAME="CX_OS_OBJECT_NOT_FOUND" VERSION="1" LANGU="E" DESCRIPT="Object Services Exception" MTDTYPE="4" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20120828" CHANGEDON="00000000"/>
+  <source>method GET_IS_ASSIGNED.
+***BUILD 090501
+     &quot; returning RESULT
+     &quot; raising CX_OS_OBJECT_NOT_FOUND
+************************************************************************
+* Purpose        : Get Attribute IS_ASSIGNED
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : The object state is loaded, result is set
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-14   : (BGR) Version 2.0
+* - 2000-07-28   : (SB)  OO Exceptions
+************************************************************************
+
+* * Inform class agent and handle exceptions
+  state_read_access.
+
+  result = IS_ASSIGNED.
+
+           &quot; GET_IS_ASSIGNED
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="GET_IS_DEVELOPER" VERSION="1" LANGU="E" DESCRIPT="Liest das Attribut IS_DEVELOPER" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="4" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="GET_IS_DEVELOPER" SCONAME="RESULT" VERSION="1" LANGU="E" DESCRIPT="Attributwert" CMPTYPE="1" MTDTYPE="4" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120828" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_IS_DEVELOPER"/>
+  <exception CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="GET_IS_DEVELOPER" SCONAME="CX_OS_OBJECT_NOT_FOUND" VERSION="1" LANGU="E" DESCRIPT="Object Services Exception" MTDTYPE="4" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120828"/>
+  <source>method GET_IS_DEVELOPER.
+***BUILD 090501
+     &quot; returning RESULT
+     &quot; raising CX_OS_OBJECT_NOT_FOUND
+************************************************************************
+* Purpose        : Get Attribute IS_DEVELOPER
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : The object state is loaded, result is set
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-14   : (BGR) Version 2.0
+* - 2000-07-28   : (SB)  OO Exceptions
+************************************************************************
+
+* * Inform class agent and handle exceptions
+  state_read_access.
+
+  result = IS_DEVELOPER.
+
+           &quot; GET_IS_DEVELOPER
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="GET_IS_REPORTER" VERSION="1" LANGU="E" DESCRIPT="Liest das Attribut IS_REPORTER" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="4" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="GET_IS_REPORTER" SCONAME="RESULT" VERSION="1" LANGU="E" DESCRIPT="Attributwert" CMPTYPE="1" MTDTYPE="4" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120828" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_IS_REPORTER"/>
+  <exception CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="GET_IS_REPORTER" SCONAME="CX_OS_OBJECT_NOT_FOUND" VERSION="1" LANGU="E" DESCRIPT="Object Services Exception" MTDTYPE="4" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120828"/>
+  <source>method GET_IS_REPORTER.
+***BUILD 090501
+     &quot; returning RESULT
+     &quot; raising CX_OS_OBJECT_NOT_FOUND
+************************************************************************
+* Purpose        : Get Attribute IS_REPORTER
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : The object state is loaded, result is set
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-14   : (BGR) Version 2.0
+* - 2000-07-28   : (SB)  OO Exceptions
+************************************************************************
+
+* * Inform class agent and handle exceptions
+  state_read_access.
+
+  result = IS_REPORTER.
+
+           &quot; GET_IS_REPORTER
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="GET_IS_TESTER" VERSION="1" LANGU="E" DESCRIPT="Liest das Attribut IS_TESTER" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="4" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="GET_IS_TESTER" SCONAME="RESULT" VERSION="1" LANGU="E" DESCRIPT="Attributwert" CMPTYPE="1" MTDTYPE="4" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120828" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_IS_TESTER"/>
+  <exception CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="GET_IS_TESTER" SCONAME="CX_OS_OBJECT_NOT_FOUND" VERSION="1" LANGU="E" DESCRIPT="Object Services Exception" MTDTYPE="4" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120828"/>
+  <source>method GET_IS_TESTER.
+***BUILD 090501
+     &quot; returning RESULT
+     &quot; raising CX_OS_OBJECT_NOT_FOUND
+************************************************************************
+* Purpose        : Get Attribute IS_TESTER
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : The object state is loaded, result is set
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-14   : (BGR) Version 2.0
+* - 2000-07-28   : (SB)  OO Exceptions
+************************************************************************
+
+* * Inform class agent and handle exceptions
+  state_read_access.
+
+  result = IS_TESTER.
+
+           &quot; GET_IS_TESTER
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="GET_MAIL" VERSION="1" LANGU="E" DESCRIPT="Liest das Attribut MAIL" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="4" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="GET_MAIL" SCONAME="RESULT" VERSION="1" LANGU="E" DESCRIPT="Attributwert" CMPTYPE="1" MTDTYPE="4" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120828" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_EMAIL"/>
+  <exception CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="GET_MAIL" SCONAME="CX_OS_OBJECT_NOT_FOUND" VERSION="1" LANGU="E" DESCRIPT="Object Services Exception" MTDTYPE="4" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120828"/>
+  <source>method GET_MAIL.
+***BUILD 090501
+     &quot; returning RESULT
+     &quot; raising CX_OS_OBJECT_NOT_FOUND
+************************************************************************
+* Purpose        : Get Attribute MAIL
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : The object state is loaded, result is set
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-14   : (BGR) Version 2.0
+* - 2000-07-28   : (SB)  OO Exceptions
+************************************************************************
+
+* * Inform class agent and handle exceptions
+  state_read_access.
+
+  result = MAIL.
+
+           &quot; GET_MAIL
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="GET_USUARIO" VERSION="1" LANGU="E" DESCRIPT="Liest das Attribut USUARIO" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="4" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="GET_USUARIO" SCONAME="RESULT" VERSION="1" LANGU="E" DESCRIPT="Attributwert" CMPTYPE="1" MTDTYPE="4" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120828" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="XUBNAME"/>
+  <exception CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="GET_USUARIO" SCONAME="CX_OS_OBJECT_NOT_FOUND" VERSION="1" LANGU="E" DESCRIPT="Object Services Exception" MTDTYPE="4" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120828"/>
+  <source>method GET_USUARIO.
+***BUILD 090501
+     &quot; returning RESULT
+     &quot; raising CX_OS_OBJECT_NOT_FOUND
+************************************************************************
+* Purpose        : Get Attribute USUARIO
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : The object state is loaded, result is set
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-14   : (BGR) Version 2.0
+* - 2000-07-28   : (SB)  OO Exceptions
+************************************************************************
+
+* * Inform class agent and handle exceptions
+  state_read_access.
+
+  result = USUARIO.
+
+           &quot; GET_USUARIO
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="SET_IS_ASSIGNED" VERSION="1" LANGU="E" DESCRIPT="Setzt das Attribut IS_ASSIGNED" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20120828" CHANGEDON="20120903" MTDTYPE="5" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="SET_IS_ASSIGNED" SCONAME="I_IS_ASSIGNED" VERSION="1" LANGU="E" DESCRIPT="Attributwert" CMPTYPE="1" MTDTYPE="5" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20120828" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_IS_ASSIGNED"/>
+  <exception CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="SET_IS_ASSIGNED" SCONAME="CX_OS_OBJECT_NOT_FOUND" VERSION="1" LANGU="E" DESCRIPT="Object Services Exception" MTDTYPE="5" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20120828" CHANGEDON="00000000"/>
+  <source>method SET_IS_ASSIGNED.
+***BUILD 090501
+     &quot; importing I_IS_ASSIGNED
+     &quot; raising CX_OS_OBJECT_NOT_FOUND
+************************************************************************
+* Purpose        : Set attribute IS_ASSIGNED
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : The object state is loaded, attribute is set
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-14   : (BGR) Version 2.0
+* - 2000-07-28   : (SB)  OO Exceptions
+* - 2000-10-04   : (SB)  Namespaces
+************************************************************************
+
+* * Inform class agent and handle exceptions
+  state_write_access.
+
+  if ( I_IS_ASSIGNED &lt;&gt; IS_ASSIGNED ).
+
+    IS_ASSIGNED = I_IS_ASSIGNED.
+
+*   * Inform class agent and handle exceptions
+    state_changed.
+
+  endif. &quot;( I_IS_ASSIGNED &lt;&gt; IS_ASSIGNED )
+
+           &quot; GET_IS_ASSIGNED
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="SET_IS_DEVELOPER" VERSION="1" LANGU="E" DESCRIPT="Setzt das Attribut IS_DEVELOPER" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="5" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="SET_IS_DEVELOPER" SCONAME="I_IS_DEVELOPER" VERSION="1" LANGU="E" DESCRIPT="Attributwert" CMPTYPE="1" MTDTYPE="5" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120828" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_IS_DEVELOPER"/>
+  <exception CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="SET_IS_DEVELOPER" SCONAME="CX_OS_OBJECT_NOT_FOUND" VERSION="1" LANGU="E" DESCRIPT="Object Services Exception" MTDTYPE="5" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120828"/>
+  <source>method SET_IS_DEVELOPER.
+***BUILD 090501
+     &quot; importing I_IS_DEVELOPER
+     &quot; raising CX_OS_OBJECT_NOT_FOUND
+************************************************************************
+* Purpose        : Set attribute IS_DEVELOPER
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : The object state is loaded, attribute is set
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-14   : (BGR) Version 2.0
+* - 2000-07-28   : (SB)  OO Exceptions
+* - 2000-10-04   : (SB)  Namespaces
+************************************************************************
+
+* * Inform class agent and handle exceptions
+  state_write_access.
+
+  if ( I_IS_DEVELOPER &lt;&gt; IS_DEVELOPER ).
+
+    IS_DEVELOPER = I_IS_DEVELOPER.
+
+*   * Inform class agent and handle exceptions
+    state_changed.
+
+  endif. &quot;( I_IS_DEVELOPER &lt;&gt; IS_DEVELOPER )
+
+           &quot; GET_IS_DEVELOPER
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="SET_IS_REPORTER" VERSION="1" LANGU="E" DESCRIPT="Setzt das Attribut IS_REPORTER" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="5" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="SET_IS_REPORTER" SCONAME="I_IS_REPORTER" VERSION="1" LANGU="E" DESCRIPT="Attributwert" CMPTYPE="1" MTDTYPE="5" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120828" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_IS_REPORTER"/>
+  <exception CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="SET_IS_REPORTER" SCONAME="CX_OS_OBJECT_NOT_FOUND" VERSION="1" LANGU="E" DESCRIPT="Object Services Exception" MTDTYPE="5" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120828"/>
+  <source>method SET_IS_REPORTER.
+***BUILD 090501
+     &quot; importing I_IS_REPORTER
+     &quot; raising CX_OS_OBJECT_NOT_FOUND
+************************************************************************
+* Purpose        : Set attribute IS_REPORTER
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : The object state is loaded, attribute is set
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-14   : (BGR) Version 2.0
+* - 2000-07-28   : (SB)  OO Exceptions
+* - 2000-10-04   : (SB)  Namespaces
+************************************************************************
+
+* * Inform class agent and handle exceptions
+  state_write_access.
+
+  if ( I_IS_REPORTER &lt;&gt; IS_REPORTER ).
+
+    IS_REPORTER = I_IS_REPORTER.
+
+*   * Inform class agent and handle exceptions
+    state_changed.
+
+  endif. &quot;( I_IS_REPORTER &lt;&gt; IS_REPORTER )
+
+           &quot; GET_IS_REPORTER
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="SET_IS_TESTER" VERSION="1" LANGU="E" DESCRIPT="Setzt das Attribut IS_TESTER" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="5" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="SET_IS_TESTER" SCONAME="I_IS_TESTER" VERSION="1" LANGU="E" DESCRIPT="Attributwert" CMPTYPE="1" MTDTYPE="5" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120828" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_IS_TESTER"/>
+  <exception CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="SET_IS_TESTER" SCONAME="CX_OS_OBJECT_NOT_FOUND" VERSION="1" LANGU="E" DESCRIPT="Object Services Exception" MTDTYPE="5" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120828"/>
+  <source>method SET_IS_TESTER.
+***BUILD 090501
+     &quot; importing I_IS_TESTER
+     &quot; raising CX_OS_OBJECT_NOT_FOUND
+************************************************************************
+* Purpose        : Set attribute IS_TESTER
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : The object state is loaded, attribute is set
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-14   : (BGR) Version 2.0
+* - 2000-07-28   : (SB)  OO Exceptions
+* - 2000-10-04   : (SB)  Namespaces
+************************************************************************
+
+* * Inform class agent and handle exceptions
+  state_write_access.
+
+  if ( I_IS_TESTER &lt;&gt; IS_TESTER ).
+
+    IS_TESTER = I_IS_TESTER.
+
+*   * Inform class agent and handle exceptions
+    state_changed.
+
+  endif. &quot;( I_IS_TESTER &lt;&gt; IS_TESTER )
+
+           &quot; GET_IS_TESTER
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="SET_MAIL" VERSION="1" LANGU="E" DESCRIPT="Setzt das Attribut MAIL" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="5" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="SET_MAIL" SCONAME="I_MAIL" VERSION="1" LANGU="E" DESCRIPT="Attributwert" CMPTYPE="1" MTDTYPE="5" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120828" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_EMAIL"/>
+  <exception CLSNAME="ZCL_USUARIO_PERSIST" CMPNAME="SET_MAIL" SCONAME="CX_OS_OBJECT_NOT_FOUND" VERSION="1" LANGU="E" DESCRIPT="Object Services Exception" MTDTYPE="5" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120828"/>
+  <source>method SET_MAIL.
+***BUILD 090501
+     &quot; importing I_MAIL
+     &quot; raising CX_OS_OBJECT_NOT_FOUND
+************************************************************************
+* Purpose        : Set attribute MAIL
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : The object state is loaded, attribute is set
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-14   : (BGR) Version 2.0
+* - 2000-07-28   : (SB)  OO Exceptions
+* - 2000-10-04   : (SB)  Namespaces
+************************************************************************
+
+* * Inform class agent and handle exceptions
+  state_write_access.
+
+  if ( I_MAIL &lt;&gt; MAIL ).
+
+    MAIL = I_MAIL.
+
+*   * Inform class agent and handle exceptions
+    state_changed.
+
+  endif. &quot;( I_MAIL &lt;&gt; MAIL )
+
+           &quot; GET_MAIL
+endmethod.</source>
+ </method>
+</CLAS>

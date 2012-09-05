@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-16"?>
+<CLAS CLSNAME="ZCL_PROGRAM" VERSION="1" LANGU="E" DESCRIPT="Program - Entity" UUID="DF36DB675AC5DDF19289080027E6C24E" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20111209" CHANGEDBY="BCUSER" CHANGEDON="20111209" CHGDANYON="00000000" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="701" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 " REFCLSNAME="ZCL_ENTITY">
+ <publicSection>class ZCL_PROGRAM definition
+  public
+  inheriting from ZCL_ENTITY
+  final
+  create public .
+
+public section.
+*&quot;* public components of class ZCL_PROGRAM
+*&quot;* do not include other source files here!!!
+
+  methods CONSTRUCTOR
+    importing
+      !BUG type ref to ZCL_BUG
+      !ID type ZBT_PROGRAMS-PROGRAMA .
+  methods GET_BUG
+    returning
+      value(RETURN) type ref to ZCL_BUG .
+  methods GET_ID
+    returning
+      value(RETURN) type ZBT_PROGRAMS-PROGRAMA .</publicSection>
+ <protectedSection>protected section.
+*&quot;* protected components of class ZCL_PROGRAM
+*&quot;* do not include other source files here!!!
+
+  methods PREPARE_HASH_STRUCTURE
+    redefinition .</protectedSection>
+ <privateSection>*&quot;* private components of class ZCL_PROGRAM
+*&quot;* do not include other source files here!!!
+private section.
+
+  data ID type ZBT_PROGRAMS-PROGRAMA .
+  data BUG type ref to ZCL_BUG .</privateSection>
+ <localImplementation>*&quot;* local class implementation for public class
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes</localImplementation>
+ <localTypes>*&quot;* use this source file for any type declarations (class
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <attribute CLSNAME="ZCL_PROGRAM" CMPNAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="BCUSER" CREATEDON="20100324" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_BUG" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_PROGRAM" CMPNAME="ID" VERSION="1" LANGU="E" DESCRIPT="Programa" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100324" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="ZBT_PROGRAMS-PROGRAMA" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <inheritance CLSNAME="ZCL_PROGRAM" REFCLSNAME="ZCL_ENTITY" VERSION="1" STATE="1" AUTHOR="BCUSER" CREATEDON="20111209" CHANGEDBY="BCUSER" CHANGEDON="20111209">
+  <redefinition CLSNAME="ZCL_PROGRAM" REFCLSNAME="ZCL_ENTITY" VERSION="1" MTDNAME="PREPARE_HASH_STRUCTURE" EXPOSURE="1"/>
+ </inheritance>
+ <method CLSNAME="ZCL_PROGRAM" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100324" CHANGEDON="20101225" MTDTYPE="2" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_PROGRAM" CMPNAME="CONSTRUCTOR" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100324" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <parameter CLSNAME="ZCL_PROGRAM" CMPNAME="CONSTRUCTOR" SCONAME="ID" VERSION="1" LANGU="E" DESCRIPT="Programa" CMPTYPE="1" MTDTYPE="2" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100324" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_PROGRAMS-PROGRAMA"/>
+  <source>method CONSTRUCTOR.
+  super-&gt;constructor( ).
+  me-&gt;bug = bug.
+  me-&gt;id = id.
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_PROGRAM" CMPNAME="GET_BUG" VERSION="1" LANGU="E" DESCRIPT="GetBug" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100324" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_PROGRAM" CMPNAME="GET_BUG" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100324" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <source>method GET_BUG.
+  RETURN = bug.
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_PROGRAM" CMPNAME="GET_ID" VERSION="1" LANGU="E" DESCRIPT="GetId" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100324" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_PROGRAM" CMPNAME="GET_ID" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="Programa" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100324" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_PROGRAMS-PROGRAMA"/>
+  <source>method GET_ID.
+  RETURN = id.
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_ENTITY" CMPNAME="PREPARE_HASH_STRUCTURE" VERSION="0" EXPOSURE="0" STATE="0" EDITORDER="0 " DISPID="0 " CREATEDON="00000000" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <source>method PREPARE_HASH_STRUCTURE.
+  DATA: value TYPE LINE OF zbt_objectvalue_hash_calcul,
+        id    TYPE ZBT_PROGRAMS-PROGRAMA.
+
+  value = id = get_id( ).
+  SHIFT value LEFT DELETING LEADING space.
+  INSERT value INTO TABLE values[].
+endmethod.</source>
+ </method>
+</CLAS>

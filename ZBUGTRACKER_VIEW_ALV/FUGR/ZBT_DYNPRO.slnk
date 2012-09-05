@@ -1,0 +1,2111 @@
+<?xml version="1.0" encoding="utf-16"?>
+<FUGR AREA="ZBT_DYNPRO" SPRAS="E" AREAT="Function Group for Dynpros">
+ <functionGroupDocumentation/>
+ <mainprogram NAME="SAPLZBT_DYNPRO" VARCL="X" DBAPL="S" DBNA="D$" SUBC="F" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20101227" VERN="000002" RMAND="001" RLOAD="E" FIXPT="X" SDATE="20120903" STIME="233224" IDATE="20101227" ITIME="005453" LDBNAME="D$S" UCCHECK="X">
+  <textPool>
+   <language SPRAS="E">
+    <textElement ID="I" KEY="001" ENTRY="Modify" LENGTH="132 "/>
+    <textElement ID="I" KEY="002" ENTRY="Display" LENGTH="132 "/>
+    <textElement ID="I" KEY="003" ENTRY="Description" LENGTH="132 "/>
+    <textElement ID="I" KEY="004" ENTRY="How to Reproduce" LENGTH="132 "/>
+    <textElement ID="I" KEY="005" ENTRY="More Info" LENGTH="132 "/>
+    <textElement ID="I" KEY="006" ENTRY="Create" LENGTH="132 "/>
+    <textElement ID="I" KEY="007" ENTRY="Rendering data..." LENGTH="132 "/>
+    <textElement ID="I" KEY="008" ENTRY="TAGs" LENGTH="4 "/>
+    <textElement ID="I" KEY="009" ENTRY="Data has been modified" LENGTH="132 "/>
+    <textElement ID="I" KEY="010" ENTRY="Unsaved data will be lost. Continue?" LENGTH="132 "/>
+   </language>
+  </textPool>
+  <dynpros>
+   <dynpro PROG="SAPLZBT_DYNPRO" DNUM="0001" FNUM="0001" BZMX="200 " BZBR="184 " MILI="192 " MICO="37 " MALI="0 " MACO="0 " NOLI="200 " NOCO="255 " VALP="0 " CUAN="G" SPRA="E" DGEN="20111209" TGEN="162036" DTEXT="Main Screen">
+    <dynprofield FNAM="MAIN_TC" DIDX="00C8" FLG1="08" FLG2="20" FLG3="00" FILL="I" FMB1="00" FMB2="00" LENG="B8" LINE="01" COLN="02" LTYP="J" LANF="65" LBLK="01" LREP="01" AGLT="13" ADEZ="B8"/>
+    <dynprofield FNAM="%#AUTOTEXT007" DIDX="0007" FLG1="00" FLG2="00" FLG3="00" FILL="P" FMB1="30" FMB2="00" LENG="13" LINE="01" COLN="01" LTYP="I" LANF="65" LBLK="01" LREP="01" TYPE="CHAR" AUTH="102" WNAM="MAIN" AGLT="00" ADEZ="00" STXT="@3P\QHeader@ Head" RES1="                                                                                                                                                                        TAB0"/>
+    <dynprofield FNAM="%#AUTOTEXT006" DIDX="0007" FLG1="00" FLG2="00" FLG3="00" FILL="P" FMB1="30" FMB2="00" LENG="09" LINE="01" COLN="02" LTYP="I" LANF="65" LBLK="01" LREP="01" TYPE="CHAR" AUTH="103" WNAM="MAIN" AGLT="00" ADEZ="00" STXT="@3Q@ Info" RES1="                                                                                                                                                                        TAB1"/>
+    <dynprofield FNAM="%#AUTOTEXT002" DIDX="000B" FLG1="00" FLG2="00" FLG3="00" FILL="P" FMB1="30" FMB2="00" LENG="10" LINE="01" COLN="03" LTYP="I" LANF="65" LBLK="01" LREP="01" TYPE="CHAR" AUTH="104" WNAM="MAIN" AGLT="00" ADEZ="00" STXT="@DH@ Comments" RES1="                                                                                                                                                                        TAB2"/>
+    <dynprofield FNAM="%#AUTOTEXT003" DIDX="000F" FLG1="00" FLG2="00" FLG3="00" FILL="P" FMB1="30" FMB2="00" LENG="11" LINE="01" COLN="04" LTYP="I" LANF="65" LBLK="01" LREP="01" TYPE="CHAR" AUTH="105" WNAM="MAIN" AGLT="00" ADEZ="00" STXT="@FM@ Attachements" RES1="                                                                                                                                                                        TAB3"/>
+    <dynprofield FNAM="%#AUTOTEXT008" DIDX="0011" FLG1="00" FLG2="00" FLG3="00" FILL="P" FMB1="30" FMB2="00" LENG="13" LINE="01" COLN="05" LTYP="I" LANF="65" LBLK="01" LREP="01" TYPE="CHAR" AUTH="106" WNAM="MAIN" AGLT="00" ADEZ="00" STXT="@1T@ Time Reporting" RES1="                                                                                                                                                                        TAB6"/>
+    <dynprofield FNAM="%#AUTOTEXT004" DIDX="000A" FLG1="00" FLG2="00" FLG3="00" FILL="P" FMB1="30" FMB2="00" LENG="0C" LINE="01" COLN="06" LTYP="I" LANF="65" LBLK="01" LREP="01" TYPE="CHAR" AUTH="107" WNAM="MAIN" AGLT="00" ADEZ="00" STXT="@IG@ Objects" RES1="                                                                                                                                                                        TAB4"/>
+    <dynprofield FNAM="%#AUTOTEXT005" DIDX="000C" FLG1="00" FLG2="00" FLG3="00" FILL="P" FMB1="30" FMB2="00" LENG="0E" LINE="01" COLN="07" LTYP="I" LANF="65" LBLK="01" LREP="01" TYPE="CHAR" AUTH="108" WNAM="MAIN" AGLT="00" ADEZ="00" STXT="@96@ ChangeLog" RES1="                                                                                                                                                                        TAB5"/>
+    <dynprofield FNAM="MAIN" DIDX="00C5" FLG1="00" FLG2="E0" FLG3="00" FILL="B" FMB1="30" FMB2="00" LENG="B6" LINE="03" COLN="03" LTYP="I" LANF="65" LBLK="00" LREP="00" AUTH="109" AGLT="03" ADEZ="03"/>
+    <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
+    <dynproflowsource>PROCESS BEFORE OUTPUT.
+  MODULE status_0001.
+  MODULE set_subscreens_0001.
+
+*  CALL SUBSCREEN top
+*    INCLUDING sy-repid g_top_screen.
+  CALL SUBSCREEN main
+    INCLUDING gt_main_tc_ctr-prog gt_main_tc_ctr-subscreen.
+
+  MODULE set_display_mode.
+*
+PROCESS AFTER INPUT.
+  MODULE syncronize_structure_object.
+
+  MODULE exit_0001 AT EXIT-COMMAND.
+
+*  CALL SUBSCREEN top.
+  CALL SUBSCREEN main.
+
+  MODULE user_command_0001.</dynproflowsource>
+   </dynpro>
+   <dynpro PROG="SAPLZBT_DYNPRO" DNUM="0100" TYPE="I" FNUM="0100" BZMX="200 " BZBR="130 " MILI="200 " MICO="37 " MALI="0 " MACO="0 " NOLI="200 " NOCO="255 " VALP="0 " CUAN="G" SPRA="E" DGEN="20120903" TGEN="233143" DTEXT="Header Screen">
+    <dynprofield FNAM="ZBT_BUG-BUG" DIDX="0000" FLG1="30" FLG2="00" FLG3="00" FMB1="30" FMB2="00" LENG="0A" LINE="01" COLN="02" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="0" AGLT="00" ADEZ="00" STXT="Bug" RES1="                                                                                                                                                                                                                                                        X"/>
+    <dynprofield FNAM="G_BUG_STATUS_ICON" DIDX="0004" FLG1="80" FLG2="00" FLG3="80" FMB1="32" FMB2="00" LENG="21" LINE="01" COLN="0D" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="C" AGLT="00" ADEZ="00" STXT="@00@_____________________________"/>
+    <dynprofield FNAM="G_BUG-BUG" DIDX="0000" FLG1="80" FLG2="24" FLG3="80" FMB1="30" FMB2="00" LENG="0A" LINE="01" COLN="12" LANF="00" LBLK="00" LREP="00" PAID="ZBT_BUG_ID" TYPE="NUMC" ITYP="N" AGLT="14" ADEZ="00" STXT="__________"/>
+    <dynprofield FNAM="G_BUG-RESUMEN" DIDX="0000" FLG1="80" FLG2="02" FLG3="A0" FMB1="00" FMB2="00" LENG="67" LINE="01" COLN="1D" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="C" AGLT="14" ADEZ="00" STXT="_______________________________________________________________________________________________________"/>
+    <dynprofield FNAM="ZBT_BUG-PRODUCTO" DIDX="0000" FLG1="30" FLG2="00" FLG3="00" FMB1="30" FMB2="00" LENG="0F" LINE="02" COLN="02" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="2" AGLT="00" ADEZ="00" STXT="Producto" RES1="                                                                                                                                                                                                                                                        X"/>
+    <dynprofield FNAM="G_PRODUCTO-PRODUCTO" DIDX="001B" FLG1="80" FLG2="04" FLG3="A0" FMB1="00" FMB2="00" LENG="05" LINE="02" COLN="12" LANF="00" LBLK="00" LREP="00" PAID="ZBT_PRODUCT_ID" TYPE="NUMC" ITYP="N" AGLT="0A" ADEZ="00" STXT="_____" RES1=" DL                                                                                                                                                                     BUGPROD"/>
+    <dynprofield FNAM="ZBT_BUG-COMPONENTE" DIDX="0000" FLG1="30" FLG2="00" FLG3="00" FMB1="30" FMB2="00" LENG="0F" LINE="03" COLN="02" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="2" AGLT="00" ADEZ="00" STXT="Componente" RES1="                                                                                                                                                                                                                                                        X"/>
+    <dynprofield FNAM="G_COMPONENTE-COMPONENTE" DIDX="001B" FLG1="80" FLG2="00" FLG3="80" FMB1="00" FMB2="00" LENG="05" LINE="03" COLN="12" LANF="00" LBLK="00" LREP="00" TYPE="NUMC" ITYP="N" AGLT="0A" ADEZ="00" STXT="_____" RES1=" DL                                                                                                                                                                     BUGCOMP                                                                              X"/>
+    <dynprofield FNAM="ZBT_BUG-BUGTYPE" DIDX="0000" FLG1="30" FLG2="00" FLG3="01" FMB1="30" FMB2="00" LENG="0F" LINE="05" COLN="02" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="2" AGLT="00" ADEZ="00" STXT="Tipo Bug" RES1="                                                                                                                                                                                                                                                        X"/>
+    <dynprofield FNAM="G_BUG-BUGTYPE" DIDX="001B" FLG1="80" FLG2="00" FLG3="A1" FMB1="00" FMB2="18" LENG="01" LINE="05" COLN="12" LANF="00" LBLK="00" LREP="00" TYPE="NUMC" ITYP="N" AGLT="02" ADEZ="00" RES1="XDL                                                                                                                                                                     BUGTYPE"/>
+    <dynprofield FNAM="ZBT_BUG-BUGSTYPE" DIDX="0000" FLG1="30" FLG2="00" FLG3="01" FMB1="30" FMB2="00" LENG="0A" LINE="06" COLN="02" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="0" AGLT="00" ADEZ="00" STXT="Bug Subtyp" RES1="                                                                                                                                                                                                                                                        X"/>
+    <dynprofield FNAM="G_BUG_STYPE_ICON" DIDX="0004" FLG1="80" FLG2="00" FLG3="80" FMB1="32" FMB2="00" LENG="21" LINE="06" COLN="0D" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="C" AGLT="00" ADEZ="00" STXT="@00@_____________________________"/>
+    <dynprofield FNAM="G_BUG-BUGSTYPE" DIDX="001B" FLG1="80" FLG2="00" FLG3="81" FMB1="00" FMB2="18" LENG="01" LINE="06" COLN="12" LANF="00" LBLK="00" LREP="00" TYPE="NUMC" ITYP="N" AGLT="02" ADEZ="00" RES1="XDL                                                                                                                                                                     BUGSTYPE                                                                             X"/>
+    <dynprofield FNAM="ZBT_BUG-ESTADO" DIDX="0000" FLG1="30" FLG2="00" FLG3="00" FMB1="30" FMB2="00" LENG="06" LINE="08" COLN="02" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="4" AGLT="00" ADEZ="00" STXT="Estado" RES1="                                                                                                                                                                                                                                                        X"/>
+    <dynprofield FNAM="G_BUG-ESTADO" DIDX="001B" FLG1="80" FLG2="00" FLG3="A0" FMB1="00" FMB2="00" LENG="05" LINE="08" COLN="12" LANF="00" LBLK="00" LREP="00" TYPE="NUMC" ITYP="N" AGLT="0A" ADEZ="00" STXT="_____" RES1=" DL                                                                                                                                                                     BUGSTATUS"/>
+    <dynprofield FNAM="%#AUTOTEXT001" DIDX="0007" FLG1="00" FLG2="00" FLG3="00" FILL="R" FMB1="30" FMB2="00" LENG="2C" LINE="0A" COLN="02" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AUTH="101" ITYP="0" AGLT="00" ADEZ="00" STXT="Dates"/>
+    <dynprofield FNAM="%#AUTOTEXT002" DIDX="0007" FLG1="00" FLG2="00" FLG3="00" FILL="R" FMB1="30" FMB2="00" LENG="3F" LINE="0A" COLN="2F" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AUTH="102" AGLT="00" ADEZ="00" STXT="Users"/>
+    <dynprofield FNAM="ZBT_BUG-CREADO" DIDX="0000" FLG1="30" FLG2="00" FLG3="00" FMB1="30" FMB2="00" LENG="0F" LINE="0B" COLN="04" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="2" AGLT="00" ADEZ="00" STXT="Creado el" RES1="                                                                                                                                                                                                                                                        X"/>
+    <dynprofield FNAM="G_BUG-CREADO" DIDX="0000" FLG1="80" FLG2="00" FLG3="80" FMB1="30" FMB2="00" LENG="13" LINE="0B" COLN="14" LANF="00" LBLK="00" LREP="00" UCNV="ZBTTS" TYPE="CHAR" ITYP="C" AGLT="1C" ADEZ="00" STXT="___________________"/>
+    <dynprofield FNAM="ZBT_BUG-REPORTER" DIDX="0000" FLG1="30" FLG2="00" FLG3="00" FMB1="30" FMB2="00" LENG="0F" LINE="0B" COLN="31" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="2" AGLT="00" ADEZ="00" STXT="Reporter" RES1="                                                                                                                                                                                                                                                        X"/>
+    <dynprofield FNAM="G_BUG-REPORTER" DIDX="0000" FLG1="80" FLG2="00" FLG3="80" FMB1="30" FMB2="08" LENG="0C" LINE="0B" COLN="41" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" DMAC="ZBT_F4_REPORTERS" ITYP="C" AGLT="18" ADEZ="00" STXT="____________"/>
+    <dynprofield FNAM="G_USERS_TXT-REPORTER" DIDX="001E" FLG1="81" FLG2="00" FLG3="80" FMB1="31" FMB2="00" LENG="50" LINE="0B" COLN="4E" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="C" AGLT="00" ADEZ="00" STXT="________________________________________________________________________________"/>
+    <dynprofield FNAM="ZBT_BUG-FINALIZADO" DIDX="0000" FLG1="30" FLG2="00" FLG3="00" FMB1="30" FMB2="00" LENG="0F" LINE="0C" COLN="04" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="2" AGLT="00" ADEZ="00" STXT="Finalizado" RES1="                                                                                                                                                                                                                                                        X"/>
+    <dynprofield FNAM="G_BUG-FINALIZADO" DIDX="0000" FLG1="80" FLG2="00" FLG3="80" FMB1="30" FMB2="00" LENG="13" LINE="0C" COLN="14" LANF="00" LBLK="00" LREP="00" UCNV="ZBTTS" TYPE="CHAR" ITYP="C" AGLT="1C" ADEZ="00" STXT="___________________"/>
+    <dynprofield FNAM="ZBT_BUG-ASSIGNED" DIDX="0000" FLG1="30" FLG2="00" FLG3="00" FMB1="30" FMB2="00" LENG="0F" LINE="0C" COLN="31" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="0" AGLT="00" ADEZ="00" STXT="Assigned" RES1="                                                                                                                                                                                                                                                        X"/>
+    <dynprofield FNAM="G_BUG-ASSIGNED" DIDX="0000" FLG1="80" FLG2="00" FLG3="88" FMB1="00" FMB2="08" LENG="0C" LINE="0C" COLN="41" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" DMAC="ZBT_F4_ASSIGNED" ITYP="C" AGLT="18" ADEZ="00" STXT="____________"/>
+    <dynprofield FNAM="G_USERS_TXT-ASSIGNED" DIDX="001E" FLG1="81" FLG2="00" FLG3="80" FMB1="31" FMB2="00" LENG="50" LINE="0C" COLN="4E" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="C" AGLT="00" ADEZ="00" STXT="________________________________________________________________________________"/>
+    <dynprofield FNAM="ZBT_BUG-DEADLINE" DIDX="0000" FLG1="30" FLG2="00" FLG3="00" FMB1="30" FMB2="00" LENG="0F" LINE="0D" COLN="04" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="2" AGLT="00" ADEZ="00" STXT="DeadLine" RES1="                                                                                                                                                                                                                                                        X"/>
+    <dynprofield FNAM="G_BUG-DEADLINE" DIDX="0000" FLG1="80" FLG2="00" FLG3="80" FMB1="00" FMB2="00" LENG="0A" LINE="0D" COLN="14" LANF="00" LBLK="00" LREP="00" TYPE="DATS" ITYP="D" AGLT="10" ADEZ="00" STXT="__________" RES1="X"/>
+    <dynprofield FNAM="ZBT_BUG-DEVELOPER" DIDX="0000" FLG1="30" FLG2="00" FLG3="00" FMB1="30" FMB2="00" LENG="0F" LINE="0D" COLN="31" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="2" AGLT="00" ADEZ="00" STXT="Developer" RES1="                                                                                                                                                                                                                                                        X"/>
+    <dynprofield FNAM="G_BUG-DEVELOPER" DIDX="0000" FLG1="80" FLG2="00" FLG3="80" FMB1="00" FMB2="08" LENG="0C" LINE="0D" COLN="41" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" DMAC="ZBT_F4_DEVELOPERS" ITYP="C" AGLT="18" ADEZ="00" STXT="____________"/>
+    <dynprofield FNAM="G_USERS_TXT-DEVELOPER" DIDX="001E" FLG1="81" FLG2="00" FLG3="80" FMB1="31" FMB2="00" LENG="50" LINE="0D" COLN="4E" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="C" AGLT="00" ADEZ="00" STXT="________________________________________________________________________________"/>
+    <dynprofield FNAM="ZBT_BUG-AEDAT" DIDX="0000" FLG1="30" FLG2="00" FLG3="00" FMB1="30" FMB2="00" LENG="0F" LINE="0E" COLN="04" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="2" AGLT="00" ADEZ="00" STXT="Modificado el" RES1="                                                                                                                                                                                                                                                        X"/>
+    <dynprofield FNAM="G_BUG-AEDAT" DIDX="0000" FLG1="80" FLG2="00" FLG3="80" FMB1="30" FMB2="00" LENG="13" LINE="0E" COLN="14" LANF="00" LBLK="00" LREP="00" UCNV="TSTMP" TYPE="CHAR" ITYP="C" AGLT="0E" ADEZ="00" STXT="___________________"/>
+    <dynprofield FNAM="ZBT_BUG-TESTER" DIDX="0000" FLG1="30" FLG2="00" FLG3="00" FMB1="30" FMB2="00" LENG="0F" LINE="0E" COLN="31" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="2" AGLT="00" ADEZ="00" STXT="Tester" RES1="                                                                                                                                                                                                                                                        X"/>
+    <dynprofield FNAM="G_BUG-TESTER" DIDX="0000" FLG1="80" FLG2="00" FLG3="80" FMB1="00" FMB2="08" LENG="0C" LINE="0E" COLN="41" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" DMAC="ZBT_F4_TESTERS" ITYP="C" AGLT="18" ADEZ="00" STXT="____________"/>
+    <dynprofield FNAM="G_USERS_TXT-TESTER" DIDX="001E" FLG1="81" FLG2="00" FLG3="80" FMB1="31" FMB2="00" LENG="50" LINE="0E" COLN="4E" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="C" AGLT="00" ADEZ="00" STXT="________________________________________________________________________________"/>
+    <dynprofield FNAM="ZBT_BUG-AENAM" DIDX="0000" FLG1="30" FLG2="00" FLG3="00" FMB1="30" FMB2="00" LENG="0F" LINE="0F" COLN="31" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="2" AGLT="00" ADEZ="00" STXT="Changed by" RES1="                                                                                                                                                                                                                                                        X"/>
+    <dynprofield FNAM="G_BUG-AENAM" DIDX="0000" FLG1="80" FLG2="00" FLG3="80" FMB1="30" FMB2="00" LENG="0C" LINE="0F" COLN="41" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="C" AGLT="0C" ADEZ="00" STXT="____________"/>
+    <dynprofield FNAM="G_USERS_TXT-AENAM" DIDX="001E" FLG1="81" FLG2="00" FLG3="80" FMB1="31" FMB2="00" LENG="50" LINE="0F" COLN="4E" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="C" AGLT="00" ADEZ="00" STXT="________________________________________________________________________________"/>
+    <dynprofield FNAM="TAG_CONTAINER" DIDX="00B8" FLG1="00" FLG2="20" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="3E" LINE="11" COLN="02" LANF="00" LBLK="00" LREP="00" AUTH="103" AGLT="03" ADEZ="01"/>
+    <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
+    <dynproflowsource>PROCESS BEFORE OUTPUT.
+  MODULE status_0100.
+  MODULE pbo_0100.
+  MODULE set_display_mode.
+
+*
+PROCESS AFTER INPUT.
+  MODULE exit_0100 AT EXIT-COMMAND.
+  CHAIN.
+    FIELD:
+    g_producto-producto,
+    g_bug-resumen,
+    g_bug-bugtype,
+    g_componente-componente,
+    g_bug-bugstype,
+    g_bug-estado,
+    g_bug-creado,
+    g_bug-finalizado,
+    g_bug-deadline,
+    g_bug-reporter,
+    g_bug-assigned,
+    g_bug-developer,
+    g_bug-tester,
+    g_bug-bug.
+    MODULE pai_0100.
+  ENDCHAIN.</dynproflowsource>
+   </dynpro>
+   <dynpro PROG="SAPLZBT_DYNPRO" DNUM="0101" TYPE="I" FNUM="0101" BZMX="200 " BZBR="255 " MILI="200 " MICO="37 " MALI="0 " MACO="0 " NOLI="200 " NOCO="255 " VALP="0 " CUAN="G" SPRA="E" DGEN="20110704" TGEN="225408" DTEXT="Tag SubScreen">
+    <dynprofield FNAM="TAG_CONTAINER" DIDX="00C8" FLG1="00" FLG2="00" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="FF" LINE="01" COLN="02" LANF="00" LBLK="00" LREP="00" AUTH="101" AGLT="01" ADEZ="01"/>
+    <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
+    <dynproflowsource>PROCESS BEFORE OUTPUT.
+  MODULE pbo_0101.
+*
+PROCESS AFTER INPUT.
+* MODULE USER_COMMAND_0101.</dynproflowsource>
+   </dynpro>
+   <dynpro PROG="SAPLZBT_DYNPRO" DNUM="0200" TYPE="I" FNUM="0200" BZMX="0 " BZBR="0 " MILI="200 " MICO="37 " MALI="0 " MACO="0 " NOLI="200 " NOCO="255 " VALP="0 " CUAN="G" SPRA="E" DGEN="20110629" TGEN="003737" DTEXT="Info Screen">
+    <dynprofield FNAM="INFO_TC" DIDX="00C8" FLG1="08" FLG2="30" FLG3="00" FILL="I" FMB1="00" FMB2="00" LENG="D2" LINE="01" COLN="02" LTYP="J" LANF="65" LBLK="01" LREP="01" AGLT="04" ADEZ="07"/>
+    <dynprofield FNAM="%#AUTOTEXT001" DIDX="0000" FLG1="00" FLG2="00" FLG3="00" FILL="P" FMB1="30" FMB2="00" LENG="0B" LINE="01" COLN="01" LTYP="I" LANF="65" LBLK="01" LREP="01" TYPE="CHAR" AUTH="102" WNAM="INFO_SUBSCREEN_AREA" AGLT="00" ADEZ="00" STXT="Description" RES1="                                                                                                                                                                        INFOTAB0"/>
+    <dynprofield FNAM="%#AUTOTEXT002" DIDX="0000" FLG1="00" FLG2="00" FLG3="00" FILL="P" FMB1="30" FMB2="00" LENG="09" LINE="01" COLN="02" LTYP="I" LANF="65" LBLK="01" LREP="01" TYPE="CHAR" AUTH="103" WNAM="INFO_SUBSCREEN_AREA" AGLT="00" ADEZ="00" STXT="More Info" RES1="                                                                                                                                                                        INFOTAB1"/>
+    <dynprofield FNAM="%#AUTOTEXT003" DIDX="0000" FLG1="00" FLG2="00" FLG3="00" FILL="P" FMB1="30" FMB2="00" LENG="10" LINE="01" COLN="03" LTYP="I" LANF="65" LBLK="01" LREP="01" TYPE="CHAR" AUTH="104" WNAM="INFO_SUBSCREEN_AREA" AGLT="00" ADEZ="00" STXT="How to Reproduce" RES1="                                                                                                                                                                        INFOTAB2"/>
+    <dynprofield FNAM="INFO_SUBSCREEN_AREA" DIDX="00C5" FLG1="00" FLG2="F0" FLG3="00" FILL="B" FMB1="30" FMB2="00" LENG="D0" LINE="03" COLN="03" LTYP="I" LANF="65" LBLK="00" LREP="00" AUTH="105" AGLT="03" ADEZ="03"/>
+    <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
+    <dynproflowsource>PROCESS BEFORE OUTPUT.
+* MODULE STATUS_0200.
+  MODULE pbo_0200.
+
+  MODULE set_subscreen_0200.
+
+  CALL SUBSCREEN info_subscreen_area
+    INCLUDING gt_info_tc_ctr-prog gt_info_tc_ctr-subscreen.
+*
+PROCESS AFTER INPUT.
+
+  CALL SUBSCREEN info_subscreen_area.
+
+  MODULE user_command_0200.</dynproflowsource>
+   </dynpro>
+   <dynpro PROG="SAPLZBT_DYNPRO" DNUM="0201" TYPE="I" FNUM="0201" BZMX="200 " BZBR="192 " MILI="196 " MICO="37 " MALI="0 " MACO="0 " NOLI="200 " NOCO="255 " VALP="0 " CUAN="G" SPRA="E" DGEN="20110626" TGEN="004856" DTEXT="Info - Subscreen 1">
+    <dynprofield FNAM="PROBLEM_CONTAINER" DIDX="00C8" FLG1="00" FLG2="30" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="C0" LINE="01" COLN="02" LANF="00" LBLK="00" LREP="00" AUTH="101" AGLT="01" ADEZ="01"/>
+    <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
+    <dynproflowsource>PROCESS BEFORE OUTPUT.
+* MODULE STATUS_0201.
+*
+PROCESS AFTER INPUT.
+* MODULE USER_COMMAND_0201.</dynproflowsource>
+   </dynpro>
+   <dynpro PROG="SAPLZBT_DYNPRO" DNUM="0202" TYPE="I" FNUM="0202" BZMX="0 " BZBR="0 " MILI="196 " MICO="37 " MALI="0 " MACO="0 " NOLI="200 " NOCO="255 " VALP="0 " CUAN="G" SPRA="E" DGEN="20110626" TGEN="004908" DTEXT="Info - Subscreen 2">
+    <dynprofield FNAM="MORE_INFO_CONTAINER" DIDX="00C8" FLG1="00" FLG2="30" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="C0" LINE="01" COLN="02" LANF="00" LBLK="00" LREP="00" AUTH="101" AGLT="01" ADEZ="01"/>
+    <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
+    <dynproflowsource>PROCESS BEFORE OUTPUT.
+* MODULE STATUS_0201.
+*
+PROCESS AFTER INPUT.
+* MODULE USER_COMMAND_0201.</dynproflowsource>
+   </dynpro>
+   <dynpro PROG="SAPLZBT_DYNPRO" DNUM="0203" TYPE="I" FNUM="0203" BZMX="0 " BZBR="0 " MILI="196 " MICO="37 " MALI="0 " MACO="0 " NOLI="200 " NOCO="255 " VALP="0 " CUAN="G" SPRA="E" DGEN="20110626" TGEN="004922" DTEXT="Info - Subscreen 3">
+    <dynprofield FNAM="STEPS_CONTAINER" DIDX="00C8" FLG1="00" FLG2="30" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="C0" LINE="01" COLN="02" LANF="00" LBLK="00" LREP="00" AUTH="101" AGLT="01" ADEZ="01"/>
+    <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
+    <dynproflowsource>PROCESS BEFORE OUTPUT.
+* MODULE STATUS_0201.
+*
+PROCESS AFTER INPUT.
+* MODULE USER_COMMAND_0201.</dynproflowsource>
+   </dynpro>
+   <dynpro PROG="SAPLZBT_DYNPRO" DNUM="0300" TYPE="I" FNUM="0300" BZMX="0 " BZBR="0 " MILI="200 " MICO="37 " MALI="0 " MACO="0 " NOLI="200 " NOCO="255 " VALP="0 " CUAN="G" SPRA="E" DGEN="20110604" TGEN="014445" DTEXT="Comments Screen">
+    <dynprofield FNAM="COMMENTS" DIDX="00C8" FLG1="00" FLG2="30" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="FF" LINE="01" COLN="02" LANF="00" LBLK="00" LREP="00" AUTH="101" AGLT="0A" ADEZ="0A"/>
+    <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
+    <dynproflowsource>PROCESS BEFORE OUTPUT.
+  MODULE pbo_0300.
+*
+PROCESS AFTER INPUT.</dynproflowsource>
+   </dynpro>
+   <dynpro PROG="SAPLZBT_DYNPRO" DNUM="0400" TYPE="I" FNUM="0400" BZMX="3 " BZBR="6 " MILI="200 " MICO="37 " MALI="0 " MACO="0 " NOLI="200 " NOCO="255 " VALP="0 " CUAN="G" SPRA="E" DGEN="20110604" TGEN="014502" DTEXT="Attachements Screen">
+    <dynprofield FNAM="%#AUTOTEXT001" DIDX="0000" FLG1="00" FLG2="00" FLG3="00" FMB1="30" FMB2="00" LENG="04" LINE="03" COLN="04" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="0" AGLT="00" ADEZ="00" STXT="Test"/>
+    <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
+    <dynproflowsource>PROCESS BEFORE OUTPUT.
+* MODULE STATUS_0300.
+*
+PROCESS AFTER INPUT.
+* MODULE USER_COMMAND_0300.</dynproflowsource>
+   </dynpro>
+   <dynpro PROG="SAPLZBT_DYNPRO" DNUM="0500" TYPE="I" FNUM="0500" BZMX="0 " BZBR="0 " MILI="200 " MICO="37 " MALI="0 " MACO="0 " NOLI="200 " NOCO="255 " VALP="0 " CUAN="G" SPRA="E" DGEN="20110604" TGEN="014526" DTEXT="Objects Screen">
+    <dynprofield FNAM="OBJECT_CONTAINER" DIDX="00C8" FLG1="00" FLG2="30" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="FF" LINE="01" COLN="02" LANF="00" LBLK="00" LREP="00" AUTH="101" AGLT="0A" ADEZ="0A"/>
+    <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
+    <dynproflowsource>PROCESS BEFORE OUTPUT.
+  MODULE pbo_0500.
+*
+PROCESS AFTER INPUT.</dynproflowsource>
+   </dynpro>
+   <dynpro PROG="SAPLZBT_DYNPRO" DNUM="0600" TYPE="I" FNUM="0600" BZMX="3 " BZBR="6 " MILI="200 " MICO="37 " MALI="0 " MACO="0 " NOLI="200 " NOCO="255 " VALP="0 " CUAN="G" SPRA="E" DGEN="20110604" TGEN="014537" DTEXT="ChangeLog Screen">
+    <dynprofield FNAM="%#AUTOTEXT001" DIDX="0000" FLG1="00" FLG2="00" FLG3="00" FMB1="30" FMB2="00" LENG="04" LINE="03" COLN="04" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="0" AGLT="00" ADEZ="00" STXT="Test"/>
+    <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
+    <dynproflowsource>PROCESS BEFORE OUTPUT.
+* MODULE STATUS_0300.
+*
+PROCESS AFTER INPUT.
+* MODULE USER_COMMAND_0300.</dynproflowsource>
+   </dynpro>
+   <dynpro PROG="SAPLZBT_DYNPRO" DNUM="0700" TYPE="I" FNUM="0700" BZMX="2 " BZBR="19 " MILI="200 " MICO="37 " MALI="0 " MACO="0 " NOLI="200 " NOCO="255 " VALP="0 " CUAN="G" SPRA="E" DGEN="20111012" TGEN="115520" DTEXT="Time Reporting">
+    <dynprofield FNAM="ZBT_BUG-HORAS_EST" DIDX="0000" FLG1="30" FLG2="00" FLG3="00" FMB1="30" FMB2="00" LENG="0F" LINE="01" COLN="02" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="2" AGLT="00" ADEZ="00" STXT="H.Estimadas" RES1="                                                                                                                                                                                                                                                        X"/>
+    <dynprofield FNAM="G_BUG-HORAS_EST" DIDX="0000" FLG1="80" FLG2="20" FLG3="80" FMB1="00" FMB2="00" LENG="03" LINE="01" COLN="12" LANF="00" LBLK="00" LREP="00" TYPE="DEC" ITYP="P" AGLT="03" ADEZ="00" STXT="___"/>
+    <dynprofield FNAM="ZBT_BUG-HORAS_REA" DIDX="0000" FLG1="30" FLG2="00" FLG3="00" FMB1="30" FMB2="00" LENG="0F" LINE="02" COLN="02" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="2" AGLT="00" ADEZ="00" STXT="Horas Reales" RES1="                                                                                                                                                                                                                                                        X"/>
+    <dynprofield FNAM="G_BUG-HORAS_REA" DIDX="0000" FLG1="80" FLG2="20" FLG3="80" FMB1="00" FMB2="00" LENG="03" LINE="02" COLN="12" LANF="00" LBLK="00" LREP="00" TYPE="DEC" ITYP="P" AGLT="03" ADEZ="00" STXT="___"/>
+    <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
+    <dynproflowsource>PROCESS BEFORE OUTPUT.
+  MODULE status_0700.
+  MODULE set_display_mode.
+*
+PROCESS AFTER INPUT.
+* MODULE USER_COMMAND_0300.</dynproflowsource>
+   </dynpro>
+  </dynpros>
+  <pfstatus>
+   <pfstatus_sta CODE="EMPTY" MODAL="D" ACTCODE="000002" PFKCODE="000002" BUTCODE="0001" INT_NOTE="Empty PF-Status"/>
+   <pfstatus_sta CODE="S0001" MODAL="D" ACTCODE="000001" PFKCODE="000001" BUTCODE="0001" INT_NOTE="Main Status"/>
+   <pfstatus_fun CODE="BACK" TEXTNO="001" TEXT_TYPE="S" FUN_TEXT="Back"/>
+   <pfstatus_fun CODE="BUGTREE" TEXTNO="001" TEXT_TYPE="S" TEXT_NAME="ICON_DISPLAY_TREE" ICON_ID="@JG@" FUN_TEXT="Bug Hierarchy" INFO_TEXT="Shows the Bug Hierarchy"/>
+   <pfstatus_fun CODE="CANCEL" TEXTNO="001" TYPE="E" TEXT_TYPE="S" TEXT_NAME="ICON_CANCEL" ICON_ID="@0W@" FUN_TEXT="Cancel"/>
+   <pfstatus_fun CODE="CHGMODE" TEXTNO="001" TEXT_TYPE="S" TEXT_NAME="ICON_TOGGLE_DISPLAY_CHANGE" ICON_ID="@3I@" FUN_TEXT="Change Mode"/>
+   <pfstatus_fun CODE="EXIT" TEXTNO="001" TYPE="E" TEXT_TYPE="S" FUN_TEXT="Exit"/>
+   <pfstatus_fun CODE="SAVE" TEXTNO="001" TEXT_TYPE="S" FUN_TEXT="Save"/>
+   <pfstatus_men CODE="000001" NO="01" REF_TYPE="F" REF_CODE="CHGMODE" REF_NO="001"/>
+   <pfstatus_men CODE="000001" NO="02" REF_TYPE="F" REF_CODE="SAVE" REF_NO="001"/>
+   <pfstatus_men CODE="000001" NO="03" REF_TYPE="F" REF_CODE="EXIT" REF_NO="001"/>
+   <pfstatus_men CODE="000002" NO="01" REF_TYPE="F" REF_CODE="CANCEL" REF_NO="001"/>
+   <pfstatus_men CODE="000003" NO="01" REF_TYPE="F" REF_CODE="BACK" REF_NO="001"/>
+   <pfstatus_mtx CODE="000001" TEXT_TYPE="S" TEXT="Bug" INT_NOTE="Standard Supplement"/>
+   <pfstatus_mtx CODE="000002" TEXT_TYPE="S" TEXT="Edit" PATH="E" INT_NOTE="Standard Supplement"/>
+   <pfstatus_mtx CODE="000003" TEXT_TYPE="S" TEXT="Goto" PATH="G" INT_NOTE="Standard Supplement"/>
+   <pfstatus_mtx CODE="000004" TEXT_TYPE="S" TEXT="Extras" PATH="A" INT_NOTE="Standard Supplement"/>
+   <pfstatus_mtx CODE="000005" TEXT_TYPE="S" TEXT="Environment" PATH="V" INT_NOTE="Standard Supplement"/>
+   <pfstatus_act CODE="000001" NO="01" MENUCODE="000001"/>
+   <pfstatus_act CODE="000001" NO="02" MENUCODE="000002"/>
+   <pfstatus_act CODE="000001" NO="03" MENUCODE="000003"/>
+   <pfstatus_but PFK_CODE="000001" CODE="0001" NO="01" PFNO="25"/>
+   <pfstatus_but PFK_CODE="000001" CODE="0001" NO="02" PFNO="S"/>
+   <pfstatus_but PFK_CODE="000001" CODE="0001" NO="03" PFNO="13"/>
+   <pfstatus_pfk CODE="000001" PFNO="03" FUNCODE="BACK" FUNNO="001"/>
+   <pfstatus_pfk CODE="000001" PFNO="11" FUNCODE="SAVE" FUNNO="001"/>
+   <pfstatus_pfk CODE="000001" PFNO="12" FUNCODE="CANCEL" FUNNO="001"/>
+   <pfstatus_pfk CODE="000001" PFNO="13" FUNCODE="BUGTREE" FUNNO="001"/>
+   <pfstatus_pfk CODE="000001" PFNO="15" FUNCODE="EXIT" FUNNO="001"/>
+   <pfstatus_pfk CODE="000001" PFNO="25" FUNCODE="CHGMODE" FUNNO="001"/>
+   <pfstatus_pfk CODE="000002" PFNO="03" FUNCODE="BACK" FUNNO="001"/>
+   <pfstatus_pfk CODE="000002" PFNO="12" FUNCODE="CANCEL" FUNNO="001"/>
+   <pfstatus_pfk CODE="000002" PFNO="15" FUNCODE="EXIT" FUNNO="001"/>
+   <pfstatus_set STATUS="EMPTY" FUNCTION="BACK"/>
+   <pfstatus_set STATUS="EMPTY" FUNCTION="CANCEL"/>
+   <pfstatus_set STATUS="EMPTY" FUNCTION="EXIT"/>
+   <pfstatus_set STATUS="S0001" FUNCTION="BACK"/>
+   <pfstatus_set STATUS="S0001" FUNCTION="BUGTREE"/>
+   <pfstatus_set STATUS="S0001" FUNCTION="CANCEL"/>
+   <pfstatus_set STATUS="S0001" FUNCTION="CHGMODE"/>
+   <pfstatus_set STATUS="S0001" FUNCTION="EXIT"/>
+   <pfstatus_set STATUS="S0001" FUNCTION="SAVE"/>
+   <pfstatus_doc OBJ_TYPE="A" OBJ_CODE="000001" MODAL="D" INT_NOTE="Main Status"/>
+   <pfstatus_doc OBJ_TYPE="P" OBJ_CODE="000001" MODAL="D" INT_NOTE="Main Status"/>
+   <pfstatus_doc OBJ_TYPE="B" OBJ_CODE="000001" SUB_CODE="0001" MODAL="D" INT_NOTE="Main Status"/>
+   <pfstatus_doc OBJ_TYPE="A" OBJ_CODE="000002" MODAL="D" INT_NOTE="Empty PF-Status"/>
+   <pfstatus_doc OBJ_TYPE="P" OBJ_CODE="000002" MODAL="D" INT_NOTE="Empty PF-Status"/>
+   <pfstatus_doc OBJ_TYPE="B" OBJ_CODE="000002" SUB_CODE="0001" MODAL="D" INT_NOTE="Empty PF-Status"/>
+   <pfstatus_tit CODE="T0001" TEXT="Bug &amp; : &amp;"/>
+  </pfstatus>
+  <source>*******************************************************************
+*   System-defined Include-files.                                 *
+*******************************************************************
+  INCLUDE LZBT_DYNPROTOP.                    &quot; Global Data
+  INCLUDE LZBT_DYNPROUXX.                    &quot; Function Modules
+
+*******************************************************************
+*   User-defined Include-files (if necessary).                    *
+*******************************************************************
+* INCLUDE LZBT_DYNPROF...                    &quot; Subprograms
+* INCLUDE LZBT_DYNPROO...                    &quot; PBO-Modules
+* INCLUDE LZBT_DYNPROI...                    &quot; PAI-Modules
+
+INCLUDE LZBT_DYNPROF01.
+
+INCLUDE LZBT_DYNPROO01.
+
+INCLUDE LZBT_DYNPROI01.
+
+INCLUDE LZBT_DYNPROF02.
+
+INCLUDE LZBT_DYNPROI04.
+
+INCLUDE LZBT_DYNPROF03.
+
+INCLUDE LZBT_DYNPROP01.</source>
+ </mainprogram>
+ <includeprograms>
+  <include NAME="LZBT_DYNPROF01" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20120903" VERN="000006" RMAND="001" RLOAD="E" SDATE="20120903" STIME="233153" IDATE="20120903" ITIME="233153" UCCHECK="X">
+   <include_source>*----------------------------------------------------------------------*
+***INCLUDE LZBT_DYNPROF01 .
+*----------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  SET_ICON
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_ICON_SPACE  text
+*      &lt;--P_G_BUG_STATUS_ICON  text
+*----------------------------------------------------------------------*
+FORM set_icon  USING    p_icon_id
+               CHANGING p_icon.
+
+  CALL FUNCTION &apos;ICON_CREATE&apos;
+    EXPORTING
+      name                        = p_icon_id
+*   TEXT                        = &apos; &apos;
+*   INFO                        = &apos; &apos;
+*   ADD_STDINF                  = &apos;X&apos;
+   IMPORTING
+     result                      = p_icon
+* EXCEPTIONS
+*   ICON_NOT_FOUND              = 1
+*   OUTPUTFIELD_TOO_SHORT       = 2
+*   OTHERS                      = 3
+            .
+  IF sy-subrc &lt;&gt; 0.
+* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+
+ENDFORM.                    &quot; SET_ICON
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  SET_BUG_STATUS_ICON
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_STATUS  text
+*----------------------------------------------------------------------*
+FORM set_bug_status_icon  USING    p_status.
+
+  CASE p_status.
+*    WHEN . TODO
+    WHEN OTHERS.
+      g_bug_status_icon = icon_space.
+  ENDCASE.
+
+ENDFORM.                    &quot; SET_BUG_STATUS_ICON
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  SET_DISPLAY_MODE
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_DISPLAY_MODE  text
+*----------------------------------------------------------------------*
+FORM set_display_mode  USING p_display_mode TYPE flag.
+
+  g_display_mode    = p_display_mode.
+  IF g_display_mode IS INITIAL.
+    g_display_mode_txt = &apos;Modificar&apos;(001).
+  ELSE.
+    g_display_mode_txt = &apos;Visualizar&apos;(002).
+  ENDIF.
+ENDFORM.                    &quot; SET_DISPLAY_MODE
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  FREE_GLOBAL_DATA
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM free_global_data .
+  DATA lo_container TYPE REF TO cl_gui_container.
+
+* Free InfoContainer
+  lo_container ?= g_more_info_section_container.
+  PERFORM free_container CHANGING lo_container.
+  lo_container ?= g_steps_section_container.
+  PERFORM free_container CHANGING lo_container.
+  lo_container ?= g_problem_section_container.
+  PERFORM free_container CHANGING lo_container.
+  lo_container ?= g_tag_container.
+  PERFORM free_container CHANGING lo_container.
+  lo_container ?= g_bug_tree_container.
+  PERFORM free_container CHANGING lo_container.
+
+* Free BTF Editor
+  PERFORM free_btf_editor USING g_problem_btf.
+  PERFORM free_btf_editor USING g_steps_btf.
+  PERFORM free_btf_editor USING g_more_info_btf.
+
+  FREE:  go_handler,
+         go_tag_gui,
+         go_comment_gui.
+  CLEAR: gt_main_tc_ctr,
+         gt_info_tc_ctr,
+         go_handler,
+         g_do_not_show_pfstatus,
+         go_comment_gui,
+         g_bug_tree_container,
+         go_tag_gui.
+ENDFORM.                    &quot; FREE_GLOBAL_DATA
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  FREE_CONTAINER
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_CONTAINER  text
+*----------------------------------------------------------------------*
+FORM free_container  CHANGING p_container TYPE REF TO  cl_gui_container.
+  DATA: l_is_valid   TYPE i.
+
+  IF NOT p_container IS INITIAL.
+    CALL METHOD p_container-&gt;free
+      EXCEPTIONS
+        cntl_error        = 1
+        cntl_system_error = 2
+        OTHERS            = 3.
+    CLEAR p_container.
+    FREE p_container.
+  ENDIF.
+ENDFORM.                    &quot; FREE_CONTAINER
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  FREE_BTF_EDITOR
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_G_PROBLEM_BTF  text
+*----------------------------------------------------------------------*
+FORM free_btf_editor  USING p_btf TYPE REF TO zcl_btf_editor.
+  IF NOT p_btf IS INITIAL.
+    p_btf-&gt;free( ).
+    CLEAR p_btf.
+    FREE p_btf.
+  ENDIF.
+ENDFORM.                    &quot; FREE_BTF_EDITOR
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  SET_SUBSCREENS_0001
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM set_subscreens_0001 .
+
+  IF g_top_screen IS INITIAL.
+    g_top_screen = 101.
+  ENDIF.
+
+  main_tc-activetab = gt_main_tc_ctr-pressed_tab.
+  CASE gt_main_tc_ctr-pressed_tab.
+    WHEN c_main_tc_def-tab0.
+      gt_main_tc_ctr-subscreen = &apos;0100&apos;.
+    WHEN c_main_tc_def-tab1.
+      gt_main_tc_ctr-subscreen = &apos;0200&apos;.
+    WHEN c_main_tc_def-tab2.
+      gt_main_tc_ctr-subscreen = &apos;0300&apos;.
+    WHEN c_main_tc_def-tab3.
+      gt_main_tc_ctr-subscreen = &apos;0400&apos;.
+    WHEN c_main_tc_def-tab4.
+      gt_main_tc_ctr-subscreen = &apos;0500&apos;.
+    WHEN c_main_tc_def-tab5.
+      gt_main_tc_ctr-subscreen = &apos;0600&apos;.
+    WHEN c_main_tc_def-tab6.
+      gt_main_tc_ctr-subscreen = &apos;0700&apos;.
+    WHEN OTHERS.
+      gt_main_tc_ctr-subscreen = &apos;0100&apos;.
+  ENDCASE.
+
+  IF gt_main_tc_ctr-prog IS INITIAL.
+    gt_main_tc_ctr-prog = sy-repid.
+  ENDIF.
+
+ENDFORM.                    &quot; SET_SUBSCREENS_0001
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  USER_COMMAND_0001
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM user_command_0001 .
+  DATA: l_ucomm TYPE sy-ucomm.
+
+  cl_gui_cfw=&gt;flush( ).
+
+  l_ucomm = sy-ucomm.
+  CLEAR sy-ucomm.
+
+  CASE l_ucomm.
+    WHEN &apos;CHGMODE&apos;.
+      PERFORM chgmode_0001.
+    WHEN &apos;BACK&apos;.
+      PERFORM exit_0001.
+    WHEN &apos;SAVE&apos;.
+      PERFORM save_bug_0001.
+    WHEN &apos;BUGTREE&apos;.
+      PERFORM bugtree_0001.
+    WHEN OTHERS.
+      IF l_ucomm(3) = &apos;TAB&apos;.
+        PERFORM set_main_tc_screen USING l_ucomm.
+      ENDIF.
+  ENDCASE.
+ENDFORM.                    &quot; USER_COMMAND_0001
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  SET_MAIN_TC_SCREEN
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM set_main_tc_screen USING p_ucomm TYPE sy-ucomm .
+  FIELD-SYMBOLS: &lt;tab&gt; TYPE any.
+
+  ASSIGN COMPONENT p_ucomm OF STRUCTURE c_main_tc_def TO &lt;tab&gt;.
+  IF sy-subrc IS INITIAL.
+    gt_main_tc_ctr-pressed_tab = &lt;tab&gt;.
+  ELSE.
+    gt_main_tc_ctr-pressed_tab = c_main_tc_def-tab0.
+  ENDIF.
+
+ENDFORM.                    &quot; SET_MAIN_TC_SCREEN
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  PBO_0300
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM pbo_0300 .
+
+  DATA: lt_comentarios TYPE zbt_comentarios,
+        l_id_producto  TYPE zbt_producto-producto,
+        l_id_bug       TYPE zbt_id_bug.
+
+  IF NOT g_comments_container IS BOUND.
+    TRY.
+        CREATE OBJECT g_comments_container
+          EXPORTING
+            container_name = &apos;COMMENTS&apos;.
+
+        CREATE OBJECT go_comment_gui
+          EXPORTING
+            bug          = go_bug
+            container    = g_comments_container
+            display_mode = g_display_mode.
+
+        SET HANDLER go_handler-&gt;on_comment_added FOR go_comment_gui.
+        go_comment_gui-&gt;display( ).
+
+      CATCH zcx_not_found_exception .
+    ENDTRY.
+  ENDIF.
+
+
+ENDFORM.                                                    &quot; PBO_0300
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  SAVE_BUG_0001
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM save_bug_0001 .
+  DATA: l_bug_id    TYPE zbt_id_bug,
+        l_string    TYPE string,
+        o_exception TYPE REF TO zcx_bugtracker_system.
+
+  TRY .
+      IF zcl_bug_controller=&gt;exist( go_bug ) = abap_true.
+        zcl_bug_controller=&gt;update( go_bug  ).
+      ELSE.
+        zcl_bug_controller=&gt;create( go_bug  ).
+        PERFORM set_display_mode USING g_display_mode.
+      ENDIF.
+      COMMIT WORK AND WAIT.
+
+      PERFORM object_to_structures USING go_bug.
+
+      l_bug_id = go_bug-&gt;get_id( ).
+
+      CALL FUNCTION &apos;CONVERSION_EXIT_ALPHA_OUTPUT&apos;
+        EXPORTING
+          input  = l_bug_id
+        IMPORTING
+          output = l_bug_id.
+      MESSAGE s000(zbugtracker_msg) WITH l_bug_id.
+
+    CATCH zcx_bugtracker_system INTO o_exception.
+      l_string = o_exception-&gt;get_text( ).
+      MESSAGE l_string TYPE &apos;S&apos; DISPLAY LIKE &apos;E&apos;.
+  ENDTRY.
+
+
+ENDFORM.                    &quot; SAVE_BUG_0001
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  STRUCTURES_TO_OBJECT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM structures_to_object .
+  DATA: lo_producto   TYPE REF TO zcl_producto,
+        lo_user       TYPE REF TO zcl_usuario,
+        lo_componente TYPE REF TO zcl_componente.
+
+  lo_producto   = zcl_producto_controller=&gt;find_by_key( g_producto-producto ).
+  lo_componente = zcl_componente_controller=&gt;find_by_key( id       = g_componente-componente
+                                                          producto = lo_producto ).
+
+  zcl_bug_controller=&gt;structure_to_entity(
+      EXPORTING structure = g_bug
+      CHANGING  entity    = go_bug ).
+
+  go_bug-&gt;set_producto( lo_producto ).
+  go_bug-&gt;set_componente( lo_componente ).
+
+* Update Bug Sections
+  PERFORM update_bugsection USING go_bug g_problem_btf   1.
+  PERFORM update_bugsection USING go_bug g_steps_btf     2.
+  PERFORM update_bugsection USING go_bug g_more_info_btf 3.
+
+  TRY .
+      lo_user = zcl_usuario_controller=&gt;find_by_key( g_bug-tester ).
+      IF lo_user IS BOUND.
+        g_users_txt-tester = lo_user-&gt;get_name( ).
+      ENDIF.
+    CATCH zcx_not_found_exception.
+      CLEAR g_users_txt-tester.
+  ENDTRY.
+
+ TRY .
+      lo_user = zcl_usuario_controller=&gt;find_by_key( g_bug-assigned ).
+      IF lo_user IS BOUND.
+        g_users_txt-assigned = lo_user-&gt;get_name( ).
+      ENDIF.
+    CATCH zcx_not_found_exception.
+      CLEAR g_users_txt-assigned.
+  ENDTRY.
+
+  TRY .
+      lo_user = zcl_usuario_controller=&gt;find_by_key( g_bug-developer ).
+      IF lo_user IS BOUND.
+        g_users_txt-developer = lo_user-&gt;get_name( ).
+      ENDIF.
+    CATCH zcx_not_found_exception.
+      CLEAR g_users_txt-developer.
+  ENDTRY.
+
+
+ENDFORM.                    &quot; STRUCTURES_TO_OBJECT
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  OBJECT_TO_STRUCTURES
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM object_to_structures USING p_bug TYPE REF TO zcl_bug.
+  DATA: lo_producto    TYPE REF TO zcl_producto,
+        lo_componente  TYPE REF TO zcl_componente,
+        lo_comment     TYPE REF TO zcl_comment,
+        lo_user        TYPE REF TO zcl_usuario,
+        lt_sections    TYPE zbt_bugsections,
+        l_section      TYPE LINE OF zbt_bugsections,
+        l_field(30)    TYPE c,
+        l_section_txt1 TYPE string,
+        l_section_txt2 TYPE string,
+        l_section_txt3 TYPE string,
+        lo_container   TYPE REF TO cl_gui_container.
+
+  FIELD-SYMBOLS &lt;symbol&gt; TYPE any.
+
+  lo_producto   = p_bug-&gt;get_producto( ).
+  lo_componente = p_bug-&gt;get_componente( ).
+
+  g_bug        = zcl_bug_controller=&gt;entity_to_structure( p_bug ).
+  go_bug       = p_bug.
+  g_producto   = zcl_producto_controller=&gt;entity_to_structure( lo_producto ).
+  g_componente = zcl_componente_controller=&gt;entity_to_structure( lo_componente ).
+
+  PERFORM set_bug_status_icon USING g_bug-estado.
+
+  lt_sections = go_bug-&gt;get_sections( ).
+  LOOP AT lt_sections INTO l_section.
+    lo_comment = l_section-oref-&gt;get_comment( ).
+
+    CONCATENATE &apos;L_SECTION_TXT&apos; l_section-seccion_id INTO l_field.
+    ASSIGN (l_field) TO &lt;symbol&gt;.
+
+    &lt;symbol&gt; = lo_comment-&gt;get_texto( ).
+  ENDLOOP.
+
+* Creates Main Container
+  PERFORM create_info_container.
+* Creates corresponding editors in separated containers
+  PERFORM create_btf_editor USING    g_problem_section_container
+                                     &apos;Description&apos;(003)
+                                     l_section_txt1
+                                     g_display_mode
+                            CHANGING g_problem_btf.
+  PERFORM create_btf_editor USING    g_steps_section_container
+                                     &apos;How to Reproduce&apos;(004)
+                                     l_section_txt2
+                                     g_display_mode
+                            CHANGING g_steps_btf.
+  PERFORM create_btf_editor USING    g_more_info_section_container
+                                     &apos;More Info&apos;(005)
+                                     l_section_txt3
+                                     g_display_mode
+                            CHANGING g_more_info_btf.
+* Gets Users Name
+  lo_user = go_bug-&gt;get_reporter( ).
+  IF lo_user IS BOUND.
+    g_users_txt-reporter = lo_user-&gt;get_name( ).
+  ENDIF.
+
+lo_user = go_bug-&gt;get_assigned( ).
+  IF lo_user IS BOUND.
+    g_users_txt-assigned = lo_user-&gt;get_name( ).
+  ENDIF.
+
+  lo_user = go_bug-&gt;get_developer( ).
+  IF lo_user IS BOUND.
+    g_users_txt-developer = lo_user-&gt;get_name( ).
+  ENDIF.
+
+  lo_user = go_bug-&gt;get_tester( ).
+  IF lo_user IS BOUND.
+    g_users_txt-tester = lo_user-&gt;get_name( ).
+  ENDIF.
+
+  lo_user = go_bug-&gt;get_aenam( ).
+  IF lo_user IS BOUND.
+    g_users_txt-aenam = lo_user-&gt;get_name( ).
+  ENDIF.
+ENDFORM.                    &quot; OBJECT_TO_STRUCTURES
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  UPDATE_BUGSECTION
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_BUG  text
+*      --&gt;P_BTF_EDITOR  text
+*      &lt;--P_LT_SECTIONS  text
+*----------------------------------------------------------------------*
+FORM update_bugsection  USING    p_bug         TYPE REF TO zcl_bug
+                                 p_btf_editor  TYPE REF TO zcl_btf_editor
+                                 p_section_id  TYPE zbt_id_seccion.
+
+  DATA: lt_sections   TYPE zbt_bugsections,
+        l_producto_id TYPE zbt_producto-producto,
+        lo_producto   TYPE REF TO zcl_producto,
+        lo_usuario    TYPE REF TO zcl_usuario,
+        lo_comment    TYPE REF TO zcl_comment,
+        l_string      TYPE string,
+        l_aux_str     TYPE string,
+        l_section     TYPE LINE OF zbt_bugsections.
+
+
+  lo_usuario = zcl_usuario_controller=&gt;find_by_key( ).
+  lt_sections = p_bug-&gt;get_sections( ).
+
+  l_string = p_btf_editor-&gt;get_content_as_string( ).
+
+  READ TABLE lt_sections WITH KEY seccion_id = p_section_id INTO l_section.
+  IF sy-subrc IS INITIAL.
+    lo_comment = l_section-oref-&gt;get_comment( ).
+    l_aux_str = lo_comment-&gt;get_texto( ).
+
+    PERFORM html_text_equal USING    l_aux_str
+                                     l_string
+                            CHANGING sy-subrc.
+    IF NOT sy-subrc IS INITIAL.
+      lo_comment-&gt;set_texto( l_string ).
+      lo_comment-&gt;set_erdat( ).
+      lo_comment-&gt;set_usuario( lo_usuario ).
+    ENDIF.
+  ELSE.
+    CREATE OBJECT lo_comment
+      EXPORTING
+        bug     = p_bug
+        usuario = lo_usuario
+        texto   = l_string.
+
+    lo_producto   = p_bug-&gt;get_producto( ).
+    l_producto_id = lo_producto-&gt;get_id( ).
+
+    l_section-producto_id = g_producto-producto.
+    l_section-bug_id      = g_bug-bug.
+    l_section-seccion_id  = p_section_id.
+    CREATE OBJECT l_section-oref
+      EXPORTING
+        id      = l_section-seccion_id
+        bug     = go_bug
+        comment = lo_comment.
+    INSERT l_section INTO TABLE lt_sections.
+  ENDIF.
+
+  p_bug-&gt;set_sections( lt_sections ).
+ENDFORM.                    &quot; UPDATE_BUGSECTION
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  STATUS_0001
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM status_0001 .
+  DATA: l_bug     LIKE g_bug-bug,
+        l_fcode   TYPE sy-ucomm,
+        lt_fcodes TYPE STANDARD TABLE OF sy-ucomm.
+
+  CALL FUNCTION &apos;CONVERSION_EXIT_ALPHA_OUTPUT&apos;
+    EXPORTING
+      input  = g_bug-bug
+    IMPORTING
+      output = l_bug.
+
+  CASE g_display_mode .
+    WHEN &apos;X&apos;.
+      l_fcode = &apos;SAVE&apos;.
+      INSERT l_fcode INTO TABLE lt_fcodes.
+    WHEN OTHERS.
+  ENDCASE.
+
+  IF g_do_not_show_pfstatus &lt;&gt; abap_true.
+    SET PF-STATUS &apos;S0001&apos; EXCLUDING lt_fcodes.
+  ELSE.
+    SET PF-STATUS &apos;EMPTY&apos; EXCLUDING lt_fcodes.
+  ENDIF.
+
+  SET TITLEBAR  &apos;T0001&apos; WITH l_bug g_display_mode_txt.
+
+ENDFORM.                    &quot; STATUS_0001
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  SET_DYNPRO_DISPLAY_MODE
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_G_DISPLAY_MODE  text
+*----------------------------------------------------------------------*
+FORM set_dynpro_display_mode  USING value(p_display_mode) TYPE flag.
+
+  IF NOT p_display_mode IS INITIAL.
+    LOOP AT SCREEN.
+*     No cambiamos los atributos de los siguientes campos
+      IF screen-name CS &apos;AUTOTEXT&apos;.
+      ELSE.
+        CASE screen-group1.
+          WHEN &apos;BTN&apos;. &quot;Button
+          WHEN OTHERS.
+            screen-input = 0.
+            MODIFY SCREEN.
+        ENDCASE.
+
+      ENDIF.
+
+    ENDLOOP.
+  ENDIF.
+
+
+ENDFORM.                    &quot; SET_DYNPRO_DISPLAY_MODE
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  set_create_mode
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+FORM set_create_mode.
+  g_display_mode_txt = &apos;Create&apos;(006).
+  CLEAR g_display_mode.
+ENDFORM.                    &quot;set_create_mode
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  PAI_0100
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM pai_0100 .
+  DATA: lo_producto    TYPE REF TO zcl_producto,
+        l_string       TYPE string,
+        lo_exception   TYPE REF TO zcx_bugtracker_system,
+        lo_estado      TYPE REF TO zcl_estado,
+        lo_usuario     TYPE REF TO zcl_usuario,
+        l_estado_type  TYPE zbt_typestatus,
+        l_timestamp    TYPE timestamp,
+        lt_componentes TYPE zbt_componentes.
+
+* If product has components then is mandatory to select one
+  IF g_componente-componente IS INITIAL.
+    lo_producto = zcl_producto_controller=&gt;find_by_key( g_bug-producto ).
+    lt_componentes[] = lo_producto-&gt;get_componentes( ).
+    IF NOT lt_componentes[] IS INITIAL.
+      MESSAGE e003(zbugtracker_msg).
+    ENDIF.
+
+  ENDIF.
+
+* If status is &quot;ended&quot; then EndDate must be fulfilled
+  lo_estado = zcl_estado_controller=&gt;find_by_key( g_bug-estado ).
+  l_estado_type = lo_estado-&gt;get_type( ) .
+  IF g_bug-finalizado IS INITIAL AND l_estado_type = zcl_estado_controller=&gt;status_finished.
+    GET TIME STAMP FIELD l_timestamp.
+    g_bug-finalizado = l_timestamp.
+  ELSEIF l_estado_type &lt;&gt; zcl_estado_controller=&gt;status_finished.
+    CLEAR g_bug-finalizado.
+  ENDIF.
+
+  TRY .
+      IF NOT g_bug-tester IS INITIAL.
+        lo_usuario = zcl_usuario_controller=&gt;find_by_key( g_bug-tester ).
+      ENDIF.
+      IF NOT g_bug-developer IS INITIAL.
+        lo_usuario = zcl_usuario_controller=&gt;find_by_key( g_bug-developer ).
+      ENDIF.
+        IF NOT g_bug-assigned IS INITIAL.
+        lo_usuario = zcl_usuario_controller=&gt;find_by_key( g_bug-assigned ).
+      ENDIF.
+    CATCH zcx_not_found_exception INTO lo_exception.
+      l_string = lo_exception-&gt;get_text( ).
+      MESSAGE l_string TYPE &apos;E&apos;.
+  ENDTRY.
+
+
+
+ENDFORM.                                                    &quot; PAI_0100
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  EXIT_0001
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM exit_0001 .
+  DATA: l_continue    TYPE flag VALUE &apos;X&apos;.
+
+  PERFORM ask_4data_lose CHANGING l_continue.
+
+  IF NOT l_continue IS INITIAL.
+    LEAVE TO SCREEN 0.
+  ENDIF.
+
+ENDFORM.                                                    &quot; EXIT_0001
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  ASK_4CONTINUE
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_0948   text
+*      --&gt;P_0949   text
+*      --&gt;P_0950   text
+*      &lt;--P_L_CONTINUE  text
+*----------------------------------------------------------------------*
+FORM ask_4continue  USING    value(p_title)
+                             value(p_question)
+                    CHANGING p_continue TYPE flag.
+
+  DATA: l_answer TYPE c.
+
+  CALL FUNCTION &apos;POPUP_TO_CONFIRM&apos;
+    EXPORTING
+      titlebar              = p_title
+      text_question         = p_question
+      icon_button_1         = &apos;ICON_OKAY&apos;
+      icon_button_2         = &apos;ICON_CANCEL&apos;
+      display_cancel_button = space
+      popup_type            = &apos;ICON_MESSAGE_WARNING&apos;
+    IMPORTING
+      answer                = l_answer.
+  CASE l_answer.
+    WHEN &apos;1&apos;.
+      p_continue = &apos;X&apos;.
+    WHEN OTHERS.
+      CLEAR p_continue.
+  ENDCASE.
+ENDFORM.                    &quot; ASK_4CONTINUE
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  IS_MODIFIED
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_GO_BUG  text
+*      --&gt;P_GO_OLD_BUG  text
+*      &lt;--P_L_IS_MODIFIED  text
+*----------------------------------------------------------------------*
+FORM is_modified  USING    p_bug         TYPE REF TO zcl_bug
+                           p_oldhash     TYPE hash160
+                  CHANGING p_is_modified TYPE flag.
+
+  DATA: newhash TYPE hash160.
+
+  newhash = p_bug-&gt;get_hash( ).
+
+  IF newhash &lt;&gt; p_oldhash.
+    p_is_modified = &apos;X&apos;.
+  ELSE.
+    p_is_modified = space.
+  ENDIF.
+
+ENDFORM.                    &quot; IS_MODIFIED
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  ASK_4data_lose
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      &lt;--P_L_CONTINUE  text
+*----------------------------------------------------------------------*
+FORM ask_4data_lose  CHANGING p_continue TYPE flag.
+  DATA:  l_is_modified TYPE flag VALUE space,
+         l_continue    TYPE flag VALUE &apos;X&apos;,
+         l_answer      TYPE c.
+
+  p_continue = &apos;X&apos;.
+
+  PERFORM is_modified USING go_bug
+                            g_oldhash
+                      CHANGING l_is_modified.
+  IF NOT l_is_modified IS INITIAL.
+    PERFORM ask_4continue USING
+          &apos;Data has been modified&apos;(009)
+          &apos;Unsaved data will be lost. Continue?&apos;(010)
+          CHANGING p_continue.
+  ENDIF.
+
+ENDFORM.                    &quot; ASK_4data_lose
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  CHGMODE_0001
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM chgmode_0001 .
+  DATA: l_continue TYPE flag,
+        l_new_mode LIKE g_display_mode.
+
+  PERFORM ask_4data_lose CHANGING l_continue.
+  IF NOT l_continue IS INITIAL.
+*   Reset to original data
+* TODO
+**    PERFORM object_to_structures USING go_old_bug.
+
+    IF g_display_mode IS INITIAL.
+      l_new_mode = &apos;X&apos;.
+    ELSE.
+      CLEAR l_new_mode.
+    ENDIF.
+
+    PERFORM set_display_mode USING l_new_mode.
+
+    IF go_comment_gui IS BOUND.
+      go_comment_gui-&gt;set_display_mode( g_display_mode ).
+    ENDIF.
+    IF g_more_info_btf IS BOUND.
+      g_more_info_btf-&gt;set_display_mode( g_display_mode ).
+    ENDIF.
+    IF g_steps_btf IS BOUND.
+      g_steps_btf-&gt;set_display_mode( g_display_mode ).
+    ENDIF.
+    IF g_problem_btf IS BOUND.
+      g_problem_btf-&gt;set_display_mode( g_display_mode ).
+    ENDIF.
+
+
+  ENDIF.
+ENDFORM.                    &quot; CHGMODE_0001
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  PBO_0500
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM pbo_0500 .
+  DATA: lo_objects_gui TYPE REF TO zcl_bug_objects_alv_ctrl.
+
+  IF NOT g_objects_container IS BOUND.
+    CREATE OBJECT g_objects_container
+      EXPORTING
+        container_name = &apos;OBJECT_CONTAINER&apos;.
+
+    CREATE OBJECT lo_objects_gui
+      EXPORTING
+        bug       = go_bug
+        container = g_objects_container.
+
+    lo_objects_gui-&gt;display( ).
+  ENDIF.
+ENDFORM.                                                    &quot; PBO_0500
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  BUGTREE_001
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM bugtree_0001 .
+  DATA: lo_bugtree TYPE REF TO zcl_bug_alvtree_ctrl.
+
+  IF NOT g_bug_tree_container IS BOUND.
+    CREATE OBJECT g_bug_tree_container
+      EXPORTING
+        extension = 250.
+  ENDIF.
+
+  CREATE OBJECT lo_bugtree
+    EXPORTING
+      container = g_bug_tree_container
+      bug       = go_bug.
+
+  lo_bugtree-&gt;display( ).
+
+ENDFORM.                    &quot; BUGTREE_001
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  PBO_0101
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM pbo_0101 .
+  PERFORM  create_tag_grid.
+ENDFORM.                                                    &quot; PBO_0101
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  CREATE_TAG_GRID
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM create_tag_grid .
+  DATA: l_title    TYPE lvc_title.
+
+  IF NOT g_tag_container IS BOUND.
+    CREATE OBJECT g_tag_container
+      EXPORTING
+        container_name = &apos;TAG_CONTAINER&apos;.
+
+    l_title = &apos;TAGs&apos;(008).
+
+    CREATE OBJECT go_tag_gui
+      EXPORTING
+        bug       = go_bug
+        container = g_tag_container
+        title     = l_title.
+
+    go_tag_gui-&gt;display( ).
+
+  ENDIF.
+  go_tag_gui-&gt;set_display_mode( g_display_mode ).
+
+ENDFORM.                    &quot; CREATE_TAG_GRID
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  PBO_0700
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM pbo_0700 .
+
+ENDFORM.                                                    &quot; PBO_0700
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  HTML_TEXT_EQUAL
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_OLD  text
+*      --&gt;P_NEW  text
+*      &lt;--P_SY_SUBRC  text
+*----------------------------------------------------------------------*
+FORM html_text_equal  USING    value(p_old) TYPE string
+                               value(p_new) TYPE string
+                      CHANGING value(p_subrc) TYPE sy-subrc.
+
+  PERFORM clean_html CHANGING p_old.
+  PERFORM clean_html CHANGING p_new.
+
+  IF p_old &lt;&gt; p_new.
+    p_subrc = 9999.
+  ELSE.
+    CLEAR p_subrc.
+  ENDIF.
+
+ENDFORM.                    &quot; HTML_TEXT_EQUAL
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  CLEAN_HTML
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      &lt;--P_STRING  text
+*----------------------------------------------------------------------*
+FORM clean_html  CHANGING p_html TYPE string.
+  DATA: find_result TYPE match_result.
+
+  FIND &apos;&lt;BODY&gt;&apos; IN p_html RESULTS find_result.
+  find_result-offset = find_result-offset + find_result-length.
+  p_html = p_html+find_result-offset.
+
+  FIND &apos;&lt;/BODY&gt;&apos; IN p_html RESULTS find_result.
+  p_html = p_html(find_result-offset).
+ENDFORM.                    &quot; CLEAN_HTML</include_source>
+  </include>
+  <include NAME="LZBT_DYNPROF02" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20110704" VERN="000003" RMAND="001" RLOAD="E" SDATE="20110704" STIME="232353" IDATE="20110704" ITIME="232353" UCCHECK="X">
+   <include_source>*----------------------------------------------------------------------*
+***INCLUDE LZBT_DYNPROF02 .
+*----------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  PBO_0100
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM pbo_0100 .
+  DATA: lt_combobox_values TYPE vrm_values.
+
+* Set ComboBox values for Bug status
+  IF NOT g_bug-estado IS INITIAL.
+    PERFORM get_bug_estado_cb_values USING g_bug-estado
+                                    CHANGING lt_combobox_values.
+    PERFORM set_combobox_values USING &apos;G_BUG-ESTADO&apos;
+                                      lt_combobox_values[].
+  ENDIF.
+* Set ComboBox values for Products
+  PERFORM get_producto_cb_values  CHANGING lt_combobox_values.
+  PERFORM set_combobox_values USING &apos;G_PRODUCTO-PRODUCTO&apos;
+                                    lt_combobox_values[].
+* Set ComboBox values for Product Components
+  IF NOT g_producto-producto IS INITIAL.
+    PERFORM get_component_cb_values USING    g_producto-producto
+                                    CHANGING lt_combobox_values.
+    PERFORM set_combobox_values USING &apos;G_COMPONENTE-COMPONENTE&apos;
+                                      lt_combobox_values[].
+  ENDIF.
+* Set ComboBox values for BugType
+  PERFORM get_bugtype_cb_values CHANGING lt_combobox_values.
+  PERFORM set_combobox_values USING &apos;G_BUG-BUGTYPE&apos;
+                                    lt_combobox_values[].
+* Set ComboBox values for BugSubtype
+  IF NOT g_bug-bugtype IS INITIAL.
+    PERFORM get_bugsubtype_cb_values USING    g_bug-bugtype
+                                     CHANGING lt_combobox_values
+                                              g_bug-bugstype.
+    PERFORM set_combobox_values USING &apos;G_BUG-BUGSTYPE&apos;
+                                      lt_combobox_values[].
+  ENDIF.
+
+  PERFORM set_icon_status     USING go_bug CHANGING g_bug_status_icon.
+  PERFORM set_bugstype_status USING go_bug CHANGING g_bug_stype_icon.
+
+  PERFORM create_tag_grid.
+
+ENDFORM.                                                    &quot; PBO_0100
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  PBO_0200
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM pbo_0200 .
+
+ENDFORM.                                                    &quot; PBO_0200
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  CREATE_INFO_CONTAINER
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM create_info_container .
+
+  IF g_problem_section_container IS INITIAL.
+    CREATE OBJECT g_problem_section_container
+      EXPORTING
+        container_name = &apos;PROBLEM_CONTAINER&apos;.
+  ENDIF.
+
+  IF g_more_info_section_container IS INITIAL.
+    CREATE OBJECT g_more_info_section_container
+      EXPORTING
+        container_name = &apos;MORE_INFO_CONTAINER&apos;.
+  ENDIF.
+
+  IF g_steps_section_container IS INITIAL.
+    CREATE OBJECT g_steps_section_container
+      EXPORTING
+        container_name = &apos;STEPS_CONTAINER&apos;.
+  ENDIF.
+
+ENDFORM.                    &quot; CREATE_INFO_CONTAINER
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  CREATE_BTF_EDITOR
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_CONTAINER  text
+*      &lt;--P_EDITOR  text
+*----------------------------------------------------------------------*
+FORM create_btf_editor  USING    p_container TYPE REF TO cl_gui_custom_container
+                                 p_title
+                                 p_text      TYPE string
+                                 p_display   TYPE flag
+                        CHANGING p_editor    TYPE REF TO zcl_btf_editor.
+  DATA: l_title             TYPE vtext,
+        l_text              TYPE xstring,
+        l_exception         TYPE REF TO cx_btf_runtime_error,
+        l_system_exception  TYPE REF TO cx_btf_system_error.
+
+  IF p_editor IS INITIAL.
+    l_title = p_title.
+    TRY.
+        CREATE OBJECT p_editor
+          EXPORTING
+            container    = p_container
+            title        = l_title
+            display_mode = p_display.
+      CATCH cx_btf_runtime_error .
+      CATCH cx_btf_system_error .
+    ENDTRY.
+  ENDIF.
+
+  p_editor-&gt;set_content_as_string( p_text ).
+  p_editor-&gt;display( ).
+ENDFORM.                    &quot; CREATE_BTF_EDITOR
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  SET_COMBOBOX_VALUES
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_FIELDNAME  text
+*      --&gt;P_LT_COMBOBOX_VALUES  text
+*      --&gt;P_ENDFORM  text
+*----------------------------------------------------------------------*
+FORM set_combobox_values  USING    p_fieldname       TYPE vrm_id
+                                   p_combobox_values TYPE vrm_values.
+  CALL FUNCTION &apos;VRM_SET_VALUES&apos;
+    EXPORTING
+      id     = p_fieldname
+      values = p_combobox_values.
+ENDFORM.                    &quot; SET_COMBOBOX_VALUES
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  GET_BUG_ESTADO_CB_VALUES
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_G_BUG_ESTADO  text
+*      &lt;--P_LT_COMBOBOX_VALUES  text
+*----------------------------------------------------------------------*
+FORM get_bug_estado_cb_values  USING    value(p_estado) TYPE zbt_bug-estado
+                               CHANGING p_combobox_values TYPE vrm_values.
+
+  DATA: l_combobox_value   TYPE vrm_value,
+        lt_estados         TYPE zbt_estados,
+        lo_estado          TYPE REF TO zcl_estado,
+        l_estado           TYPE LINE OF zbt_estados.
+
+  CHECK p_estado IS NOT INITIAL.
+
+  CLEAR p_combobox_values[].
+  lo_estado  = zcl_estado_controller=&gt;find_by_key( p_estado ).
+
+  l_combobox_value-key  = p_estado.
+  l_combobox_value-text = lo_estado-&gt;get_descripcion( ).
+  APPEND l_combobox_value TO p_combobox_values.
+
+  lt_estados = lo_estado-&gt;get_next_estados( ).
+  LOOP AT lt_estados INTO l_estado.
+    p_estado = l_estado-oref-&gt;get_id( ).
+    l_combobox_value-key  = p_estado.
+    l_combobox_value-text = l_estado-oref-&gt;get_descripcion( ).
+    APPEND l_combobox_value TO p_combobox_values.
+  ENDLOOP.
+
+  lt_estados = lo_estado-&gt;get_prev_estados( ).
+  LOOP AT lt_estados INTO l_estado.
+    p_estado = l_estado-oref-&gt;get_id( ).
+    l_combobox_value-key  = p_estado.
+    l_combobox_value-text = l_estado-oref-&gt;get_descripcion( ).
+    APPEND l_combobox_value TO p_combobox_values.
+  ENDLOOP.
+
+  SORT p_combobox_values.
+  DELETE ADJACENT DUPLICATES FROM p_combobox_values.
+ENDFORM.                    &quot; GET_BUG_ESTADO_CB_VALUES
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  GET_PRODUCTO_CB_VALUES
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_G_PRODUCTO_PRODUCTO  text
+*      &lt;--P_LT_COMBOBOX_VALUES  text
+*----------------------------------------------------------------------*
+FORM get_producto_cb_values  CHANGING p_combobox_values TYPE vrm_values.
+
+  DATA: l_combobox_value   TYPE vrm_value,
+        lt_products        TYPE zbt_productos,
+        lo_product         TYPE REF TO zcl_producto.
+
+  CLEAR p_combobox_values.
+  lt_products = zcl_producto_controller=&gt;find_all_products( ).
+  LOOP AT lt_products INTO lo_product.
+    l_combobox_value-key  = lo_product-&gt;get_id( ).
+    l_combobox_value-text = lo_product-&gt;get_descripcion( ).
+    APPEND l_combobox_value TO p_combobox_values.
+  ENDLOOP.
+
+ENDFORM.                    &quot; GET_PRODUCTO_CB_VALUES
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  GET_COMPONENT_CB_VALUES
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_G_PRODUCTO_PRODUCTO  text
+*      --&gt;P_G_COMPONENT_COMPONENT  text
+*      &lt;--P_LT_COMBOBOX_VALUES  text
+*----------------------------------------------------------------------*
+FORM get_component_cb_values  USING    p_producto  TYPE zbt_bug-producto
+                              CHANGING p_combobox_values TYPE vrm_values.
+
+  DATA: l_combobox_value   TYPE vrm_value,
+        lo_product         TYPE REF TO zcl_producto,
+        lo_component       TYPE REF TO zcl_componente,
+        lt_components      TYPE zbt_componentes.
+
+  CHECK p_producto IS NOT INITIAL.
+
+  CLEAR p_combobox_values.
+  lo_product = zcl_producto_controller=&gt;find_by_key( p_producto ).
+
+  lt_components = lo_product-&gt;get_componentes( ).
+  LOOP AT lt_components INTO lo_component.
+    l_combobox_value-key  = lo_component-&gt;get_id( ).
+    l_combobox_value-text = lo_component-&gt;get_descripcion( ).
+    APPEND l_combobox_value TO p_combobox_values.
+  ENDLOOP.
+
+ENDFORM.                    &quot; GET_COMPONENT_CB_VALUES
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  GET_BUGTYPE_CB_VALUES
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      &lt;--P_LT_COMBOBOX_VALUES  text
+*----------------------------------------------------------------------*
+FORM get_bugtype_cb_values  CHANGING p_combobox_values TYPE vrm_values.
+  DATA: lt_bugtype TYPE zbt_bugtypes,
+        l_combobox_value   TYPE vrm_value,
+        lo_bugtype TYPE REF TO zcl_bugtype.
+
+  CLEAR p_combobox_values[].
+  lt_bugtype = zcl_bugtype_controller=&gt;find_all_bugtypes( ).
+  LOOP AT lt_bugtype INTO lo_bugtype.
+    l_combobox_value-key  = lo_bugtype-&gt;get_id( ).
+    l_combobox_value-text = lo_bugtype-&gt;get_descripcion( ).
+    APPEND l_combobox_value TO p_combobox_values.
+  ENDLOOP.
+
+
+ENDFORM.                    &quot; GET_BUGTYPE_CB_VALUES
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  GET_BUGSUBTYPE_CB_VALUES
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_G_BUG_BUGTYPE  text
+*      &lt;--P_LT_COMBOBOX_VALUES  text
+*----------------------------------------------------------------------*
+FORM get_bugsubtype_cb_values  USING    value(p_bugtype)  TYPE zbt_bug-bugtype
+                               CHANGING p_combobox_values TYPE vrm_values
+                                        p_bugstype        LIKE g_bug-bugstype.
+
+  STATICS: s_bugtype          TYPE zbt_bug-bugtype,
+           st_combobox_values TYPE vrm_values.
+
+  DATA: lt_bugstype        TYPE zbt_bugstypes,
+        lo_bugtype         TYPE REF TO zcl_bugtype,
+        l_combobox_value   TYPE vrm_value,
+        lo_bugstype        TYPE REF TO zcl_bugstype.
+
+  CHECK p_bugtype IS NOT INITIAL.
+
+  CLEAR p_combobox_values[].
+  IF s_bugtype &lt;&gt; p_bugtype.
+    IF NOT s_bugtype IS INITIAL.
+      CLEAR p_bugstype.
+    ENDIF.
+
+    lo_bugtype  = zcl_bugtype_controller=&gt;find_by_key( p_bugtype ).
+    lt_bugstype = zcl_bugtype_controller=&gt;find_all_bug_subtypes( bugtype = lo_bugtype ).
+
+    LOOP AT lt_bugstype INTO lo_bugstype.
+      l_combobox_value-key  = lo_bugstype-&gt;get_id( ).
+      l_combobox_value-text = lo_bugstype-&gt;get_descripcion( ).
+      APPEND l_combobox_value TO p_combobox_values.
+    ENDLOOP.
+    st_combobox_values[] = p_combobox_values[].
+    s_bugtype = p_bugtype.
+  ELSE.
+    p_bugtype = s_bugtype.
+    p_combobox_values[] = st_combobox_values[].
+  ENDIF.
+ENDFORM.                    &quot; GET_BUGSUBTYPE_CB_VALUES
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  GET_NEXT_BUGSTATUS_CB_VALUES
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_G_BUG_ESTADO  text
+*      &lt;--P_LT_COMBOBOX_VALUES  text
+*----------------------------------------------------------------------*
+FORM get_next_bugstatus_cb_values  USING    p_estado          TYPE zbt_bug-estado
+                                   CHANGING p_combobox_values TYPE vrm_values.
+
+  STATICS: s_estado        TYPE zbt_bug-estado.
+
+  DATA: lt_estados         TYPE zbt_estados,
+        l_estado           TYPE LINE OF zbt_estados,
+        lo_estado          TYPE REF TO zcl_estado,
+        l_combobox_value   TYPE vrm_value.
+
+  CLEAR p_combobox_values[].
+  IF s_estado &lt;&gt; p_estado.
+    IF NOT s_estado IS INITIAL.
+      CLEAR p_estado.
+    ENDIF.
+
+    lo_estado   = zcl_estado_controller=&gt;find_by_key( p_estado ).
+*   Add current status to ComboBox
+    l_combobox_value-key  = lo_estado-&gt;get_id( ).
+    l_combobox_value-text = lo_estado-&gt;get_descripcion( ).
+    APPEND l_combobox_value TO p_combobox_values.
+
+    lt_estados  = lo_estado-&gt;get_next_estados( ).
+
+    LOOP AT lt_estados INTO l_estado.
+*     Add next allowed status to ComboBox
+      l_combobox_value-key  = l_estado-id.
+      l_combobox_value-text = l_estado-oref-&gt;get_descripcion( ).
+      APPEND l_combobox_value TO p_combobox_values.
+    ENDLOOP.
+    s_estado = p_estado.
+  ENDIF.
+
+
+ENDFORM.                    &quot; GET_NEXT_BUGSTATUS_CB_VALUES
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  SET_ICON_STATUS
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_G_BUG_ESTADO  text
+*----------------------------------------------------------------------*
+FORM set_icon_status  USING    value(p_bug) TYPE REF TO zcl_bug
+                      CHANGING p_icon LIKE g_bug_status_icon.
+  DATA: l_icon_id TYPE zbt_estado-icon,
+        l_text    TYPE char30,
+        l_info    TYPE zbt_estado_txt-descripcion,
+        lo_estado TYPE REF TO zcl_estado.
+
+  lo_estado = p_bug-&gt;get_estado( ).
+  l_icon_id = lo_estado-&gt;get_icon( ).
+
+  IF l_icon_id IS INITIAL.
+    l_icon_id = icon_space.
+  ELSE.
+    l_info = lo_estado-&gt;get_descripcion( ).
+  ENDIF.
+
+  CALL FUNCTION &apos;ICON_CREATE&apos;
+    EXPORTING
+      name       = l_icon_id
+      text       = l_text
+      info       = l_info
+      add_stdinf = space
+    IMPORTING
+      result     = p_icon.
+
+ENDFORM.                    &quot; SET_ICON_STATUS
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  PROGRESS
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_PERCENTAGE  text
+*      --&gt;P_TEXT  text
+*----------------------------------------------------------------------*
+FORM progress  USING    p_percentage
+                        p_text.
+
+  CALL FUNCTION &apos;SAPGUI_PROGRESS_INDICATOR&apos;
+    EXPORTING
+      percentage = p_percentage
+      text       = p_text.
+
+ENDFORM.                    &quot; PROGRESS
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  SET_BUGSTYPE_STATUS
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_GO_BUG  text
+*      &lt;--P_G_BUG_STYPE_ICON  text
+*----------------------------------------------------------------------*
+FORM set_bugstype_status USING    value(p_bug) TYPE REF TO zcl_bug
+                         CHANGING p_icon LIKE g_bug_status_icon.
+
+  DATA: l_icon_id TYPE zbt_estado-icon,
+        l_text    TYPE char30,
+        l_info    TYPE zbt_stype_txt-descripcion,
+        lo_stype  TYPE REF TO zcl_bugstype.
+
+  lo_stype = p_bug-&gt;get_bug_subtype( ).
+  l_icon_id = lo_stype-&gt;get_icon( ).
+
+  IF l_icon_id IS INITIAL.
+    l_icon_id = icon_space.
+  ELSE.
+    l_info = lo_stype-&gt;get_descripcion( ).
+  ENDIF.
+
+  CALL FUNCTION &apos;ICON_CREATE&apos;
+    EXPORTING
+      name       = l_icon_id
+      text       = l_text
+      info       = l_info
+      add_stdinf = space
+    IMPORTING
+      result     = p_icon.
+
+ENDFORM.                    &quot; SET_BUGSTYPE_STATUS
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  SET_SUBSCREEN_0200
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM set_subscreen_0200 .
+
+  info_tc-activetab = gt_info_tc_ctr-pressed_tab.
+  CASE gt_info_tc_ctr-pressed_tab.
+    WHEN c_info_tc_def-infotab0.
+      gt_info_tc_ctr-subscreen = &apos;0201&apos;.
+    WHEN c_info_tc_def-infotab1.
+      gt_info_tc_ctr-subscreen = &apos;0202&apos;.
+    WHEN c_info_tc_def-infotab2.
+      gt_info_tc_ctr-subscreen = &apos;0203&apos;.
+    WHEN c_info_tc_def-infotab3.
+      gt_info_tc_ctr-subscreen = &apos;0204&apos;.
+    WHEN OTHERS.
+      gt_info_tc_ctr-subscreen = &apos;0201&apos;.
+  ENDCASE.
+
+  IF gt_info_tc_ctr-prog IS INITIAL.
+    gt_info_tc_ctr-prog = sy-repid.
+  ENDIF.
+ENDFORM.                    &quot; SET_SUBSCREEN_0200
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  USER_COMMAND_0200
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM user_command_0200.
+  DATA: l_ucomm TYPE sy-ucomm.
+
+  l_ucomm = sy-ucomm.
+  CLEAR sy-ucomm.
+
+  CASE l_ucomm.
+    WHEN OTHERS.
+      IF l_ucomm(7) = &apos;INFOTAB&apos;.
+        PERFORM set_info_subscreen USING l_ucomm.
+      ENDIF.
+  ENDCASE.
+
+ENDFORM.                    &quot; USER_COMMAND_0200
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  SET_INFO_SUBSCREEN
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_UCOMM  text
+*----------------------------------------------------------------------*
+FORM set_info_subscreen USING p_ucomm TYPE sy-ucomm .
+
+  FIELD-SYMBOLS: &lt;tab&gt; TYPE any.
+
+  ASSIGN COMPONENT p_ucomm OF STRUCTURE c_info_tc_def TO &lt;tab&gt;.
+  IF sy-subrc IS INITIAL.
+    gt_info_tc_ctr-pressed_tab = &lt;tab&gt;.
+  ELSE.
+    gt_info_tc_ctr-pressed_tab = c_info_tc_def-infotab0.
+  ENDIF.
+ENDFORM.                    &quot; SET_INFO_SUBSCREEN</include_source>
+  </include>
+  <include NAME="LZBT_DYNPROF03" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20101225" VERN="000001" RMAND="001" RLOAD="E" SDATE="20101225" STIME="210317" IDATE="20101225" ITIME="210317" UCCHECK="X">
+   <include_source>*----------------------------------------------------------------------*
+***INCLUDE LZBT_DYNPROF03 .
+*----------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  CREATE_INITIAL_BUG
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      &lt;--P_LO_BUG  text
+*----------------------------------------------------------------------*
+FORM create_initial_bug  CHANGING p_bug TYPE REF TO zcl_bug.
+
+  DATA:   lo_estado TYPE REF TO zcl_estado,
+          lt_prods  TYPE zbt_productos,
+          lo_prod   TYPE REF TO zcl_producto,
+          lt_comps  TYPE zbt_componentes,
+          lo_comp   TYPE REF TO zcl_componente,
+          lo_user   TYPE REF TO zcl_usuario,
+          lt_types  TYPE zbt_bugtypes,
+          lt_stypes TYPE zbt_bugstypes,
+          lo_stype  TYPE REF TO zcl_bugstype,
+          lo_type   TYPE REF TO zcl_bugtype.
+
+  lt_prods[] = zcl_producto_controller=&gt;find_all_products( ).
+  READ TABLE lt_prods[] INDEX 1 INTO lo_prod.
+
+  lt_comps[] = lo_prod-&gt;get_componentes( ).
+  READ TABLE lt_comps INDEX 1 INTO lo_comp.
+
+  CREATE OBJECT p_bug
+    EXPORTING
+      producto   = lo_prod
+      id         = c_initial_bug_id
+      componente = lo_comp.
+
+  lo_user = zcl_usuario_controller=&gt;find_by_key( ).
+  p_bug-&gt;set_reporter( lo_user ).
+
+  lo_estado  = zcl_estado_controller=&gt;find_by_key( c_initial_bug_status ).
+  p_bug-&gt;set_estado( lo_estado ).
+
+  lt_types[] = zcl_bugtype_controller=&gt;find_all_bugtypes( ).
+  READ TABLE lt_types INDEX 1 INTO lo_type.
+  p_bug-&gt;set_bug_type( lo_type ).
+
+  lt_stypes[] = zcl_bugtype_controller=&gt;find_all_bug_subtypes( lo_type ).
+  READ TABLE lt_stypes INDEX 1 INTO lo_stype.
+  p_bug-&gt;set_bug_subtype( lo_stype ).
+
+ENDFORM.                    &quot; CREATE_INITIAL_BUG</include_source>
+  </include>
+  <include NAME="LZBT_DYNPROI01" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20111012" VERN="000004" RMAND="001" RLOAD="E" SDATE="20111012" STIME="125526" IDATE="20111012" ITIME="125526" UCCHECK="X">
+   <include_source>*----------------------------------------------------------------------*
+***INCLUDE LZBT_DYNPROI01 .
+*----------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  EXIT_0100  INPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE exit_0100 INPUT.
+
+ENDMODULE.                 &quot; EXIT_0100  INPUT
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  EXIT_0001  INPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE exit_0001 INPUT.
+  PERFORM exit_0001.
+ENDMODULE.                 &quot; EXIT_0001  INPUT
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  PBO_0100  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE pbo_0100 OUTPUT.
+  PERFORM pbo_0100.
+ENDMODULE.                 &quot; PBO_0100  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  PBO_0200  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE pbo_0200 OUTPUT.
+  PERFORM pbo_0200.
+ENDMODULE.                 &quot; PBO_0200  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  USER_COMMAND_0001  INPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE user_command_0001 INPUT.
+  PERFORM user_command_0001.
+ENDMODULE.                 &quot; USER_COMMAND_0001  INPUT
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  PAI_0100  INPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE pai_0100 INPUT.
+  PERFORM pai_0100.
+ENDMODULE.                 &quot; PAI_0100  INPUT
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  SET_SUBSCREEN_0200  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE set_subscreen_0200 OUTPUT.
+  PERFORM set_subscreen_0200.
+ENDMODULE.                 &quot; SET_SUBSCREEN_0200  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  USER_COMMAND_0200  INPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE user_command_0200 INPUT.
+  PERFORM user_command_0200.
+ENDMODULE.                 &quot; USER_COMMAND_0200  INPUT</include_source>
+  </include>
+  <include NAME="LZBT_DYNPROI04" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20101225" VERN="000001" RMAND="001" RLOAD="E" SDATE="20101225" STIME="210318" IDATE="20101225" ITIME="210318" UCCHECK="X">
+   <include_source>*----------------------------------------------------------------------*
+***INCLUDE LZBT_DYNPROI04 .
+*----------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  SYNCRONIZE_STRUCTURE_OBJECT  INPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE syncronize_structure_object INPUT.
+  PERFORM structures_to_object.
+ENDMODULE.                 &quot; SYNCRONIZE_STRUCTURE_OBJECT  INPUT</include_source>
+  </include>
+  <include NAME="LZBT_DYNPROO01" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20111012" VERN="000003" RMAND="001" RLOAD="E" SDATE="20111012" STIME="115308" IDATE="20111012" ITIME="115308" UCCHECK="X">
+   <include_source>*----------------------------------------------------------------------*
+***INCLUDE LZBT_DYNPROO01 .
+*----------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  STATUS_0100  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE status_0100 OUTPUT.
+*  SET PF-STATUS &apos;xxxxxxxx&apos;.
+*  SET TITLEBAR &apos;xxx&apos;.
+
+ENDMODULE.                 &quot; STATUS_0100  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  STATUS_0001  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE status_0001 OUTPUT.
+  PERFORM status_0001.
+ENDMODULE.                 &quot; STATUS_0001  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  SET_SUBSCREENS_0001  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE set_subscreens_0001 OUTPUT.
+  PERFORM set_subscreens_0001.
+ENDMODULE.                 &quot; SET_SUBSCREENS_0001  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  PBO_0300  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE pbo_0300 OUTPUT.
+  PERFORM pbo_0300.
+ENDMODULE.                 &quot; PBO_0300  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  SET_DISPLAY_MODE  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE set_display_mode OUTPUT.
+  PERFORM set_dynpro_display_mode USING g_display_mode.
+ENDMODULE.                 &quot; SET_DISPLAY_MODE  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  PBO_0500  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE pbo_0500 OUTPUT.
+  PERFORM pbo_0500.
+ENDMODULE.                 &quot; PBO_0500  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  PBO_0101  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE pbo_0101 OUTPUT.
+  PERFORM pbo_0101.
+ENDMODULE.                 &quot; PBO_0101  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  STATUS_0700  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE status_0700 OUTPUT.
+  PERFORM pbo_0700.
+
+ENDMODULE.                 &quot; STATUS_0700  OUTPUT</include_source>
+  </include>
+  <include NAME="LZBT_DYNPROP01" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101227" UNAM="BCUSER" UDAT="20101227" VERN="000002" RMAND="001" RLOAD="E" SDATE="20101227" STIME="005453" IDATE="20101227" ITIME="005453" UCCHECK="X">
+   <include_source>*----------------------------------------------------------------------*
+***INCLUDE LZBT_DYNPROP01 .
+*----------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;       Class (Implementation)  lcl_handler
+*&amp;---------------------------------------------------------------------*
+*        Text
+*----------------------------------------------------------------------*
+CLASS lcl_handler IMPLEMENTATION.
+  METHOD on_comment_added.
+    sender-&gt;refresh( ).
+  ENDMETHOD.                    &quot;on_comment_added
+ENDCLASS.               &quot;lcl_handler</include_source>
+  </include>
+  <include NAME="LZBT_DYNPROTOP" VARCL="X" DBAPL="S" DBNA="D$" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20120903" VERN="000003" RMAND="001" FIXPT="X" SDATE="20120903" STIME="233153" IDATE="20120903" ITIME="233153" LDBNAME="D$S" UCCHECK="X">
+   <include_source>FUNCTION-POOL zbt_dynpro.                   &quot;MESSAGE-ID ..
+
+TYPE-POOLS: abap, icon, vrm.
+
+TYPES: BEGIN OF gtype_users_text,
+        reporter  TYPE string,
+        developer TYPE string,
+        assigned  type string,
+        tester    TYPE string,
+        aenam     TYPE string,
+       END   OF gtype_users_text.
+
+*&amp;---------------------------------------------------------------------*
+*&amp;       Class LCL_HANDLER
+*&amp;---------------------------------------------------------------------*
+*        Text
+*----------------------------------------------------------------------*
+CLASS lcl_handler DEFINITION.
+
+  PUBLIC SECTION.
+    METHODS: on_comment_added FOR EVENT comment_added OF zcl_comment_gui_controller
+                IMPORTING sender.
+
+ENDCLASS.               &quot;LCL_HANDLER
+
+CONSTANTS: BEGIN OF c_main_tc_def,
+             tab0 LIKE sy-ucomm VALUE &apos;TAB0&apos;,
+             tab1 LIKE sy-ucomm VALUE &apos;TAB1&apos;,
+             tab2 LIKE sy-ucomm VALUE &apos;TAB2&apos;,
+             tab3 LIKE sy-ucomm VALUE &apos;TAB3&apos;,
+             tab4 LIKE sy-ucomm VALUE &apos;TAB4&apos;,
+             tab5 LIKE sy-ucomm VALUE &apos;TAB5&apos;,
+             tab6 LIKE sy-ucomm VALUE &apos;TAB6&apos;,
+           END OF c_main_tc_def,
+           BEGIN OF c_info_tc_def,
+             infotab0 LIKE sy-ucomm VALUE &apos;INFOTAB0&apos;,
+             infotab1 LIKE sy-ucomm VALUE &apos;INFOTAB1&apos;,
+             infotab2 LIKE sy-ucomm VALUE &apos;INFOTAB2&apos;,
+             infotab3 LIKE sy-ucomm VALUE &apos;INFOTAB3&apos;,
+             infotab4 LIKE sy-ucomm VALUE &apos;INFOTAB4&apos;,
+             infotab5 LIKE sy-ucomm VALUE &apos;INFOTAB5&apos;,
+             infotab6 LIKE sy-ucomm VALUE &apos;INFOTAB6&apos;,
+           END OF c_info_tc_def,
+           c_initial_bug_status TYPE zbt_id_estado VALUE &apos;1&apos;,
+           c_initial_bug_id     TYPE zbt_id_bug    VALUE &apos;0000000000&apos;.
+
+CONTROLS main_tc TYPE TABSTRIP.
+DATA:  BEGIN OF gt_main_tc_ctr,
+        icon        TYPE icon-id,
+        text(10)    TYPE c,
+        subscreen   TYPE sy-dynnr,
+        prog        TYPE sy-repid VALUE sy-repid,
+        pressed_tab TYPE sy-ucomm VALUE c_main_tc_def-tab0,
+       END OF gt_main_tc_ctr.
+
+CONTROLS info_tc TYPE TABSTRIP.
+DATA:  BEGIN OF gt_info_tc_ctr,
+        icon        TYPE icon-id,
+        text(10)    TYPE c,
+        subscreen   TYPE sy-dynnr,
+        prog        TYPE sy-repid VALUE sy-repid,
+        pressed_tab TYPE sy-ucomm VALUE c_info_tc_def-infotab0,
+       END OF gt_info_tc_ctr.
+
+DATA: g_top_screen                  TYPE sy-dynnr,
+      g_bug_status_icon             TYPE char80,
+      g_bug_stype_icon              TYPE char80,
+      g_display_mode                TYPE flag,
+      g_do_not_show_pfstatus        TYPE flag,
+      g_display_mode_txt            TYPE string,
+      g_bug                         TYPE zbt_bug,
+      go_bug                        TYPE REF TO zcl_bug,
+      g_oldhash                     TYPE HASH160,
+      g_users_txt                   TYPE gtype_users_text,
+      g_producto                    TYPE zbt_producto_structure,
+      g_componente                  TYPE zbt_compont_txt,
+      go_comment_gui                TYPE REF TO zcl_comment_gui_controller,
+      g_comments_container          TYPE REF TO cl_gui_custom_container,
+      g_objects_container           TYPE REF TO cl_gui_custom_container,
+      g_tag_container               TYPE REF TO cl_gui_custom_container,
+      g_problem_section_container   TYPE REF TO cl_gui_custom_container,
+      g_steps_section_container     TYPE REF TO cl_gui_custom_container,
+      g_more_info_section_container TYPE REF TO cl_gui_custom_container,
+*      g_info_container              TYPE REF TO cl_gui_custom_container,
+*      g_info_splitter_container     TYPE REF TO cl_gui_splitter_container,
+      g_bug_tree_container          TYPE REF TO cl_gui_docking_container,
+      g_problem_btf                 TYPE REF TO zcl_btf_editor,
+      g_steps_btf                   TYPE REF TO zcl_btf_editor,
+      g_more_info_btf               TYPE REF TO zcl_btf_editor,
+      go_tag_gui                    TYPE REF TO zcl_bug_tags_alv_ctrl,
+      go_handler                    TYPE REF TO lcl_handler.</include_source>
+  </include>
+ </includeprograms>
+ <functionmodules>
+  <functionmodule NAME="ZBT_DISPLAY_BUG" STEXT="Display Bug">
+   <importing PARAMETER="BUG" REFERENCE="X" TYP="REF TO ZCL_BUG" REF_CLASS="X"/>
+   <importing PARAMETER="DISPLAY_MODE" OPTIONAL="X" REFERENCE="X" TYP="FLAG"/>
+   <importing PARAMETER="SCREEN_ATTRIBUTES" OPTIONAL="X" REFERENCE="X" TYP="ZBT_SCREEN_POPUP"/>
+   <documentation PARAMETER="BUG" KIND="P" STEXT="Bug Entity" INDEX=" 001"/>
+   <documentation PARAMETER="DISPLAY_MODE" KIND="P" STEXT="Display Mode" INDEX=" 002"/>
+   <documentation PARAMETER="SCREEN_ATTRIBUTES" KIND="P" STEXT="Screen Popup" INDEX=" 003"/>
+   <fm_source>PERFORM progress USING 0 &apos;Rendering data...&apos;(007).
+
+  IF NOT screen_attributes IS INITIAL.
+    g_do_not_show_pfstatus = abap_true.
+  ENDIF.
+
+  CREATE OBJECT go_handler.
+  PERFORM set_display_mode USING display_mode.
+
+  PERFORM object_to_structures USING bug.
+  g_oldhash = bug-&gt;get_hash( ).
+
+  zcl_bug_controller=&gt;lock( bug ).
+
+  CALL SCREEN 0001 STARTING AT screen_attributes-top
+                             screen_attributes-left
+                 ENDING AT   screen_attributes-bottom
+                             screen_attributes-rigth.
+
+
+  zcl_bug_controller=&gt;unlock( bug ).
+
+* Free global data
+  PERFORM free_global_data.</fm_source>
+   <functionModuleDocumentation/>
+  </functionmodule>
+  <functionmodule NAME="ZBT_CREATE_BUG" STEXT="Creates a new bug">
+   <importing PARAMETER="SCREEN_ATTRIBUTES" OPTIONAL="X" REFERENCE="X" TYP="ZBT_SCREEN_POPUP"/>
+   <exporting PARAMETER="BUG" REFERENCE="X" TYP="REF TO ZCL_BUG" REF_CLASS="X"/>
+   <documentation PARAMETER="SCREEN_ATTRIBUTES" KIND="P" STEXT="Screen Popup" INDEX=" 001"/>
+   <documentation PARAMETER="BUG" KIND="P" STEXT="Bug Entity" INDEX=" 002"/>
+   <fm_source>DATA: lo_bug    TYPE REF TO zcl_bug.
+
+  PERFORM progress USING 0 &apos;Rendering data...&apos;(007).
+
+  CREATE OBJECT go_handler.
+
+  PERFORM create_initial_bug CHANGING lo_bug.
+  g_oldhash = lo_bug-&gt;get_hash( ).
+  PERFORM set_create_mode.
+
+  PERFORM object_to_structures USING lo_bug.
+
+  CALL SCREEN 0001 STARTING AT screen_attributes-top
+                             screen_attributes-left
+                 ENDING AT   screen_attributes-bottom
+                             screen_attributes-rigth.
+
+  zcl_bug_controller=&gt;unlock( lo_bug ).
+
+* Free global data
+  PERFORM free_global_data.</fm_source>
+   <functionModuleDocumentation/>
+  </functionmodule>
+ </functionmodules>
+</FUGR>

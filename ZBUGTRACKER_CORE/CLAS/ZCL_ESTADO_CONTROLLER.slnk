@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-16"?>
+<CLAS CLSNAME="ZCL_ESTADO_CONTROLLER" VERSION="1" LANGU="E" DESCRIPT="Estado Controller" UUID="DF41CAC204A679F19293080027E6C24E" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20100407" CHANGEDBY="BCUSER" CHANGEDON="20101225" CHGDANYON="00000000" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="701" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+ <publicSection>class ZCL_ESTADO_CONTROLLER definition
+  public
+  create public .
+
+public section.
+*&quot;* public components of class ZCL_ESTADO_CONTROLLER
+*&quot;* do not include other source files here!!!
+
+  constants STATUS_FINISHED type ZBT_TYPESTATUS value 2. &quot;#EC NOTEXT
+  constants STATUS_STARTED type ZBT_TYPESTATUS value 1. &quot;#EC NOTEXT
+  constants STATUS_WORKING type ZBT_TYPESTATUS value 0. &quot;#EC NOTEXT
+  class-data STATUS_HIER_ID type ZBT_ESTADOS_HIER .
+
+  class-methods CLASS_CONSTRUCTOR .
+  class-methods EXIST
+    importing
+      !ESTADO type ref to ZCL_ESTADO
+    returning
+      value(RETURN) type FLAG .
+  class-methods FIND_BY_KEY
+    importing
+      !ID type ZBT_ID_ESTADO
+    returning
+      value(RETURN) type ref to ZCL_ESTADO
+    raising
+      ZCX_NOT_FOUND_EXCEPTION .</publicSection>
+ <protectedSection>*&quot;* protected components of class ZCL_ESTADO_CONTROLLER
+*&quot;* do not include other source files here!!!
+protected section.
+
+  class-methods PERSIST_TO_ENTITY
+    importing
+      !PERSIST type ref to ZCL_ESTADO_PERSIST
+    returning
+      value(ENTITY) type ref to ZCL_ESTADO .</protectedSection>
+ <privateSection>private section.
+*&quot;* private components of class ZCL_ESTADO_CONTROLLER
+*&quot;* do not include other source files here!!!
+
+  class-methods FIND_STATUS_TEXT
+    importing
+      !ESTADO type ref to ZCL_ESTADO
+      !SPRAS type SPRAS default SY-LANGU
+    returning
+      value(TEXT) type ZBT_ESTADO_TXT-DESCRIPCION .
+  class-methods RETRIEVE_HIER_STATUS .</privateSection>
+ <localImplementation>*&quot;* local class implementation for public class
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes</localImplementation>
+ <localTypes>*&quot;* use this source file for any type declarations (class
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <attribute CLSNAME="ZCL_ESTADO_CONTROLLER" CMPNAME="STATUS_FINISHED" VERSION="1" LANGU="E" DESCRIPT="Tipo estado" EXPOSURE="2" STATE="1" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100408" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="2" ATTVALUE="2" ATTEXPVIRT="0" TYPTYPE="1" TYPE="ZBT_TYPESTATUS" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_ESTADO_CONTROLLER" CMPNAME="STATUS_HIER_ID" VERSION="1" LANGU="E" DESCRIPT="Jerarquía de estados" EXPOSURE="2" STATE="1" EDITORDER="4 " AUTHOR="BCUSER" CREATEDON="20101224" CHANGEDBY="BCUSER" CHANGEDON="20101226" ATTDECLTYP="1" ATTEXPVIRT="0" TYPTYPE="1" TYPE="ZBT_ESTADOS_HIER" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_ESTADO_CONTROLLER" CMPNAME="STATUS_STARTED" VERSION="1" LANGU="E" DESCRIPT="Tipo estado" EXPOSURE="2" STATE="1" EDITORDER="2 " AUTHOR="BCUSER" CREATEDON="20100408" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="2" ATTVALUE="1" ATTEXPVIRT="0" TYPTYPE="1" TYPE="ZBT_TYPESTATUS" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_ESTADO_CONTROLLER" CMPNAME="STATUS_WORKING" VERSION="1" LANGU="E" DESCRIPT="Tipo estado" EXPOSURE="2" STATE="1" EDITORDER="3 " AUTHOR="BCUSER" CREATEDON="20100408" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="2" ATTVALUE="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="ZBT_TYPESTATUS" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <method CLSNAME="ZCL_ESTADO_CONTROLLER" CMPNAME="CLASS_CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="CLASS_CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101224" CHANGEDON="20101225" MTDTYPE="2" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <source>METHOD class_constructor.
+
+  retrieve_hier_status( ).
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_ESTADO_CONTROLLER" CMPNAME="EXIST" VERSION="1" LANGU="E" DESCRIPT="Verifica si existe" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_ESTADO_CONTROLLER" CMPNAME="EXIST" SCONAME="ESTADO" VERSION="1" LANGU="E" DESCRIPT="Estado Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_ESTADO"/>
+  <parameter CLSNAME="ZCL_ESTADO_CONTROLLER" CMPNAME="EXIST" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="General Flag" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="FLAG"/>
+  <source>method EXIST.
+  DATA: l_id TYPE zbt_estado-estado.
+
+  TRY .
+      l_id = estado-&gt;get_id( ).
+      zcl_estado_controller=&gt;find_by_key( l_id ).
+      return = &apos;X&apos;.
+    CATCH cx_root.
+      return = space.
+  ENDTRY.
+
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_ESTADO_CONTROLLER" CMPNAME="FIND_BY_KEY" VERSION="1" LANGU="E" DESCRIPT="Busca un estado por su clave" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100407" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_ESTADO_CONTROLLER" CMPNAME="FIND_BY_KEY" SCONAME="ID" VERSION="1" LANGU="E" DESCRIPT="Estado" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100407" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_ID_ESTADO"/>
+  <parameter CLSNAME="ZCL_ESTADO_CONTROLLER" CMPNAME="FIND_BY_KEY" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="Estado Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100407" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_ESTADO"/>
+  <exception CLSNAME="ZCL_ESTADO_CONTROLLER" CMPNAME="FIND_BY_KEY" SCONAME="ZCX_NOT_FOUND_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Not Found" MTDTYPE="0" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100407" CHANGEDBY="BCUSER" CHANGEDON="20100517"/>
+  <source>METHOD find_by_key.
+  DATA: l_status_hier_id TYPE LINE OF zbt_estados_hier.
+
+  READ TABLE status_hier_id WITH KEY estado = id INTO l_status_hier_id.
+  IF NOT sy-subrc IS INITIAL.
+    READ TABLE status_hier_id WITH KEY next_estado = id INTO l_status_hier_id.
+    IF NOT sy-subrc IS INITIAL.
+      RAISE EXCEPTION TYPE zcx_not_found_exception
+        EXPORTING
+          textid = zcx_not_found_exception=&gt;zcx_not_found_exception.
+    ELSE.
+      return = l_status_hier_id-next_estado_oref.
+    ENDIF.
+  ELSE.
+    return = l_status_hier_id-estado_oref.
+  ENDIF.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_ESTADO_CONTROLLER" CMPNAME="FIND_STATUS_TEXT" VERSION="1" LANGU="E" DESCRIPT="Returns Status Text" EXPOSURE="0" STATE="1" EDITORDER="5 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDBY="BCUSER" CHANGEDON="20101226" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_ESTADO_CONTROLLER" CMPNAME="FIND_STATUS_TEXT" SCONAME="ESTADO" VERSION="1" LANGU="E" DESCRIPT="Estado Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_ESTADO"/>
+  <parameter CLSNAME="ZCL_ESTADO_CONTROLLER" CMPNAME="FIND_STATUS_TEXT" SCONAME="SPRAS" VERSION="1" LANGU="E" DESCRIPT="Language Key" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="SPRAS" PARVALUE="SY-LANGU"/>
+  <parameter CLSNAME="ZCL_ESTADO_CONTROLLER" CMPNAME="FIND_STATUS_TEXT" SCONAME="TEXT" VERSION="1" LANGU="E" DESCRIPT="Description" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101012" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_ESTADO_TXT-DESCRIPCION"/>
+  <source>METHOD find_status_text.
+  DATA: l_id TYPE zbt_estado-estado.
+
+  l_id = estado-&gt;get_id( ).
+
+  SELECT SINGLE descripcion INTO text
+  FROM zbt_estado_txt
+  WHERE spras  = spras
+    AND estado = l_id.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_ESTADO_CONTROLLER" CMPNAME="PERSIST_TO_ENTITY" VERSION="1" LANGU="E" DESCRIPT="Persist to Entity" EXPOSURE="1" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100408" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_ESTADO_CONTROLLER" CMPNAME="PERSIST_TO_ENTITY" SCONAME="PERSIST" VERSION="1" LANGU="E" DESCRIPT="Estado Persist" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100408" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_ESTADO_PERSIST"/>
+  <parameter CLSNAME="ZCL_ESTADO_CONTROLLER" CMPNAME="PERSIST_TO_ENTITY" SCONAME="ENTITY" VERSION="1" LANGU="E" DESCRIPT="Estado Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100408" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_ESTADO"/>
+  <source>METHOD persist_to_entity.
+  DATA: l_id          TYPE zbt_id_estado,
+        l_icon        TYPE ZBT_ESTADO-ICON,
+        l_descripcion TYPE zbt_estado_txt-descripcion,
+        lt_estados    TYPE zbt_estados,
+        l_wdaicon     TYPE ZBT_ESTADO_ICON_WDA,
+        l_type        TYPE zbt_typestatus.
+
+  l_id = persist-&gt;get_estado( ).
+
+  CREATE OBJECT entity
+    EXPORTING
+      id = l_id.
+
+* Buscamos la descripción del estado
+  l_descripcion = find_status_text( entity ).
+  entity-&gt;set_descripcion( l_descripcion ).
+
+  l_type = persist-&gt;get_type( ).
+  entity-&gt;set_type( l_type ).
+
+  l_icon = persist-&gt;get_icon( ).
+  entity-&gt;set_icon( l_icon ).
+
+  l_wdaicon = persist-&gt;get_wdaicon( ).
+  entity-&gt;set_wdaicon( l_wdaicon ).
+
+* Buscamos los siguientes estados al estado actual
+*  lt_estados = find_next_status( entity ).
+*  entity-&gt;set_next_estados( lt_estados ).
+** Buscamos los anteriores estados al actual
+*  lt_estados = find_prev_status( entity ).
+*  entity-&gt;set_prev_estados( lt_estados ).
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_ESTADO_CONTROLLER" CMPNAME="RETRIEVE_HIER_STATUS" VERSION="1" LANGU="E" DESCRIPT="Calculates hierarchy status" EXPOSURE="0" STATE="1" EDITORDER="6 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101224" CHANGEDBY="BCUSER" CHANGEDON="20101226" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <source>METHOD retrieve_hier_status.
+  DATA:   lo_qm                       TYPE REF TO if_os_query_manager,
+          lo_q                        TYPE REF TO if_os_query,
+          lt_estados                  TYPE zbt_estados,
+          lt_estados_aux              TYPE zbt_estados,
+          l_estado                    TYPE LINE OF zbt_estados,
+          lo_estado_hier_persist      TYPE REF TO zcl_estadohier_persist,
+          lo_estado_persist           TYPE REF TO zcl_estado_persist,
+          l_status_hier_id            TYPE LINE OF zbt_estados_hier,
+          lt_estados_hier_persist     TYPE osreftab,
+          l_return                    TYPE LINE OF zbt_estados.
+
+  FIELD-SYMBOLS: &lt;osref&gt; TYPE osref.
+
+  lo_qm = cl_os_system=&gt;get_query_manager( ).
+  lo_q  = lo_qm-&gt;create_query( ).
+
+  lt_estados_hier_persist[] = zca_estadohier_persist=&gt;agent-&gt;if_os_ca_persistency~get_persistent_by_query(
+                 i_query   = lo_q ).
+  LOOP AT lt_estados_hier_persist ASSIGNING &lt;osref&gt;.
+    lo_estado_hier_persist ?= &lt;osref&gt;.
+
+    l_status_hier_id-estado      = lo_estado_hier_persist-&gt;get_estado( ).
+    l_status_hier_id-next_estado = lo_estado_hier_persist-&gt;get_next_estado( ).
+
+    READ TABLE lt_estados WITH TABLE KEY id = l_status_hier_id-estado INTO l_estado.
+    IF NOT sy-subrc IS INITIAL.
+      l_estado-id   = l_status_hier_id-estado.
+
+      lo_estado_persist = zca_estado_persist=&gt;agent-&gt;get_persistent( l_status_hier_id-estado ).
+      l_estado-oref = persist_to_entity( lo_estado_persist ).
+
+      INSERT l_estado INTO TABLE lt_estados[].
+    ENDIF.
+    l_status_hier_id-estado_oref = l_estado-oref.
+
+    READ TABLE lt_estados WITH TABLE KEY id = l_status_hier_id-next_estado INTO l_estado.
+    IF NOT sy-subrc IS INITIAL.
+      l_estado-id   = l_status_hier_id-next_estado.
+
+      lo_estado_persist = zca_estado_persist=&gt;agent-&gt;get_persistent( l_status_hier_id-next_estado ).
+      l_estado-oref = persist_to_entity( lo_estado_persist ).
+
+      INSERT l_estado INTO TABLE lt_estados[].
+    ENDIF.
+    l_status_hier_id-next_estado_oref = l_estado-oref.
+
+    lt_estados_aux[] = l_status_hier_id-estado_oref-&gt;get_next_estados( ).
+    l_estado-id   = l_status_hier_id-next_estado.
+    l_estado-oref = l_status_hier_id-next_estado_oref.
+    INSERT l_estado INTO TABLE lt_estados_aux[].
+    l_status_hier_id-estado_oref-&gt;set_next_estados( lt_estados_aux[] ).
+
+    lt_estados_aux[] = l_status_hier_id-next_estado_oref-&gt;get_prev_estados( ).
+    l_estado-id   = l_status_hier_id-estado.
+    l_estado-oref = l_status_hier_id-estado_oref.
+    INSERT l_estado INTO TABLE lt_estados_aux[].
+    l_status_hier_id-next_estado_oref-&gt;set_prev_estados( lt_estados_aux[] ).
+
+    INSERT l_status_hier_id INTO TABLE status_hier_id.
+  ENDLOOP.
+
+ENDMETHOD.</source>
+ </method>
+</CLAS>

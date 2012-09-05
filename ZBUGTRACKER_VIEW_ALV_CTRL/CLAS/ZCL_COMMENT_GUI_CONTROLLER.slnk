@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="utf-16"?>
+<CLAS CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" VERSION="1" LANGU="E" UUID="DF6CFB61D16936F1929C080027E6C24E" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20100531" CHANGEDON="20101225" CHGDANYON="00000000" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="701" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+ <events CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="COMMENT_ADDED" VERSION="1" LANGU="E" DESCRIPT="New comment has been added" EXPOSURE="2" STATE="1" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20101212" CHANGEDON="20101225" EVTDECLTYP="0" R3RELEASE="701" BCEVTCAT="00"/>
+ <publicSection>class ZCL_COMMENT_GUI_CONTROLLER definition
+  public
+  final
+  create public .
+
+public section.
+*&quot;* public components of class ZCL_COMMENT_GUI_CONTROLLER
+*&quot;* do not include other source files here!!!
+  type-pools ICON .
+
+  events COMMENT_ADDED .
+
+  methods CONSTRUCTOR
+    importing
+      !CONTAINER type ref to CL_GUI_CONTAINER optional
+      value(USER) type ref to ZCL_USUARIO optional
+      !BUG type ref to ZCL_BUG
+      !DISPLAY_MODE type FLAG default SPACE
+    preferred parameter CONTAINER
+    raising
+      ZCX_COMMENT_ALV_CTRL_EXC .
+  methods DISPLAY .
+  methods GET_COMMENTS .
+  methods REFRESH .
+  type-pools ABAP .
+  methods SET_DISPLAY_MODE
+    importing
+      !DISPLAY type FLAG default ABAP_TRUE .</publicSection>
+ <protectedSection>*&quot;* protected components of class ZCL_COMMENT_GUI_CONTROLLER
+*&quot;* do not include other source files here!!!
+protected section.</protectedSection>
+ <privateSection>private section.
+*&quot;* private components of class ZCL_COMMENT_GUI_CONTROLLER
+*&quot;* do not include other source files here!!!
+
+  data CONTAINER type ref to CL_GUI_CONTAINER .
+  data TOOLBAR_CONTAINER type ref to CL_GUI_CONTAINER .
+  data O_TOOLBAR type ref to CL_GUI_TOOLBAR .
+  constants ACTION_REPLY type UI_FUNC value &apos;REPLY&apos;. &quot;#EC NOTEXT
+  data BUG type ref to ZCL_BUG .
+  data USER type ref to ZCL_USUARIO .
+  constants ACTION_POPUP_OK type UI_FUNC value &apos;POPUP_OK&apos;. &quot;#EC NOTEXT
+  constants ACTION_POPUP_KO type UI_FUNC value &apos;POPUP_KO&apos;. &quot;#EC NOTEXT
+  data O_POPUP type ref to CL_GUI_DIALOGBOX_CONTAINER .
+  data O_POPUP_SPLITTER type ref to CL_GUI_EASY_SPLITTER_CONTAINER .
+  data O_POPUP_CONTAINER type ref to CL_GUI_CONTAINER .
+  data O_POPUP_TOOLBAR_CONTAINER type ref to CL_GUI_CONTAINER .
+  data O_POPUP_EDITOR type ref to ZCL_BTF_EDITOR .
+  data O_POPUP_TOOLBAR type ref to CL_GUI_TOOLBAR .
+  data COMMENT type ZBT_COMENTARIOS_STR .
+  data DISPLAY_MODE type FLAG value SPACE. &quot;#EC NOTEXT .
+  data MAIN_CONTAINER type ref to CL_GUI_CONTAINER .
+  data SPLITTER_CONTAINER type ref to CL_GUI_EASY_SPLITTER_CONTAINER .
+  class-data C_START_OF_TABLE type STRING value &apos;&lt;html&gt;&lt;BODY&gt;&lt;TABLE border=&quot;1&quot; width = &quot;100%&quot; CELLPADDING=5 CELLSPACING=0&gt;&apos;. &quot;#EC NOTEXT .
+  class-data C_END_OF_TABLE type STRING value &apos;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/html&gt;&apos;. &quot;#EC NOTEXT .
+  class-data C_BEGIN_COMMENT type STRING value &apos;&lt;TR&gt;&lt;TD BGCOLOR=&quot;#AAAAAA&quot;&gt;&amp;&lt;/TD&gt;&lt;/TR&gt;&apos;. &quot;#EC NOTEXT .
+  class-data C_NEW_ROW type STRING value &apos;&lt;TR&gt;&lt;TD&gt;&apos;. &quot;#EC NOTEXT .
+  class-data C_END_ROW type STRING value &apos;&lt;/TD&gt;&lt;/TR&gt;&apos;. &quot;#EC NOTEXT .
+
+  methods ADD_COMMENT_TO_DD
+    importing
+      !TABLE_DD type ref to CL_DD_TABLE_AREA
+      !COMMENT type ZBT_COMENTARIOS_STR .
+  methods ADD_TOOLBAR_ACTION
+    importing
+      !ACTION type SY-UCOMM
+      !ICON type ICON-ID optional .
+  methods ASK_4NEW_COMMENT
+    importing
+      !BUG type ref to ZCL_BUG
+      !USER type ref to ZCL_USUARIO
+      !POPUP_TITLE type VTEXT default &apos;New Comment&apos; .
+  methods CLOSE_POPUP .
+  methods GET_BUG
+    returning
+      value(BUG) type ref to ZCL_BUG .
+  methods GET_USER
+    returning
+      value(USER) type ref to ZCL_USUARIO .
+  type-pools SDYDO .
+  methods HTML_TO_DD
+    importing
+      value(HTML) type STRING
+    returning
+      value(DDTEXT) type SDYDO_TEXT_TABLE .
+  methods INIT_TOOLBAR .
+  methods INIT_TOOLBAR_NEW_COMMENT
+    importing
+      !TOOLBAR type ref to CL_GUI_TOOLBAR .
+  methods ON_TOOLBAR_ACTION_SELECTED
+    for event FUNCTION_SELECTED of CL_GUI_TOOLBAR
+    importing
+      !FCODE .
+  methods SET_BUG
+    importing
+      !BUG type ref to ZCL_BUG .
+  methods SET_USER
+    importing
+      !USER type ref to ZCL_USUARIO .
+  methods CREATE_DYNAMIC_DOCUMENT
+    importing
+      !REFRESH type FLAG optional .
+  methods INITIALIZE_CONTAINERS
+    importing
+      !CONTAINER type ref to CL_GUI_CONTAINER .</privateSection>
+ <localImplementation>*&quot;* local class implementation for public class
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes</localImplementation>
+ <localTypes>*&quot;* use this source file for any type declarations (class
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <typeUsage CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" TYPEGROUP="ABAP" VERSION="1" TPUTYPE="0" IMPLICIT="X"/>
+ <typeUsage CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" TYPEGROUP="ICON" VERSION="1" TPUTYPE="0" EXPLICIT="X"/>
+ <typeUsage CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" TYPEGROUP="SDYDO" VERSION="1" TPUTYPE="0" IMPLICIT="X"/>
+ <forwardDeclaration>ABAP</forwardDeclaration>
+ <forwardDeclaration>ICON</forwardDeclaration>
+ <forwardDeclaration>SDYDO</forwardDeclaration>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="ACTION_POPUP_KO" VERSION="1" LANGU="E" DESCRIPT="Function code" EXPOSURE="0" STATE="1" EDITORDER="8 " AUTHOR="BCUSER" CREATEDON="20101026" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="2" ATTVALUE="&apos;POPUP_KO&apos;" ATTEXPVIRT="0" TYPTYPE="1" TYPE="UI_FUNC" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="ACTION_POPUP_OK" VERSION="1" LANGU="E" DESCRIPT="Function code" EXPOSURE="0" STATE="1" EDITORDER="7 " AUTHOR="BCUSER" CREATEDON="20101026" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="2" ATTVALUE="&apos;POPUP_OK&apos;" ATTEXPVIRT="0" TYPTYPE="1" TYPE="UI_FUNC" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="ACTION_REPLY" VERSION="1" LANGU="E" DESCRIPT="Function code" EXPOSURE="0" STATE="1" EDITORDER="4 " AUTHOR="BCUSER" CREATEDON="20101025" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="2" ATTVALUE="&apos;REPLY&apos;" ATTEXPVIRT="0" TYPTYPE="1" TYPE="UI_FUNC" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" EXPOSURE="0" STATE="1" EDITORDER="5 " AUTHOR="BCUSER" CREATEDON="20101025" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_BUG" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="COMMENT" VERSION="1" LANGU="E" DESCRIPT="Comentarios" EXPOSURE="0" STATE="1" EDITORDER="15 " AUTHOR="BCUSER" CREATEDON="20101212" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="ZBT_COMENTARIOS_STR" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="CONTAINER" VERSION="1" LANGU="E" DESCRIPT="Container" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100531" CHANGEDBY="BCUSER" CHANGEDON="20110104" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="CL_GUI_CONTAINER" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="C_BEGIN_COMMENT" VERSION="1" LANGU="E" DESCRIPT="Begin of comment" EXPOSURE="0" STATE="1" EDITORDER="21 " AUTHOR="BCUSER" CREATEDON="20110104" CHANGEDBY="BCUSER" CHANGEDON="20110104" ATTDECLTYP="1" ATTVALUE="&apos;&lt;TR&gt;&lt;TD BGCOLOR=&quot;#AAAAAA&quot;&gt;&amp;&lt;/TD&gt;&lt;/TR&gt;&apos;" ATTEXPVIRT="0" TYPTYPE="1" TYPE="STRING" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="702" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="C_END_OF_TABLE" VERSION="1" LANGU="E" DESCRIPT="End of DD Table" EXPOSURE="0" STATE="1" EDITORDER="20 " AUTHOR="BCUSER" CREATEDON="20110104" CHANGEDBY="BCUSER" CHANGEDON="20110604" ATTDECLTYP="1" ATTVALUE="&apos;&lt;/TABLE&gt;&lt;/BODY&gt;&lt;/html&gt;&apos;" ATTEXPVIRT="0" TYPTYPE="1" TYPE="STRING" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="702" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="C_END_ROW" VERSION="1" LANGU="E" DESCRIPT="End Row" EXPOSURE="0" STATE="1" EDITORDER="23 " AUTHOR="BCUSER" CREATEDON="20110104" CHANGEDBY="BCUSER" CHANGEDON="20110104" ATTDECLTYP="1" ATTVALUE="&apos;&lt;/TD&gt;&lt;/TR&gt;&apos;" ATTEXPVIRT="0" TYPTYPE="1" TYPE="STRING" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="702" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="C_NEW_ROW" VERSION="1" LANGU="E" DESCRIPT="New Row" EXPOSURE="0" STATE="1" EDITORDER="22 " AUTHOR="BCUSER" CREATEDON="20110104" CHANGEDBY="BCUSER" CHANGEDON="20110104" ATTDECLTYP="1" ATTVALUE="&apos;&lt;TR&gt;&lt;TD&gt;&apos;" ATTEXPVIRT="0" TYPTYPE="1" TYPE="STRING" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="702" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="C_START_OF_TABLE" VERSION="1" LANGU="E" DESCRIPT="Start of DD Table" EXPOSURE="0" STATE="1" EDITORDER="19 " AUTHOR="BCUSER" CREATEDON="20110104" CHANGEDBY="BCUSER" CHANGEDON="20110604" ATTDECLTYP="1" ATTVALUE="&apos;&lt;html&gt;&lt;BODY&gt;&lt;TABLE border=&quot;1&quot; width = &quot;100%&quot; CELLPADDING=5 CELLSPACING=0&gt;&apos;" ATTEXPVIRT="0" TYPTYPE="1" TYPE="STRING" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="702" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="DISPLAY_MODE" VERSION="1" LANGU="E" DESCRIPT="Display Mode" EXPOSURE="0" STATE="1" EDITORDER="16 " AUTHOR="BCUSER" CREATEDON="20101213" CHANGEDON="20101225" ATTDECLTYP="0" ATTVALUE="SPACE" ATTEXPVIRT="0" TYPTYPE="1" TYPE="FLAG" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="MAIN_CONTAINER" VERSION="1" LANGU="E" DESCRIPT="Main Container" EXPOSURE="0" STATE="1" EDITORDER="17 " AUTHOR="BCUSER" CREATEDON="20110104" CHANGEDBY="BCUSER" CHANGEDON="20110104" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="CL_GUI_CONTAINER" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="702" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="O_POPUP" VERSION="1" LANGU="E" DESCRIPT="Container for Custom Controls in the Screen Area" EXPOSURE="0" STATE="1" EDITORDER="9 " AUTHOR="BCUSER" CREATEDON="20101212" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="CL_GUI_DIALOGBOX_CONTAINER" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="O_POPUP_CONTAINER" VERSION="1" LANGU="E" DESCRIPT="Abstract Container for GUI Controls" EXPOSURE="0" STATE="1" EDITORDER="11 " AUTHOR="BCUSER" CREATEDON="20101212" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="CL_GUI_CONTAINER" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="O_POPUP_EDITOR" VERSION="1" LANGU="E" DESCRIPT="Customized BTF Editor" EXPOSURE="0" STATE="1" EDITORDER="13 " AUTHOR="BCUSER" CREATEDON="20101212" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_BTF_EDITOR" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="O_POPUP_SPLITTER" VERSION="1" LANGU="E" DESCRIPT="Reduced Version of Splitter Container Control" EXPOSURE="0" STATE="1" EDITORDER="10 " AUTHOR="BCUSER" CREATEDON="20101212" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="CL_GUI_EASY_SPLITTER_CONTAINER" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="O_POPUP_TOOLBAR" VERSION="1" LANGU="E" DESCRIPT="Toolbar Control" EXPOSURE="0" STATE="1" EDITORDER="14 " AUTHOR="BCUSER" CREATEDON="20101212" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="CL_GUI_TOOLBAR" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="O_POPUP_TOOLBAR_CONTAINER" VERSION="1" LANGU="E" DESCRIPT="Abstract Container for GUI Controls" EXPOSURE="0" STATE="1" EDITORDER="12 " AUTHOR="BCUSER" CREATEDON="20101212" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="CL_GUI_CONTAINER" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="O_TOOLBAR" VERSION="1" LANGU="E" DESCRIPT="Toolbar Control" EXPOSURE="0" STATE="1" EDITORDER="3 " AUTHOR="BCUSER" CREATEDON="20100904" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="CL_GUI_TOOLBAR" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="SPLITTER_CONTAINER" VERSION="1" LANGU="E" DESCRIPT="Reduced Version of Splitter Container Control" EXPOSURE="0" STATE="1" EDITORDER="18 " AUTHOR="BCUSER" CREATEDON="20110104" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="CL_GUI_EASY_SPLITTER_CONTAINER" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="702" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="TOOLBAR_CONTAINER" VERSION="1" LANGU="E" DESCRIPT="toolBar Container" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="BCUSER" CREATEDON="20100904" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="CL_GUI_CONTAINER" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="USER" VERSION="1" LANGU="E" DESCRIPT="Usuario entity" EXPOSURE="0" STATE="1" EDITORDER="6 " AUTHOR="BCUSER" CREATEDON="20101025" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_USUARIO" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <method CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="ADD_COMMENT_TO_DD" VERSION="1" LANGU="E" DESCRIPT="Add Comment to Dynamic Document" EXPOSURE="0" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100531" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="ADD_COMMENT_TO_DD" SCONAME="TABLE_DD" VERSION="1" LANGU="E" DESCRIPT="Dynamic Documents: Table Element" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100531" CHANGEDBY="BCUSER" CHANGEDON="20100531" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="CL_DD_TABLE_AREA"/>
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="ADD_COMMENT_TO_DD" SCONAME="COMMENT" VERSION="1" LANGU="E" DESCRIPT="Comentarios" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100531" CHANGEDBY="BCUSER" CHANGEDON="20100531" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_COMENTARIOS_STR"/>
+  <source>METHOD add_comment_to_dd.
+  DATA: l_erdat     TYPE zbt_bugcomment-erdat,
+        l_erdat_str TYPE string,
+        l_user_name TYPE string,
+        l_string    TYPE string,
+        l_string2   TYPE string,
+        lt_html     TYPE sdydo_html_table,
+        lt_text     TYPE sdydo_text_table,
+        l_text      TYPE LINE OF sdydo_text_table,
+        l_color     TYPE sdydo_attribute,
+        lo_user     TYPE REF TO zcl_usuario.
+
+  l_erdat  = comment-oref-&gt;get_erdat( ).
+
+  CALL FUNCTION &apos;CONVERSION_EXIT_TSTMP_OUTPUT&apos;
+    EXPORTING
+      input  = l_erdat
+    IMPORTING
+      output = l_erdat_str.
+
+  lo_user  = comment-oref-&gt;get_usuario( ).
+
+  l_user_name = lo_user-&gt;get_id( ).
+  CONCATENATE l_erdat_str l_user_name INTO l_text SEPARATED BY &apos;-&apos;.
+  l_string = c_begin_comment.
+  REPLACE &apos;&amp;&apos; INTO l_string WITH l_text.
+  table_dd-&gt;add_static_html( string_with_html = l_string ).
+
+*  table_dd-&gt;new_row( sap_style = cl_dd_area=&gt;table_heading ).
+*  table_dd-&gt;add_text( text = l_text ).
+
+*  l_color = cl_dd_area=&gt;list_normal.
+*  table_dd-&gt;new_row( sap_color = l_color ).
+  l_string2 = comment-oref-&gt;get_texto( ).
+  l_string = c_begin_comment.
+  REPLACE &apos;&amp;&apos; INTO l_string WITH l_string2.
+  table_dd-&gt;add_static_html( string_with_html = l_string ).
+
+* Converts HTML texto to Dinamyc Document Text
+  lt_text[] = html_to_dd( l_string ).
+  lt_html[] = lt_text[].
+  table_dd-&gt;add_static_html( table_with_html = lt_html ).
+*  table_dd-&gt;add_text( text_table = lt_text ).
+
+*  table_dd-&gt;new_row( ).
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="ADD_TOOLBAR_ACTION" VERSION="1" LANGU="E" DESCRIPT="Add&apos;s an action into ToolBar" EXPOSURE="0" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100904" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="ADD_TOOLBAR_ACTION" SCONAME="ACTION" VERSION="1" LANGU="E" DESCRIPT="Action&apos;s OKCODE" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100904" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="SY-UCOMM"/>
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="ADD_TOOLBAR_ACTION" SCONAME="ICON" VERSION="1" LANGU="E" DESCRIPT="Icon" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100904" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ICON-ID" PAROPTIONL="X"/>
+  <source>method ADD_TOOLBAR_ACTION.
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="ASK_4NEW_COMMENT" VERSION="1" LANGU="E" DESCRIPT="Shows a POPUP for writing a new comment" EXPOSURE="0" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101025" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="ASK_4NEW_COMMENT" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101025" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="ASK_4NEW_COMMENT" SCONAME="USER" VERSION="1" LANGU="E" DESCRIPT="Usuario" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101025" CHANGEDBY="BCUSER" CHANGEDON="20101025" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_USUARIO"/>
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="ASK_4NEW_COMMENT" SCONAME="POPUP_TITLE" VERSION="1" LANGU="E" DESCRIPT="Popup&apos;s title" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101026" CHANGEDBY="BCUSER" CHANGEDON="20101026" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="VTEXT" PARVALUE="&apos;New Comment&apos;"/>
+  <source>METHOD ask_4new_comment.
+
+  DATA: lo_producto  TYPE REF TO zcl_producto,
+        lt_comments  TYPE zbt_comentarios.
+
+* Creates POPUP
+  CREATE OBJECT o_popup
+    EXPORTING
+      width  = 680
+      height = 200.
+
+* Splits container in 2
+  CREATE OBJECT o_popup_splitter
+    EXPORTING
+      parent        = o_popup
+      orientation   = cl_gui_easy_splitter_container=&gt;orientation_vertical
+      sash_position = 93.
+
+  o_popup_container            = o_popup_splitter-&gt;top_left_container.
+  o_popup_toolbar_container    = o_popup_splitter-&gt;bottom_right_container.
+
+  CREATE OBJECT o_popup_toolbar
+    EXPORTING
+      parent = o_popup_toolbar_container.
+  init_toolbar_new_comment( o_popup_toolbar ).
+
+  comment-bug_id      = bug-&gt;get_id( ).
+  lo_producto         = bug-&gt;get_producto( ).
+  comment-producto_id = lo_producto-&gt;get_id( ).
+
+  CREATE OBJECT comment-oref
+    EXPORTING
+      bug     = bug
+      id      = comment-comentario_id
+      usuario = user.
+
+* Creates BTF Editor into POPUP
+  CREATE OBJECT o_popup_editor
+    EXPORTING
+      container = o_popup_container.
+
+* lo_editor-&gt;set_title( popup_title ).
+  o_popup_editor-&gt;display( ).
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="CLOSE_POPUP" VERSION="1" LANGU="E" DESCRIPT="Closes Popup" EXPOSURE="0" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101212" CHANGEDBY="BCUSER" CHANGEDON="20101227" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <source>METHOD close_popup.
+
+  o_popup_editor-&gt;free( ).
+  o_popup_toolbar-&gt;free( ).
+  o_popup_toolbar_container-&gt;free( ).
+  o_popup_container-&gt;free( ).
+  o_popup_splitter-&gt;free( ).
+  o_popup-&gt;free( ).
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100531" CHANGEDBY="BCUSER" CHANGEDON="20101227" MTDTYPE="2" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="CONSTRUCTOR" SCONAME="CONTAINER" VERSION="1" LANGU="E" DESCRIPT="Abstract Container for GUI Controls" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100531" CHANGEDBY="BCUSER" CHANGEDON="20100531" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="CL_GUI_CONTAINER" PAROPTIONL="X" PARPREFERD="X"/>
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="CONSTRUCTOR" SCONAME="USER" VERSION="1" LANGU="E" DESCRIPT="Usuario entity" CMPTYPE="1" MTDTYPE="2" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101025" CHANGEDBY="BCUSER" CHANGEDON="20101212" PARDECLTYP="0" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_USUARIO" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="CONSTRUCTOR" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="2" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101025" CHANGEDBY="BCUSER" CHANGEDON="20101212" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="CONSTRUCTOR" SCONAME="DISPLAY_MODE" VERSION="1" LANGU="E" DESCRIPT="Display Mode" CMPTYPE="1" MTDTYPE="2" EDITORDER="4 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101213" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="FLAG" PARVALUE="SPACE"/>
+  <exception CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="CONSTRUCTOR" SCONAME="ZCX_COMMENT_ALV_CTRL_EXC" VERSION="1" LANGU="E" DESCRIPT="Exception on Comment Controller" MTDTYPE="2" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20101026" CHANGEDON="00000000"/>
+  <source>METHOD constructor.
+  DATA: lo_dialogbox TYPE REF TO cl_gui_dialogbox_container.
+
+  me-&gt;main_container = container.
+  IF NOT me-&gt;main_container IS BOUND.
+    CREATE OBJECT lo_dialogbox
+      EXPORTING
+        width  = 430
+        height = 130.
+
+    me-&gt;main_container ?= lo_dialogbox.
+  ENDIF.
+  initialize_containers( me-&gt;main_container ).
+
+* Incluimos una ToolBar para poder realizar acciones sobre los comentarios
+  init_toolbar( ).
+
+  set_bug( bug ).
+
+* Initializes user
+  IF user IS INITIAL.
+    user = zcl_usuario_controller=&gt;find_by_key( ).
+  ENDIF.
+  set_user( user ).
+
+  set_display_mode( display_mode ).
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="CREATE_DYNAMIC_DOCUMENT" VERSION="1" LANGU="E" DESCRIPT="Creates a Dynamic Document" EXPOSURE="0" STATE="1" EDITORDER="16 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101227" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="CREATE_DYNAMIC_DOCUMENT" SCONAME="REFRESH" VERSION="1" LANGU="E" DESCRIPT="General Flag" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101227" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="FLAG" PAROPTIONL="X"/>
+  <source>METHOD create_dynamic_document.
+
+  DATA: lo_document  TYPE REF TO cl_dd_document,
+      lo_bug       TYPE REF TO zcl_bug,
+      lo_table     TYPE REF TO cl_dd_table_area,
+      lt_comments  TYPE zbt_comentarios,
+      l_comment    TYPE LINE OF zbt_comentarios.
+
+  CREATE OBJECT lo_document.
+
+  lo_bug = get_bug( ).
+  lt_comments[] = lo_bug-&gt;get_comentarios( ).
+  SORT lt_comments BY comentario_id DESCENDING.
+
+  LOOP AT lt_comments INTO l_comment.
+    AT FIRST.
+*      lo_document-&gt;add_table(
+*       EXPORTING
+*         no_of_columns = 1
+*         width         = &apos;100%&apos;
+*       IMPORTING
+*         tablearea     = lo_table
+*      ).
+      lo_document-&gt;add_static_html( string_with_html = c_start_of_table ).
+    ENDAT.
+
+*    add_comment_to_dd( table_dd = lo_table
+*                       comment  = l_comment ).
+*--------------------------------------------------------------------*
+    DATA:  l_erdat     TYPE zbt_bugcomment-erdat,
+           l_erdat_str TYPE string,
+           l_user_name TYPE string,
+           l_string    TYPE string,
+           l_string2   TYPE string,
+           lt_html     TYPE sdydo_html_table,
+           lt_text     TYPE sdydo_text_table,
+           l_text      TYPE LINE OF sdydo_text_table,
+           l_color     TYPE sdydo_attribute,
+           lo_user     TYPE REF TO zcl_usuario.
+
+    l_erdat  = l_comment-oref-&gt;get_erdat( ).
+
+    CALL FUNCTION &apos;CONVERSION_EXIT_TSTMP_OUTPUT&apos;
+      EXPORTING
+        input  = l_erdat
+      IMPORTING
+        output = l_erdat_str.
+
+    lo_user  = l_comment-oref-&gt;get_usuario( ).
+
+    l_user_name = lo_user-&gt;get_id( ).
+    CONCATENATE l_erdat_str l_user_name INTO l_text SEPARATED BY &apos;-&apos;.
+    l_string = c_begin_comment.
+    REPLACE &apos;&amp;&apos; INTO l_string WITH l_text.
+    lo_document-&gt;add_static_html( string_with_html = l_string ).
+
+*  table_dd-&gt;new_row( sap_style = cl_dd_area=&gt;table_heading ).
+*  table_dd-&gt;add_text( text = l_text ).
+
+*  l_color = cl_dd_area=&gt;list_normal.
+*  table_dd-&gt;new_row( sap_color = l_color ).
+
+    l_string = c_new_row.
+    lo_document-&gt;add_static_html( string_with_html = l_string ).
+
+    l_string2 = l_comment-oref-&gt;get_texto( ).
+* Converts HTML texto to Dinamyc Document Text
+    lt_text[] = html_to_dd( l_string2 ).
+    lt_html[] = lt_text[].
+    lo_document-&gt;add_static_html( table_with_html = lt_html ).
+
+    l_string = c_end_row.
+    lo_document-&gt;add_static_html( string_with_html = l_string ).
+*  table_dd-&gt;add_text( text_table = lt_text ).
+
+*  table_dd-&gt;new_row( ).
+*--------------------------------------------------------------------*
+    AT LAST.
+      lo_document-&gt;add_static_html( string_with_html = c_end_of_table ).
+    ENDAT.
+  ENDLOOP.
+
+  lo_document-&gt;merge_document( ).
+  IF refresh IS INITIAL.
+    lo_document-&gt;display_document( parent = container ).
+  ELSE.
+    lo_document-&gt;display_document( reuse_control = &apos;X&apos; reuse_registration = &apos;X&apos; ).
+  ENDIF.
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="DISPLAY" VERSION="1" LANGU="E" DESCRIPT="Display Comments as HTML" EXPOSURE="2" STATE="1" EDITORDER="6 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100531" CHANGEDBY="BCUSER" CHANGEDON="20101227" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <source>METHOD display.
+  create_dynamic_document( space ).
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="GET_BUG" VERSION="1" LANGU="E" DESCRIPT="Gets Bug" EXPOSURE="0" STATE="1" EDITORDER="7 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101025" CHANGEDBY="BCUSER" CHANGEDON="20101227" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="GET_BUG" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101025" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <source>METHOD get_bug.
+  bug = me-&gt;bug.
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="GET_COMMENTS" VERSION="1" LANGU="E" DESCRIPT="Returns all comments" EXPOSURE="2" STATE="1" EDITORDER="8 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101212" CHANGEDBY="BCUSER" CHANGEDON="20101227" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <source>method GET_COMMENTS.
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="GET_USER" VERSION="1" LANGU="E" DESCRIPT="Gets User" EXPOSURE="0" STATE="1" EDITORDER="9 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101025" CHANGEDBY="BCUSER" CHANGEDON="20101227" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="GET_USER" SCONAME="USER" VERSION="1" LANGU="E" DESCRIPT="Usuario entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101025" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_USUARIO"/>
+  <source>METHOD GET_USER.
+  user = me-&gt;user.
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="HTML_TO_DD" VERSION="1" LANGU="E" DESCRIPT="Converts HTML texto do Dinamyc Document Text" EXPOSURE="0" STATE="1" EDITORDER="10 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101227" CHANGEDBY="BCUSER" CHANGEDON="20101227" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="HTML_TO_DD" SCONAME="HTML" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101227" CHANGEDBY="BCUSER" CHANGEDON="20101227" PARDECLTYP="0" PARPASSTYP="0" TYPTYPE="1" TYPE="STRING"/>
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="HTML_TO_DD" SCONAME="DDTEXT" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101227" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="SDYDO_TEXT_TABLE"/>
+  <source>METHOD html_to_dd.
+  DATA: l_find_result TYPE match_result,
+        l_length      TYPE i,
+        l_text        TYPE LINE OF sdydo_text_table.
+
+  FIND &apos;&lt;BODY&gt;&apos; IN html RESULTS l_find_result.
+  l_find_result-offset = l_find_result-offset + l_find_result-length.
+  html = html+l_find_result-offset.
+
+  FIND &apos;&lt;/BODY&gt;&apos; IN html RESULTS l_find_result.
+  html = html(l_find_result-offset).
+
+  DO.
+    l_length = strlen( html ).
+    l_text = html.
+    INSERT l_text INTO TABLE ddtext[].
+    IF l_length &gt; 255.
+      html = html+255.
+    ELSE.
+      EXIT.
+    ENDIF.
+  ENDDO.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="INITIALIZE_CONTAINERS" VERSION="1" LANGU="E" DESCRIPT="Initializes GUI Containers" EXPOSURE="0" STATE="1" EDITORDER="18 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110104" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="INITIALIZE_CONTAINERS" SCONAME="CONTAINER" VERSION="1" LANGU="E" DESCRIPT="Abstract Container for GUI Controls" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110104" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="CL_GUI_CONTAINER"/>
+  <source>METHOD initialize_containers.
+* Splits container in 2
+  CREATE OBJECT me-&gt;splitter_container
+    EXPORTING
+      parent        = container
+      orientation   = cl_gui_easy_splitter_container=&gt;orientation_vertical
+      sash_position = 5.
+
+  me-&gt;container     = me-&gt;splitter_container-&gt;bottom_right_container.
+  toolbar_container = me-&gt;splitter_container-&gt;top_left_container.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="INIT_TOOLBAR" VERSION="1" LANGU="E" DESCRIPT="Initializes ToolBar" EXPOSURE="0" STATE="1" EDITORDER="11 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100904" CHANGEDBY="BCUSER" CHANGEDON="20101227" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <source>METHOD init_toolbar.
+  DATA: l_event   TYPE cntl_simple_event,
+        lt_events TYPE cntl_simple_events.
+
+
+  CREATE OBJECT o_toolbar
+    EXPORTING
+      parent             = toolbar_container.
+
+  l_event-eventid = cl_gui_toolbar=&gt;m_id_function_selected.
+  APPEND l_event TO lt_events[].
+
+
+  CALL METHOD o_toolbar-&gt;set_registered_events
+    EXPORTING
+      events = lt_events[].
+
+  SET HANDLER me-&gt;on_toolbar_action_selected
+            FOR o_toolbar.
+
+  CALL METHOD o_toolbar-&gt;add_button
+    EXPORTING
+      fcode            = action_reply
+      icon             = icon_create_note
+*      IS_DISABLED      = me-&gt;display_mode
+      butn_type        = 0
+      text             = &apos;Reply&apos;(001)
+      quickinfo        = &apos;Reply&apos;(002)
+    EXCEPTIONS
+      cntb_error_fcode = 1.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="INIT_TOOLBAR_NEW_COMMENT" VERSION="1" LANGU="E" DESCRIPT="Initializes Popup New Comment ToolBar" EXPOSURE="0" STATE="1" EDITORDER="12 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101026" CHANGEDBY="BCUSER" CHANGEDON="20101227" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="INIT_TOOLBAR_NEW_COMMENT" SCONAME="TOOLBAR" VERSION="1" LANGU="E" DESCRIPT="Toolbar Control" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101026" CHANGEDBY="BCUSER" CHANGEDON="20101026" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="CL_GUI_TOOLBAR"/>
+  <source>METHOD init_toolbar_new_comment.
+  DATA: l_event   TYPE cntl_simple_event,
+        lt_events TYPE cntl_simple_events.
+
+
+  l_event-eventid = cl_gui_toolbar=&gt;m_id_function_selected.
+  APPEND l_event TO lt_events[].
+
+
+  CALL METHOD toolbar-&gt;set_registered_events
+    EXPORTING
+      events = lt_events[].
+
+  SET HANDLER me-&gt;on_toolbar_action_selected
+            FOR toolbar.
+
+  CALL METHOD toolbar-&gt;add_button
+    EXPORTING
+      fcode            = action_popup_ok
+      icon             = icon_okay
+      butn_type        = 0
+      text             = &apos;Ok&apos;(003)
+      quickinfo        = &apos;Ok&apos;(004)
+    EXCEPTIONS
+      cntb_error_fcode = 1.
+
+  CALL METHOD toolbar-&gt;add_button
+    EXPORTING
+      fcode            = action_popup_ko
+      icon             = icon_cancel
+      butn_type        = 0
+      text             = &apos;Cancel&apos;(003)
+      quickinfo        = &apos;Cancel&apos;(004)
+    EXCEPTIONS
+      cntb_error_fcode = 1.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="ON_TOOLBAR_ACTION_SELECTED" VERSION="1" LANGU="E" DESCRIPT="Handles ToolBar&apos;s action selected" EXPOSURE="0" STATE="1" EDITORDER="13 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100904" CHANGEDBY="BCUSER" CHANGEDON="20101227" MTDTYPE="1" MTDDECLTYP="0" REFCLSNAME="CL_GUI_TOOLBAR" REFCMPNAME="FUNCTION_SELECTED" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="ON_TOOLBAR_ACTION_SELECTED" SCONAME="FCODE" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="1" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101025" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="0"/>
+  <source>METHOD on_toolbar_action_selected.
+  DATA: lo_bug      TYPE REF TO zcl_bug,
+        l_string    TYPE string,
+        lt_comments TYPE zbt_comentarios,
+        lo_user     TYPE REF TO zcl_usuario.
+
+  CASE fcode.
+    WHEN action_reply.
+
+      lo_bug  = get_bug( ).
+      lo_user = get_user( ).
+
+      ask_4new_comment(
+        EXPORTING bug      = lo_bug
+                  user     = lo_user ).
+
+    WHEN action_popup_ok.
+      l_string = o_popup_editor-&gt;get_content_as_string( ).
+      comment-oref-&gt;set_texto( l_string ).
+      comment-oref-&gt;set_erdat( ).
+
+      lo_bug = get_bug( ).
+      lo_bug-&gt;add_comment( comment-oref ).
+
+      close_popup( ).
+      RAISE EVENT comment_added.
+
+    WHEN action_popup_ko.
+      close_popup( ).
+
+    WHEN OTHERS.
+
+  ENDCASE.
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="REFRESH" VERSION="1" LANGU="E" DESCRIPT="Refresh Dynamic Document" EXPOSURE="2" STATE="1" EDITORDER="17 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101227" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <source>METHOD refresh.
+
+  me-&gt;splitter_container-&gt;free( ).
+  CLEAR me-&gt;splitter_container.
+
+  initialize_containers( me-&gt;main_container ).
+  init_toolbar( ).
+
+  create_dynamic_document( ).
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="SET_BUG" VERSION="1" LANGU="E" DESCRIPT="Sets Bug" EXPOSURE="0" STATE="1" EDITORDER="14 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101025" CHANGEDBY="BCUSER" CHANGEDON="20101227" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="SET_BUG" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101025" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <source>METHOD set_bug.
+  me-&gt;bug = bug.
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="SET_DISPLAY_MODE" VERSION="1" LANGU="E" DESCRIPT="Sets Display Mode" EXPOSURE="2" STATE="1" EDITORDER="19 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110423" CHANGEDBY="BCUSER" CHANGEDON="20110423" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="SET_DISPLAY_MODE" SCONAME="DISPLAY" VERSION="1" LANGU="E" DESCRIPT="General Flag" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110423" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="FLAG" PARVALUE="ABAP_TRUE"/>
+  <source>METHOD set_display_mode.
+
+  display_mode  = display.
+
+* Refresh ToolBar Buttons
+  IF display_mode IS INITIAL.
+    o_toolbar-&gt;set_enable( &apos;X&apos; ).
+  ELSE.
+    o_toolbar-&gt;set_enable( space ).
+  ENDIF.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="SET_USER" VERSION="1" LANGU="E" DESCRIPT="Sets User" EXPOSURE="0" STATE="1" EDITORDER="15 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101025" CHANGEDBY="BCUSER" CHANGEDON="20101227" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_GUI_CONTROLLER" CMPNAME="SET_USER" SCONAME="USER" VERSION="1" LANGU="E" DESCRIPT="Usuario entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101025" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_USUARIO"/>
+  <source>METHOD SET_USER.
+  me-&gt;user = user.
+ENDMETHOD.</source>
+ </method>
+</CLAS>

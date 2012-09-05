@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-16"?>
+<FUGR AREA="ZBUGTACKER_CONVERSIONS" SPRAS="E" AREAT="Conversion Data for SAPBugTracker">
+ <functionGroupDocumentation/>
+ <mainprogram NAME="SAPLZBUGTACKER_CONVERSIONS" VARCL="X" DBAPL="S" DBNA="D$" SUBC="F" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20101225" VERN="000001" RMAND="001" RLOAD="E" FIXPT="X" SDATE="20110124" STIME="231726" IDATE="20101225" ITIME="210322" LDBNAME="D$S" UCCHECK="X">
+  <textPool/>
+  <source>*******************************************************************
+*   System-defined Include-files.                                 *
+*******************************************************************
+  INCLUDE LZBUGTACKER_CONVERSIONSTOP.        &quot; Global Data
+  INCLUDE LZBUGTACKER_CONVERSIONSUXX.        &quot; Function Modules
+
+*******************************************************************
+*   User-defined Include-files (if necessary).                    *
+*******************************************************************
+* INCLUDE LZBUGTACKER_CONVERSIONSF...        &quot; Subprograms
+* INCLUDE LZBUGTACKER_CONVERSIONSO...        &quot; PBO-Modules
+* INCLUDE LZBUGTACKER_CONVERSIONSI...        &quot; PAI-Modules</source>
+ </mainprogram>
+ <includeprograms>
+  <include NAME="LZBUGTACKER_CONVERSIONSTOP" DBAPL="S" DBNA="D$" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20101225" VERN="000001" RMAND="001" FIXPT="X" SDATE="20101225" STIME="210322" IDATE="20101225" ITIME="210322" LDBNAME="D$S" UCCHECK="X">
+   <include_source>FUNCTION-POOL ZBUGTACKER_CONVERSIONS.       &quot;MESSAGE-ID ..</include_source>
+  </include>
+ </includeprograms>
+ <functionmodules>
+  <functionmodule NAME="CONVERSION_EXIT_ZBTTS_OUTPUT" STEXT="TimeStamp Conversion Output">
+   <importing PARAMETER="INPUT" REFERENCE="X" TYP="CHAR14"/>
+   <exporting PARAMETER="OUTPUT" REFERENCE="X" TYP="CHAR19"/>
+   <documentation PARAMETER="INPUT" KIND="P" STEXT="Text field length 14" INDEX=" 001"/>
+   <documentation PARAMETER="OUTPUT" KIND="P" STEXT="19 Characters" INDEX=" 002"/>
+   <fm_source_new>TYPES: BEGIN OF ltype_timestamp,
+          year(4)    TYPE c,
+          month(2)   TYPE c,
+          day(2)     TYPE c,
+          hour(2)    TYPE c,
+          minutes(2) TYPE c,
+          seconds(2) TYPE c,
+         END   OF ltype_timestamp.
+
+  DATA: l_timestamp TYPE ltype_timestamp,
+        l_date      TYPE char10,
+        l_hour      TYPE char8.
+
+  IF NOT input IS INITIAL.
+    l_timestamp = input.
+
+    CONCATENATE l_timestamp-day  l_timestamp-month   l_timestamp-year    INTO l_date SEPARATED BY &apos;.&apos;.
+    CONCATENATE l_timestamp-hour l_timestamp-minutes l_timestamp-seconds INTO l_hour SEPARATED BY &apos;:&apos;.
+
+    CONCATENATE l_date l_hour INTO output SEPARATED BY space.
+  ENDIF.</fm_source_new>
+   <functionModuleDocumentation/>
+  </functionmodule>
+  <functionmodule NAME="CONVERSION_EXIT_ZBTTS_INPUT" STEXT="TimeStamp Conversion Output">
+   <importing PARAMETER="INPUT" TYP="CHAR19"/>
+   <exporting PARAMETER="OUTPUT" REFERENCE="X" TYP="CHAR14"/>
+   <documentation PARAMETER="INPUT" KIND="P" INDEX=" 001"/>
+   <documentation PARAMETER="OUTPUT" KIND="P" INDEX=" 002"/>
+   <fm_source>IF NOT input IS INITIAL.
+
+    TRANSLATE input USING &apos;. &apos;.
+    TRANSLATE input USING &apos;: &apos;.
+    CONDENSE input NO-GAPS.
+
+    CONCATENATE input+4(4)
+                input+2(2)
+                input(2)
+                input+8(6)
+                   INTO output.
+  ENDIF.</fm_source>
+   <functionModuleDocumentation/>
+  </functionmodule>
+ </functionmodules>
+</FUGR>
