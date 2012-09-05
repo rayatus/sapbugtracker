@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-16"?>
+<CLAS CLSNAME="ZCA_TRANSPORT_PERSIST" VERSION="1" LANGU="E" DESCRIPT="Agent Transport Persist" UUID="DF3C439AA02021F19291080027E6C24E" CATEGORY="00" EXPOSURE="0" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDON="20101225" CHGDANYON="00000000" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="701" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 " REFCLSNAME="ZCB_TRANSPORT_PERSIST">
+ <publicSection>class ZCA_TRANSPORT_PERSIST definition
+  public
+  inheriting from ZCB_TRANSPORT_PERSIST
+  final
+  create private .
+
+*&quot;* public components of class ZCA_TRANSPORT_PERSIST
+*&quot;* do not include other source files here!!!
+public section.
+
+  class-data AGENT type ref to ZCA_TRANSPORT_PERSIST read-only .
+
+  class-methods CLASS_CONSTRUCTOR .</publicSection>
+ <protectedSection>*&quot;* protected components of class ZCA_TRANSPORT_PERSIST
+*&quot;* do not include other source files here!!!
+protected section.</protectedSection>
+ <privateSection>*&quot;* private components of class ZCA_TRANSPORT_PERSIST
+*&quot;* do not include other source files here!!!
+private section.</privateSection>
+ <localImplementation>*&quot;* local class implementation for public class
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes</localImplementation>
+ <localTypes>*&quot;* use this source file for any type declarations (class
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <attribute CLSNAME="ZCA_TRANSPORT_PERSIST" CMPNAME="AGENT" VERSION="1" LANGU="E" DESCRIPT="Class Agent - Singleton" EXPOSURE="2" STATE="1" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDON="20101225" ATTDECLTYP="1" ATTRDONLY="X" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCA_TRANSPORT_PERSIST" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <inheritance CLSNAME="ZCA_TRANSPORT_PERSIST" REFCLSNAME="ZCB_TRANSPORT_PERSIST" VERSION="1" STATE="1" AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDON="20101225"/>
+ <method CLSNAME="ZCA_TRANSPORT_PERSIST" CMPNAME="CLASS_CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="Class Constructor" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDON="20101225" MTDTYPE="2" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <source>method CLASS_CONSTRUCTOR.
+***BUILD 051401
+************************************************************************
+* Purpose        : Initialize the &apos;class&apos;.
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : Singleton is created.
+*
+* OO Exceptions  : -
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 1999-09-20   : (OS) Initial Version
+* - 2000-03-06   : (BGR) 2.0 modified REGISTER_CLASS_AGENT
+************************************************************************
+* GENERATED: Do not modify
+************************************************************************
+
+  create object AGENT.
+
+  call method AGENT-&gt;REGISTER_CLASS_AGENT
+    exporting
+      I_CLASS_NAME          = &apos;ZCL_TRANSPORT_PERSIST&apos;
+      I_CLASS_AGENT_NAME    = &apos;ZCA_TRANSPORT_PERSIST&apos;
+      I_CLASS_GUID          = &apos;DF3C439AA02015F19291080027E6C24E&apos;
+      I_CLASS_AGENT_GUID    = &apos;DF3C439AA02021F19291080027E6C24E&apos;
+      I_AGENT               = AGENT
+      I_STORAGE_LOCATION    = &apos;ZBT_TRANSPORTER&apos;
+      I_CLASS_AGENT_VERSION = &apos;2.0&apos;.
+
+           &quot;CLASS_CONSTRUCTOR
+endmethod.</source>
+ </method>
+</CLAS>

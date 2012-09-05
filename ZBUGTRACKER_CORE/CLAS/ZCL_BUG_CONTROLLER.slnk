@@ -1,0 +1,1429 @@
+<?xml version="1.0" encoding="utf-16"?>
+<CLAS CLSNAME="ZCL_BUG_CONTROLLER" VERSION="1" LANGU="E" DESCRIPT="Bug Controller" UUID="DF3B77A5E9941FF1928D080027E6C24E" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20100329" CHANGEDON="20120903" CHGDANYON="00000000" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="701" CLSBCCAT="00" WITH_UNIT_TESTS="X" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+ <friends CLSNAME="ZCL_BUG_CONTROLLER" REFCLSNAME="ZCL_PRODUCTO_CONTROLLER" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="BCUSER" CREATEDON="20100518" CHANGEDON="00000000"/>
+ <publicSection>class ZCL_BUG_CONTROLLER definition
+  public
+  create public
+
+  global friends ZCL_PRODUCTO_CONTROLLER .
+
+public section.
+*&quot;* public components of class ZCL_BUG_CONTROLLER
+*&quot;* do not include other source files here!!!
+
+  class-methods CREATE
+    importing
+      !BUG type ref to ZCL_BUG
+    raising
+      ZCX_CREATE_EXCEPTION
+      ZCX_VALIDATE_EXCEPTION .
+  class-methods DELETE
+    importing
+      !BUG type ref to ZCL_BUG
+    raising
+      ZCX_DELETE_EXCEPTION .
+  class-methods ENTITY_TO_STRUCTURE
+    importing
+      !ENTITY type ref to ZCL_BUG
+    returning
+      value(STRUCTURE) type ZBT_BUG .
+  class-methods EXIST
+    importing
+      !BUG type ref to ZCL_BUG
+    returning
+      value(RETURN) type FLAG .
+  class-methods FIND_BY_KEY
+    importing
+      !ID type ZBT_ID_BUG
+      !PRODUCTO type ref to ZCL_PRODUCTO
+    returning
+      value(BUG) type ref to ZCL_BUG
+    raising
+      ZCX_NOT_FOUND_EXCEPTION .
+  class-methods NEXT_ID
+    importing
+      !PRODUCTO type ref to ZCL_PRODUCTO
+      !BUGTYPE type ref to ZCL_BUGTYPE optional
+    returning
+      value(RETURN) type ZBT_BUG-BUG .
+  class-methods UPDATE
+    importing
+      !BUG type ref to ZCL_BUG
+    raising
+      ZCX_UPDATE_EXCEPTION
+      ZCX_VALIDATE_EXCEPTION .
+  class-methods VALIDATE_ON_CREATE
+    importing
+      !BUG type ref to ZCL_BUG
+    raising
+      ZCX_VALIDATE_EXCEPTION .
+  class-methods VALIDATE_ON_DELETE
+    importing
+      !BUG type ref to ZCL_BUG
+    raising
+      ZCX_VALIDATE_EXCEPTION .
+  class-methods VALIDATE_ON_UPDATE
+    importing
+      !BUG type ref to ZCL_BUG
+    raising
+      ZCX_VALIDATE_EXCEPTION .
+  class-methods STRUCTURE_TO_ENTITY
+    importing
+      !STRUCTURE type ZBT_BUG
+    changing
+      value(ENTITY) type ref to ZCL_BUG .
+  class-methods LOCK
+    importing
+      !BUG type ref to ZCL_BUG .
+  class-methods UNLOCK
+    importing
+      !BUG type ref to ZCL_BUG .
+  class-methods EQUAL
+    importing
+      !BUG1 type ref to ZCL_BUG
+      !BUG2 type ref to ZCL_BUG
+    returning
+      value(EQUAL) type FLAG .
+  class-methods SEARCH
+    importing
+      !BUG type ZBT_BUG_RANGE optional
+      !BUGSTYPE type ZBT_BUGSTYPE_RANGE optional
+      !BUGTYPE type ZBT_BUGTYPE_RANGE optional
+      !COMPONENTE type ZBT_COMPONENTE_RANGE optional
+      !DEADLINE type ZBT_DATS_RANGE optional
+      !ESTADO type ZBT_ESTADO_RANGE optional
+      !HORAS_ESTIMADAS type ZBT_HORAS_RANGE optional
+      !HORAS_REALES type ZBT_HORAS_RANGE optional
+      !PRODUCTO type ZBT_PRODUCTO_RANGE optional
+      !RESUMEN type ZBT_TEXT_RANGE optional
+      !CREADO type ZBT_TIMESTAMP_RANGE optional
+      !REPORTER type ZBT_USER_RANGE optional
+      !DEVELOPER type ZBT_USER_RANGE optional
+      !ASSIGNED type ZBT_USER_RANGE optional
+      !TESTER type ZBT_USER_RANGE optional
+      !FINALIZADO type ZBT_TIMESTAMP_RANGE optional
+      !AEDAT type ZBT_TIMESTAMP_RANGE optional
+      !AENAM type ZBT_USER_RANGE optional
+      value(MAX_ROWS) type I optional
+    returning
+      value(RETURN) type ZBT_BUGS .</publicSection>
+ <protectedSection>protected section.
+*&quot;* protected components of class ZCL_BUG_CONTROLLER
+*&quot;* do not include other source files here!!!
+
+  class-methods ENTITY_TO_PERSIST
+    importing
+      !ENTITY type ref to ZCL_BUG
+    changing
+      value(PERSIST) type ref to ZCL_BUG_PERSIST .
+  class-methods FIND_NEXT_BUGS
+    importing
+      !BUG type ref to ZCL_BUG
+    returning
+      value(RESULT) type ZBT_BUGS .
+  class-methods FIND_PREV_BUGS
+    importing
+      !BUG type ref to ZCL_BUG
+    returning
+      value(RESULT) type ZBT_BUGS .
+  class-methods PERSIST_TO_ENTITY
+    importing
+      !PERSIST type ref to ZCL_BUG_PERSIST
+    returning
+      value(ENTITY) type ref to ZCL_BUG .</protectedSection>
+ <privateSection>private section.
+*&quot;* private components of class ZCL_BUG_CONTROLLER
+*&quot;* do not include other source files here!!!
+
+  class-data BUGS_BUFFER type ZBT_BUGS .
+
+  class-methods EQUAL_TAGS
+    importing
+      !BUG1 type ref to ZCL_BUG
+      !BUG2 type ref to ZCL_BUG
+    returning
+      value(EQUAL) type FLAG .</privateSection>
+ <localImplementation>*&quot;* local class implementation for public class
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes</localImplementation>
+ <localTypes>*&quot;* use this source file for any type declarations (class
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <attribute CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="BUGS_BUFFER" VERSION="1" LANGU="E" DESCRIPT="Bugs" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20110415" CHANGEDON="00000000" ATTDECLTYP="1" ATTEXPVIRT="0" TYPTYPE="1" TYPE="ZBT_BUGS" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="702" TYPESRC_LENG="0 "/>
+ <method CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="CREATE" VERSION="1" LANGU="E" DESCRIPT="Persistent ago a bug" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100331" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="CREATE" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100331" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <exception CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="CREATE" SCONAME="ZCX_CREATE_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Create Exception" MTDTYPE="0" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100331" CHANGEDBY="BCUSER" CHANGEDON="20100517"/>
+  <exception CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="CREATE" SCONAME="ZCX_VALIDATE_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Error de validación" MTDTYPE="0" EDITORDER="2 " AUTHOR="BCUSER" CREATEDON="20100406" CHANGEDBY="BCUSER" CHANGEDON="20100517"/>
+  <source>METHOD create.
+
+  DATA: lo_bug_persist        TYPE REF TO zcl_bug_persist,
+        l_timestamp           TYPE timestamp,
+        l_creado              TYPE zbt_bug-creado,
+        l_aedat               TYPE zbt_bug-aedat,
+        lo_producto           TYPE REF TO zcl_producto,
+        lo_bugtype            TYPE REF TO zcl_bugtype,
+        l_str_bug             TYPE zbt_bug,
+        lt_attachements       TYPE zbt_attachements,
+        lt_comentarios        TYPE zbt_comentarios,
+        lt_sections           TYPE zbt_bugsections,
+        lo_usuario            TYPE REF TO zcl_usuario,
+        lt_transportes        TYPE zbt_transport_tbl,
+        lo_transaccion        TYPE REF TO zcl_transaction_service,
+        lo_validate_exception TYPE REF TO zcx_validate_exception,
+        lt_tags               TYPE zbt_bug_tag_tbl,
+        lo_exception          TYPE REF TO cx_root.
+
+  FIELD-SYMBOLS: &lt;attachement&gt; TYPE LINE OF zbt_attachements,
+                 &lt;comentario&gt;  TYPE LINE OF zbt_comentarios,
+                 &lt;section&gt;     TYPE LINE OF zbt_bugsections,
+                 &lt;transporte&gt;  TYPE LINE OF zbt_transport_tbl,
+                 &lt;tag&gt;         TYPE LINE OF zbt_bug_tag_tbl.
+
+* On create, get next Id
+  l_str_bug-bug = bug-&gt;get_id( ).
+  IF l_str_bug-bug IS INITIAL.
+    lo_producto   = bug-&gt;get_producto( ).
+    lo_bugtype    = bug-&gt;get_bug_type( ).
+    l_str_bug-bug = zcl_bug_controller=&gt;next_id( producto = lo_producto
+                                                 bugtype  = lo_bugtype ).
+    bug-&gt;set_id( l_str_bug-bug ).
+  ENDIF.
+
+* Set CreateTime
+  IF l_str_bug-creado IS INITIAL.
+    GET TIME STAMP FIELD l_timestamp.
+    l_creado = l_timestamp.
+    bug-&gt;set_creado( l_creado ).
+  ENDIF.
+
+* Antes de crear procedemos a validar
+  validate_on_create( bug ).
+
+  l_str_bug = entity_to_structure( bug ).
+
+  TRY.
+      CREATE OBJECT lo_transaccion.
+      lo_transaccion-&gt;start( ).
+
+      CALL METHOD zca_bug_persist=&gt;agent-&gt;create_persistent
+        EXPORTING
+          i_bug        = l_str_bug-bug
+          i_bugstype   = l_str_bug-bugstype
+          i_bugtype    = l_str_bug-bugtype
+          i_componente = l_str_bug-componente
+          i_creado     = l_str_bug-creado
+          i_deadline   = l_str_bug-deadline
+          i_developer  = l_str_bug-developer
+          i_estado     = l_str_bug-estado
+          i_finalizado = l_str_bug-finalizado
+          i_horas_est  = l_str_bug-horas_est
+          i_horas_rea  = l_str_bug-horas_rea
+          i_producto   = l_str_bug-producto
+          i_reporter   = l_str_bug-reporter
+          i_resumen    = l_str_bug-resumen
+          i_tester     = l_str_bug-tester
+*          i_assigned   = l_str_bug-assigned
+        RECEIVING
+          result       = lo_bug_persist.
+*     Creamos los attachements
+      lt_attachements[] = bug-&gt;get_attachements( ).
+      LOOP AT lt_attachements ASSIGNING &lt;attachement&gt;.
+        zcl_attachement_controller=&gt;create( &lt;attachement&gt; ).
+      ENDLOOP.
+*     Creamos los comentarios
+      lt_comentarios[] = bug-&gt;get_comentarios( no_section_comments = &apos;X&apos; ).
+      LOOP AT lt_comentarios ASSIGNING &lt;comentario&gt;.
+        zcl_comment_controller=&gt;create( &lt;comentario&gt;-oref ).
+      ENDLOOP.
+*     Creamos las secciones
+      lt_sections[] = bug-&gt;get_sections( ) .
+      LOOP AT lt_sections ASSIGNING &lt;section&gt;.
+        zcl_bugsection_controller=&gt;create( &lt;section&gt;-oref ).
+      ENDLOOP.
+*     Creamos los transportes
+      lt_transportes[] = bug-&gt;get_transports( ).
+      LOOP AT lt_transportes ASSIGNING &lt;transporte&gt;.
+        zcl_transport_controller=&gt;create( &lt;transporte&gt;-oref ).
+      ENDLOOP.
+*     Creamos los Tags
+      lt_tags[] = bug-&gt;get_tags( ).
+      LOOP AT lt_tags ASSIGNING &lt;tag&gt;.
+        zcl_bug_tag_controller=&gt;create( &lt;tag&gt;-oref ).
+      ENDLOOP.
+
+*     Set ModifyDate
+      GET TIME STAMP FIELD l_timestamp.
+      l_aedat = l_aedat.
+      bug-&gt;set_aedat( l_aedat ).
+*     Set ModifyUser
+      lo_usuario = zcl_usuario_controller=&gt;find_by_key( ).
+      bug-&gt;set_aenam( lo_usuario ).
+
+      lo_transaccion-&gt;end( ).
+
+    CATCH cx_os_object_existing INTO lo_exception.
+
+      RAISE EXCEPTION TYPE zcx_create_exception
+        EXPORTING
+          textid   = zcx_create_exception=&gt;zcx_create_exception
+          previous = lo_exception.
+  ENDTRY.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="DELETE" VERSION="1" LANGU="E" DESCRIPT="Bug Deletes a persistence layer" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100518" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="DELETE" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100518" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <exception CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="DELETE" SCONAME="ZCX_DELETE_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Delete Exception" MTDTYPE="0" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100518" CHANGEDON="00000000"/>
+  <source>METHOD delete.
+
+  DATA: lo_bug_persist TYPE REF TO zcl_bug_persist,
+        lo_producto    TYPE REF TO zcl_producto,
+        l_id_bug       TYPE zbt_bug-bug,
+        l_id_producto  TYPE zbt_producto-producto,
+        lt_attachements TYPE zbt_attachements,
+        lt_comentarios  TYPE zbt_comentarios,
+        lt_sections     TYPE zbt_bugsections,
+        lt_transportes  TYPE ZBT_TRANSPORT_TBL,
+        lo_transaccion  TYPE REF TO zcl_transaction_service,
+        lt_tags               TYPE zbt_bug_tag_tbl,
+        lo_exception   TYPE REF TO cx_root.
+
+  FIELD-SYMBOLS:   &lt;attachement&gt; TYPE LINE OF zbt_attachements,
+                   &lt;comentario&gt;  TYPE LINE OF zbt_comentarios,
+                   &lt;section&gt;     TYPE LINE OF zbt_bugsections,
+                   &lt;tag&gt;         TYPE LINE OF zbt_bug_tag_tbl,
+                   &lt;transporte&gt;  TYPE LINE OF ZBT_TRANSPORT_TBL.
+
+  validate_on_delete( bug ).
+
+  l_id_bug      = bug-&gt;get_id( ).
+  lo_producto   = bug-&gt;get_producto( ).
+  l_id_producto = lo_producto-&gt;get_id( ).
+
+
+  CREATE OBJECT lo_transaccion.
+  lo_transaccion-&gt;start( ).
+
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Borramos el resto de objetos
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Borramos los attachements
+  lt_attachements[] = bug-&gt;get_attachements( ).
+  LOOP AT lt_attachements ASSIGNING &lt;attachement&gt;.
+    zcl_attachement_controller=&gt;delete( &lt;attachement&gt; ).
+  ENDLOOP.
+* Borramos los comentarios
+  lt_comentarios[] = bug-&gt;get_comentarios( NO_SECTION_COMMENTS = space ).
+  LOOP AT lt_comentarios ASSIGNING &lt;comentario&gt;.
+    zcl_comment_controller=&gt;delete( &lt;comentario&gt;-oref ).
+  ENDLOOP.
+* Borramos las secciones
+  lt_sections[] = bug-&gt;get_sections( ) .
+  LOOP AT lt_sections ASSIGNING &lt;section&gt;.
+    zcl_bugsection_controller=&gt;delete( &lt;section&gt;-oref ).
+  ENDLOOP.
+* Borramos los transportes
+  lt_transportes[] = bug-&gt;get_transports( ).
+  LOOP AT lt_transportes ASSIGNING &lt;transporte&gt;.
+    zcl_transport_controller=&gt;delete( &lt;transporte&gt;-oref ).
+  ENDLOOP.
+* Borramos los tags
+  lt_tags[] = bug-&gt;get_tags( ).
+  LOOP AT lt_tags ASSIGNING &lt;tag&gt;.
+    zcl_bug_tag_controller=&gt;delete( &lt;tag&gt;-oref ).
+  ENDLOOP.
+
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Borramos de la persistencia
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  zca_bug_persist=&gt;agent-&gt;delete_persistent(
+    i_bug           = l_id_bug
+    i_producto      = l_id_producto
+  ).
+
+  lo_transaccion-&gt;end( ).
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="ENTITY_TO_PERSIST" VERSION="1" LANGU="E" DESCRIPT="Spend Entity to Persist" EXPOSURE="1" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100331" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="ENTITY_TO_PERSIST" SCONAME="ENTITY" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100331" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="ENTITY_TO_PERSIST" SCONAME="PERSIST" VERSION="1" LANGU="E" DESCRIPT="Bug Persistencia" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100401" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="2" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_BUG_PERSIST"/>
+  <source>METHOD entity_to_persist.
+
+  DATA: l_structure TYPE zbt_bug.
+
+  l_structure = entity_to_structure( entity ).
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Las clave de un objeto de persistencia NO se pueden cambiar
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*  persist-&gt;set_bug( l_structure-bug ).
+*  persist-&gt;set_producto( l_structure-producto ).
+
+  persist-&gt;set_bugstype( l_structure-bugstype ).
+  persist-&gt;set_bugtype( l_structure-bugtype ).
+  persist-&gt;set_componente( l_structure-componente ).
+  persist-&gt;set_creado( l_structure-creado ).
+  persist-&gt;set_deadline( l_structure-deadline ).
+  persist-&gt;set_developer( l_structure-developer ).
+  persist-&gt;set_assigned( l_structure-assigned ).
+  persist-&gt;set_estado( l_structure-estado ).
+  persist-&gt;set_finalizado( l_structure-finalizado ).
+  persist-&gt;set_horas_est( l_structure-horas_est ).
+  persist-&gt;set_horas_rea( l_structure-horas_rea ).
+  persist-&gt;set_reporter( l_structure-reporter ).
+  persist-&gt;set_resumen( l_structure-resumen ).
+  persist-&gt;set_tester( l_structure-tester ).
+  persist-&gt;set_aedat( l_structure-aedat ).
+  persist-&gt;set_aenam( l_structure-aenam ).
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="ENTITY_TO_STRUCTURE" VERSION="1" LANGU="E" DESCRIPT="Entity to Structure" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100401" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="ENTITY_TO_STRUCTURE" SCONAME="ENTITY" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100401" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="ENTITY_TO_STRUCTURE" SCONAME="STRUCTURE" VERSION="1" LANGU="E" DESCRIPT="Bug Structure" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100401" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_BUG"/>
+  <source>METHOD entity_to_structure.
+  DATA: lo_producto   TYPE REF TO zcl_producto,
+        lo_usuario    TYPE REF TO zcl_usuario,
+        lo_componente TYPE REF TO zcl_componente,
+        lo_bugtype    TYPE REF TO zcl_bugtype,
+        lo_bugstype   TYPE REF TO zcl_bugstype,
+        lo_estado     TYPE REF TO zcl_estado.
+
+  structure-bug = entity-&gt;get_id( ).
+
+  lo_producto = entity-&gt;get_producto( ).
+  structure-producto = lo_producto-&gt;get_id( ).
+
+  structure-creado = entity-&gt;get_creado( ).
+
+  structure-finalizado = entity-&gt;get_finalizado( ).
+
+  structure-deadline = entity-&gt;get_deadline( ).
+
+  structure-aedat = entity-&gt;get_aedat( ).
+  lo_usuario = entity-&gt;get_aenam( ).
+  IF lo_usuario IS BOUND.
+    structure-aenam = lo_usuario-&gt;get_id( ).
+  ENDIF.
+  CLEAR lo_usuario.
+
+  lo_usuario = entity-&gt;get_reporter( ).
+  IF lo_usuario IS BOUND.
+    structure-reporter = lo_usuario-&gt;get_id( ).
+  ENDIF.
+  CLEAR lo_usuario.
+
+  lo_usuario = entity-&gt;get_developer( ).
+  IF lo_usuario IS BOUND.
+    structure-developer = lo_usuario-&gt;get_id( ).
+  ENDIF.
+  CLEAR lo_usuario.
+
+  lo_usuario = entity-&gt;get_assigned( ).
+  IF lo_usuario IS BOUND.
+    structure-assigned = lo_usuario-&gt;get_id( ).
+  ENDIF.
+  CLEAR lo_usuario.
+
+  lo_usuario = entity-&gt;get_tester( ).
+  IF lo_usuario IS BOUND.
+    structure-tester = lo_usuario-&gt;get_id( ).
+  ENDIF.
+  CLEAR lo_usuario.
+
+  structure-resumen = entity-&gt;get_resumen( ).
+
+  lo_estado = entity-&gt;get_estado( ).
+  IF lo_estado IS BOUND.
+    structure-estado = lo_estado-&gt;get_id( ).
+  ENDIF.
+
+  structure-horas_est = entity-&gt;get_horas_estimadas( ).
+  structure-horas_rea = entity-&gt;get_horas_reales( ).
+
+  lo_componente = entity-&gt;get_componente( ).
+  IF lo_componente IS BOUND.
+    structure-componente = lo_componente-&gt;get_id( ).
+  ENDIF.
+
+  lo_bugtype = entity-&gt;get_bug_type( ).
+  IF lo_bugtype IS BOUND.
+    structure-bugtype = lo_bugtype-&gt;get_id( ).
+  ENDIF.
+
+  lo_bugstype = entity-&gt;get_bug_subtype( ).
+  IF lo_bugstype IS BOUND.
+    structure-bugstype = lo_bugstype-&gt;get_id( ).
+  ENDIF.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="EQUAL" VERSION="1" LANGU="E" DESCRIPT="2 Bug Entities are equal?" EXPOSURE="2" STATE="1" EDITORDER="18 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101225" CHANGEDON="20120903" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="EQUAL" SCONAME="BUG1" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101225" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="EQUAL" SCONAME="BUG2" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101225" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="EQUAL" SCONAME="EQUAL" VERSION="1" LANGU="E" DESCRIPT="General Flag" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101225" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="FLAG"/>
+  <source>METHOD equal.
+
+
+
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="EQUAL_TAGS" VERSION="1" LANGU="E" DESCRIPT="Tags are Equal?" EXPOSURE="0" STATE="1" EDITORDER="20 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110911" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="EQUAL_TAGS" SCONAME="BUG1" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110911" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="EQUAL_TAGS" SCONAME="BUG2" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110911" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="EQUAL_TAGS" SCONAME="EQUAL" VERSION="1" LANGU="E" DESCRIPT="General Flag" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110911" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="FLAG"/>
+  <source>METHOD equal_tags.
+  DATA: l_counter1 TYPE i,
+        l_counter2 TYPE i,
+        lt_tags1   TYPE zbt_bug_tag_tbl,
+        lt_tags2   TYPE zbt_bug_tag_tbl,
+        l_tag1     TYPE LINE OF zbt_bug_tag_tbl,
+        l_tag2     TYPE LINE OF zbt_bug_tag_tbl.
+
+
+  lt_tags1 = bug1-&gt;get_tags( ).
+  lt_tags2 = bug2-&gt;get_tags( ).
+  SORT: lt_tags1, lt_tags2.
+  DESCRIBE TABLE lt_tags1 LINES l_counter1.
+  DESCRIBE TABLE lt_tags2 LINES l_counter2.
+  IF l_counter1 &lt;&gt; l_counter2.
+    equal = abap_false.
+  ELSE.
+    CLEAR l_counter2.
+    DO l_counter1 TIMES.
+      ADD 1 TO l_counter2.
+      READ TABLE lt_tags1 INDEX l_counter2 INTO l_tag1.
+      READ TABLE lt_tags2 INDEX l_counter2 INTO l_tag2.
+      IF zcl_bug_tag_controller=&gt;equal( tag1 = l_tag1-oref
+                                        tag2 = l_tag2-oref ) = abap_false.
+        equal = abap_false.
+        EXIT.
+      ENDIF.
+    ENDDO.
+  ENDIF.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="EXIST" VERSION="1" LANGU="E" DESCRIPT="Check if exist" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="EXIST" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="EXIST" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="General Flag" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="FLAG"/>
+  <source>method EXIST.
+  DATA: l_id        TYPE zbt_bug-bug,
+        lo_producto TYPE REF TO zcl_producto.
+
+  TRY .
+      l_id        = bug-&gt;get_id( ).
+      lo_producto = bug-&gt;get_producto( ).
+      zcl_bug_controller=&gt;find_by_key( id       = l_id
+                                       producto = lo_producto ).
+      return = &apos;X&apos;.
+    CATCH cx_root.
+      return = space.
+
+  ENDTRY.
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="FIND_BY_KEY" VERSION="1" LANGU="E" DESCRIPT="Retrieves a Bug from its key" EXPOSURE="2" STATE="1" EDITORDER="6 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100329" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="FIND_BY_KEY" SCONAME="ID" VERSION="1" LANGU="E" DESCRIPT="Bug" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100329" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_ID_BUG"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="FIND_BY_KEY" SCONAME="PRODUCTO" VERSION="1" LANGU="E" DESCRIPT="Producto Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100329" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_PRODUCTO"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="FIND_BY_KEY" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100329" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <exception CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="FIND_BY_KEY" SCONAME="ZCX_NOT_FOUND_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Not Found" MTDTYPE="0" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100329" CHANGEDBY="BCUSER" CHANGEDON="20100517"/>
+  <source>method FIND_BY_KEY.
+
+  DATA: lo_bug_agent    TYPE REF TO zca_bug_persist,
+        lo_bug_persist  TYPE REF TO zcl_bug_persist,
+        lo_exception    TYPE REF TO cx_root,
+        l_id_producto   TYPE zbt_producto-producto.
+
+  l_id_producto = producto-&gt;get_id( ).
+  TRY.
+*     Buscamos el objeto en la capa de persistencia
+      lo_bug_agent = zca_bug_persist=&gt;agent.
+      CALL METHOD lo_bug_agent-&gt;get_persistent
+        EXPORTING
+          i_bug      = id
+          i_producto = l_id_producto
+        RECEIVING
+          result     = lo_bug_persist.
+
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Mapeamos contra un Entity
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      bug = persist_to_entity( lo_bug_persist ).
+
+    CATCH cx_root INTO lo_exception.
+      RAISE EXCEPTION TYPE zcx_not_found_exception
+        EXPORTING
+          textid   = zcx_not_found_exception=&gt;zcx_not_found_exception
+          previous = lo_exception.
+  ENDTRY.
+
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="FIND_NEXT_BUGS" VERSION="1" LANGU="E" DESCRIPT="Retrieves bugs persistence Next" EXPOSURE="1" STATE="1" EDITORDER="7 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="FIND_NEXT_BUGS" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="FIND_NEXT_BUGS" SCONAME="RESULT" VERSION="1" LANGU="E" DESCRIPT="Bugs" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_BUGS"/>
+  <source>METHOD find_next_bugs.
+  DATA:   lo_qm                  TYPE REF TO if_os_query_manager,
+          lo_q                   TYPE REF TO if_os_query,
+          lo_producto            TYPE REF TO zcl_producto,
+          lo_bug                 TYPE REF TO zcl_bug,
+          l_id_producto          TYPE zbt_producto-producto,
+          l_id_bug               TYPE zbt_id_bug,
+          l_result               TYPE LINE OF zbt_bugs,
+          lt_bughier_persist     TYPE osreftab,
+          l_bug_buffer           TYPE LINE OF zbt_bugs,
+          lo_bughier_persist     TYPE REF TO zcl_bughier_persist.
+
+  FIELD-SYMBOLS: &lt;osref&gt; TYPE osref.
+
+  l_id_bug      = bug-&gt;get_id( ).
+  lo_producto   = bug-&gt;get_producto( ).
+  l_id_producto = lo_producto-&gt;get_id( ).
+
+  READ TABLE bugs_buffer WITH TABLE KEY producto_id = l_id_producto
+                                        bug_id      = l_id_bug
+                                        INTO l_bug_buffer.
+  IF NOT sy-subrc IS INITIAL.
+    l_bug_buffer-oref        = bug.
+    l_bug_buffer-producto_id = l_id_producto.
+    l_bug_buffer-bug_id      = l_id_bug.
+    INSERT l_bug_buffer INTO TABLE bugs_buffer.
+  ENDIF.
+
+* Montamos una query para obtener los siguientes bugs al indicado
+  lo_qm = cl_os_system=&gt;get_query_manager( ).
+  lo_q  = lo_qm-&gt;create_query( i_filter = &apos;PRODUCTO = PAR1 AND BUG = PAR2 &apos; ).
+
+  lt_bughier_persist[] = zca_bughier_persist=&gt;agent-&gt;if_os_ca_persistency~get_persistent_by_query(
+                 i_query   = lo_q
+                 i_par1    = l_id_producto
+                 i_par2    = l_id_bug ).
+  LOOP AT lt_bughier_persist ASSIGNING &lt;osref&gt;.
+    lo_bughier_persist ?= &lt;osref&gt;.
+    l_bug_buffer-bug_id      = l_result-bug_id      = lo_bughier_persist-&gt;get_next_bug( ).
+    l_bug_buffer-producto_id = l_result-producto_id = l_id_producto.
+
+    READ TABLE bugs_buffer WITH TABLE KEY producto_id = l_result-producto_id
+                                          bug_id      = l_result-bug_id
+                                          INTO l_bug_buffer.
+    IF sy-subrc IS INITIAL.
+      l_result-oref = l_bug_buffer-oref.
+    ELSE.
+
+      l_bug_buffer-oref = l_result-oref = zcl_bug_controller=&gt;find_by_key( id       = l_result-bug_id
+                                                                           producto = lo_producto ).
+      INSERT l_bug_buffer INTO TABLE bugs_buffer[].
+    ENDIF.
+
+
+    INSERT l_result INTO TABLE result[].
+  ENDLOOP.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="FIND_PREV_BUGS" VERSION="1" LANGU="E" DESCRIPT="Retrieves bugs persistence Past" EXPOSURE="1" STATE="1" EDITORDER="8 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="FIND_PREV_BUGS" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="FIND_PREV_BUGS" SCONAME="RESULT" VERSION="1" LANGU="E" DESCRIPT="Bugs" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_BUGS"/>
+  <source>METHOD find_prev_bugs.
+  DATA:   lo_qm                  TYPE REF TO if_os_query_manager,
+          lo_q                   TYPE REF TO if_os_query,
+          lo_producto            TYPE REF TO zcl_producto,
+          lo_bug                 TYPE REF TO zcl_bug,
+          l_id_producto          TYPE zbt_producto-producto,
+          l_id_bug               TYPE zbt_id_bug,
+          l_result               TYPE LINE OF zbt_bugs,
+          lt_bughier_persist     TYPE osreftab,
+          l_bug_buffer           TYPE LINE OF zbt_bugs,
+          lo_bughier_persist     TYPE REF TO zcl_bughier_persist.
+
+  FIELD-SYMBOLS: &lt;osref&gt; TYPE osref.
+
+  l_id_bug      = bug-&gt;get_id( ).
+  lo_producto   = bug-&gt;get_producto( ).
+  l_id_producto = lo_producto-&gt;get_id( ).
+
+  READ TABLE bugs_buffer WITH TABLE KEY producto_id = l_id_producto
+                                        bug_id      = l_id_bug
+                                        INTO l_bug_buffer.
+  IF NOT sy-subrc IS INITIAL.
+    l_bug_buffer-oref        = bug.
+    l_bug_buffer-producto_id = l_id_producto.
+    l_bug_buffer-bug_id      = l_id_bug.
+    INSERT l_bug_buffer INTO TABLE bugs_buffer.
+  ENDIF.
+
+* Montamos una query para obtener los bugs anteriores al indicado
+  lo_qm = cl_os_system=&gt;get_query_manager( ).
+  lo_q  = lo_qm-&gt;create_query( i_filter = &apos;PRODUCTO = PAR1 AND NEXT_BUG = PAR2 &apos; ).
+
+  lt_bughier_persist[] = zca_bughier_persist=&gt;agent-&gt;if_os_ca_persistency~get_persistent_by_query(
+                 i_query   = lo_q
+                 i_par1    = l_id_producto
+                 i_par2    = l_id_bug ).
+  LOOP AT lt_bughier_persist ASSIGNING &lt;osref&gt;.
+    lo_bughier_persist ?= &lt;osref&gt;.
+    l_bug_buffer-bug_id      = l_result-bug_id      = lo_bughier_persist-&gt;get_bug( ).
+    l_bug_buffer-producto_id = l_result-producto_id = l_id_producto.
+
+    READ TABLE bugs_buffer WITH TABLE KEY producto_id = l_result-producto_id
+                                          bug_id      = l_result-bug_id
+                                          INTO l_bug_buffer.
+    IF sy-subrc IS INITIAL.
+      l_result-oref = l_bug_buffer-oref.
+    ELSE.
+
+      l_bug_buffer-oref = l_result-oref = zcl_bug_controller=&gt;find_by_key( id       = l_result-bug_id
+                                                                           producto = lo_producto ).
+      INSERT l_bug_buffer INTO TABLE bugs_buffer[].
+    ENDIF.
+    INSERT l_result INTO TABLE result[].
+  ENDLOOP.
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="LOCK" VERSION="1" LANGU="E" DESCRIPT="Locks Bug" EXPOSURE="2" STATE="1" EDITORDER="16 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101225" CHANGEDON="20120903" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="LOCK" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101225" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <source>method LOCK.
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="NEXT_ID" VERSION="1" LANGU="E" DESCRIPT="Get the next number of Bug" EXPOSURE="2" STATE="1" EDITORDER="9 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100401" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="NEXT_ID" SCONAME="PRODUCTO" VERSION="1" LANGU="E" DESCRIPT="Producto Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100401" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_PRODUCTO"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="NEXT_ID" SCONAME="BUGTYPE" VERSION="1" LANGU="E" DESCRIPT="BugType Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100408" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUGTYPE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="NEXT_ID" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="Bug" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100401" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_BUG-BUG"/>
+  <source>method NEXT_ID.
+  DATA: l_number_range TYPE tnro-object.
+
+  l_number_range = producto-&gt;get_bug_number_range( ).
+  IF l_number_range IS INITIAL.
+    l_number_range = &apos;ZBT_BUGID&apos;. &quot;Default Number Range
+  ENDIF.
+
+  IF bugtype IS SUPPLIED AND bugtype-&gt;get_nrobj( ) IS NOT INITIAL.
+    l_number_range = bugtype-&gt;get_nrobj( ).
+  ENDIF.
+
+  CALL FUNCTION &apos;NUMBER_GET_NEXT&apos;
+    EXPORTING
+      nr_range_nr                   = &apos;1&apos;
+      object                        = l_number_range
+      quantity                      = &apos;1&apos;
+*     TOYEAR                        = &apos;0000&apos;
+   IMPORTING
+     number                        = return
+*     QUANTITY                      =
+*     RETURNCODE                    =
+*   EXCEPTIONS
+*     INTERVAL_NOT_FOUND            = 1
+*     NUMBER_RANGE_NOT_INTERN       = 2
+*     OBJECT_NOT_FOUND              = 3
+*     QUANTITY_IS_0                 = 4
+*     QUANTITY_IS_NOT_1             = 5
+*     INTERVAL_OVERFLOW             = 6
+*     BUFFER_OVERFLOW               = 7
+*     OTHERS                        = 8
+            .
+  IF sy-subrc &lt;&gt; 0.
+* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="PERSIST_TO_ENTITY" VERSION="1" LANGU="E" DESCRIPT="Spend to Persist Entity" EXPOSURE="1" STATE="1" EDITORDER="10 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100331" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="PERSIST_TO_ENTITY" SCONAME="PERSIST" VERSION="1" LANGU="E" DESCRIPT="Bug Persistencia" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100331" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG_PERSIST"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="PERSIST_TO_ENTITY" SCONAME="ENTITY" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100331" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <source>METHOD persist_to_entity.
+
+  DATA: l_usuario       TYPE xubname,
+        l_id_estado     TYPE zbt_id_estado,
+        l_id_bugtype    TYPE zbt_id_bugtype,
+        l_id_bugstype   TYPE zbt_bugstype,
+        l_id_bug        TYPE zbt_bug-bug,
+        l_id_producto   TYPE zbt_producto-producto,
+        l_id_componente TYPE zbt_id_componente,
+        l_resumen       TYPE zbt_resumen,
+        lo_bugstype     TYPE REF TO zcl_bugstype,
+        lo_bugtype      TYPE REF TO zcl_bugtype,
+        lo_producto     TYPE REF TO zcl_producto,
+        lo_usuario      TYPE REF TO zcl_usuario,
+        lo_componente   TYPE REF TO zcl_componente,
+        lo_estado       TYPE REF TO zcl_estado,
+        l_timestamp     TYPE zbt_erdat,
+        l_dats          TYPE sy-datum,
+        l_horas         TYPE zbt_horas_reales,
+        lt_bugs         TYPE zbt_bugs,
+        lt_sections     TYPE zbt_bugsections,
+        lt_transportes  TYPE zbt_transport_tbl,
+        lt_attachements TYPE zbt_attachements,
+        lt_comments     TYPE zbt_comentarios,
+        lt_tags         TYPE zbt_bug_tag_tbl.
+
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*     Mapeamos contra un entity
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  l_id_bug        = persist-&gt;get_bug( ).
+  l_id_producto   = persist-&gt;get_producto( ).
+  l_id_componente = persist-&gt;get_componente( ).
+
+  lo_producto   = zcl_producto_controller=&gt;find_by_key( l_id_producto ).
+  lo_componente = zcl_componente_controller=&gt;find_by_key( producto   = lo_producto
+                                                          id         = l_id_componente ).
+  CREATE OBJECT entity
+    EXPORTING
+      id         = l_id_bug
+      producto   = lo_producto
+      componente = lo_componente.
+
+  l_usuario = persist-&gt;get_developer( ).
+  IF NOT l_usuario IS INITIAL.
+    lo_usuario =  zcl_usuario_controller=&gt;find_by_key( l_usuario ).
+    entity-&gt;set_developer( lo_usuario ).
+  ENDIF.
+
+ l_usuario = persist-&gt;get_assigned( ).
+  IF NOT l_usuario IS INITIAL.
+    lo_usuario =  zcl_usuario_controller=&gt;find_by_key( l_usuario ).
+    entity-&gt;set_assigned( lo_usuario ).
+  ENDIF.
+
+  l_usuario = persist-&gt;get_tester( ).
+  IF NOT l_usuario IS INITIAL.
+    lo_usuario =  zcl_usuario_controller=&gt;find_by_key( l_usuario ).
+    entity-&gt;set_tester( lo_usuario ).
+  ENDIF.
+
+  l_usuario = persist-&gt;get_reporter( ).
+  IF NOT l_usuario IS INITIAL.
+    lo_usuario =  zcl_usuario_controller=&gt;find_by_key( l_usuario ).
+    entity-&gt;set_reporter( lo_usuario ).
+  ENDIF.
+
+  l_usuario = persist-&gt;get_aenam( ).
+  IF NOT l_usuario IS INITIAL.
+    lo_usuario =  zcl_usuario_controller=&gt;find_by_key( l_usuario ).
+    entity-&gt;set_aenam( lo_usuario ).
+  ENDIF.
+
+  l_id_componente = persist-&gt;get_componente( ).
+  IF NOT l_id_componente IS INITIAL.
+    lo_componente = zcl_componente_controller=&gt;find_by_key(
+                        id       = l_id_componente
+                        producto = lo_producto ).
+    entity-&gt;set_componente( lo_componente ).
+  ENDIF.
+
+  l_id_estado = persist-&gt;get_estado( ).
+  IF NOT l_id_estado IS INITIAL.
+    lo_estado = zcl_estado_controller=&gt;find_by_key( l_id_estado ).
+    entity-&gt;set_estado( lo_estado ).
+  ENDIF.
+
+  l_id_bugtype = persist-&gt;get_bugtype( ).
+  IF NOT l_id_bugtype IS INITIAL.
+    lo_bugtype = zcl_bugtype_controller=&gt;find_by_key( l_id_bugtype ).
+    entity-&gt;set_bug_type( lo_bugtype ).
+  ENDIF.
+
+  l_id_bugstype = persist-&gt;get_bugstype( ).
+  IF NOT l_id_bugstype IS INITIAL.
+    lo_bugstype = zcl_bug_subtype_controller=&gt;find_by_key( bugtype = lo_bugtype
+                                                           id = l_id_bugstype ).
+    entity-&gt;set_bug_subtype( lo_bugstype ).
+  ENDIF.
+
+  l_resumen = persist-&gt;get_resumen( ).
+  entity-&gt;set_resumen( l_resumen ).
+
+  l_timestamp = persist-&gt;get_creado( ).
+  entity-&gt;set_creado( l_timestamp ).
+
+  l_timestamp = persist-&gt;get_aedat( ).
+  entity-&gt;set_aedat( l_timestamp ).
+
+  l_dats = persist-&gt;get_deadline( ).
+  entity-&gt;set_deadline( l_dats ).
+
+  l_timestamp = persist-&gt;get_finalizado( ).
+  entity-&gt;set_finalizado( l_timestamp ).
+
+  l_horas = persist-&gt;get_horas_est( ).
+  entity-&gt;set_horas_estimadas( l_horas ).
+
+  l_horas = persist-&gt;get_horas_rea( ).
+  entity-&gt;set_horas_reales( l_horas ).
+
+  lt_bugs[] = find_next_bugs( entity ).
+  entity-&gt;set_next_bugs( lt_bugs ).
+
+  lt_bugs[] = find_prev_bugs( entity ).
+  entity-&gt;set_prev_bugs( lt_bugs ).
+
+  lt_attachements[] = zcl_attachement_controller=&gt;find_all_bug_attachements( entity ).
+  entity-&gt;set_attachements( lt_attachements[] ).
+
+  lt_comments[] = zcl_comment_controller=&gt;find_all_bug_comments( bug                 = entity
+                                                                 no_section_comments = &apos;X&apos; ).
+  entity-&gt;set_comentarios( lt_comments[] ).
+
+  lt_sections[] = zcl_bugsection_controller=&gt;find_all_bug_sections( entity ).
+  entity-&gt;set_sections( lt_sections[] ).
+
+  lt_transportes[] = zcl_transport_controller=&gt;find_all_bug_transports( entity ).
+  entity-&gt;set_transports( lt_transportes[] ).
+
+  lt_tags[] = zcl_bug_tag_controller=&gt;find_bug_tags( entity ).
+  entity-&gt;set_tags( lt_tags[] ).
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" VERSION="1" LANGU="E" DESCRIPT="Searches Bug" EXPOSURE="2" STATE="1" EDITORDER="19 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101228" CHANGEDON="20120903" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Id&apos;s Range" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101228" CHANGEDBY="BCUSER" CHANGEDON="20101228" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_BUG_RANGE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" SCONAME="BUGSTYPE" VERSION="1" LANGU="E" DESCRIPT="Bug SubType Range" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101228" CHANGEDBY="BCUSER" CHANGEDON="20101228" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_BUGSTYPE_RANGE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" SCONAME="BUGTYPE" VERSION="1" LANGU="E" DESCRIPT="BugType Range" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101228" CHANGEDBY="BCUSER" CHANGEDON="20101228" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_BUGTYPE_RANGE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" SCONAME="COMPONENTE" VERSION="1" LANGU="E" DESCRIPT="Componente Range" CMPTYPE="1" MTDTYPE="0" EDITORDER="4 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101228" CHANGEDBY="BCUSER" CHANGEDON="20101228" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_COMPONENTE_RANGE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" SCONAME="DEADLINE" VERSION="1" LANGU="E" DESCRIPT="Dats Range" CMPTYPE="1" MTDTYPE="0" EDITORDER="5 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101228" CHANGEDBY="BCUSER" CHANGEDON="20101228" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_DATS_RANGE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" SCONAME="ESTADO" VERSION="1" LANGU="E" DESCRIPT="Estado Range" CMPTYPE="1" MTDTYPE="0" EDITORDER="6 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101228" CHANGEDBY="BCUSER" CHANGEDON="20101228" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_ESTADO_RANGE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" SCONAME="HORAS_ESTIMADAS" VERSION="1" LANGU="E" DESCRIPT="Horas Range" CMPTYPE="1" MTDTYPE="0" EDITORDER="7 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101228" CHANGEDBY="BCUSER" CHANGEDON="20101228" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_HORAS_RANGE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" SCONAME="HORAS_REALES" VERSION="1" LANGU="E" DESCRIPT="Horas Range" CMPTYPE="1" MTDTYPE="0" EDITORDER="8 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101228" CHANGEDBY="BCUSER" CHANGEDON="20101228" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_HORAS_RANGE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" SCONAME="PRODUCTO" VERSION="1" LANGU="E" DESCRIPT="Range of Product Id&apos;s" CMPTYPE="1" MTDTYPE="0" EDITORDER="9 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101228" CHANGEDBY="BCUSER" CHANGEDON="20101228" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_PRODUCTO_RANGE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" SCONAME="RESUMEN" VERSION="1" LANGU="E" DESCRIPT="Text Range" CMPTYPE="1" MTDTYPE="0" EDITORDER="10 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101228" CHANGEDBY="BCUSER" CHANGEDON="20101228" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_TEXT_RANGE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" SCONAME="CREADO" VERSION="1" LANGU="E" DESCRIPT="Time Stamp Range" CMPTYPE="1" MTDTYPE="0" EDITORDER="11 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101228" CHANGEDBY="BCUSER" CHANGEDON="20101228" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_TIMESTAMP_RANGE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" SCONAME="REPORTER" VERSION="1" LANGU="E" DESCRIPT="User Range" CMPTYPE="1" MTDTYPE="0" EDITORDER="12 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101228" CHANGEDBY="BCUSER" CHANGEDON="20101228" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_USER_RANGE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" SCONAME="DEVELOPER" VERSION="1" LANGU="E" DESCRIPT="User Range" CMPTYPE="1" MTDTYPE="0" EDITORDER="13 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101228" CHANGEDBY="BCUSER" CHANGEDON="20101228" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_USER_RANGE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" SCONAME="ASSIGNED" VERSION="1" LANGU="E" DESCRIPT="User Range" CMPTYPE="1" MTDTYPE="0" EDITORDER="14 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20120829" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_USER_RANGE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" SCONAME="TESTER" VERSION="1" LANGU="E" DESCRIPT="User Range" CMPTYPE="1" MTDTYPE="0" EDITORDER="15 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101228" CHANGEDBY="BCUSER" CHANGEDON="20120829" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_USER_RANGE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" SCONAME="FINALIZADO" VERSION="1" LANGU="E" DESCRIPT="Time Stamp Range" CMPTYPE="1" MTDTYPE="0" EDITORDER="16 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101228" CHANGEDBY="BCUSER" CHANGEDON="20120829" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_TIMESTAMP_RANGE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" SCONAME="AEDAT" VERSION="1" LANGU="E" DESCRIPT="Time Stamp Range" CMPTYPE="1" MTDTYPE="0" EDITORDER="17 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110203" CHANGEDBY="BCUSER" CHANGEDON="20120829" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_TIMESTAMP_RANGE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" SCONAME="AENAM" VERSION="1" LANGU="E" DESCRIPT="User Range" CMPTYPE="1" MTDTYPE="0" EDITORDER="18 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110203" CHANGEDBY="BCUSER" CHANGEDON="20120829" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_USER_RANGE" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" SCONAME="MAX_ROWS" VERSION="1" LANGU="E" DESCRIPT="Max rows" CMPTYPE="1" MTDTYPE="0" EDITORDER="19 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110908" CHANGEDBY="BCUSER" CHANGEDON="20120829" PARDECLTYP="0" PARPASSTYP="0" TYPTYPE="1" TYPE="I" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="SEARCH" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="Bugs" CMPTYPE="1" MTDTYPE="0" EDITORDER="20 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101228" CHANGEDBY="BCUSER" CHANGEDON="20120829" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_BUGS"/>
+  <source>METHOD search.
+  DATA: lt_bugs     TYPE STANDARD TABLE OF zbt_bug,
+        l_bug       TYPE zbt_bug,
+        lo_producto TYPE REF TO zcl_producto,
+        l_return    TYPE LINE OF zbt_bugs.
+
+  SELECT * FROM zbt_bug INTO TABLE lt_bugs
+    up to max_rows ROWS
+    WHERE bug         IN bug[]
+      AND producto    IN producto[]
+      AND componente  IN componente[]
+      AND developer   IN developer[]
+      AND assigned    IN assigned[]
+      AND tester      IN tester[]
+      AND reporter    IN reporter[]
+      AND creado      IN creado[]
+      AND estado      IN estado[]
+      AND bugtype     IN bugtype[]
+      AND bugstype    IN bugstype[]
+      AND finalizado  IN finalizado[]
+      AND deadline    IN deadline[]
+      and aedat       in aedat[]
+      and aenam       in aenam[].
+
+  LOOP AT lt_bugs INTO l_bug.
+    l_return-bug_id      = l_bug-bug.
+    l_return-producto_id = l_bug-producto.
+
+    lo_producto = zcl_producto_controller=&gt;find_by_key( l_return-producto_id  ).
+    l_return-oref = zcl_bug_controller=&gt;find_by_key( id       = l_return-bug_id
+                                                     producto = lo_producto ).
+
+    INSERT l_return INTO TABLE return.
+  ENDLOOP.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="STRUCTURE_TO_ENTITY" VERSION="1" LANGU="E" DESCRIPT="Structure to Entity" EXPOSURE="2" STATE="1" EDITORDER="15 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101031" CHANGEDON="20120903" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="STRUCTURE_TO_ENTITY" SCONAME="STRUCTURE" VERSION="1" LANGU="E" DESCRIPT="Bug" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101031" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_BUG"/>
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="STRUCTURE_TO_ENTITY" SCONAME="ENTITY" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101031" CHANGEDBY="BCUSER" CHANGEDON="20101031" PARDECLTYP="2" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <source>METHOD structure_to_entity.
+
+  DATA: lo_producto   TYPE REF TO zcl_producto,
+        lo_usuario    TYPE REF TO zcl_usuario,
+        lo_componente TYPE REF TO zcl_componente,
+        lo_bugtype    TYPE REF TO zcl_bugtype,
+        lo_bugstype   TYPE REF TO zcl_bugstype,
+        lo_estado     TYPE REF TO zcl_estado.
+
+*  entity-&gt;set_id( structure-bug ).
+
+  lo_producto   = zcl_producto_controller=&gt;find_by_key( structure-producto ).
+  lo_componente = zcl_componente_controller=&gt;find_by_key( id = structure-componente
+                                                          producto = lo_producto ).
+
+  entity-&gt;set_producto( lo_producto ).
+  entity-&gt;set_componente( lo_componente ).
+  entity-&gt;set_creado( structure-creado ).
+  entity-&gt;set_finalizado( structure-finalizado ).
+  entity-&gt;set_deadline( structure-deadline ).
+
+  TRY.
+      lo_usuario = zcl_usuario_controller=&gt;find_by_key( structure-reporter ).
+      entity-&gt;set_reporter( lo_usuario ).
+    CATCH zcx_not_found_exception.
+
+  ENDTRY.
+  CLEAR lo_usuario.
+
+  TRY .
+      lo_usuario = zcl_usuario_controller=&gt;find_by_key( structure-developer ).
+      entity-&gt;set_developer( lo_usuario ).
+    CATCH zcx_not_found_exception.
+
+  ENDTRY.
+  CLEAR lo_usuario.
+
+TRY .
+      lo_usuario = zcl_usuario_controller=&gt;find_by_key( structure-assigned ).
+      entity-&gt;set_assigned( lo_usuario ).
+    CATCH zcx_not_found_exception.
+
+  ENDTRY.
+  CLEAR lo_usuario.
+
+  TRY.
+      lo_usuario = zcl_usuario_controller=&gt;find_by_key( structure-tester ).
+      entity-&gt;set_tester( lo_usuario ).
+    CATCH zcx_not_found_exception.
+
+  ENDTRY.
+  CLEAR lo_usuario.
+
+  entity-&gt;set_resumen( structure-resumen ).
+
+  lo_estado = zcl_estado_controller=&gt;find_by_key( structure-estado ).
+  IF lo_estado IS BOUND.
+    entity-&gt;set_estado( lo_estado ).
+  ENDIF.
+
+  entity-&gt;set_horas_estimadas( structure-horas_est ).
+  entity-&gt;set_horas_reales( structure-horas_rea ).
+
+  entity-&gt;set_componente( lo_componente ).
+
+  lo_bugtype = zcl_bugtype_controller=&gt;find_by_key( structure-bugtype ).
+  entity-&gt;set_bug_type( lo_bugtype ).
+
+  lo_bugstype = zcl_bug_subtype_controller=&gt;find_by_key( id = structure-bugstype
+                                                         bugtype = lo_bugtype ).
+  IF NOT lo_bugstype IS BOUND.
+*   If after having changed BugType we found that there&apos;s no subtype with same subtype id
+*   for the newly selected bugType, we try to obtain default subtype value
+    lo_bugstype = zcl_bug_subtype_controller=&gt;find_by_key( id = 0
+                                                           bugtype = lo_bugtype ).
+  ENDIF.
+  entity-&gt;set_bug_subtype( lo_bugstype ).
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="UNLOCK" VERSION="1" LANGU="E" DESCRIPT="Unlocks Bug" EXPOSURE="2" STATE="1" EDITORDER="17 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101225" CHANGEDON="20120903" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="UNLOCK" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20101225" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <source>method UNLOCK.
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="UPDATE" VERSION="1" LANGU="E" DESCRIPT="Upgrade a bug in the persistence layer" EXPOSURE="2" STATE="1" EDITORDER="11 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100331" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="UPDATE" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100331" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <exception CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="UPDATE" SCONAME="ZCX_UPDATE_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Save Exception" MTDTYPE="0" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100331" CHANGEDBY="BCUSER" CHANGEDON="20100517"/>
+  <exception CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="UPDATE" SCONAME="ZCX_VALIDATE_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Error de validación" MTDTYPE="0" EDITORDER="2 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000"/>
+  <source>METHOD update.
+
+  DATA: lo_bug_persist  TYPE REF TO zcl_bug_persist,
+        lo_producto     TYPE REF TO zcl_producto,
+        l_timestamp     TYPE timestamp,
+        l_aedat         TYPE zbt_bug-aedat,
+        l_id_bug        TYPE zbt_bug-bug,
+        l_id_producto   TYPE zbt_producto-producto,
+        lt_attachements TYPE zbt_attachements,
+        lt_comentarios  TYPE zbt_comentarios,
+        lt_sections     TYPE zbt_bugsections,
+        lt_transportes  TYPE zbt_transport_tbl,
+        lo_usuario      TYPE REF TO zcl_usuario,
+        lo_transaccion  TYPE REF TO zcl_transaction_service,
+        lt_tags         TYPE zbt_bug_tag_tbl,
+        lo_exception    TYPE REF TO cx_root.
+
+  FIELD-SYMBOLS:   &lt;attachement&gt; TYPE LINE OF zbt_attachements,
+                   &lt;comentario&gt;  TYPE LINE OF zbt_comentarios,
+                   &lt;section&gt;     TYPE LINE OF zbt_bugsections,
+                   &lt;tag&gt;         TYPE LINE OF zbt_bug_tag_tbl,
+                   &lt;transporte&gt;  TYPE LINE OF zbt_transport_tbl.
+
+  validate_on_update( bug ).
+
+  l_id_bug      = bug-&gt;get_id( ).
+  lo_producto   = bug-&gt;get_producto( ).
+  l_id_producto = lo_producto-&gt;get_id( ).
+
+  TRY .
+*     Buscamos primero lo que hay ahora en la capa de persistencia
+      lo_bug_persist = zca_bug_persist=&gt;agent-&gt;get_persistent( i_bug      = l_id_bug
+                                                               i_producto = l_id_producto ).
+
+    CATCH cx_os_object_not_found INTO lo_exception.
+*     Para poder actualizarlo ha de existir
+      RAISE EXCEPTION TYPE zcx_update_exception
+        EXPORTING
+          textid   = zcx_update_exception=&gt;zcx_update_exception
+          previous = lo_exception.
+  ENDTRY.
+
+  CREATE OBJECT lo_transaccion.
+  lo_transaccion-&gt;start( ).
+
+
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Actualizamos el resto de objetos
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  TRY .
+*     Actualizamos los attachements
+      lt_attachements[] = bug-&gt;get_attachements( ).
+      LOOP AT lt_attachements ASSIGNING &lt;attachement&gt;.
+*       IF zcl_attachement_controller=&gt;exist( &lt;attachement&gt;-oref ) = abap_true.
+        zcl_attachement_controller=&gt;update( &lt;attachement&gt; ).
+*       ELSE.
+        zcl_attachement_controller=&gt;update( &lt;attachement&gt; ).
+*       ENDIF.
+
+      ENDLOOP.
+*     Actualizamos los comentarios
+      lt_comentarios[] = bug-&gt;get_comentarios( no_section_comments = space ).
+      LOOP AT lt_comentarios ASSIGNING &lt;comentario&gt;.
+        IF zcl_comment_controller=&gt;exist( &lt;comentario&gt;-oref ) = abap_true.
+          zcl_comment_controller=&gt;update( &lt;comentario&gt;-oref ).
+        ELSE.
+          zcl_comment_controller=&gt;create( &lt;comentario&gt;-oref ).
+        ENDIF.
+
+      ENDLOOP.
+*     Actualizamos las secciones
+      lt_sections[] = bug-&gt;get_sections( ) .
+      LOOP AT lt_sections ASSIGNING &lt;section&gt;.
+        IF zcl_bugsection_controller=&gt;exist( &lt;section&gt;-oref ) = abap_true.
+          zcl_bugsection_controller=&gt;update( &lt;section&gt;-oref ).
+        ELSE.
+          zcl_bugsection_controller=&gt;create( &lt;section&gt;-oref ).
+        ENDIF.
+      ENDLOOP.
+*     Actualizamos los transportes
+      lt_transportes[] = bug-&gt;get_transports( ).
+      LOOP AT lt_transportes ASSIGNING &lt;transporte&gt;.
+        IF zcl_transport_controller=&gt;exist( &lt;transporte&gt;-oref ) = abap_true.
+          zcl_transport_controller=&gt;update( &lt;transporte&gt;-oref ).
+        ELSE.
+          zcl_transport_controller=&gt;create( &lt;transporte&gt;-oref ).
+        ENDIF.
+      ENDLOOP.
+*     Actualizamos los tags
+      lt_tags[] = bug-&gt;get_tags( ).
+      LOOP AT lt_tags ASSIGNING &lt;tag&gt;.
+        IF zcl_bug_tag_controller=&gt;exist( &lt;tag&gt;-oref ) = abap_true.
+          zcl_bug_tag_controller=&gt;update( &lt;tag&gt;-oref ).
+        ELSE.
+          zcl_bug_tag_controller=&gt;create( &lt;tag&gt;-oref ).
+        ENDIF.
+      ENDLOOP.
+      lt_tags[] = bug-&gt;get_deleted_tags( ).
+      LOOP AT lt_tags ASSIGNING &lt;tag&gt;.
+        zcl_bug_tag_controller=&gt;delete( &lt;tag&gt;-oref ).
+      ENDLOOP.
+
+*     Set ModifyDate
+      GET TIME STAMP FIELD l_timestamp.
+      l_aedat = l_timestamp.
+      bug-&gt;set_aedat( l_aedat ).
+*     Set ModifyUser
+      lo_usuario = zcl_usuario_controller=&gt;find_by_key( ).
+      bug-&gt;set_aenam( lo_usuario ).
+
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Mapeamos contra el objeto de persistencia
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      entity_to_persist(
+        EXPORTING
+          entity  = bug
+        CHANGING
+          persist = lo_bug_persist ).
+
+      lo_transaccion-&gt;end( ).
+    CATCH zcx_create_exception INTO lo_exception.
+      RAISE EXCEPTION TYPE zcx_update_exception
+        EXPORTING
+          previous = lo_exception.
+
+  ENDTRY.
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="VALIDATE_ON_CREATE" VERSION="1" LANGU="E" DESCRIPT="Validates before creating a bug" EXPOSURE="2" STATE="1" EDITORDER="12 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100406" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="VALIDATE_ON_CREATE" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100406" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <exception CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="VALIDATE_ON_CREATE" SCONAME="ZCX_VALIDATE_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Error de validación" MTDTYPE="0" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100406" CHANGEDBY="BCUSER" CHANGEDON="20101227"/>
+  <source>METHOD validate_on_create.
+  DATA: l_str_bug      TYPE zbt_bug,
+        lt_sections    TYPE zbt_bugsections,
+        l_section      TYPE LINE OF zbt_bugsections,
+        l_section_ok   TYPE i,
+        l_comment_id   TYPE zbt_bugcomment-comentario,
+        l_seccion_id   TYPE zbt_bugseccion-seccion,
+        lo_estado      TYPE REF TO zcl_estado,
+        lo_producto    TYPE REF TO zcl_producto,
+        lo_usuario     TYPE REF TO zcl_usuario,
+        lo_bugtype     TYPE REF TO zcl_bugtype,
+        lo_subtype     TYPE REF TO zcl_bugstype,
+        lo_componente  TYPE REF TO zcl_componente,
+        l_field        TYPE string,
+        lo_not_found   TYPE REF TO zcx_not_found_exception.
+
+  l_str_bug = entity_to_structure( bug ).
+  TRY .
+*     Campos clave obligatorios!
+      IF l_str_bug-bug IS INITIAL.
+        l_field = &apos;Bug Id&apos;(001).
+        RAISE EXCEPTION TYPE zcx_mandatory_emptyfield
+          EXPORTING
+            field = l_field.
+
+      ENDIF.
+      IF l_str_bug-producto IS INITIAL.
+        l_field = &apos;Product Id&apos;(002).
+        RAISE EXCEPTION TYPE zcx_mandatory_emptyfield
+          EXPORTING
+            field = l_field.
+      ENDIF.
+*     Producto debe existir
+      lo_producto = bug-&gt;get_producto( ).
+      IF zcl_producto_controller=&gt;exist( lo_producto ) IS INITIAL.
+        l_field = &apos;Product&apos;(003).
+        RAISE EXCEPTION TYPE zcx_not_found_exception
+          EXPORTING
+            object = l_field.
+      ENDIF.
+
+
+*     Si se indica un componente éste debe existir
+      IF NOT l_str_bug-componente IS INITIAL.
+        lo_componente = bug-&gt;get_componente( ).
+        IF zcl_componente_controller=&gt;exist( lo_componente ) IS INITIAL.
+          l_field = &apos;Component&apos;(004).
+          RAISE EXCEPTION TYPE zcx_not_found_exception
+            EXPORTING
+              object = l_field.
+        ENDIF.
+      ENDIF.
+
+*     Necesario la persona que da de alta el Bug!
+      IF l_str_bug-reporter IS INITIAL.
+        l_field = &apos;Reporter&apos;(005).
+        RAISE EXCEPTION TYPE zcx_mandatory_emptyfield
+          EXPORTING
+            field = l_field.
+      ELSE.
+*       Reporter debe existir
+        lo_usuario = bug-&gt;get_reporter( ).
+        IF zcl_usuario_controller=&gt;exist( lo_usuario ) IS INITIAL.
+          l_field = &apos;Reporter&apos;(005).
+          RAISE EXCEPTION TYPE zcx_not_found_exception
+            EXPORTING
+              object = l_field.
+        ENDIF.
+      ENDIF.
+
+*     Si se indica un desarrollador éste debe existir
+      IF NOT l_str_bug-developer IS INITIAL.
+*       Developer debe existir
+        lo_usuario = bug-&gt;get_developer( ).
+        IF zcl_usuario_controller=&gt;exist( lo_usuario ) IS INITIAL.
+          l_field = &apos;Developer&apos;(006).
+          RAISE EXCEPTION TYPE zcx_not_found_exception
+            EXPORTING
+              object = l_field.
+        ENDIF.
+      ENDIF.
+
+*     does the assigned user exist?
+      IF NOT l_str_bug-assigned IS INITIAL.
+*       does the assigned user exist
+        lo_usuario = bug-&gt;get_assigned( ).
+        IF zcl_usuario_controller=&gt;exist( lo_usuario ) IS INITIAL.
+          l_field = &apos;Assigned&apos;(017).
+          RAISE EXCEPTION TYPE zcx_not_found_exception
+            EXPORTING
+              object = l_field.
+        ENDIF.
+      ENDIF.
+
+*     Si se indica un tester éste debe existir
+      IF NOT l_str_bug-tester IS INITIAL.
+*       Tester debe existir
+        lo_usuario = bug-&gt;get_tester( ).
+        IF zcl_usuario_controller=&gt;exist( lo_usuario ) IS INITIAL.
+          l_field = &apos;Tester&apos;(007).
+          RAISE EXCEPTION TYPE zcx_not_found_exception
+            EXPORTING
+              object = l_field.
+        ENDIF.
+      ENDIF.
+
+*     Necesario un estado
+      IF l_str_bug-estado IS INITIAL.
+        RAISE EXCEPTION TYPE zcx_validate_exception.
+
+      ELSE.
+*       Estado debe existir
+        lo_estado = bug-&gt;get_estado( ).
+        IF zcl_estado_controller=&gt;exist( lo_estado ) IS INITIAL.
+          l_field = &apos;Status&apos;(008).
+          RAISE EXCEPTION TYPE zcx_mandatory_emptyfield
+            EXPORTING
+              field = l_field.
+        ENDIF.
+      ENDIF.
+
+*     Necesario un resumen
+      IF l_str_bug-resumen IS INITIAL.
+        l_field = &apos;Short Text&apos;(009).
+        RAISE EXCEPTION TYPE zcx_mandatory_emptyfield
+          EXPORTING
+            field = l_field.
+      ENDIF.
+
+*     Necesario un tipo
+      IF l_str_bug-bugtype IS INITIAL.
+        l_field = &apos;Bug Type&apos;(010).
+        RAISE EXCEPTION TYPE zcx_mandatory_emptyfield
+          EXPORTING
+            field = l_field.
+      ELSE.
+*       Tipo debe existir
+        lo_bugtype = bug-&gt;get_bug_type( ).
+        IF zcl_bugtype_controller=&gt;exist( lo_bugtype ) IS INITIAL.
+          l_field = &apos;Bug Type&apos;(010).
+          RAISE EXCEPTION TYPE zcx_not_found_exception
+            EXPORTING
+              object = l_field.
+        ENDIF.
+      ENDIF.
+
+*     Necesaria una fecha de creación
+      IF l_str_bug-creado IS INITIAL.
+        l_field = &apos;Create Time&apos;(011).
+        RAISE EXCEPTION TYPE zcx_mandatory_emptyfield
+          EXPORTING
+            field = l_field.
+      ENDIF.
+
+      lt_sections = bug-&gt;get_sections( ).
+      CASE l_str_bug-bugtype.
+        WHEN zcl_bugtype_controller=&gt;bugtype_issue.
+*         Si se trata de una incidencia, necesaria una estimación de la importancia
+          IF l_str_bug-bugstype IS INITIAL.
+            l_field = &apos;Bug SubType&apos;(012).
+            RAISE EXCEPTION TYPE zcx_mandatory_emptyfield
+              EXPORTING
+                field = l_field.
+          ELSE.
+*           Subtype Debe existir
+            lo_subtype = bug-&gt;get_bug_subtype( ).
+            IF zcl_bug_subtype_controller=&gt;exist( lo_subtype ) IS INITIAL.
+              l_field = &apos;Bug SubType&apos;(012).
+              RAISE EXCEPTION TYPE zcx_not_found_exception
+                EXPORTING
+                  object = l_field.
+            ENDIF.
+          ENDIF.
+*         Necesario haber rellenado las secciones de &quot;Problema detectado&quot; y &quot;Pasos para reproducirlo&quot;
+          LOOP AT lt_sections INTO l_section.
+            l_seccion_id = l_section-oref-&gt;get_id( ).
+            IF l_seccion_id = zcl_bugsection_controller=&gt;bugsection_problem
+            OR l_seccion_id = zcl_bugsection_controller=&gt;bugsection_steps_reproduce.
+              ADD 1 TO l_section_ok.
+            ENDIF.
+          ENDLOOP.
+          IF l_section_ok &lt;&gt; 2.
+            l_field = &apos;Description and Steps to reproduce&apos;(013).
+            RAISE EXCEPTION TYPE zcx_mandatory_emptyfield
+              EXPORTING
+                field = l_field.
+          ENDIF.
+        WHEN zcl_bugtype_controller=&gt;bugtype_enhancement.
+*         Si se trata de una mejora, necesaria una estimación inicial de horas
+          IF l_str_bug-horas_est IS INITIAL.
+            l_field = &apos;Estimated Time&apos;(014).
+            RAISE EXCEPTION TYPE zcx_mandatory_emptyfield
+              EXPORTING
+                field = l_field.
+          ENDIF.
+*         Necesario la sección InfoAdicional
+          LOOP AT lt_sections INTO l_section.
+            l_seccion_id = l_section-oref-&gt;get_id( ).
+            IF l_seccion_id = zcl_bugsection_controller=&gt;bugsection_more_info.
+              ADD 1 TO l_section_ok.
+            ENDIF.
+          ENDLOOP.
+          IF l_section_ok &lt;&gt; 1.
+            l_field = &apos;Additional Info&apos;(015).
+            RAISE EXCEPTION TYPE zcx_mandatory_emptyfield
+              EXPORTING
+                field = l_field.
+          ENDIF.
+      ENDCASE.
+
+    CATCH zcx_not_found_exception INTO lo_not_found.
+      RAISE EXCEPTION TYPE zcx_validate_exception
+        EXPORTING
+          textid   = zcx_validate_exception=&gt;zcx_validate_exception
+          previous = lo_not_found.
+  ENDTRY.
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="VALIDATE_ON_DELETE" VERSION="1" LANGU="E" DESCRIPT="Validations to Remove" EXPOSURE="2" STATE="1" EDITORDER="13 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100518" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="VALIDATE_ON_DELETE" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100518" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <exception CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="VALIDATE_ON_DELETE" SCONAME="ZCX_VALIDATE_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Error de validación" MTDTYPE="0" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100518" CHANGEDON="00000000"/>
+  <source>METHOD validate_on_delete.
+
+* Debe existir
+  IF exist( bug ) = space.
+    RAISE EXCEPTION TYPE zcx_validate_exception.
+  ENDIF.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="VALIDATE_ON_UPDATE" VERSION="1" LANGU="E" DESCRIPT="Validates a bug before updating" EXPOSURE="2" STATE="1" EDITORDER="14 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100407" CHANGEDBY="BCUSER" CHANGEDON="20120903" MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="VALIDATE_ON_UPDATE" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100407" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <exception CLSNAME="ZCL_BUG_CONTROLLER" CMPNAME="VALIDATE_ON_UPDATE" SCONAME="ZCX_VALIDATE_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Error de validación" MTDTYPE="0" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100408" CHANGEDBY="BCUSER" CHANGEDON="20100517"/>
+  <source>METHOD validate_on_update.
+  DATA: l_str_bug      TYPE zbt_bug,
+        l_field        TYPE string,
+        lo_estado      TYPE REF TO zcl_estado.
+
+  validate_on_create( bug ).
+  l_str_bug = entity_to_structure( bug ).
+
+  lo_estado = bug-&gt;get_estado( ).
+
+* Si estado = cerrado -&gt; tiene que tener fecha de cierre
+  IF  lo_estado-&gt;get_type( ) = zcl_estado_controller=&gt;status_finished
+  AND l_str_bug-finalizado IS INITIAL.
+    l_field = &apos;End Date&apos;(016).
+    RAISE EXCEPTION TYPE zcx_mandatory_emptyfield
+      EXPORTING
+        field = l_field.
+* A la inversa también
+  ELSEIF l_str_bug-finalizado IS NOT INITIAL
+     AND lo_estado-&gt;get_type( ) &lt;&gt; zcl_estado_controller=&gt;status_finished.
+    RAISE EXCEPTION TYPE zcx_validate_exception.
+  ENDIF.
+
+* Si estado = cerrado Y bug = mejora -&gt; tiene que tener horas REALES
+  IF  lo_estado-&gt;get_type( ) = zcl_estado_controller=&gt;status_finished
+  AND l_str_bug-bugtype      = zcl_bugtype_controller=&gt;bugtype_enhancement
+  AND l_str_bug-horas_rea IS INITIAL.
+    RAISE EXCEPTION TYPE zcx_validate_exception.
+  ENDIF.
+
+ENDMETHOD.</source>
+ </method>
+</CLAS>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-16"?>
+<CLAS CLSNAME="ZCL_TRANSPORT" VERSION="1" LANGU="E" DESCRIPT="Transport - Entity" UUID="DF36DA0C68DF9DF19289080027E6C24E" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20111209" CHANGEDBY="BCUSER" CHANGEDON="20111209" CHGDANYON="00000000" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="701" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 " REFCLSNAME="ZCL_ENTITY">
+ <publicSection>class ZCL_TRANSPORT definition
+  public
+  inheriting from ZCL_ENTITY
+  final
+  create public .
+
+public section.
+*&quot;* public components of class ZCL_TRANSPORT
+*&quot;* do not include other source files here!!!
+
+  methods CONSTRUCTOR
+    importing
+      !ID type ZBT_TRANSPORTER-TRANSPORTREQ .
+  methods GET_ID
+    returning
+      value(RETURN) type ZBT_TRANSPORTER-TRANSPORTREQ .
+  methods GET_BUGS
+    returning
+      value(RETURN) type ZBT_BUGS .
+  methods GET_PROGRAMAS
+    returning
+      value(RETURN) type ZBT_PROGRAMAS .
+  methods ADD_BUG
+    importing
+      !BUG type ref to ZCL_BUG optional .
+  methods REMOVE_BUG
+    importing
+      !BUG type ref to ZCL_BUG .</publicSection>
+ <protectedSection>protected section.
+*&quot;* protected components of class ZCL_TRANSPORT
+*&quot;* do not include other source files here!!!
+
+  methods PREPARE_HASH_STRUCTURE
+    redefinition .</protectedSection>
+ <privateSection>private section.
+*&quot;* private components of class ZCL_TRANSPORT
+*&quot;* do not include other source files here!!!
+
+  data ID type ZBT_TRANSPORTER-TRANSPORTREQ .
+  data PROGRAMAS type ZBT_PROGRAMAS .
+  data BUGS type ZBT_BUGS .</privateSection>
+ <localImplementation>*&quot;* local class implementation for public class
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes</localImplementation>
+ <localTypes>*&quot;* use this source file for any type declarations (class
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <attribute CLSNAME="ZCL_TRANSPORT" CMPNAME="BUGS" VERSION="1" LANGU="E" DESCRIPT="Bugs" EXPOSURE="0" STATE="1" EDITORDER="3 " AUTHOR="BCUSER" CREATEDON="20110308" CHANGEDON="00000000" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="ZBT_BUGS" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="702" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_TRANSPORT" CMPNAME="ID" VERSION="1" LANGU="E" DESCRIPT="Transport Request" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100324" CHANGEDBY="BCUSER" CHANGEDON="20110308" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="ZBT_TRANSPORTER-TRANSPORTREQ" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_TRANSPORT" CMPNAME="PROGRAMAS" VERSION="1" LANGU="E" DESCRIPT="Programas" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="BCUSER" CREATEDON="20100324" CHANGEDBY="BCUSER" CHANGEDON="20110308" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="ZBT_PROGRAMAS" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <inheritance CLSNAME="ZCL_TRANSPORT" REFCLSNAME="ZCL_ENTITY" VERSION="1" STATE="1" AUTHOR="BCUSER" CREATEDON="20111209" CHANGEDBY="BCUSER" CHANGEDON="20111209">
+  <redefinition CLSNAME="ZCL_TRANSPORT" REFCLSNAME="ZCL_ENTITY" VERSION="1" MTDNAME="PREPARE_HASH_STRUCTURE" EXPOSURE="1"/>
+ </inheritance>
+ <method CLSNAME="ZCL_TRANSPORT" CMPNAME="ADD_BUG" VERSION="1" LANGU="E" DESCRIPT="Add Bug" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110308" CHANGEDBY="BCUSER" CHANGEDON="20110308" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_TRANSPORT" CMPNAME="ADD_BUG" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110308" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG" PAROPTIONL="X"/>
+  <source>METHOD add_bug.
+  DATA: lv_str      TYPE zbt_bugs_str,
+        lo_producto TYPE REF TO zcl_producto.
+
+  lo_producto = bug-&gt;get_producto( ).
+  lv_str-producto_id = lo_producto-&gt;get_id( ).
+  lv_str-bug_id = bug-&gt;get_id( ).
+  lv_str-oref = bug.
+
+  READ TABLE bugs WITH KEY producto_id = lv_str-producto_id
+                           bug_id      = lv_str-bug_id
+                           TRANSPORTING NO FIELDS.
+  IF NOT sy-subrc IS INITIAL.
+    INSERT lv_str INTO TABLE bugs.
+  ENDIF.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_TRANSPORT" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100324" CHANGEDON="20101225" MTDTYPE="2" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_TRANSPORT" CMPNAME="CONSTRUCTOR" SCONAME="ID" VERSION="1" LANGU="E" DESCRIPT="Transport Request" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100324" CHANGEDBY="BCUSER" CHANGEDON="20110308" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_TRANSPORTER-TRANSPORTREQ"/>
+  <source>method CONSTRUCTOR.
+  super-&gt;constructor( ).
+  me-&gt;id = id.
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_TRANSPORT" CMPNAME="GET_BUGS" VERSION="1" LANGU="E" DESCRIPT="GetBug" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110308" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_TRANSPORT" CMPNAME="GET_BUGS" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="Bugs" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110308" CHANGEDBY="BCUSER" CHANGEDON="20110308" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_BUGS"/>
+  <source>method GET_BUGS.
+  RETURN = bugs.
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_TRANSPORT" CMPNAME="GET_ID" VERSION="1" LANGU="E" DESCRIPT="GetId" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100324" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_TRANSPORT" CMPNAME="GET_ID" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="Transport Request" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100324" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_TRANSPORTER-TRANSPORTREQ"/>
+  <source>method GET_ID.
+  RETURN = id.
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_TRANSPORT" CMPNAME="GET_PROGRAMAS" VERSION="1" LANGU="E" DESCRIPT="GetProgramas" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100324" CHANGEDBY="BCUSER" CHANGEDON="20110308" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_TRANSPORT" CMPNAME="GET_PROGRAMAS" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="Programas" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100324" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_PROGRAMAS"/>
+  <source>method GET_PROGRAMAS.
+  RETURN = programas.
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_ENTITY" CMPNAME="PREPARE_HASH_STRUCTURE" VERSION="0" EXPOSURE="0" STATE="0" EDITORDER="0 " DISPID="0 " CREATEDON="00000000" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <source>METHOD prepare_hash_structure.
+  DATA: value TYPE LINE OF zbt_objectvalue_hash_calcul,
+        id    TYPE zbt_transporter-transportreq.
+
+  value = id = get_id( ).
+  SHIFT value LEFT DELETING LEADING space.
+  INSERT value INTO TABLE values[].
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_TRANSPORT" CMPNAME="REMOVE_BUG" VERSION="1" LANGU="E" DESCRIPT="Remove Bug" EXPOSURE="2" STATE="1" EDITORDER="6 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110309" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_TRANSPORT" CMPNAME="REMOVE_BUG" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110309" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <source>METHOD remove_bug.
+  DATA: lv_str      TYPE zbt_bugs_str,
+        lo_producto TYPE REF TO zcl_producto.
+
+  lo_producto = bug-&gt;get_producto( ).
+  lv_str-producto_id = lo_producto-&gt;get_id( ).
+  lv_str-bug_id = bug-&gt;get_id( ).
+
+  DELETE bugs WHERE producto_id = lv_str-producto_id
+                AND bug_id      = lv_str-bug_id.
+
+ENDMETHOD.</source>
+ </method>
+</CLAS>

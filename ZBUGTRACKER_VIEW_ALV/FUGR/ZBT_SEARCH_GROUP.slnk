@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="utf-16"?>
+<FUGR AREA="ZBT_SEARCH_GROUP" SPRAS="E" AREAT="Search functions">
+ <functionGroupDocumentation/>
+ <mainprogram NAME="SAPLZBT_SEARCH_GROUP" VARCL="X" DBAPL="S" DBNA="D$" SUBC="F" APPL="S" CNAM="BCUSER" CDAT="20101228" UNAM="BCUSER" UDAT="20120903" VERN="000005" RMAND="001" RLOAD="E" FIXPT="X" SDATE="20120903" STIME="233159" IDATE="20120903" ITIME="233153" LDBNAME="D$S" UCCHECK="X">
+  <textPool>
+   <language SPRAS="E">
+    <textElement ID="S" KEY="P_ROWS" ENTRY="        Nº of selections" LENGTH="24 "/>
+    <textElement ID="S" KEY="S_AEDAT" ENTRY="D       ." LENGTH="19 "/>
+    <textElement ID="S" KEY="S_AENAM" ENTRY="D       ." LENGTH="18 "/>
+    <textElement ID="S" KEY="S_BUG" ENTRY="D       ." LENGTH="14 "/>
+    <textElement ID="S" KEY="S_COMP" ENTRY="D       ." LENGTH="18 "/>
+    <textElement ID="S" KEY="S_DEAD" ENTRY="D       ." LENGTH="17 "/>
+    <textElement ID="S" KEY="S_DEV" ENTRY="D       ." LENGTH="17 "/>
+    <textElement ID="S" KEY="S_ENDDAT" ENTRY="D       ." LENGTH="16 "/>
+    <textElement ID="S" KEY="S_ERDAT" ENTRY="D       ." LENGTH="21 "/>
+    <textElement ID="S" KEY="S_ESTADO" ENTRY="D       ." LENGTH="14 "/>
+    <textElement ID="S" KEY="S_HEST" ENTRY="D       ." LENGTH="23 "/>
+    <textElement ID="S" KEY="S_HREAL" ENTRY="D       ." LENGTH="20 "/>
+    <textElement ID="S" KEY="S_PROD" ENTRY="        Product" LENGTH="16 "/>
+    <textElement ID="S" KEY="S_REP" ENTRY="D       ." LENGTH="16 "/>
+    <textElement ID="S" KEY="S_RESUM" ENTRY="D       ." LENGTH="19 "/>
+    <textElement ID="S" KEY="S_STYPE" ENTRY="D       ." LENGTH="19 "/>
+    <textElement ID="S" KEY="S_TEST" ENTRY="D       ." LENGTH="14 "/>
+    <textElement ID="S" KEY="S_TYPE" ENTRY="D       ." LENGTH="16 "/>
+   </language>
+  </textPool>
+  <dynpros>
+   <dynpro PROG="SAPLZBT_SEARCH_GROUP" DNUM="0001" FNUM="0001" BZMX="0 " BZBR="0 " MILI="192 " MICO="37 " MALI="0 " MACO="0 " NOLI="23 " NOCO="138 " VALP="0 " CUAN="G" SPRA="E" DGEN="20110203" TGEN="004842" DTEXT="Dynpro for embeding Selection screens">
+    <dynprofield FNAM="SEL_SCREEN" DIDX="0017" FLG1="00" FLG2="F0" FLG3="00" FILL="B" FMB1="30" FMB2="00" LENG="8A" LINE="01" COLN="02" LANF="00" LBLK="00" LREP="00" AUTH="101" AGLT="09" ADEZ="3C"/>
+    <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
+    <dynproflowsource>PROCESS BEFORE OUTPUT.
+  MODULE status_0001.
+
+  CALL SUBSCREEN sel_screen
+    INCLUDING g_subscreen-repid g_subscreen-dynnr.
+*
+PROCESS AFTER INPUT.
+  MODULE exit_0001 AT EXIT-COMMAND.
+
+  CALL SUBSCREEN sel_screen.
+
+  MODULE user_command_0001.</dynproflowsource>
+   </dynpro>
+  </dynpros>
+  <pfstatus>
+   <pfstatus_sta CODE="S0001" MODAL="D" ACTCODE="000001" PFKCODE="000001" BUTCODE="0001" INT_NOTE="Status"/>
+   <pfstatus_fun CODE="BACK" TEXTNO="001" TEXT_TYPE="S" FUN_TEXT="Back"/>
+   <pfstatus_fun CODE="CANCEL" TEXTNO="001" TYPE="E" TEXT_TYPE="S" TEXT_NAME="ICON_CANCEL" ICON_ID="@0W@" FUN_TEXT="Cancel"/>
+   <pfstatus_fun CODE="EXECUTE" TEXTNO="001" TEXT_TYPE="S" TEXT_NAME="ICON_EXECUTE_OBJECT" ICON_ID="@15@" FUN_TEXT="Execute"/>
+   <pfstatus_fun CODE="UP" TEXTNO="001" TYPE="E" TEXT_TYPE="S" FUN_TEXT="Exit"/>
+   <pfstatus_but PFK_CODE="000001" CODE="0001" NO="01" PFNO="08"/>
+   <pfstatus_pfk CODE="000001" PFNO="03" FUNCODE="BACK" FUNNO="001"/>
+   <pfstatus_pfk CODE="000001" PFNO="08" FUNCODE="EXECUTE" FUNNO="001"/>
+   <pfstatus_pfk CODE="000001" PFNO="12" FUNCODE="CANCEL" FUNNO="001"/>
+   <pfstatus_pfk CODE="000001" PFNO="15" FUNCODE="UP" FUNNO="001"/>
+   <pfstatus_set STATUS="S0001" FUNCTION="BACK"/>
+   <pfstatus_set STATUS="S0001" FUNCTION="CANCEL"/>
+   <pfstatus_set STATUS="S0001" FUNCTION="EXECUTE"/>
+   <pfstatus_set STATUS="S0001" FUNCTION="UP"/>
+   <pfstatus_doc OBJ_TYPE="A" OBJ_CODE="000001" MODAL="D" INT_NOTE="Status"/>
+   <pfstatus_doc OBJ_TYPE="P" OBJ_CODE="000001" MODAL="D" INT_NOTE="Status"/>
+   <pfstatus_doc OBJ_TYPE="B" OBJ_CODE="000001" SUB_CODE="0001" MODAL="D" INT_NOTE="Status"/>
+   <pfstatus_tit CODE="T0001" TEXT="SAPBugTracker: &amp;"/>
+  </pfstatus>
+  <source>*******************************************************************
+*   System-defined Include-files.                                 *
+*******************************************************************
+  INCLUDE lzbt_search_grouptop.              &quot; Global Data
+  INCLUDE lzbt_search_groupuxx.              &quot; Function Modules
+
+*******************************************************************
+*   User-defined Include-files (if necessary).                    *
+*******************************************************************
+* INCLUDE LZBT_SEARCH_GROUPF...              &quot; Subroutines
+* INCLUDE LZBT_SEARCH_GROUPO...              &quot; PBO-Modules
+* INCLUDE LZBT_SEARCH_GROUPI...              &quot; PAI-Modules
+* INCLUDE lzbt_search_groupe...              &quot; Events
+* INCLUDE LZBT_SEARCH_GROUPP...              &quot; Local class implement.
+
+INCLUDE LZBT_SEARCH_GROUPF01.
+
+INCLUDE LZBT_SEARCH_GROUPO01.
+
+INCLUDE LZBT_SEARCH_GROUPF02.
+
+INCLUDE LZBT_SEARCH_GROUPI01.</source>
+ </mainprogram>
+ <includeprograms>
+  <include NAME="LZBT_SEARCH_GROUPF01" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101228" UNAM="BCUSER" UDAT="20120903" VERN="000008" RMAND="001" RLOAD="E" SDATE="20120903" STIME="233153" IDATE="20120903" ITIME="233153" UCCHECK="X">
+   <include_source>*----------------------------------------------------------------------*
+***INCLUDE LZBT_SEARCH_GROUPF01 .
+*----------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  CHK_SELECTION_SCREEN_A0002
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM chk_selection_screen_a0002 .
+
+ENDFORM.                    &quot; CHK_SELECTION_SCREEN_A0002
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  progress
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*      --&gt;P_PERCENTAGE  text
+*      --&gt;P_TEXT  text
+*----------------------------------------------------------------------*
+FORM progress  USING    p_percentage
+                        p_text.
+
+  CALL FUNCTION &apos;SAPGUI_PROGRESS_INDICATOR&apos;
+    EXPORTING
+      percentage = p_percentage
+      text       = p_text.
+
+ENDFORM.                    &quot; progress
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  INIT_GLOBAL_DATA
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM init_global_data .
+
+  CLEAR: g_title,
+         g_subscreen,
+         go_results_handler,
+         s_bug[],
+         s_comp[],
+         s_dead[],
+         s_dev[],
+         s_enddat[],
+         s_erdat[],
+         s_aedat[],
+         s_estado[],
+         s_prod[],
+         s_rep[],
+         s_stype[],
+         s_type[],
+         s_assig[],
+         s_test[]
+.
+
+
+ENDFORM.                    &quot; INIT_GLOBAL_DATA</include_source>
+  </include>
+  <include NAME="LZBT_SEARCH_GROUPF02" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101230" UNAM="BCUSER" UDAT="20120903" VERN="000006" RMAND="001" RLOAD="E" SDATE="20120903" STIME="233153" IDATE="20120903" ITIME="233153" UCCHECK="X">
+   <include_source>*----------------------------------------------------------------------*
+***INCLUDE LZBT_SEARCH_GROUPF02 .
+*----------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  STATUS_0001
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM status_0001 .
+  SET PF-STATUS &apos;S0001&apos;.
+  SET TITLEBAR &apos;T0001&apos; WITH g_title.
+
+ENDFORM.                    &quot; STATUS_0001
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  USER_COMMAND_0001
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM user_command_0001 .
+  DATA: lt_data  TYPE zbt_bugs,
+        l_ucomm  TYPE sy-ucomm.
+
+  l_ucomm = sy-ucomm.
+  CLEAR sy-ucomm.
+  CASE l_ucomm.
+    WHEN &apos;BACK&apos; OR &apos;UP&apos; OR &apos;CANCEL&apos;.
+      LEAVE TO SCREEN 0.
+
+    WHEN &apos;EXECUTE&apos;.
+      IF NOT go_container IS INITIAL.
+        go_container-&gt;free( ).
+        FREE go_container.
+        CLEAR go_container.
+      ENDIF.
+
+      CREATE OBJECT go_container
+        EXPORTING
+          repid     = sy-repid
+          dynnr     = sy-dynnr
+          side      = cl_gui_docking_container=&gt;dock_at_bottom
+          extension = 150.
+
+      go_results_handler-&gt;do_search(
+        bug             = s_bug[]
+        bugstype        = s_stype[]
+        bugtype         = s_type[]
+        componente      = s_comp[]
+        deadline        = s_dead[]
+        estado          = s_estado[]
+        horas_estimadas = s_hest[]
+        horas_reales    = s_hreal[]
+        producto        = s_prod[]
+        resumen         = s_resum[]
+        creado          = s_erdat[]
+        reporter        = s_rep[]
+        developer       = s_dev[]
+        tester          = s_test[]
+        assigned        = s_assig[]
+        finalizado      = s_enddat[]
+        aedat           = s_aedat[]
+        aenam           = s_aenam[]
+        max_rows        = p_rows ).
+
+      go_results_handler-&gt;display_results( go_container ).
+    WHEN OTHERS.
+
+  ENDCASE.
+ENDFORM.                    &quot; USER_COMMAND_0001
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  CHK_SELECTION_SCREEN_A0003
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM chk_selection_screen_a0003 .
+
+ENDFORM.                    &quot; CHK_SELECTION_SCREEN_A0003</include_source>
+  </include>
+  <include NAME="LZBT_SEARCH_GROUPI01" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101230" UNAM="BCUSER" UDAT="20101230" VERN="000002" RMAND="001" RLOAD="E" SDATE="20101230" STIME="125052" IDATE="20101230" ITIME="125052" UCCHECK="X">
+   <include_source>*----------------------------------------------------------------------*
+***INCLUDE LZBT_SEARCH_GROUPI01 .
+*----------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  USER_COMMAND_0001  INPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE user_command_0001 INPUT.
+  PERFORM user_command_0001.
+ENDMODULE.                 &quot; USER_COMMAND_0001  INPUT
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  EXIT_0001  INPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE exit_0001 INPUT.
+  PERFORM user_command_0001.
+ENDMODULE.                 &quot; EXIT_0001  INPUT</include_source>
+  </include>
+  <include NAME="LZBT_SEARCH_GROUPO01" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101230" UNAM="BCUSER" UDAT="20101230" VERN="000002" RMAND="001" RLOAD="E" SDATE="20101230" STIME="125052" IDATE="20101230" ITIME="125052" UCCHECK="X">
+   <include_source>*----------------------------------------------------------------------*
+***INCLUDE LZBT_SEARCH_GROUPO01 .
+*----------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  STATUS_0001  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE status_0001 OUTPUT.
+  PERFORM status_0001.
+ENDMODULE.                 &quot; STATUS_0001  OUTPUT</include_source>
+  </include>
+  <include NAME="LZBT_SEARCH_GROUPTOP" VARCL="X" DBAPL="S" DBNA="D$" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101228" UNAM="BCUSER" UDAT="20120903" VERN="000006" RMAND="001" FIXPT="X" SDATE="20120903" STIME="233153" IDATE="20120903" ITIME="233153" LDBNAME="D$S" UCCHECK="X">
+   <include_source>FUNCTION-POOL zbt_search_group.             &quot;MESSAGE-ID ..
+
+TABLES: zbt_bug, zbt_producto, zbt_compont.
+
+DATA: go_container         TYPE REF TO cl_gui_docking_container,
+      go_results_handler   TYPE REF TO zinf_results_alv_ctrl,
+      g_title              TYPE sy-title,
+      BEGIN OF g_subscreen,
+        repid TYPE sy-repid,
+        dynnr TYPE sy-dynnr,
+      END   OF g_subscreen.
+
+*--------------------------------------------------------------------*
+* Selection Screen with all allowed criterias
+*--------------------------------------------------------------------*
+SELECTION-SCREEN BEGIN OF SCREEN 0002 AS SUBSCREEN.
+SELECTION-SCREEN BEGIN OF BLOCK a0002 WITH FRAME.
+SELECT-OPTIONS: s_bug     FOR zbt_bug-bug
+                MEMORY ID zbt_bug_id,
+                s_prod    FOR zbt_producto-producto
+                MEMORY ID zbt_product_id,
+                s_comp    FOR zbt_compont-componente,
+                s_dev     FOR zbt_bug-developer
+                MATCHCODE OBJECT zbt_f4_developers,
+                s_test    FOR zbt_bug-tester
+                MATCHCODE OBJECT zbt_f4_testers,
+                s_assig   for zbt_bug-assigned
+                MATCHCODE OBJECT zbt_f4_assigned,
+                s_rep     FOR zbt_bug-reporter
+                MATCHCODE OBJECT zbt_f4_reporters,
+                s_erdat   FOR zbt_bug-creado,
+                s_enddat  FOR zbt_bug-finalizado,
+                s_dead    FOR zbt_bug-deadline,
+                s_estado  FOR zbt_bug-estado,
+                s_type    FOR zbt_bug-bugtype,
+                s_stype   FOR zbt_bug-bugstype,
+                s_hest    FOR zbt_bug-horas_est,
+                s_hreal   FOR zbt_bug-horas_rea,
+                s_resum   FOR zbt_bug-resumen,
+                s_aedat   FOR zbt_bug-aedat,
+                s_aenam   FOR zbt_bug-aenam.
+SELECTION-SCREEN SKIP.
+PARAMETERS: p_rows TYPE i.
+SELECTION-SCREEN END OF BLOCK a0002.
+SELECTION-SCREEN END   OF SCREEN 0002.
+
+
+*--------------------------------------------------------------------*
+* Selection Screen with all allowed criterias
+*--------------------------------------------------------------------*
+SELECTION-SCREEN BEGIN OF SCREEN 0003 AS SUBSCREEN.
+SELECTION-SCREEN BEGIN OF BLOCK a0003 WITH FRAME.
+SELECTION-SCREEN INCLUDE SELECT-OPTIONS: s_bug,
+                                         s_prod,
+                                         s_comp,
+                                         s_aedat,
+                                         s_aenam.
+SELECTION-SCREEN SKIP.
+SELECTION-SCREEN INCLUDE PARAMETERS p_rows.
+SELECTION-SCREEN END OF BLOCK a0003.
+SELECTION-SCREEN END   OF SCREEN 0003.
+
+AT SELECTION-SCREEN ON BLOCK a0002.
+  PERFORM chk_selection_screen_a0002.
+
+AT SELECTION-SCREEN ON BLOCK a0003.
+  PERFORM chk_selection_screen_a0003.</include_source>
+  </include>
+ </includeprograms>
+ <functionmodules>
+  <functionmodule NAME="ZBT_SEARCH_BUG" STEXT="Shows a selection screen for filtering">
+   <importing PARAMETER="SCREEN_ATTRIBUTES" OPTIONAL="X" REFERENCE="X" TYP="ZBT_SCREEN_ATTRIBUTES"/>
+   <importing PARAMETER="RESULTS_ALV_CTRL" REFERENCE="X" TYP="REF TO ZINF_RESULTS_ALV_CTRL" REF_CLASS="X"/>
+   <changing PARAMETER="BUG" OPTIONAL="X" REFERENCE="X" TYP="ZBT_BUG_RANGE"/>
+   <changing PARAMETER="BUGSTYPE" OPTIONAL="X" REFERENCE="X" TYP="ZBT_BUGSTYPE_RANGE"/>
+   <changing PARAMETER="BUGTYPE" OPTIONAL="X" REFERENCE="X" TYP="ZBT_BUGTYPE_RANGE"/>
+   <changing PARAMETER="COMPONENTE" OPTIONAL="X" REFERENCE="X" TYP="ZBT_COMPONENTE_RANGE"/>
+   <changing PARAMETER="DEADLINE" OPTIONAL="X" REFERENCE="X" TYP="ZBT_DATS_RANGE"/>
+   <changing PARAMETER="ESTADO" OPTIONAL="X" REFERENCE="X" TYP="ZBT_ESTADO_RANGE"/>
+   <changing PARAMETER="HORAS_ESTIMADAS" OPTIONAL="X" REFERENCE="X" TYP="ZBT_HORAS_RANGE"/>
+   <changing PARAMETER="HORAS_REALES" OPTIONAL="X" REFERENCE="X" TYP="ZBT_HORAS_RANGE"/>
+   <changing PARAMETER="PRODUCTO" OPTIONAL="X" REFERENCE="X" TYP="ZBT_PRODUCTO_RANGE"/>
+   <changing PARAMETER="RESUMEN" OPTIONAL="X" REFERENCE="X" TYP="ZBT_TEXT_RANGE"/>
+   <changing PARAMETER="CREADO" OPTIONAL="X" REFERENCE="X" TYP="ZBT_TIMESTAMP_RANGE"/>
+   <changing PARAMETER="REPORTER" OPTIONAL="X" REFERENCE="X" TYP="ZBT_USER_RANGE"/>
+   <changing PARAMETER="DEVELOPER" OPTIONAL="X" REFERENCE="X" TYP="ZBT_USER_RANGE"/>
+   <changing PARAMETER="ASSIGNED" OPTIONAL="X" REFERENCE="X" TYP="ZBT_USER_RANGE"/>
+   <changing PARAMETER="TESTER" OPTIONAL="X" REFERENCE="X" TYP="ZBT_USER_RANGE"/>
+   <changing PARAMETER="FINALIZADO" OPTIONAL="X" REFERENCE="X" TYP="ZBT_TIMESTAMP_RANGE"/>
+   <changing PARAMETER="AEDAT" OPTIONAL="X" REFERENCE="X" TYP="ZBT_TIMESTAMP_RANGE"/>
+   <changing PARAMETER="AENAM" OPTIONAL="X" REFERENCE="X" TYP="ZBT_USER_RANGE"/>
+   <documentation PARAMETER="SCREEN_ATTRIBUTES" KIND="P" STEXT="Screen attributes" INDEX=" 001"/>
+   <documentation PARAMETER="RESULTS_ALV_CTRL" KIND="P" STEXT="Results ALV Controller" INDEX=" 002"/>
+   <documentation PARAMETER="BUG" KIND="P" STEXT="Bug Id&apos;s Range" INDEX=" 003"/>
+   <documentation PARAMETER="BUGSTYPE" KIND="P" STEXT="Bug SubType Range" INDEX=" 004"/>
+   <documentation PARAMETER="BUGTYPE" KIND="P" STEXT="BugType Range" INDEX=" 005"/>
+   <documentation PARAMETER="COMPONENTE" KIND="P" STEXT="Componente Range" INDEX=" 006"/>
+   <documentation PARAMETER="DEADLINE" KIND="P" STEXT="Dats Range" INDEX=" 007"/>
+   <documentation PARAMETER="ESTADO" KIND="P" STEXT="Estado Range" INDEX=" 008"/>
+   <documentation PARAMETER="HORAS_ESTIMADAS" KIND="P" STEXT="Horas Range" INDEX=" 009"/>
+   <documentation PARAMETER="HORAS_REALES" KIND="P" STEXT="Horas Range" INDEX=" 010"/>
+   <documentation PARAMETER="PRODUCTO" KIND="P" STEXT="Range of Product Id&apos;s" INDEX=" 011"/>
+   <documentation PARAMETER="RESUMEN" KIND="P" STEXT="Text Range" INDEX=" 012"/>
+   <documentation PARAMETER="CREADO" KIND="P" STEXT="Time Stamp Range" INDEX=" 013"/>
+   <documentation PARAMETER="REPORTER" KIND="P" STEXT="User Range" INDEX=" 014"/>
+   <documentation PARAMETER="DEVELOPER" KIND="P" STEXT="User Range" INDEX=" 015"/>
+   <documentation PARAMETER="ASSIGNED" KIND="P" STEXT="User Range" INDEX=" 016"/>
+   <documentation PARAMETER="TESTER" KIND="P" STEXT="User Range" INDEX=" 017"/>
+   <documentation PARAMETER="FINALIZADO" KIND="P" STEXT="Time Stamp Range" INDEX=" 018"/>
+   <documentation PARAMETER="AEDAT" KIND="P" STEXT="Time Stamp Range" INDEX=" 019"/>
+   <documentation PARAMETER="AENAM" KIND="P" STEXT="User Range" INDEX=" 020"/>
+   <fm_source>PERFORM init_global_data.
+
+  g_title           = screen_attributes-title.
+  g_subscreen-repid = sy-repid.
+  g_subscreen-dynnr = &apos;0002&apos;.
+
+  go_results_handler = results_alv_ctrl.
+
+  s_bug[]     = bug[].
+  s_comp[]    = componente[].
+  s_dead[]    = deadline[].
+  s_dev[]     = developer[].
+  s_enddat[]  = finalizado[].
+  s_erdat[]   = creado[].
+  s_estado[]  = estado[].
+  s_prod[]    = producto[].
+  s_rep[]     = reporter[].
+  s_stype[]   = bugstype[].
+  s_type[]    = bugtype[].
+  s_assig[]   = assigned[].
+  s_test[]    = tester[].
+
+
+  CALL SCREEN 0001 STARTING AT screen_attributes-top
+                               screen_attributes-left
+                   ENDING AT   screen_attributes-bottom
+                               screen_attributes-rigth.
+
+  bug[]        = s_bug[].
+  componente[] = s_comp[].
+  deadline[]   = s_dead[].
+  developer[]  = s_dev[].
+  finalizado[] = s_enddat[].
+  creado[]     = s_erdat[].
+  estado[]     = s_estado[].
+  producto[]   = s_prod[].
+  reporter[]   = s_rep[].
+  bugstype[]   = s_stype[].
+  bugtype[]    = s_type[].
+  assigned[]   = s_assig[].
+  tester[]     = s_test[].</fm_source>
+   <functionModuleDocumentation/>
+  </functionmodule>
+  <functionmodule NAME="ZBT_LAST_MODIFIED_BUGS" STEXT="Searches Last Modified Bugs">
+   <importing PARAMETER="SCREEN_ATTRIBUTES" OPTIONAL="X" REFERENCE="X" TYP="ZBT_SCREEN_ATTRIBUTES"/>
+   <importing PARAMETER="RESULTS_ALV_CTRL" REFERENCE="X" TYP="REF TO ZINF_RESULTS_ALV_CTRL" REF_CLASS="X"/>
+   <changing PARAMETER="BUG" OPTIONAL="X" REFERENCE="X" TYP="ZBT_BUG_RANGE"/>
+   <changing PARAMETER="PRODUCTO" OPTIONAL="X" REFERENCE="X" TYP="ZBT_PRODUCTO_RANGE"/>
+   <changing PARAMETER="COMPONENTE" OPTIONAL="X" REFERENCE="X" TYP="ZBT_COMPONENTE_RANGE"/>
+   <changing PARAMETER="AEDAT" OPTIONAL="X" REFERENCE="X" TYP="ZBT_TIMESTAMP_RANGE"/>
+   <changing PARAMETER="AENAM" OPTIONAL="X" REFERENCE="X" TYP="ZBT_USER_RANGE"/>
+   <documentation PARAMETER="SCREEN_ATTRIBUTES" KIND="P" STEXT="Screen attributes" INDEX=" 001"/>
+   <documentation PARAMETER="RESULTS_ALV_CTRL" KIND="P" STEXT="Results ALV Controller" INDEX=" 002"/>
+   <documentation PARAMETER="BUG" KIND="P" STEXT="Bug Id&apos;s Range" INDEX=" 003"/>
+   <documentation PARAMETER="PRODUCTO" KIND="P" STEXT="Range of Product Id&apos;s" INDEX=" 004"/>
+   <documentation PARAMETER="COMPONENTE" KIND="P" STEXT="Componente Range" INDEX=" 005"/>
+   <documentation PARAMETER="AEDAT" KIND="P" STEXT="Time Stamp Range" INDEX=" 006"/>
+   <documentation PARAMETER="AENAM" KIND="P" STEXT="User Range" INDEX=" 007"/>
+   <fm_source>PERFORM init_global_data.
+
+  s_aedat[] = aedat[].
+  s_aenam[] = aenam[].
+  s_bug[]   = bug[].
+  s_prod[]  = producto[].
+  s_comp[]  = componente[].
+
+
+  g_title           = screen_attributes-title.
+  g_subscreen-repid = sy-repid.
+  g_subscreen-dynnr = &apos;0003&apos;.
+
+  go_results_handler = results_alv_ctrl.
+
+  CALL SCREEN 0001 STARTING AT screen_attributes-top
+                               screen_attributes-left
+                   ENDING AT   screen_attributes-bottom
+                               screen_attributes-rigth.
+
+  aedat[]      = s_aedat[].
+  aenam[]      = s_aenam[].
+  bug[]        = s_bug[].
+  producto[]   = s_prod[].
+  componente[] = s_comp[].</fm_source>
+   <functionModuleDocumentation/>
+  </functionmodule>
+ </functionmodules>
+</FUGR>

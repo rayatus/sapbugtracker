@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-16"?>
+<CLAS CLSNAME="ZCL_COMPONENTE" VERSION="1" LANGU="E" DESCRIPT="Product Component - Entity" UUID="DF36CB6F32196DF19289080027E6C24E" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20111209" CHANGEDBY="BCUSER" CHANGEDON="20111209" CHGDANYON="00000000" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="701" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 " REFCLSNAME="ZCL_ENTITY">
+ <publicSection>class ZCL_COMPONENTE definition
+  public
+  inheriting from ZCL_ENTITY
+  final
+  create public .
+
+public section.
+*&quot;* public components of class ZCL_COMPONENTE
+*&quot;* do not include other source files here!!!
+
+  methods CONSTRUCTOR
+    importing
+      !PRODUCTO type ref to ZCL_PRODUCTO
+      !COMPONENTE type ZBT_COMPONT-COMPONENTE .
+  methods GET_PRODUCTO
+    returning
+      value(RETURN) type ref to ZCL_PRODUCTO .
+  methods GET_ID
+    returning
+      value(RETURN) type ZBT_COMPONT-COMPONENTE .
+  methods GET_DESCRIPCION
+    importing
+      !SPRAS type ZBT_COMPONT_TXT-SPRAS default SY-LANGU
+    preferred parameter SPRAS
+    returning
+      value(RETURN) type ZBT_COMPONT_TXT-DESCRIPCION .</publicSection>
+ <protectedSection>protected section.
+*&quot;* protected components of class ZCL_COMPONENTE
+*&quot;* do not include other source files here!!!
+
+  methods PREPARE_HASH_STRUCTURE
+    redefinition .</protectedSection>
+ <privateSection>*&quot;* private components of class ZCL_COMPONENTE
+*&quot;* do not include other source files here!!!
+private section.
+
+  data PRODUCTO type ref to ZCL_PRODUCTO .
+  data ID type ZBT_COMPONT-COMPONENTE .</privateSection>
+ <localImplementation>*&quot;* local class implementation for public class
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes</localImplementation>
+ <localTypes>*&quot;* use this source file for any type declarations (class
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <attribute CLSNAME="ZCL_COMPONENTE" CMPNAME="ID" VERSION="1" LANGU="E" DESCRIPT="Componente" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="BCUSER" CREATEDON="20100323" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="1" TYPE="ZBT_COMPONT-COMPONENTE" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_COMPONENTE" CMPNAME="PRODUCTO" VERSION="1" LANGU="E" DESCRIPT="Producto Entity" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100323" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="ZCL_PRODUCTO" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <inheritance CLSNAME="ZCL_COMPONENTE" REFCLSNAME="ZCL_ENTITY" VERSION="1" STATE="1" AUTHOR="BCUSER" CREATEDON="20111209" CHANGEDBY="BCUSER" CHANGEDON="20111209">
+  <redefinition CLSNAME="ZCL_COMPONENTE" REFCLSNAME="ZCL_ENTITY" VERSION="1" MTDNAME="PREPARE_HASH_STRUCTURE" EXPOSURE="1"/>
+ </inheritance>
+ <method CLSNAME="ZCL_COMPONENTE" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100323" CHANGEDON="20101225" MTDTYPE="2" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMPONENTE" CMPNAME="CONSTRUCTOR" SCONAME="PRODUCTO" VERSION="1" LANGU="E" DESCRIPT="Producto Entity" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100323" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_PRODUCTO"/>
+  <parameter CLSNAME="ZCL_COMPONENTE" CMPNAME="CONSTRUCTOR" SCONAME="COMPONENTE" VERSION="1" LANGU="E" DESCRIPT="Componente" CMPTYPE="1" MTDTYPE="2" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100323" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_COMPONT-COMPONENTE"/>
+  <source>method CONSTRUCTOR.
+  super-&gt;constructor( ).
+  me-&gt;producto = producto.
+  me-&gt;id       = componente.
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_COMPONENTE" CMPNAME="GET_DESCRIPCION" VERSION="1" LANGU="E" DESCRIPT="GetDescripcion" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100323" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMPONENTE" CMPNAME="GET_DESCRIPCION" SCONAME="SPRAS" VERSION="1" LANGU="E" DESCRIPT="Language Key" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100323" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_COMPONT_TXT-SPRAS" PARVALUE="SY-LANGU" PARPREFERD="X"/>
+  <parameter CLSNAME="ZCL_COMPONENTE" CMPNAME="GET_DESCRIPCION" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="Description" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100323" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_COMPONT_TXT-DESCRIPCION"/>
+  <source>METHOD get_descripcion.
+  DATA: l_producto_id TYPE zbt_producto-producto.
+
+  l_producto_id = producto-&gt;get_id( ).
+  SELECT SINGLE descripcion INTO return FROM zbt_compont_txt
+    WHERE spras = spras
+      AND producto = l_producto_id
+      AND componente = id.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_COMPONENTE" CMPNAME="GET_ID" VERSION="1" LANGU="E" DESCRIPT="GetId" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100323" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMPONENTE" CMPNAME="GET_ID" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="Componente" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100323" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_COMPONT-COMPONENTE"/>
+  <source>method GET_ID.
+  return = id.
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_COMPONENTE" CMPNAME="GET_PRODUCTO" VERSION="1" LANGU="E" DESCRIPT="GetProducto" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100323" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMPONENTE" CMPNAME="GET_PRODUCTO" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="Producto Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100323" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_PRODUCTO"/>
+  <source>method GET_PRODUCTO.
+  return = me-&gt;producto.
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_ENTITY" CMPNAME="PREPARE_HASH_STRUCTURE" VERSION="0" EXPOSURE="0" STATE="0" EDITORDER="0 " DISPID="0 " CREATEDON="00000000" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="0" BCMTDCAT="00" BCMTDSYN="0">
+  <source>METHOD prepare_hash_structure.
+
+  DATA:  str   TYPE zbt_compont_txt,
+         value TYPE LINE OF zbt_objectvalue_hash_calcul,
+         i     TYPE i.
+
+  FIELD-SYMBOLS: &lt;field&gt; TYPE any.
+
+  CALL METHOD zcl_componente_controller=&gt;entity_to_structure
+    EXPORTING
+      entity    = me
+    RECEIVING
+      structure = str.
+
+  DO.
+    ADD 1 TO i.
+    ASSIGN COMPONENT i OF STRUCTURE str TO &lt;field&gt;.
+    IF sy-subrc IS INITIAL.
+      value = &lt;field&gt;.
+      SHIFT value LEFT DELETING LEADING space.
+      INSERT value INTO TABLE values[].
+    ELSE.
+      EXIT.
+    ENDIF.
+  ENDDO.
+
+ENDMETHOD.</source>
+ </method>
+</CLAS>

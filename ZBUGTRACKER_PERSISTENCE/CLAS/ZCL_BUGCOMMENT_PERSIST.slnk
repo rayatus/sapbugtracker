@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="utf-16"?>
+<CLAS CLSNAME="ZCL_BUGCOMMENT_PERSIST" VERSION="1" LANGU="E" DESCRIPT="BugComment - Persistence" UUID="DF33B18A271C61F19286080027E6C24E" CATEGORY="10" EXPOSURE="1" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20120901" CHGDANYON="00000000" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="701" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+ <friends CLSNAME="ZCL_BUGCOMMENT_PERSIST" REFCLSNAME="ZCB_BUGCOMMENT_PERSIST" FRIENDTYPE="0" VERSION="1" STATE="1" AUTHOR="BCUSER" CREATEDON="20100329" CHANGEDON="00000000"/>
+ <implementing CLSNAME="ZCL_BUGCOMMENT_PERSIST" REFCLSNAME="IF_OS_STATE" VERSION="1" EXPOSURE="2" STATE="1" AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDON="20101225" RELTYPE="1" EDITORDER="0 "/>
+ <publicSection>class ZCL_BUGCOMMENT_PERSIST definition
+  public
+  final
+  create protected
+
+  global friends ZCB_BUGCOMMENT_PERSIST .
+
+public section.
+*&quot;* public components of class ZCL_BUGCOMMENT_PERSIST
+*&quot;* do not include other source files here!!!
+
+  interfaces IF_OS_STATE .
+
+  methods GET_BUG
+    returning
+      value(RESULT) type ZBT_ID_BUG
+    raising
+      CX_OS_OBJECT_NOT_FOUND .
+  methods GET_COMENTARIO
+    returning
+      value(RESULT) type ZBT_ID_COMENTARIO
+    raising
+      CX_OS_OBJECT_NOT_FOUND .
+  methods GET_ERDAT
+    returning
+      value(RESULT) type ZBT_ERDAT
+    raising
+      CX_OS_OBJECT_NOT_FOUND .
+  methods GET_PRODUCTO
+    returning
+      value(RESULT) type ZBT_ID_PRODUCTO
+    raising
+      CX_OS_OBJECT_NOT_FOUND .
+  methods GET_TEXTO
+    returning
+      value(RESULT) type ZBT_TEXTO_LARGO
+    raising
+      CX_OS_OBJECT_NOT_FOUND .
+  methods GET_USUARIO
+    returning
+      value(RESULT) type XUBNAME
+    raising
+      CX_OS_OBJECT_NOT_FOUND .
+  methods SET_ERDAT
+    importing
+      !I_ERDAT type ZBT_ERDAT
+    raising
+      CX_OS_OBJECT_NOT_FOUND .
+  methods SET_TEXTO
+    importing
+      !I_TEXTO type ZBT_TEXTO_LARGO
+    raising
+      CX_OS_OBJECT_NOT_FOUND .
+  methods SET_USUARIO
+    importing
+      !I_USUARIO type XUBNAME
+    raising
+      CX_OS_OBJECT_NOT_FOUND .
+  class CL_OS_SYSTEM definition load .</publicSection>
+ <protectedSection>*&quot;* protected components of class ZCL_BUGCOMMENT_PERSIST
+*&quot;* do not include other source files here!!!
+protected section.
+
+  data BUG type ZBT_ID_BUG .
+  data COMENTARIO type ZBT_ID_COMENTARIO .
+  data ERDAT type ZBT_ERDAT .
+  data PRODUCTO type ZBT_ID_PRODUCTO .
+  data TEXTO type ZBT_TEXTO_LARGO .
+  data USUARIO type XUBNAME .</protectedSection>
+ <privateSection>*&quot;* private components of class ZCL_BUGCOMMENT_PERSIST
+*&quot;* do not include other source files here!!!
+private section.</privateSection>
+ <localImplementation>*&quot;* local class implementation for public class
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes</localImplementation>
+ <localTypes>*&quot;* use this source file for any type declarations (class
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <attribute CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug" EXPOSURE="1" STATE="1" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="0" ATTPERSIST="X" ATTEXPVIRT="7" TYPTYPE="1" TYPE="ZBT_ID_BUG" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="COMENTARIO" VERSION="1" LANGU="E" DESCRIPT="Comentario" EXPOSURE="1" STATE="1" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="0" ATTPERSIST="X" ATTEXPVIRT="7" TYPTYPE="1" TYPE="ZBT_ID_COMENTARIO" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="ERDAT" VERSION="1" LANGU="E" DESCRIPT="Creado el" EXPOSURE="1" STATE="1" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="0" ATTPERSIST="X" ATTEXPVIRT="2" TYPTYPE="1" TYPE="ZBT_ERDAT" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="PRODUCTO" VERSION="1" LANGU="E" DESCRIPT="Producto" EXPOSURE="1" STATE="1" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="0" ATTPERSIST="X" ATTEXPVIRT="7" TYPTYPE="1" TYPE="ZBT_ID_PRODUCTO" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="TEXTO" VERSION="1" LANGU="E" DESCRIPT="Texto Largo" EXPOSURE="1" STATE="1" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="0" ATTPERSIST="X" ATTEXPVIRT="2" TYPTYPE="1" TYPE="ZBT_TEXTO_LARGO" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="USUARIO" VERSION="1" LANGU="E" DESCRIPT="User Name in User Master Record" EXPOSURE="1" STATE="1" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="0" ATTPERSIST="X" ATTEXPVIRT="2" TYPTYPE="1" TYPE="XUBNAME" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " TYPESRC_LENG="0 "/>
+ <interfaceMethod CLSNAME="ZCL_BUGCOMMENT_PERSIST" CPDNAME="IF_OS_STATE~GET">
+  <source>method IF_OS_STATE~GET.
+***BUILD 051401
+     &quot; returning result type ref to object
+************************************************************************
+* Purpose        : Get state.
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : -
+*
+* OO Exceptions  : -
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-07   : (BGR) Initial Version 2.0
+************************************************************************
+* GENERATED: Do not modify
+************************************************************************
+
+  data: STATE_OBJECT type ref to CL_OS_STATE.
+
+  create object STATE_OBJECT.
+  call method STATE_OBJECT-&gt;SET_STATE_FROM_OBJECT( ME ).
+  result = STATE_OBJECT.
+
+endmethod.</source>
+ </interfaceMethod>
+ <interfaceMethod CLSNAME="ZCL_BUGCOMMENT_PERSIST" CPDNAME="IF_OS_STATE~HANDLE_EXCEPTION">
+  <source>method IF_OS_STATE~HANDLE_EXCEPTION.
+***BUILD 051401
+     &quot; importing I_EXCEPTION type ref to IF_OS_EXCEPTION_INFO optional
+     &quot; importing I_EX_OS type ref to CX_OS_OBJECT_NOT_FOUND optional
+************************************************************************
+* Purpose        : Handles exceptions during attribute access.
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : -
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : If an exception is raised during attribut access,
+*                  this method is called and the exception is passed
+*                  as a paramater. The default is to raise the exception
+*                  again, so that the caller can handle the exception.
+*                  But it is also possible to handle the exception
+*                  here in the callee.
+*
+************************************************************************
+* Changelog:
+* - 2000-03-07   : (BGR) Initial Version 2.0
+* - 2000-08-02   : (SB)  OO Exceptions
+************************************************************************
+* Modify if you like
+************************************************************************
+
+  if i_ex_os is not initial.
+    raise exception i_ex_os.
+  endif.
+
+endmethod.</source>
+ </interfaceMethod>
+ <interfaceMethod CLSNAME="ZCL_BUGCOMMENT_PERSIST" CPDNAME="IF_OS_STATE~INIT">
+  <source>method IF_OS_STATE~INIT.
+***BUILD 051401
+************************************************************************
+* Purpose        : Initialisation of the transient state partition.
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : Transient state is initial.
+*
+* OO Exceptions  : -
+*
+* Implementation : Caution!: Avoid Throwing ACCESS Events.
+*
+************************************************************************
+* Changelog:
+* - 2000-03-07   : (BGR) Initial Version 2.0
+************************************************************************
+* Modify if you like
+************************************************************************
+
+endmethod.</source>
+ </interfaceMethod>
+ <interfaceMethod CLSNAME="ZCL_BUGCOMMENT_PERSIST" CPDNAME="IF_OS_STATE~INVALIDATE">
+  <source>method IF_OS_STATE~INVALIDATE.
+***BUILD 051401
+************************************************************************
+* Purpose        : Do something before all persistent attributes are
+*                  cleared.
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : -
+*
+* OO Exceptions  : -
+*
+* Implementation : Whatever you like to do.
+*
+************************************************************************
+* Changelog:
+* - 2000-03-07   : (BGR) Initial Version 2.0
+************************************************************************
+* Modify if you like
+************************************************************************
+
+endmethod.</source>
+ </interfaceMethod>
+ <interfaceMethod CLSNAME="ZCL_BUGCOMMENT_PERSIST" CPDNAME="IF_OS_STATE~SET">
+  <source>method IF_OS_STATE~SET.
+***BUILD 051401
+     &quot; importing I_STATE type ref to object
+************************************************************************
+* Purpose        : Set state.
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : -
+*
+* OO Exceptions  : -
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-07   : (BGR) Initial Version 2.0
+************************************************************************
+* GENERATED: Do not modify
+************************************************************************
+
+  data: STATE_OBJECT type ref to CL_OS_STATE.
+
+  STATE_OBJECT ?= I_STATE.
+  call method STATE_OBJECT-&gt;SET_OBJECT_FROM_STATE( ME ).
+
+endmethod.</source>
+ </interfaceMethod>
+ <method CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="GET_BUG" VERSION="1" LANGU="E" DESCRIPT="Reads Attribute BUG" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="4" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="GET_BUG" SCONAME="RESULT" VERSION="1" LANGU="E" DESCRIPT="Attribute Value" CMPTYPE="1" MTDTYPE="4" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20100329" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_ID_BUG"/>
+  <exception CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="GET_BUG" SCONAME="CX_OS_OBJECT_NOT_FOUND" VERSION="1" LANGU="E" DESCRIPT="Object Services Exception" MTDTYPE="4" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20100329"/>
+  <source>method GET_BUG.
+***BUILD 051401
+     &quot; returning RESULT
+     &quot; raising CX_OS_OBJECT_NOT_FOUND
+************************************************************************
+* Purpose        : Get Attribute BUG
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : The object state is loaded, result is set
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-14   : (BGR) Version 2.0
+* - 2000-07-28   : (SB)  OO Exceptions
+************************************************************************
+
+* * Inform class agent and handle exceptions
+  state_read_access.
+
+  result = BUG.
+
+           &quot; GET_BUG
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="GET_COMENTARIO" VERSION="1" LANGU="E" DESCRIPT="Reads Attribute COMENTARIO" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="4" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="GET_COMENTARIO" SCONAME="RESULT" VERSION="1" LANGU="E" DESCRIPT="Attribute Value" CMPTYPE="1" MTDTYPE="4" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20100329" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_ID_COMENTARIO"/>
+  <exception CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="GET_COMENTARIO" SCONAME="CX_OS_OBJECT_NOT_FOUND" VERSION="1" LANGU="E" DESCRIPT="Object Services Exception" MTDTYPE="4" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20100329"/>
+  <source>method GET_COMENTARIO.
+***BUILD 051401
+     &quot; returning RESULT
+     &quot; raising CX_OS_OBJECT_NOT_FOUND
+************************************************************************
+* Purpose        : Get Attribute COMENTARIO
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : The object state is loaded, result is set
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-14   : (BGR) Version 2.0
+* - 2000-07-28   : (SB)  OO Exceptions
+************************************************************************
+
+* * Inform class agent and handle exceptions
+  state_read_access.
+
+  result = COMENTARIO.
+
+           &quot; GET_COMENTARIO
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="GET_ERDAT" VERSION="1" LANGU="E" DESCRIPT="Reads Attribute ERDAT" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="4" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="GET_ERDAT" SCONAME="RESULT" VERSION="1" LANGU="E" DESCRIPT="Attribute Value" CMPTYPE="1" MTDTYPE="4" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20100329" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_ERDAT"/>
+  <exception CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="GET_ERDAT" SCONAME="CX_OS_OBJECT_NOT_FOUND" VERSION="1" LANGU="E" DESCRIPT="Object Services Exception" MTDTYPE="4" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20100329"/>
+  <source>method GET_ERDAT.
+***BUILD 051401
+     &quot; returning RESULT
+     &quot; raising CX_OS_OBJECT_NOT_FOUND
+************************************************************************
+* Purpose        : Get Attribute ERDAT
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : The object state is loaded, result is set
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-14   : (BGR) Version 2.0
+* - 2000-07-28   : (SB)  OO Exceptions
+************************************************************************
+
+* * Inform class agent and handle exceptions
+  state_read_access.
+
+  result = ERDAT.
+
+           &quot; GET_ERDAT
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="GET_PRODUCTO" VERSION="1" LANGU="E" DESCRIPT="Reads Attribute PRODUCTO" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="4" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="GET_PRODUCTO" SCONAME="RESULT" VERSION="1" LANGU="E" DESCRIPT="Attribute Value" CMPTYPE="1" MTDTYPE="4" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20100329" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_ID_PRODUCTO"/>
+  <exception CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="GET_PRODUCTO" SCONAME="CX_OS_OBJECT_NOT_FOUND" VERSION="1" LANGU="E" DESCRIPT="Object Services Exception" MTDTYPE="4" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20100329"/>
+  <source>method GET_PRODUCTO.
+***BUILD 051401
+     &quot; returning RESULT
+     &quot; raising CX_OS_OBJECT_NOT_FOUND
+************************************************************************
+* Purpose        : Get Attribute PRODUCTO
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : The object state is loaded, result is set
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-14   : (BGR) Version 2.0
+* - 2000-07-28   : (SB)  OO Exceptions
+************************************************************************
+
+* * Inform class agent and handle exceptions
+  state_read_access.
+
+  result = PRODUCTO.
+
+           &quot; GET_PRODUCTO
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="GET_TEXTO" VERSION="1" LANGU="E" DESCRIPT="Reads Attribute TEXTO" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="4" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="GET_TEXTO" SCONAME="RESULT" VERSION="1" LANGU="E" DESCRIPT="Attribute Value" CMPTYPE="1" MTDTYPE="4" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20100329" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_TEXTO_LARGO"/>
+  <exception CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="GET_TEXTO" SCONAME="CX_OS_OBJECT_NOT_FOUND" VERSION="1" LANGU="E" DESCRIPT="Object Services Exception" MTDTYPE="4" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20100329"/>
+  <source>method GET_TEXTO.
+***BUILD 051401
+     &quot; returning RESULT
+     &quot; raising CX_OS_OBJECT_NOT_FOUND
+************************************************************************
+* Purpose        : Get Attribute TEXTO
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : The object state is loaded, result is set
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-14   : (BGR) Version 2.0
+* - 2000-07-28   : (SB)  OO Exceptions
+************************************************************************
+
+* * Inform class agent and handle exceptions
+  state_read_access.
+
+  result = TEXTO.
+
+           &quot; GET_TEXTO
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="GET_USUARIO" VERSION="1" LANGU="E" DESCRIPT="Reads Attribute USUARIO" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="4" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="GET_USUARIO" SCONAME="RESULT" VERSION="1" LANGU="E" DESCRIPT="Attribute Value" CMPTYPE="1" MTDTYPE="4" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20100329" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="XUBNAME"/>
+  <exception CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="GET_USUARIO" SCONAME="CX_OS_OBJECT_NOT_FOUND" VERSION="1" LANGU="E" DESCRIPT="Object Services Exception" MTDTYPE="4" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20100329"/>
+  <source>method GET_USUARIO.
+***BUILD 051401
+     &quot; returning RESULT
+     &quot; raising CX_OS_OBJECT_NOT_FOUND
+************************************************************************
+* Purpose        : Get Attribute USUARIO
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : The object state is loaded, result is set
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-14   : (BGR) Version 2.0
+* - 2000-07-28   : (SB)  OO Exceptions
+************************************************************************
+
+* * Inform class agent and handle exceptions
+  state_read_access.
+
+  result = USUARIO.
+
+           &quot; GET_USUARIO
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="SET_ERDAT" VERSION="1" LANGU="E" DESCRIPT="Sets Attribute ERDAT" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="5" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="SET_ERDAT" SCONAME="I_ERDAT" VERSION="1" LANGU="E" DESCRIPT="Attribute Value" CMPTYPE="1" MTDTYPE="5" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20100329" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_ERDAT"/>
+  <exception CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="SET_ERDAT" SCONAME="CX_OS_OBJECT_NOT_FOUND" VERSION="1" LANGU="E" DESCRIPT="Object Services Exception" MTDTYPE="5" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20100329"/>
+  <source>method SET_ERDAT.
+***BUILD 051401
+     &quot; importing I_ERDAT
+     &quot; raising CX_OS_OBJECT_NOT_FOUND
+************************************************************************
+* Purpose        : Set attribute ERDAT
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : The object state is loaded, attribute is set
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-14   : (BGR) Version 2.0
+* - 2000-07-28   : (SB)  OO Exceptions
+* - 2000-10-04   : (SB)  Namespaces
+************************************************************************
+
+* * Inform class agent and handle exceptions
+  state_write_access.
+
+  if ( I_ERDAT &lt;&gt; ERDAT ).
+
+    ERDAT = I_ERDAT.
+
+*   * Inform class agent and handle exceptions
+    state_changed.
+
+  endif. &quot;( I_ERDAT &lt;&gt; ERDAT )
+
+           &quot; GET_ERDAT
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="SET_TEXTO" VERSION="1" LANGU="E" DESCRIPT="Sets Attribute TEXTO" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="5" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="SET_TEXTO" SCONAME="I_TEXTO" VERSION="1" LANGU="E" DESCRIPT="Attribute Value" CMPTYPE="1" MTDTYPE="5" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20100329" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_TEXTO_LARGO"/>
+  <exception CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="SET_TEXTO" SCONAME="CX_OS_OBJECT_NOT_FOUND" VERSION="1" LANGU="E" DESCRIPT="Object Services Exception" MTDTYPE="5" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20100329"/>
+  <source>method SET_TEXTO.
+***BUILD 051401
+     &quot; importing I_TEXTO
+     &quot; raising CX_OS_OBJECT_NOT_FOUND
+************************************************************************
+* Purpose        : Set attribute TEXTO
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : The object state is loaded, attribute is set
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-14   : (BGR) Version 2.0
+* - 2000-07-28   : (SB)  OO Exceptions
+* - 2000-10-04   : (SB)  Namespaces
+************************************************************************
+
+* * Inform class agent and handle exceptions
+  state_write_access.
+
+  if ( I_TEXTO &lt;&gt; TEXTO ).
+
+    TEXTO = I_TEXTO.
+
+*   * Inform class agent and handle exceptions
+    state_changed.
+
+  endif. &quot;( I_TEXTO &lt;&gt; TEXTO )
+
+           &quot; GET_TEXTO
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="SET_USUARIO" VERSION="1" LANGU="E" DESCRIPT="Sets Attribute USUARIO" EXPOSURE="2" STATE="1" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="5" MTDDECLTYP="0" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="SET_USUARIO" SCONAME="I_USUARIO" VERSION="1" LANGU="E" DESCRIPT="Attribute Value" CMPTYPE="1" MTDTYPE="5" EDITORDER="0 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20100329" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="XUBNAME"/>
+  <exception CLSNAME="ZCL_BUGCOMMENT_PERSIST" CMPNAME="SET_USUARIO" SCONAME="CX_OS_OBJECT_NOT_FOUND" VERSION="1" LANGU="E" DESCRIPT="Object Services Exception" MTDTYPE="5" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100320" CHANGEDBY="BCUSER" CHANGEDON="20100329"/>
+  <source>method SET_USUARIO.
+***BUILD 051401
+     &quot; importing I_USUARIO
+     &quot; raising CX_OS_OBJECT_NOT_FOUND
+************************************************************************
+* Purpose        : Set attribute USUARIO
+*
+* Version        : 2.0
+*
+* Precondition   : -
+*
+* Postcondition  : The object state is loaded, attribute is set
+*
+* OO Exceptions  : CX_OS_OBJECT_NOT_FOUND
+*
+* Implementation : -
+*
+************************************************************************
+* Changelog:
+* - 2000-03-14   : (BGR) Version 2.0
+* - 2000-07-28   : (SB)  OO Exceptions
+* - 2000-10-04   : (SB)  Namespaces
+************************************************************************
+
+* * Inform class agent and handle exceptions
+  state_write_access.
+
+  if ( I_USUARIO &lt;&gt; USUARIO ).
+
+    USUARIO = I_USUARIO.
+
+*   * Inform class agent and handle exceptions
+    state_changed.
+
+  endif. &quot;( I_USUARIO &lt;&gt; USUARIO )
+
+           &quot; GET_USUARIO
+endmethod.</source>
+ </method>
+</CLAS>

@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-16"?>
+<CLAS CLSNAME="ZCL_COMMENT_CONTROLLER" VERSION="1" LANGU="E" DESCRIPT="Comment Controller" UUID="DF3C468A75823AF19291080027E6C24E" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDBY="BCUSER" CHANGEDON="20101225" CHGDANYON="00000000" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="701" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+ <publicSection>class ZCL_COMMENT_CONTROLLER definition
+  public
+  create public .
+
+*&quot;* public components of class ZCL_COMMENT_CONTROLLER
+*&quot;* do not include other source files here!!!
+public section.
+
+  class-methods CREATE
+    importing
+      !COMMENT type ref to ZCL_COMMENT
+    raising
+      ZCX_CREATE_EXCEPTION .
+  class-methods DELETE
+    importing
+      !COMMENT type ref to ZCL_COMMENT
+    raising
+      ZCX_DELETE_EXCEPTION .
+  class-methods ENTITY_TO_STRUCTURE
+    importing
+      !ENTITY type ref to ZCL_COMMENT
+    returning
+      value(STRUCTURE) type ZBT_BUGCOMMENT .
+  class-methods EXIST
+    importing
+      !COMENTARIO type ref to ZCL_COMMENT
+    returning
+      value(RETURN) type FLAG .
+  class-methods FIND_ALL_BUG_COMMENTS
+    importing
+      !BUG type ref to ZCL_BUG
+      !NO_SECTION_COMMENTS type FLAG default &apos;X&apos;
+    returning
+      value(RESULT) type ZBT_COMENTARIOS
+    raising
+      ZCX_NOT_FOUND_EXCEPTION .
+  class-methods FIND_BY_KEY
+    importing
+      !ID type ZBT_BUGCOMMENT-COMENTARIO
+      !BUG type ref to ZCL_BUG
+    returning
+      value(ENTITY) type ref to ZCL_COMMENT
+    raising
+      ZCX_NOT_FOUND_EXCEPTION .
+  class-methods UPDATE
+    importing
+      !COMMENT type ref to ZCL_COMMENT
+    raising
+      ZCX_UPDATE_EXCEPTION .</publicSection>
+ <protectedSection>*&quot;* protected components of class ZCL_COMMENT_CONTROLLER
+*&quot;* do not include other source files here!!!
+protected section.
+
+  class-methods PERSIST_TO_ENTITY
+    importing
+      !PERSIST type ref to ZCL_BUGCOMMENT_PERSIST
+      value(BUG) type ref to ZCL_BUG optional
+    returning
+      value(ENTITY) type ref to ZCL_COMMENT
+    raising
+      ZCX_VALIDATE_EXCEPTION .</protectedSection>
+ <privateSection>*&quot;* private components of class ZCL_COMMENT_CONTROLLER
+*&quot;* do not include other source files here!!!
+private section.
+
+  class-methods ENTITY_TO_PERSIST
+    importing
+      !ENTITY type ref to ZCL_COMMENT
+    returning
+      value(PERSIST) type ref to ZCL_BUGCOMMENT_PERSIST .
+  class-methods NEXT_ID
+    importing
+      !BUG type ref to ZCL_BUG
+    returning
+      value(ID) type ZBT_BUGCOMMENT-COMENTARIO .</privateSection>
+ <localImplementation>*&quot;* local class implementation for public class
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes</localImplementation>
+ <localTypes>*&quot;* use this source file for any type declarations (class
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <method CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="CREATE" VERSION="1" LANGU="E" DESCRIPT="Hace persistentes los datos" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="CREATE" SCONAME="COMMENT" VERSION="1" LANGU="E" DESCRIPT="Comment Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_COMMENT"/>
+  <exception CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="CREATE" SCONAME="ZCX_CREATE_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Create Exception" MTDTYPE="0" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000"/>
+  <source>METHOD create.
+  DATA: lo_exception TYPE REF TO cx_root,
+        lo_bug       TYPE REF TO zcl_bug,
+        lo_transaccion TYPE REF TO zcl_transaction_service,
+        l_str        TYPE zbt_bugcomment.
+
+  TRY .
+      l_str = entity_to_structure( comment ).
+
+      CREATE OBJECT lo_transaccion.
+      lo_transaccion-&gt;start( ).
+
+      zca_bugcomment_persist=&gt;agent-&gt;create_persistent(
+        i_bug        = l_str-bug
+        i_comentario = l_str-comentario
+        i_producto   = l_str-producto
+        i_erdat      = l_str-erdat
+        i_texto      = l_str-texto
+        i_usuario    = l_str-usuario
+        ).
+      lo_transaccion-&gt;end( ).
+    CATCH cx_root INTO lo_exception.
+      RAISE EXCEPTION TYPE zcx_create_exception
+        EXPORTING
+          textid   = zcx_create_exception=&gt;zcx_create_exception
+          previous = lo_exception.
+  ENDTRY.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="DELETE" VERSION="1" LANGU="E" DESCRIPT="Borra el comentario" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="DELETE" SCONAME="COMMENT" VERSION="1" LANGU="E" DESCRIPT="Comment Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_COMMENT"/>
+  <exception CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="DELETE" SCONAME="ZCX_DELETE_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Delete Exception" MTDTYPE="0" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000"/>
+  <source>METHOD delete.
+  DATA: lo_exception TYPE REF TO cx_root,
+        lo_transaccion TYPE REF TO zcl_transaction_service,
+        l_str        TYPE zbt_bugcomment.
+
+  TRY .
+      l_str = entity_to_structure( comment ).
+      lo_transaccion-&gt;start( ).
+      zca_bugcomment_persist=&gt;agent-&gt;delete_persistent(
+        i_bug = l_str-bug
+        i_comentario = l_str-comentario
+        i_producto = l_str-producto
+       ).
+      lo_transaccion-&gt;end( ).
+    CATCH cx_root INTO lo_exception.
+      RAISE EXCEPTION TYPE zcx_delete_exception
+        EXPORTING
+          textid   = zcx_delete_exception=&gt;zcx_delete_exception
+          previous = lo_exception.
+  ENDTRY.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="ENTITY_TO_PERSIST" VERSION="1" LANGU="E" DESCRIPT="Entity To Persist" EXPOSURE="0" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="ENTITY_TO_PERSIST" SCONAME="ENTITY" VERSION="1" LANGU="E" DESCRIPT="Comment Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_COMMENT"/>
+  <parameter CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="ENTITY_TO_PERSIST" SCONAME="PERSIST" VERSION="1" LANGU="E" DESCRIPT="Bug Comment" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_BUGCOMMENT_PERSIST"/>
+  <source>method ENTITY_TO_PERSIST.
+  DATA: l_str TYPE zbt_bugcomment.
+
+  l_str = zcl_comment_controller=&gt;entity_to_structure( entity ).
+
+  persist = zca_bugcomment_persist=&gt;agent-&gt;get_persistent(
+              i_bug         = l_str-bug
+              i_comentario  = l_str-comentario
+              i_producto    = l_str-producto
+            ).
+
+  persist-&gt;set_erdat( l_str-erdat ).
+  persist-&gt;set_texto( l_str-texto ).
+  persist-&gt;set_usuario( l_str-usuario ).
+
+
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="ENTITY_TO_STRUCTURE" VERSION="1" LANGU="E" DESCRIPT="Entity To Structure" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="ENTITY_TO_STRUCTURE" SCONAME="ENTITY" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_COMMENT"/>
+  <parameter CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="ENTITY_TO_STRUCTURE" SCONAME="STRUCTURE" VERSION="1" LANGU="E" DESCRIPT="Comentarios de un Bug" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_BUGCOMMENT"/>
+  <source>method ENTITY_TO_STRUCTURE.
+  DATA: lo_bug      TYPE REF TO zcl_bug,
+        lo_producto TYPE REF TO zcl_producto,
+        lo_user     TYPE REF TO zcl_usuario.
+
+  lo_bug      = entity-&gt;get_bug( ).
+  lo_producto = lo_bug-&gt;get_producto( ).
+  lo_user     = entity-&gt;get_usuario( ).
+
+  structure-producto   = lo_producto-&gt;get_id( ).
+  structure-bug        = lo_bug-&gt;get_id( ).
+  structure-comentario = entity-&gt;get_id( ).
+  structure-usuario    = lo_user-&gt;get_id( ).
+  structure-texto      = entity-&gt;get_texto( ).
+  structure-erdat      = entity-&gt;get_erdat( ).
+
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="EXIST" VERSION="1" LANGU="E" DESCRIPT="Verifica si existe" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="EXIST" SCONAME="COMENTARIO" VERSION="1" LANGU="E" DESCRIPT="Comment Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_COMMENT"/>
+  <parameter CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="EXIST" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="General Flag" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="FLAG"/>
+  <source>method EXIST.
+  DATA: l_id   TYPE zbt_bugcomment-comentario,
+        lo_bug TYPE REF TO zcl_bug.
+
+  TRY .
+      l_id   = comentario-&gt;get_id( ).
+      lo_bug = comentario-&gt;get_bug( ).
+      zcl_comment_controller=&gt;find_by_key( id  = l_id
+                                           bug = lo_bug ).
+      return = &apos;X&apos;.
+    CATCH cx_root .
+      return = space.
+  ENDTRY.
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="FIND_ALL_BUG_COMMENTS" VERSION="1" LANGU="E" DESCRIPT="Recupera todos los comentarios de un Bug" EXPOSURE="2" STATE="1" EDITORDER="6 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="FIND_ALL_BUG_COMMENTS" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <parameter CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="FIND_ALL_BUG_COMMENTS" SCONAME="NO_SECTION_COMMENTS" VERSION="1" LANGU="E" DESCRIPT="Do not retrive comments of a BugSection" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="FLAG" PARVALUE="&apos;X&apos;"/>
+  <parameter CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="FIND_ALL_BUG_COMMENTS" SCONAME="RESULT" VERSION="1" LANGU="E" DESCRIPT="Comentarios" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_COMENTARIOS"/>
+  <exception CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="FIND_ALL_BUG_COMMENTS" SCONAME="ZCX_NOT_FOUND_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Not Found" MTDTYPE="0" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100331" CHANGEDBY="BCUSER" CHANGEDON="20100517"/>
+  <source>method FIND_ALL_BUG_COMMENTS.
+
+  TYPES: BEGIN OF ltype_section_comment,
+          comment_id TYPE zbt_id_comentario,
+         END   OF ltype_section_comment.
+
+  TYPES: ltype_secion_comment_tbl TYPE HASHED TABLE OF ltype_section_comment WITH UNIQUE KEY comment_id.
+
+  DATA:    lo_qm                  TYPE REF TO if_os_query_manager,
+           lo_q                   TYPE REF TO if_os_query,
+           lo_producto            TYPE REF TO zcl_producto,
+           lo_comment             TYPE REF TO zcl_comment,
+           lt_comment_persist     TYPE osreftab,
+           lo_comment_persist     TYPE REF TO zcl_bugcomment_persist,
+           lo_usuario             TYPE REF TO zcl_usuario,
+           l_texto                TYPE zbt_texto_largo,
+           l_erdat                TYPE zbt_erdat,
+           l_id_usuario           TYPE xubname,
+           lt_sections            TYPE zbt_bugsections,
+           l_section              TYPE LINE OF zbt_bugsections,
+           lt_section_comments    TYPE ltype_secion_comment_tbl,
+           l_section_comment      TYPE LINE OF ltype_secion_comment_tbl,
+           l_result               TYPE LINE OF zbt_comentarios.
+
+  FIELD-SYMBOLS: &lt;osref&gt; TYPE osref.
+
+  l_result-bug_id      = bug-&gt;get_id( ).
+  lo_producto          = bug-&gt;get_producto( ).
+  l_result-producto_id = lo_producto-&gt;get_id( ).
+
+* Montamos una query para obtener las secciones de un bug
+  lo_qm = cl_os_system=&gt;get_query_manager( ).
+  lo_q  = lo_qm-&gt;create_query( i_filter = &apos;PRODUCTO = PAR1 AND BUG = PAR2 &apos; ).
+
+  lt_comment_persist[] = zca_bugcomment_persist=&gt;agent-&gt;if_os_ca_persistency~get_persistent_by_query(
+                 i_query   = lo_q
+                 i_par1    = l_result-producto_id
+                 i_par2    = l_result-bug_id ).
+
+  LOOP AT lt_comment_persist ASSIGNING &lt;osref&gt;.
+    AT FIRST.
+      IF NOT no_section_comments IS INITIAL.
+*       Buscamos las secciones del bug para &quot;eliminar&quot; los comentarios correspondientes a una sección
+        lt_sections[] = zcl_bugsection_controller=&gt;find_all_bug_sections( bug ).
+        LOOP AT lt_sections INTO l_section.
+          lo_comment = l_section-oref-&gt;get_comment( ).
+          l_section_comment-comment_id = lo_comment-&gt;get_id( ).
+*         Obtenemos los id&apos;s de comentarios utilizados por las secciones
+          INSERT l_section_comment INTO TABLE lt_section_comments[].
+        ENDLOOP.
+
+      ENDIF.
+    ENDAT.
+    lo_comment_persist ?= &lt;osref&gt;.
+
+    l_result-comentario_id = lo_comment_persist-&gt;get_comentario( ).
+
+*   Es un comentario de una sección?
+    READ TABLE lt_section_comments[] WITH TABLE KEY comment_id = l_result-comentario_id
+      TRANSPORTING NO FIELDS.
+    IF NOT sy-subrc IS INITIAL.
+      l_texto                = lo_comment_persist-&gt;get_texto( ).
+      l_erdat                = lo_comment_persist-&gt;get_erdat( ).
+      l_id_usuario           = lo_comment_persist-&gt;get_usuario( ).
+
+      lo_usuario   = zcl_usuario_controller=&gt;find_by_key( l_id_usuario ).
+
+      CREATE OBJECT lo_comment
+        EXPORTING
+          bug     = bug
+          id      = l_result-comentario_id
+          usuario = lo_usuario
+          erdat   = l_erdat
+          texto   = l_texto.
+
+      l_result-oref = lo_comment.
+      INSERT l_result INTO TABLE result[].
+    ENDIF.
+  ENDLOOP.
+
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="FIND_BY_KEY" VERSION="1" LANGU="E" DESCRIPT="Busca un comentario por su Id" EXPOSURE="2" STATE="1" EDITORDER="7 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="FIND_BY_KEY" SCONAME="ID" VERSION="1" LANGU="E" DESCRIPT="Comentario" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_BUGCOMMENT-COMENTARIO"/>
+  <parameter CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="FIND_BY_KEY" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <parameter CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="FIND_BY_KEY" SCONAME="ENTITY" VERSION="1" LANGU="E" DESCRIPT="Comment Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_COMMENT"/>
+  <exception CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="FIND_BY_KEY" SCONAME="ZCX_NOT_FOUND_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Not Found" MTDTYPE="0" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000"/>
+  <source>method FIND_BY_KEY.
+
+  DATA: l_bug_id      TYPE zbt_id_bug,
+        lo_persist    TYPE REF TO zcl_bugcomment_persist,
+        lo_producto   TYPE REF TO zcl_producto,
+        lo_exception  TYPE REF TO cx_root,
+        l_producto_id TYPE zbt_id_producto.
+
+  TRY .
+      l_bug_id = bug-&gt;get_id( ).
+      lo_producto = bug-&gt;get_producto( ).
+      l_producto_id = lo_producto-&gt;get_id( ).
+
+      lo_persist = zca_bugcomment_persist=&gt;agent-&gt;get_persistent( i_bug        = l_bug_id
+                                                                  i_comentario = id
+                                                                  i_producto   = l_producto_id ).
+      entity = persist_to_entity( persist = lo_persist
+                                  bug     = bug ).
+
+    CATCH cx_root INTO lo_exception.
+      RAISE EXCEPTION TYPE zcx_not_found_exception
+        EXPORTING
+          textid   = zcx_not_found_exception=&gt;zcx_not_found_exception
+          previous = lo_exception.
+  ENDTRY.
+
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="NEXT_ID" VERSION="1" LANGU="E" DESCRIPT="Returns next Comment Id" EXPOSURE="0" STATE="1" EDITORDER="8 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="NEXT_ID" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <parameter CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="NEXT_ID" SCONAME="ID" VERSION="1" LANGU="E" DESCRIPT="Comentario" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_BUGCOMMENT-COMENTARIO"/>
+  <source>method NEXT_ID.
+  TYPES: BEGIN OF ltype_comment_bug,
+          bug_id      TYPE zbt_id_bug,
+          comment_id  TYPE zbt_id_comentario,
+         END   OF ltype_comment_bug.
+
+  TYPES: ltype_table_comment_bug TYPE HASHED TABLE OF ltype_comment_bug WITH UNIQUE KEY bug_id.
+
+  DATA: l_bug_id       TYPE zbt_id_bug,
+        lt_comment_bug TYPE ltype_table_comment_bug ,
+        lt_comments    TYPE zbt_comentarios.
+
+  FIELD-SYMBOLS: &lt;comment_bug&gt; TYPE LINE OF ltype_table_comment_bug .
+
+  l_bug_id = bug-&gt;get_id( ).
+  READ TABLE lt_comment_bug WITH TABLE KEY bug_id = l_bug_id ASSIGNING &lt;comment_bug&gt;.
+  IF NOT sy-subrc IS INITIAL.
+    INSERT INITIAL LINE INTO TABLE lt_comment_bug ASSIGNING &lt;comment_bug&gt;.
+    &lt;comment_bug&gt;-bug_id = l_bug_id.
+    TRY.
+        lt_comments[] = zcl_comment_controller=&gt;find_all_bug_comments( bug ).
+        DESCRIBE TABLE lt_comments LINES &lt;comment_bug&gt;-comment_id.
+      CATCH zcx_not_found_exception .
+    ENDTRY.
+  ENDIF.
+
+  ADD 1 TO &lt;comment_bug&gt;-bug_id.
+
+  id = &lt;comment_bug&gt;-comment_id.
+
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="PERSIST_TO_ENTITY" VERSION="1" LANGU="E" DESCRIPT="Pasa de Persist a Entity" EXPOSURE="1" STATE="1" EDITORDER="9 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="PERSIST_TO_ENTITY" SCONAME="PERSIST" VERSION="1" LANGU="E" DESCRIPT="Bug Comment" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUGCOMMENT_PERSIST"/>
+  <parameter CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="PERSIST_TO_ENTITY" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_BUG" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="PERSIST_TO_ENTITY" SCONAME="ENTITY" VERSION="1" LANGU="E" DESCRIPT="Comment Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_COMMENT"/>
+  <exception CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="PERSIST_TO_ENTITY" SCONAME="ZCX_VALIDATE_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Error de validación" MTDTYPE="0" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000"/>
+  <source>method PERSIST_TO_ENTITY.
+  DATA: lo_producto TYPE REF TO zcl_producto,
+        lo_usuario  TYPE REF TO zcl_usuario,
+        l_producto  TYPE zbt_id_producto,
+        l_usuario   TYPE xubname,
+        l_erdat     TYPE zbt_erdat,
+        l_texto     TYPE zbt_texto_largo,
+        l_comment_id TYPE zbt_id_comentario,
+        l_bug_id    TYPE zbt_id_bug.
+
+  l_comment_id  = persist-&gt;get_comentario( ).
+  l_usuario     = persist-&gt;get_usuario( ).
+  l_bug_id      = persist-&gt;get_bug( ).
+  l_producto    = persist-&gt;get_producto( ).
+  l_erdat       = persist-&gt;get_erdat( ).
+  l_texto       = persist-&gt;get_texto( ).
+
+  IF NOT bug IS BOUND.
+    lo_producto = zcl_producto_controller=&gt;find_by_key( l_producto ).
+    bug         = zcl_bug_controller=&gt;find_by_key( id       = l_bug_id
+                                                   producto = lo_producto ).
+  ELSEIF l_bug_id &lt;&gt; bug-&gt;get_id( ).
+    RAISE EXCEPTION TYPE zcx_validate_exception.
+  ELSE.
+    lo_producto = bug-&gt;get_producto( ).
+    IF lo_producto-&gt;get_id( ) &lt;&gt; l_producto.
+      RAISE EXCEPTION TYPE zcx_validate_exception.
+    ENDIF.
+  ENDIF.
+  lo_usuario = zcl_usuario_controller=&gt;find_by_key( l_usuario ).
+
+  CREATE OBJECT entity
+    EXPORTING
+      bug     = bug
+      id      = l_comment_id
+      usuario = lo_usuario
+      erdat   = l_erdat
+      texto   = l_texto.
+
+
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="UPDATE" VERSION="1" LANGU="E" DESCRIPT="Actualizal los datos en persistencia" EXPOSURE="2" STATE="1" EDITORDER="10 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="UPDATE" SCONAME="COMMENT" VERSION="1" LANGU="E" DESCRIPT="Comment Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_COMMENT"/>
+  <exception CLSNAME="ZCL_COMMENT_CONTROLLER" CMPNAME="UPDATE" SCONAME="ZCX_UPDATE_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Create Exception" MTDTYPE="0" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000"/>
+  <source>METHOD update.
+  DATA: lo_exception TYPE REF TO cx_root,
+        lo_transaccion TYPE REF TO zcl_transaction_service,
+        lo_persist   TYPE REF TO zcl_bugcomment_persist.
+
+  TRY .
+      CREATE OBJECT lo_transaccion.
+      lo_transaccion-&gt;start( ).
+
+      lo_persist = entity_to_persist( comment ).
+
+      lo_transaccion-&gt;end( ).
+    CATCH cx_root INTO lo_exception.
+      RAISE EXCEPTION TYPE zcx_update_exception
+        EXPORTING
+          textid   = zcx_update_exception=&gt;zcx_update_exception
+          previous = lo_exception.
+  ENDTRY.
+
+ENDMETHOD.</source>
+ </method>
+</CLAS>

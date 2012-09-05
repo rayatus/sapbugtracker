@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-16"?>
+<CLAS CLSNAME="ZCL_PRODUCTO_CONTROLLER" VERSION="1" LANGU="E" DESCRIPT="Producto Controller" UUID="DF3B7F3BA7D03FF1928D080027E6C24E" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDBY="BCUSER" CHANGEDON="20101225" CHGDANYON="00000000" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="701" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+ <publicSection>class ZCL_PRODUCTO_CONTROLLER definition
+  public
+  create public .
+
+*&quot;* public components of class ZCL_PRODUCTO_CONTROLLER
+*&quot;* do not include other source files here!!!
+public section.
+
+  class-methods FIND_BY_KEY
+    importing
+      !ID type ZBT_ID_PRODUCTO
+    returning
+      value(RESULT) type ref to ZCL_PRODUCTO
+    raising
+      ZCX_NOT_FOUND_EXCEPTION .
+  class-methods FIND_ALL_COMPONENTES
+    importing
+      !PRODUCTO type ref to ZCL_PRODUCTO
+    returning
+      value(RESULT) type ZBT_COMPONENTES .
+  class-methods EXIST
+    importing
+      !PRODUCTO type ref to ZCL_PRODUCTO
+    returning
+      value(RETURN) type FLAG .
+  class-methods FIND_ALL_BUGS
+    importing
+      !PRODUCTO type ref to ZCL_PRODUCTO
+    returning
+      value(RESULT) type ZBT_BUGS .
+  class-methods ENTITY_TO_STRUCTURE
+    importing
+      !ENTITY type ref to ZCL_PRODUCTO
+    returning
+      value(STRUCTURE) type ZBT_PRODUCTO_STRUCTURE .
+  class-methods FIND_ALL_PRODUCTS
+    returning
+      value(RETURN) type ZBT_PRODUCTOS .</publicSection>
+ <protectedSection>*&quot;* protected components of class ZCL_PRODUCTO_CONTROLLER
+*&quot;* do not include other source files here!!!
+protected section.</protectedSection>
+ <privateSection>*&quot;* private components of class ZCL_PRODUCTO_CONTROLLER
+*&quot;* do not include other source files here!!!
+private section.</privateSection>
+ <localImplementation>*&quot;* local class implementation for public class
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes</localImplementation>
+ <localTypes>*&quot;* use this source file for any type declarations (class
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <method CLSNAME="ZCL_PRODUCTO_CONTROLLER" CMPNAME="ENTITY_TO_STRUCTURE" VERSION="1" LANGU="E" DESCRIPT="Entity to Structure" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100927" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_PRODUCTO_CONTROLLER" CMPNAME="ENTITY_TO_STRUCTURE" SCONAME="ENTITY" VERSION="1" LANGU="E" DESCRIPT="Producto Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100927" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_PRODUCTO"/>
+  <parameter CLSNAME="ZCL_PRODUCTO_CONTROLLER" CMPNAME="ENTITY_TO_STRUCTURE" SCONAME="STRUCTURE" VERSION="1" LANGU="E" DESCRIPT="Producto Structure" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100927" CHANGEDBY="BCUSER" CHANGEDON="20100927" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_PRODUCTO_STRUCTURE"/>
+  <source>METHOD entity_to_structure.
+
+  structure-producto    = entity-&gt;get_id( ).
+  structure-descripcion = entity-&gt;get_descripcion( ).
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_PRODUCTO_CONTROLLER" CMPNAME="EXIST" VERSION="1" LANGU="E" DESCRIPT="Verifica si el producto existe en la capa de persistencia" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_PRODUCTO_CONTROLLER" CMPNAME="EXIST" SCONAME="PRODUCTO" VERSION="1" LANGU="E" DESCRIPT="Producto Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_PRODUCTO"/>
+  <parameter CLSNAME="ZCL_PRODUCTO_CONTROLLER" CMPNAME="EXIST" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="General Flag" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="FLAG"/>
+  <source>method EXIST.
+  DATA: l_id TYPE zbt_id_producto.
+
+  TRY .
+      l_id = producto-&gt;get_id( ).
+      zcl_producto_controller=&gt;find_by_key( l_id ).
+      return = &apos;X&apos;.
+    CATCH cx_root.
+      return = space.
+  ENDTRY.
+
+endmethod.</source>
+ </method>
+ <method CLSNAME="ZCL_PRODUCTO_CONTROLLER" CMPNAME="FIND_ALL_BUGS" VERSION="1" LANGU="E" DESCRIPT="Busca todos los bugs" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100518" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_PRODUCTO_CONTROLLER" CMPNAME="FIND_ALL_BUGS" SCONAME="PRODUCTO" VERSION="1" LANGU="E" DESCRIPT="Producto Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100518" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_PRODUCTO"/>
+  <parameter CLSNAME="ZCL_PRODUCTO_CONTROLLER" CMPNAME="FIND_ALL_BUGS" SCONAME="RESULT" VERSION="1" LANGU="E" DESCRIPT="Bugs" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100518" CHANGEDBY="BCUSER" CHANGEDON="20100518" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_BUGS"/>
+  <source>METHOD find_all_bugs.
+  DATA:   lo_qm                  TYPE REF TO if_os_query_manager,
+          lo_q                   TYPE REF TO if_os_query,
+          lt_bugs_persist        TYPE osreftab,
+          lo_bug_persist         TYPE REF TO zcl_bug_persist,
+          l_result               TYPE LINE OF zbt_bugs.
+
+  FIELD-SYMBOLS: &lt;osref&gt; TYPE osref.
+
+  l_result-producto_id = producto-&gt;get_id( ).
+
+* Montamos una query para obtener todos los componentes
+  lo_qm = cl_os_system=&gt;get_query_manager( ).
+  lo_q  = lo_qm-&gt;create_query( i_filter = &apos;PRODUCTO = PAR1 &apos; ).
+
+  lt_bugs_persist[] = zca_bug_persist=&gt;agent-&gt;if_os_ca_persistency~get_persistent_by_query(
+                 i_query   = lo_q
+                 i_par1    = l_result-producto_id ).
+  LOOP AT lt_bugs_persist ASSIGNING &lt;osref&gt;.
+    lo_bug_persist ?= &lt;osref&gt;.
+    l_result-oref = zcl_bug_controller=&gt;persist_to_entity( lo_bug_persist ).
+    l_result-bug_id = l_result-oref-&gt;get_id( ).
+    INSERT l_result INTO TABLE result[].
+  ENDLOOP.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_PRODUCTO_CONTROLLER" CMPNAME="FIND_ALL_COMPONENTES" VERSION="1" LANGU="E" DESCRIPT="Busca todos los componentes" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_PRODUCTO_CONTROLLER" CMPNAME="FIND_ALL_COMPONENTES" SCONAME="PRODUCTO" VERSION="1" LANGU="E" DESCRIPT="Producto Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_PRODUCTO"/>
+  <parameter CLSNAME="ZCL_PRODUCTO_CONTROLLER" CMPNAME="FIND_ALL_COMPONENTES" SCONAME="RESULT" VERSION="1" LANGU="E" DESCRIPT="Componentes" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_COMPONENTES"/>
+  <source>METHOD find_all_componentes.
+  DATA:   lo_qm                  TYPE REF TO if_os_query_manager,
+          lo_q                   TYPE REF TO if_os_query,
+          l_id_producto          TYPE zbt_producto-producto,
+          lo_componente          TYPE REF TO zcl_componente,
+          lt_componentes         TYPE zbt_componentes,
+          lt_componentes_persist TYPE osreftab,
+          lo_componente_persist  TYPE REF TO zcl_componente_persist,
+          l_id_componente        TYPE zbt_id_componente.
+
+  FIELD-SYMBOLS: &lt;osref&gt; TYPE osref.
+
+  l_id_producto = producto-&gt;get_id( ).
+
+* Montamos una query para obtener todos los componentes
+  lo_qm = cl_os_system=&gt;get_query_manager( ).
+  lo_q  = lo_qm-&gt;create_query( i_filter = &apos;PRODUCTO = PAR1 &apos; ).
+
+  TRY .
+      lt_componentes_persist[] = zca_componente_persist=&gt;agent-&gt;if_os_ca_persistency~get_persistent_by_query(
+                     i_query   = lo_q
+                     i_par1    = l_id_producto ).
+      LOOP AT lt_componentes_persist ASSIGNING &lt;osref&gt;.
+        lo_componente_persist ?= &lt;osref&gt;.
+        l_id_componente = lo_componente_persist-&gt;get_componente( ).
+        CREATE OBJECT lo_componente
+          EXPORTING
+            producto   = producto
+            componente = l_id_componente.
+        INSERT lo_componente INTO TABLE result[].
+      ENDLOOP.
+    CATCH cx_root.
+
+  ENDTRY.
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_PRODUCTO_CONTROLLER" CMPNAME="FIND_ALL_PRODUCTS" VERSION="1" LANGU="E" DESCRIPT="Returns all Products" EXPOSURE="2" STATE="1" EDITORDER="6 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100928" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_PRODUCTO_CONTROLLER" CMPNAME="FIND_ALL_PRODUCTS" SCONAME="RETURN" VERSION="1" LANGU="E" DESCRIPT="Productos" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100928" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_PRODUCTOS"/>
+  <source>METHOD find_all_products.
+  DATA: lo_qm                  TYPE REF TO if_os_query_manager,
+        lo_q                   TYPE REF TO if_os_query,
+        l_id_producto          TYPE zbt_id_producto,
+        lo_producto            TYPE REF TO zcl_producto,
+        lt_productos_persist   TYPE osreftab,
+        lo_producto_persist    TYPE REF TO zcl_producto_persist.
+
+  FIELD-SYMBOLS: &lt;osref&gt; TYPE osref.
+
+* Montamos una query para obtener todos los componentes
+  lo_qm = cl_os_system=&gt;get_query_manager( ).
+  lo_q  = lo_qm-&gt;create_query( ).
+
+  lt_productos_persist[] = zca_producto_persist=&gt;agent-&gt;if_os_ca_persistency~get_persistent_by_query(
+                 i_query   = lo_q ).
+  LOOP AT lt_productos_persist ASSIGNING &lt;osref&gt;.
+    lo_producto_persist ?= &lt;osref&gt;.
+    l_id_producto = lo_producto_persist-&gt;get_producto( ).
+    lo_producto = zcl_producto_controller=&gt;find_by_key( l_id_producto ).
+
+    INSERT lo_producto INTO TABLE return[].
+  ENDLOOP.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_PRODUCTO_CONTROLLER" CMPNAME="FIND_BY_KEY" VERSION="1" LANGU="E" DESCRIPT="busca por Clave" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_PRODUCTO_CONTROLLER" CMPNAME="FIND_BY_KEY" SCONAME="ID" VERSION="1" LANGU="E" DESCRIPT="Producto" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_ID_PRODUCTO"/>
+  <parameter CLSNAME="ZCL_PRODUCTO_CONTROLLER" CMPNAME="FIND_BY_KEY" SCONAME="RESULT" VERSION="1" LANGU="E" DESCRIPT="Producto Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDBY="BCUSER" CHANGEDON="20100517" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_PRODUCTO"/>
+  <exception CLSNAME="ZCL_PRODUCTO_CONTROLLER" CMPNAME="FIND_BY_KEY" SCONAME="ZCX_NOT_FOUND_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Not Found" MTDTYPE="0" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100330" CHANGEDBY="BCUSER" CHANGEDON="20100517"/>
+  <source>method FIND_BY_KEY.
+
+  DATA: lo_agent               TYPE REF TO zca_producto_persist,
+        lo_persist             TYPE REF TO zcl_producto_persist,
+        l_usuario              TYPE xubname,
+        lo_exception           TYPE REF TO cx_root,
+        lt_componentes         TYPE ZBT_COMPONENTES.
+
+  lo_agent = zca_producto_persist=&gt;agent.
+  TRY.
+*     Buscamos el objeto
+      lo_agent-&gt;get_persistent( i_producto = id ).
+
+*     Mapeamos contra un entity
+      CREATE OBJECT result
+        EXPORTING
+          id = id.
+
+*     Buscamos todos los componentes del producto
+      lt_componentes[] = find_all_componentes( result ).
+      result-&gt;set_componentes( lt_componentes[] ).
+
+    CATCH cx_os_object_not_found INTO lo_exception.
+      RAISE EXCEPTION TYPE zcx_not_found_exception
+        EXPORTING
+          textid   = zcx_not_found_exception=&gt;zcx_not_found_exception
+          previous = lo_exception.
+  ENDTRY.
+
+endmethod.</source>
+ </method>
+</CLAS>

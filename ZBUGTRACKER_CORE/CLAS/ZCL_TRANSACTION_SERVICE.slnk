@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-16"?>
+<CLAS CLSNAME="ZCL_TRANSACTION_SERVICE" VERSION="1" LANGU="E" DESCRIPT="Transaction Service" UUID="DF61FE653304E3F19298080027E6C24E" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDBY="BCUSER" CHANGEDON="20101225" CHGDANYON="00000000" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="701" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+ <publicSection>class ZCL_TRANSACTION_SERVICE definition
+  public
+  final
+  create public .
+
+*&quot;* public components of class ZCL_TRANSACTION_SERVICE
+*&quot;* do not include other source files here!!!
+public section.
+
+  methods CONSTRUCTOR .
+  methods START .
+  methods END .</publicSection>
+ <protectedSection>*&quot;* protected components of class ZCL_TRANSACTION_SERVICE
+*&quot;* do not include other source files here!!!
+protected section.</protectedSection>
+ <privateSection>*&quot;* private components of class ZCL_TRANSACTION_SERVICE
+*&quot;* do not include other source files here!!!
+private section.
+
+  data TM type ref to IF_OS_TRANSACTION_MANAGER .
+  data T type ref to IF_OS_TRANSACTION .</privateSection>
+ <localImplementation>*&quot;* local class implementation for public class
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes</localImplementation>
+ <localTypes>*&quot;* use this source file for any type declarations (class
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <attribute CLSNAME="ZCL_TRANSACTION_SERVICE" CMPNAME="T" VERSION="1" LANGU="E" DESCRIPT="Interface for Transaction Objects" EXPOSURE="0" STATE="1" EDITORDER="2 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="IF_OS_TRANSACTION" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <attribute CLSNAME="ZCL_TRANSACTION_SERVICE" CMPNAME="TM" VERSION="1" LANGU="E" DESCRIPT="Interface for Object Transaction Manager" EXPOSURE="0" STATE="1" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="20101225" ATTDECLTYP="0" ATTEXPVIRT="0" TYPTYPE="3" TYPE="IF_OS_TRANSACTION_MANAGER" SRCROW1="0 " SRCCOLUMN1="0 " SRCROW2="0 " SRCCOLUMN2="0 " R3RELEASE="701" TYPESRC_LENG="0 "/>
+ <method CLSNAME="ZCL_TRANSACTION_SERVICE" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDON="20101225" MTDTYPE="2" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <source>METHOD constructor.
+
+  tm = cl_os_system=&gt;get_transaction_manager( ).
+  t  = tm-&gt;create_transaction( ).
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_TRANSACTION_SERVICE" CMPNAME="END" VERSION="1" LANGU="E" DESCRIPT="Finaliza la transacción" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <source>METHOD end.
+  t-&gt;end( ).
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_TRANSACTION_SERVICE" CMPNAME="START" VERSION="1" LANGU="E" DESCRIPT="Inicializa la transacción" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100517" CHANGEDBY="BCUSER" CHANGEDON="20101225" MTDTYPE="0" MTDDECLTYP="0" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <source>METHOD start.
+  t-&gt;start( ).
+ENDMETHOD.</source>
+ </method>
+</CLAS>

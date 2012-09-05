@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-16"?>
+<MSAG ARBGB="ZBUGTRACKER_MSG" MASTERLANG="E" RESPUSER="BCUSER" LASTUSER="BCUSER" LDATE="20101225" LTIME="214827" STEXT="BugTracker Messages">
+ <t100 SPRSL="E" ARBGB="ZBUGTRACKER_MSG" MSGNR="000" TEXT="Bug &amp; saved."/>
+ <t100 SPRSL="E" ARBGB="ZBUGTRACKER_MSG" MSGNR="001" TEXT="Product Id &amp; does not exist."/>
+ <t100 SPRSL="E" ARBGB="ZBUGTRACKER_MSG" MSGNR="002" TEXT="Bug Id &amp; does not exist."/>
+ <t100 SPRSL="E" ARBGB="ZBUGTRACKER_MSG" MSGNR="003" TEXT="It&apos;s mandatory to select one component."/>
+ <t100t SPRSL="E" ARBGB="ZBUGTRACKER_MSG" STEXT="BugTracker Messages"/>
+</MSAG>

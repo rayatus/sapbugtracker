@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-16"?>
+<PROG NAME="ZBUGTRACKER03" VARCL="X" SUBC="1" CNAM="BCUSER" CDAT="20101229" UNAM="BCUSER" UDAT="20110107" VERN="000015" RMAND="001" RLOAD="E" FIXPT="X" SDATE="20120903" STIME="233159" IDATE="20110107" ITIME="123731" UCCHECK="X">
+ <textPool>
+  <language SPRAS="E">
+   <textElement ID="I" KEY="001" ENTRY="Advanced Search" LENGTH="132 "/>
+   <textElement ID="R" ENTRY="SAPBugTracker: Search" LENGTH="21 "/>
+  </language>
+ </textPool>
+ <source>*&amp;---------------------------------------------------------------------*
+*&amp; Report  ZBUGTRACKER03
+*&amp;
+*&amp;---------------------------------------------------------------------*
+*&amp;
+*&amp;
+*&amp;---------------------------------------------------------------------*
+
+REPORT  zbugtracker03.
+
+DATA: o_search    TYPE REF TO zcl_searches_alv_ctrl,
+      screen_attr TYPE zbt_screen_attributes.
+
+INITIALIZATION.
+  screen_attr-title = &apos;Advanced Search&apos;(001).
+
+START-OF-SELECTION.
+  CREATE OBJECT o_search.
+  o_search-&gt;search( screen_attr ).</source>
+</PROG>

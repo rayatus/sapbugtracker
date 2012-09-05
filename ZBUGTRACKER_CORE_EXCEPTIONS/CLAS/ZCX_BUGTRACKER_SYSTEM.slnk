@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-16"?>
+<CLAS CLSNAME="ZCX_BUGTRACKER_SYSTEM" VERSION="1" LANGU="E" DESCRIPT="Excepcion base" UUID="DF354228F183D3F19288080027E6C24E" CATEGORY="40" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20100322" CHANGEDBY="BCUSER" CHANGEDON="20101225" CHGDANYON="00000000" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="701" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 " REFCLSNAME="CX_STATIC_CHECK">
+ <implementing CLSNAME="ZCX_BUGTRACKER_SYSTEM" REFCLSNAME="IF_T100_MESSAGE" VERSION="1" EXPOSURE="2" STATE="1" AUTHOR="BCUSER" CREATEDON="20100322" CHANGEDON="20101225" RELTYPE="1" EDITORDER="0 "/>
+ <publicSection>class ZCX_BUGTRACKER_SYSTEM definition
+  public
+  inheriting from CX_STATIC_CHECK
+  create public .
+
+*&quot;* public components of class ZCX_BUGTRACKER_SYSTEM
+*&quot;* do not include other source files here!!!
+public section.
+
+  interfaces IF_T100_MESSAGE .
+
+  constants:
+    begin of ZCX_BUGTRACKER_SYSTEM,
+      msgid type symsgid value &apos;ZBT_CONTROLLER_MSG&apos;,
+      msgno type symsgno value &apos;004&apos;,
+      attr1 type scx_attrname value &apos;&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_BUGTRACKER_SYSTEM .
+
+  methods CONSTRUCTOR
+    importing
+      !TEXTID like IF_T100_MESSAGE=&gt;T100KEY optional
+      !PREVIOUS like PREVIOUS optional .</publicSection>
+ <protectedSection>*&quot;* protected components of class ZCX_BUGTRACKER_SYSTEM
+*&quot;* do not include other source files here!!!
+protected section.</protectedSection>
+ <privateSection>*&quot;* private components of class ZCX_BUGTRACKER_SYSTEM
+*&quot;* do not include other source files here!!!
+private section.</privateSection>
+ <localImplementation>*&quot;* local class implementation for public class
+*&quot;* use this source file for the implementation part of
+*&quot;* local helper classes</localImplementation>
+ <localTypes>*&quot;* use this source file for any type declarations (class
+*&quot;* definitions, interfaces or data types) you need for method
+*&quot;* implementation or private method&apos;s signature</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <attribute CLSNAME="ZCX_BUGTRACKER_SYSTEM" CMPNAME="ZCX_BUGTRACKER_SYSTEM" VERSION="1" LANGU="E" EXPOSURE="2" STATE="1" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20100322" CHANGEDBY="BCUSER" CHANGEDON="20101225" ATTDECLTYP="2" ATTEXPVIRT="0" TYPTYPE="4" SRCROW1="13 " SRCCOLUMN1="4 " SRCROW2="20 " SRCCOLUMN2="31 " LOCKED="X" R3RELEASE="701" TYPESRC_LENG="324 " TYPESRC="begin of ZCX_BUGTRACKER_SYSTEM,
+      msgid type symsgid value &apos;ZBT_CONTROLLER_MSG&apos;,
+      msgno type symsgno value &apos;004&apos;,
+      attr1 type scx_attrname value &apos;&apos;,
+      attr2 type scx_attrname value &apos;&apos;,
+      attr3 type scx_attrname value &apos;&apos;,
+      attr4 type scx_attrname value &apos;&apos;,
+    end of ZCX_BUGTRACKER_SYSTEM
+"/>
+ <inheritance CLSNAME="ZCX_BUGTRACKER_SYSTEM" REFCLSNAME="CX_STATIC_CHECK" VERSION="1" STATE="1" AUTHOR="BCUSER" CREATEDON="20100322" CHANGEDON="20101225"/>
+ <method CLSNAME="ZCX_BUGTRACKER_SYSTEM" CMPNAME="CONSTRUCTOR" VERSION="1" LANGU="E" DESCRIPT="CONSTRUCTOR" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100322" CHANGEDON="20101225" MTDTYPE="2" MTDDECLTYP="0" LOCKED="X" R3RELEASE="701" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCX_BUGTRACKER_SYSTEM" CMPNAME="CONSTRUCTOR" SCONAME="TEXTID" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="2" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100322" CHANGEDBY="BCUSER" CHANGEDON="20100322" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="0" TYPE="IF_T100_MESSAGE=&gt;T100KEY" PAROPTIONL="X"/>
+  <parameter CLSNAME="ZCX_BUGTRACKER_SYSTEM" CMPNAME="CONSTRUCTOR" SCONAME="PREVIOUS" VERSION="1" LANGU="E" CMPTYPE="1" MTDTYPE="2" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20100322" CHANGEDBY="BCUSER" CHANGEDON="20100322" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="0" TYPE="PREVIOUS" PAROPTIONL="X"/>
+  <source>method CONSTRUCTOR.
+CALL METHOD SUPER-&gt;CONSTRUCTOR
+EXPORTING
+PREVIOUS = PREVIOUS
+.
+clear me-&gt;textid.
+if textid is initial.
+  IF_T100_MESSAGE~T100KEY = ZCX_BUGTRACKER_SYSTEM .
+else.
+  IF_T100_MESSAGE~T100KEY = TEXTID.
+endif.
+endmethod.</source>
+ </method>
+</CLAS>

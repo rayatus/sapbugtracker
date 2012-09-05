@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-16"?>
+<CLAS CLSNAME="ZCL_BUG_TAG_CONTROLLER" VERSION="1" LANGU="E" DESCRIPT="Bug Tag Controller" UUID="080027EE3DEB1ED0A8D3178D89A56FA3" CATEGORY="00" EXPOSURE="2" STATE="1" RELEASE="0" AUTHOR="BCUSER" CREATEDON="20110629" CHANGEDON="00000000" CHGDANYON="00000000" CLSFINAL="X" CLSCCINCL="X" FIXPT="X" UNICODE="X" R3RELEASE="702" CLSBCCAT="00" DURATION_TYPE="0 " RISK_LEVEL="0 ">
+ <publicSection>class ZCL_BUG_TAG_CONTROLLER definition
+  public
+  final
+  create public .
+
+public section.
+*&quot;* public components of class ZCL_BUG_TAG_CONTROLLER
+*&quot;* do not include other source files here!!!
+
+  class-methods EXIST
+    importing
+      !ENTITY type ref to ZCL_BUG_TAG
+    returning
+      value(EXISTS) type FLAG .
+  class-methods FIND_BY_KEY
+    importing
+      !BUG type ref to ZCL_BUG
+      !TAG type ZBT_ID_TAG
+    returning
+      value(ENTITY) type ref to ZCL_BUG_TAG
+    raising
+      ZCX_NOT_FOUND_EXCEPTION .
+  class-methods FIND_BUG_TAGS
+    importing
+      !BUG type ref to ZCL_BUG
+    returning
+      value(TAGS) type ZBT_BUG_TAG_TBL .
+  class-methods CREATE
+    importing
+      !TAG type ref to ZCL_BUG_TAG
+    raising
+      ZCX_CREATE_EXCEPTION .
+  class-methods DELETE
+    importing
+      !BUG_TAG type ref to ZCL_BUG_TAG
+    raising
+      ZCX_DELETE_EXCEPTION .
+  class-methods UPDATE
+    importing
+      !TAG type ref to ZCL_BUG_TAG
+    raising
+      ZCX_UPDATE_EXCEPTION .
+  class-methods EQUAL
+    importing
+      !TAG1 type ref to ZCL_BUG_TAG
+      !TAG2 type ref to ZCL_BUG_TAG
+    returning
+      value(EQUAL) type FLAG .</publicSection>
+ <protectedSection>protected section.
+*&quot;* protected components of class ZCL_BUG_TAG_CONTROLLER
+*&quot;* do not include other source files here!!!</protectedSection>
+ <privateSection>private section.
+*&quot;* private components of class ZCL_BUG_TAG_CONTROLLER
+*&quot;* do not include other source files here!!!
+
+  class-methods PERSIST_TO_ENTITY
+    importing
+      !PERSIST type ref to ZCL_BUG_TAG_PERSIST
+    returning
+      value(ENTITY) type ref to ZCL_BUG_TAG .
+  class-methods ENTITY_TO_PERSIST
+    importing
+      value(ENTITY) type ref to ZCL_BUG_TAG
+    changing
+      value(PERSIST) type ref to ZCL_BUG_TAG_PERSIST .</privateSection>
+ <localImplementation>*&quot;* use this source file for the definition and implementation of
+*&quot;* local helper classes, interface definitions and type
+*&quot;* declarations</localImplementation>
+ <localTypes>*&quot;* use this source file for any type of declarations (class
+*&quot;* definitions, interfaces or type declarations) you need for
+*&quot;* components in the private section</localTypes>
+ <localMacros>*&quot;* use this source file for any macro definitions you need
+*&quot;* in the implementation part of the class</localMacros>
+ <method CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="CREATE" VERSION="1" LANGU="E" DESCRIPT="Creates new bug Tag" EXPOSURE="2" STATE="1" EDITORDER="4 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110630" CHANGEDBY="BCUSER" CHANGEDON="20110630" MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="CREATE" SCONAME="TAG" VERSION="1" LANGU="E" DESCRIPT="Bug Tag" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110630" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG_TAG"/>
+  <exception CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="CREATE" SCONAME="ZCX_CREATE_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Create Exception" MTDTYPE="0" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20110630" CHANGEDON="00000000"/>
+  <source>METHOD create.
+  DATA: lo_bug                TYPE REF TO zcl_bug,
+        lo_producto           TYPE REF TO zcl_producto,
+        l_id_bug              TYPE zbt_id_bug,
+        l_id_producto         TYPE zbt_producto-producto,
+        l_id_tag              TYPE zbt_id_tag,
+        l_tagval              TYPE zbt_tag_value,
+        lo_persist            TYPE REF TO zcl_bug_tag_persist,
+        lo_transaccion        TYPE REF TO zcl_transaction_service,
+        lo_exception          TYPE REF TO cx_root.
+
+  TRY .
+      CREATE OBJECT lo_transaccion.
+      lo_transaccion-&gt;start( ).
+
+      lo_bug        = tag-&gt;get_bug( ).
+      lo_producto   = lo_bug-&gt;get_producto( ).
+      l_id_producto = lo_producto-&gt;get_id( ).
+      l_id_bug      = lo_bug-&gt;get_id( ).
+      l_id_tag      = tag-&gt;get_id( ).
+      l_tagval      = tag-&gt;get_value( ).
+
+      zca_bug_tag_persist=&gt;agent-&gt;create_persistent(
+      EXPORTING
+        i_producto = l_id_producto
+        i_bug      = l_id_bug
+        i_tag      = l_id_tag
+      RECEIVING
+        result = lo_persist  ).
+
+      lo_persist-&gt;set_tagval( l_tagval ).
+
+      lo_transaccion-&gt;end( ).
+
+    CATCH cx_os_object_existing INTO lo_exception.
+
+      RAISE EXCEPTION TYPE zcx_create_exception
+        EXPORTING
+          textid   = zcx_create_exception=&gt;zcx_create_exception
+          previous = lo_exception.
+  ENDTRY.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="DELETE" VERSION="1" LANGU="E" DESCRIPT="Deletes Existing bug tag" EXPOSURE="2" STATE="1" EDITORDER="5 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110630" CHANGEDBY="BCUSER" CHANGEDON="20110630" MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="DELETE" SCONAME="BUG_TAG" VERSION="1" LANGU="E" DESCRIPT="Bug Tag" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110630" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG_TAG"/>
+  <exception CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="DELETE" SCONAME="ZCX_DELETE_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Delete Exception" MTDTYPE="0" EDITORDER="0 " AUTHOR="BCUSER" CREATEDON="20110630" CHANGEDON="00000000"/>
+  <source>METHOD delete.
+  DATA: lo_bug                TYPE REF TO zcl_bug,
+        lo_producto           TYPE REF TO zcl_producto,
+        l_id_bug              TYPE zbt_id_bug,
+        l_id_producto         TYPE zbt_producto-producto,
+        l_id_tag              TYPE zbt_id_tag,
+        l_tagval              TYPE zbt_tag_value,
+        lo_persist            TYPE REF TO zcl_bug_tag_persist,
+        lo_transaccion        TYPE REF TO zcl_transaction_service,
+        lo_exception          TYPE REF TO cx_root.
+
+  TRY .
+      CREATE OBJECT lo_transaccion.
+      lo_transaccion-&gt;start( ).
+
+      lo_bug        = bug_tag-&gt;get_bug( ).
+      lo_producto   = lo_bug-&gt;get_producto( ).
+
+      l_id_producto = lo_producto-&gt;get_id( ).
+      l_id_bug      = lo_bug-&gt;get_id( ).
+      l_id_tag      = bug_tag-&gt;get_id( ).
+
+
+      zca_bug_tag_persist=&gt;agent-&gt;delete_persistent(
+      EXPORTING
+        i_producto = l_id_producto
+        i_bug      = l_id_bug
+        i_tag      = l_id_tag ).
+
+      lo_transaccion-&gt;end( ).
+
+    CATCH cx_os_object_not_existing INTO lo_exception.
+
+      RAISE EXCEPTION TYPE zcx_delete_exception
+        EXPORTING
+          textid   = zcx_delete_exception=&gt;zcx_delete_exception
+          previous = lo_exception.
+  ENDTRY.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="ENTITY_TO_PERSIST" VERSION="1" LANGU="E" DESCRIPT="Entity to Persist" EXPOSURE="0" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110630" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="ENTITY_TO_PERSIST" SCONAME="ENTITY" VERSION="1" LANGU="E" DESCRIPT="Bug Tag" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110630" CHANGEDBY="BCUSER" CHANGEDON="20110630" PARDECLTYP="0" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_BUG_TAG"/>
+  <parameter CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="ENTITY_TO_PERSIST" SCONAME="PERSIST" VERSION="1" LANGU="E" DESCRIPT="Bug Tag persistent" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110630" CHANGEDBY="BCUSER" CHANGEDON="20110630" PARDECLTYP="2" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_BUG_TAG_PERSIST"/>
+  <source>METHOD entity_to_persist.
+  DATA: l_tagval      TYPE zbt_tag_value.
+
+  l_tagval = entity-&gt;get_value( ).
+
+  persist-&gt;set_tagval( l_tagval ).
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="EQUAL" VERSION="1" LANGU="E" DESCRIPT="2 Tag Entities are Equal?" EXPOSURE="2" STATE="1" EDITORDER="7 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110911" CHANGEDBY="BCUSER" CHANGEDON="20110911" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="EQUAL" SCONAME="TAG1" VERSION="1" LANGU="E" DESCRIPT="Bug Tag" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110911" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG_TAG"/>
+  <parameter CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="EQUAL" SCONAME="TAG2" VERSION="1" LANGU="E" DESCRIPT="Bug Tag" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110911" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG_TAG"/>
+  <parameter CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="EQUAL" SCONAME="EQUAL" VERSION="1" LANGU="E" DESCRIPT="General Flag" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110911" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="FLAG"/>
+  <source>METHOD equal.
+
+  DATA: lo_bug1  TYPE REF TO zcl_bug,
+        lo_bug2  TYPE REF TO zcl_bug,
+        lo_prod1 TYPE REF TO zcl_producto,
+        lo_prod2 TYPE REF TO zcl_producto.
+
+  lo_bug1  = tag1-&gt;get_bug( ).
+  lo_prod1 = lo_bug1-&gt;get_producto( ).
+
+  lo_bug2  = tag1-&gt;get_bug( ).
+  lo_prod2 = lo_bug1-&gt;get_producto( ).
+
+  IF  tag1-&gt;get_id( )     = tag2-&gt;get_id( )
+  AND tag1-&gt;get_value( )  = tag2-&gt;get_value( )
+  AND lo_prod1-&gt;get_id( ) = lo_prod2-&gt;get_id( )
+  AND lo_bug1-&gt;get_id( )  = lo_bug2-&gt;get_id( ).
+    equal = abap_true.
+  ELSE.
+    equal = abap_false.
+  ENDIF.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="EXIST" VERSION="1" LANGU="E" DESCRIPT="Exists" EXPOSURE="2" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110629" CHANGEDBY="BCUSER" CHANGEDON="20110629" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="EXIST" SCONAME="ENTITY" VERSION="1" LANGU="E" DESCRIPT="Bug Tag" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110629" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG_TAG"/>
+  <parameter CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="EXIST" SCONAME="EXISTS" VERSION="1" LANGU="E" DESCRIPT="General Flag" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110629" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="FLAG"/>
+  <source>METHOD exist.
+  DATA: lo_bug TYPE REF TO zcl_bug,
+        l_id_tag TYPE zbt_id_tag.
+
+  TRY.
+      lo_bug   = entity-&gt;get_bug( ).
+      l_id_tag = entity-&gt;get_id( ).
+
+      find_by_key(
+        EXPORTING
+          bug    =  lo_bug
+          tag    =  l_id_tag ).
+
+      exists = &apos;X&apos;.
+    CATCH zcx_not_found_exception .
+      CLEAR exists.
+  ENDTRY.
+
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="FIND_BUG_TAGS" VERSION="1" LANGU="E" DESCRIPT="Find All bug Tags" EXPOSURE="2" STATE="1" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110630" CHANGEDON="00000000" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="FIND_BUG_TAGS" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug Entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110630" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <parameter CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="FIND_BUG_TAGS" SCONAME="TAGS" VERSION="1" LANGU="E" DESCRIPT="Bug Tags" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110630" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="1" TYPE="ZBT_BUG_TAG_TBL"/>
+  <source>METHOD find_bug_tags.
+  DATA:   lo_qm                  TYPE REF TO if_os_query_manager,
+          lo_q                   TYPE REF TO if_os_query,
+          lo_producto            TYPE REF TO zcl_producto,
+          l_id_producto          TYPE zbt_producto-producto,
+          l_id_bug               TYPE zbt_id_bug,
+          l_result               TYPE LINE OF zbt_bug_tag_tbl,
+          lt_tags_persist        TYPE osreftab,
+          lo_bug_tag_persist     TYPE REF TO zcl_bug_tag_persist.
+
+  FIELD-SYMBOLS: &lt;osref&gt; TYPE osref.
+
+  l_id_bug      = bug-&gt;get_id( ).
+  lo_producto   = bug-&gt;get_producto( ).
+  l_id_producto = lo_producto-&gt;get_id( ).
+
+* Montamos una query para obtener los bugs anteriores al indicado
+  lo_qm = cl_os_system=&gt;get_query_manager( ).
+  lo_q  = lo_qm-&gt;create_query( i_filter = &apos;PRODUCTO = PAR1 AND BUG = PAR2 &apos; ).
+
+  TRY .
+
+      lt_tags_persist[] = zca_bug_tag_persist=&gt;agent-&gt;if_os_ca_persistency~get_persistent_by_query(
+                     i_query   = lo_q
+                     i_par1    = l_id_producto
+                     i_par2    = l_id_bug ).
+      LOOP AT lt_tags_persist ASSIGNING &lt;osref&gt;.
+        CLEAR l_result.
+
+        lo_bug_tag_persist ?= &lt;osref&gt;.
+        l_result-producto = lo_bug_tag_persist-&gt;get_bug( ).
+        l_result-bug      = lo_bug_tag_persist-&gt;get_producto( ).
+        l_result-tag      = lo_bug_tag_persist-&gt;get_tag( ).
+        l_result-tagval   = lo_bug_tag_persist-&gt;get_tagval( ).
+
+        CREATE OBJECT l_result-oref
+          EXPORTING
+            bug       = bug
+            tag_id    = l_result-tag
+            tag_value = l_result-tagval.
+
+        INSERT l_result INTO TABLE tags[].
+      ENDLOOP.
+    CATCH cx_os_object_not_found.
+
+  ENDTRY.
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="FIND_BY_KEY" VERSION="1" LANGU="E" DESCRIPT="Find By Key" EXPOSURE="2" STATE="1" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110629" CHANGEDBY="BCUSER" CHANGEDON="20110629" MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="FIND_BY_KEY" SCONAME="BUG" VERSION="1" LANGU="E" DESCRIPT="Bug entity" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110629" CHANGEDBY="BCUSER" CHANGEDON="20110629" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG"/>
+  <parameter CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="FIND_BY_KEY" SCONAME="TAG" VERSION="1" LANGU="E" DESCRIPT="Tag" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110629" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="1" TYPE="ZBT_ID_TAG"/>
+  <parameter CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="FIND_BY_KEY" SCONAME="ENTITY" VERSION="1" LANGU="E" DESCRIPT="Bug Tag" CMPTYPE="1" MTDTYPE="0" EDITORDER="3 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110629" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_BUG_TAG"/>
+  <exception CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="FIND_BY_KEY" SCONAME="ZCX_NOT_FOUND_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Not Found" MTDTYPE="0" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20110629" CHANGEDON="00000000"/>
+  <source>METHOD find_by_key.
+
+  DATA: lo_agent        TYPE REF TO zca_bug_tag_persist,
+        lo_persist      TYPE REF TO zcl_bug_tag_persist,
+        lo_exception    TYPE REF TO cx_root,
+        lo_producto     TYPE REF TO zcl_producto,
+        l_id_producto   TYPE zbt_id_producto,
+        l_id_bug        TYPE zbt_id_bug.
+
+  lo_producto   = bug-&gt;get_producto( ).
+  l_id_producto = lo_producto-&gt;get_id( ).
+  l_id_bug      = bug-&gt;get_id( ).
+
+  TRY.
+*     Buscamos el objeto en la capa de persistencia
+      lo_agent = zca_bug_tag_persist=&gt;agent.
+      CALL METHOD lo_agent-&gt;get_persistent
+        EXPORTING
+          i_producto = l_id_producto
+          i_bug      = l_id_bug
+          i_tag      = tag
+        RECEIVING
+          result     = lo_persist.
+
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Mapeamos contra un Entity
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      entity = persist_to_entity( lo_persist ).
+
+    CATCH cx_root INTO lo_exception.
+      RAISE EXCEPTION TYPE zcx_not_found_exception
+        EXPORTING
+          textid   = zcx_not_found_exception=&gt;zcx_not_found_exception
+          previous = lo_exception.
+  ENDTRY.
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="PERSIST_TO_ENTITY" VERSION="1" LANGU="E" DESCRIPT="Persist to Entity" EXPOSURE="0" STATE="1" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110629" CHANGEDBY="BCUSER" CHANGEDON="20110629" MTDTYPE="0" MTDDECLTYP="1" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="PERSIST_TO_ENTITY" SCONAME="PERSIST" VERSION="1" LANGU="E" DESCRIPT="Bug Tag persistent" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110629" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG_TAG_PERSIST"/>
+  <parameter CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="PERSIST_TO_ENTITY" SCONAME="ENTITY" VERSION="1" LANGU="E" DESCRIPT="Bug Tag" CMPTYPE="1" MTDTYPE="0" EDITORDER="2 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110629" CHANGEDON="00000000" PARDECLTYP="3" PARPASSTYP="0" TYPTYPE="3" TYPE="ZCL_BUG_TAG"/>
+  <source>METHOD persist_to_entity.
+  DATA: l_id_bug      TYPE zbt_id_bug,
+        l_id_producto TYPE zbt_id_producto,
+        l_id_tag      TYPE zbt_id_tag,
+        l_tagval      TYPE zbt_tag_value,
+        lo_producto   TYPE REF TO zcl_producto,
+        lo_bug        TYPE REF TO zcl_bug.
+
+  l_id_bug      = persist-&gt;get_bug( ).
+  l_id_producto = persist-&gt;get_producto( ).
+  l_id_tag      = persist-&gt;get_tag( ).
+  l_tagval      = persist-&gt;get_tagval( ).
+
+  lo_producto = zcl_producto_controller=&gt;find_by_key( l_id_producto ).
+  lo_bug      = zcl_bug_controller=&gt;find_by_key( id = l_id_bug
+                                                 producto = lo_producto ).
+
+  CREATE OBJECT entity
+    EXPORTING
+      bug       = lo_bug
+      tag_id    = l_id_tag
+      tag_value = l_tagval.
+
+ENDMETHOD.</source>
+ </method>
+ <method CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="UPDATE" VERSION="1" LANGU="E" DESCRIPT="Updates Existing Bug Tag" EXPOSURE="2" STATE="1" EDITORDER="6 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110630" CHANGEDBY="BCUSER" CHANGEDON="20110630" MTDTYPE="0" MTDDECLTYP="1" MTDNEWEXC="X" R3RELEASE="702" BCMTDCAT="00" BCMTDSYN="0">
+  <parameter CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="UPDATE" SCONAME="TAG" VERSION="1" LANGU="E" DESCRIPT="Bug Tag" CMPTYPE="1" MTDTYPE="0" EDITORDER="1 " DISPID="0 " AUTHOR="BCUSER" CREATEDON="20110630" CHANGEDON="00000000" PARDECLTYP="0" PARPASSTYP="1" TYPTYPE="3" TYPE="ZCL_BUG_TAG"/>
+  <exception CLSNAME="ZCL_BUG_TAG_CONTROLLER" CMPNAME="UPDATE" SCONAME="ZCX_UPDATE_EXCEPTION" VERSION="1" LANGU="E" DESCRIPT="Save Exception" MTDTYPE="0" EDITORDER="1 " AUTHOR="BCUSER" CREATEDON="20110630" CHANGEDON="00000000"/>
+  <source>METHOD update.
+  DATA: lo_persist      TYPE REF TO zcl_bug_tag_persist,
+        lo_transaccion  TYPE REF TO zcl_transaction_service,
+        lo_exception    TYPE REF TO cx_root,
+        l_id_producto   TYPE zbt_producto-producto,
+        l_id_bug        TYPE zbt_bug-bug,
+        l_id_tag        TYPE zbt_id_tag,
+        lo_producto     TYPE REF TO zcl_producto,
+        lo_bug          TYPE REF TO zcl_bug.
+
+
+  l_id_tag = tag-&gt;get_id( ).
+  lo_bug   = tag-&gt;get_bug( ).
+  l_id_bug = lo_bug-&gt;get_id( ).
+  lo_producto = lo_bug-&gt;get_producto( ).
+  l_id_producto = lo_producto-&gt;get_id( ).
+
+  TRY .
+*     Buscamos primero lo que hay ahora en la capa de persistencia
+      lo_persist = zca_bug_tag_persist=&gt;agent-&gt;get_persistent( i_bug      = l_id_bug
+                                                               i_producto = l_id_producto
+                                                               i_tag      = l_id_tag ).
+
+    CATCH cx_os_object_not_found INTO lo_exception.
+*     Para poder actualizarlo ha de existir
+      RAISE EXCEPTION TYPE zcx_update_exception
+        EXPORTING
+          textid   = zcx_update_exception=&gt;zcx_update_exception
+          previous = lo_exception.
+  ENDTRY.
+
+
+  TRY.
+
+      CREATE OBJECT lo_transaccion.
+      lo_transaccion-&gt;start( ).
+
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Mapeamos contra el objeto de persistencia
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      entity_to_persist(
+        EXPORTING
+          entity  = tag
+        CHANGING
+          persist = lo_persist ).
+
+      lo_transaccion-&gt;end( ).
+    CATCH zcx_create_exception INTO lo_exception.
+      RAISE EXCEPTION TYPE zcx_update_exception
+        EXPORTING
+          previous = lo_exception.
+
+  ENDTRY.
+
+ENDMETHOD.</source>
+ </method>
+</CLAS>

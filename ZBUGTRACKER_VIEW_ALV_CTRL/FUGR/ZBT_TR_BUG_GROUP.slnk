@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-16"?>
+<FUGR AREA="ZBT_TR_BUG_GROUP" SPRAS="E" AREAT="Function Group for linking TR &lt;-&gt; Bug">
+ <functionGroupDocumentation/>
+ <mainprogram NAME="SAPLZBT_TR_BUG_GROUP" VARCL="X" DBAPL="S" DBNA="D$" SUBC="F" APPL="S" CNAM="BCUSER" CDAT="20110209" UNAM="BCUSER" UDAT="20110213" VERN="000004" RMAND="001" RLOAD="E" FIXPT="X" SDATE="20120901" STIME="214000" IDATE="20110213" ITIME="192641" LDBNAME="D$S" UCCHECK="X">
+  <textPool>
+   <language SPRAS="E">
+    <textElement ID="I" KEY="001" ENTRY="SAPBugTracker: Select a Bug Id at least" LENGTH="40 "/>
+   </language>
+  </textPool>
+  <dynpros>
+   <dynpro PROG="SAPLZBT_TR_BUG_GROUP" DNUM="0001" TYPE="M" FNUM="0001" BZMX="3 " BZBR="48 " MILI="192 " MICO="37 " MALI="0 " MACO="0 " NOLI="14 " NOCO="99 " VALP="0 " CUAN="G" SPRA="E" DGEN="20110309" TGEN="233352" DTEXT="Ask for Bug Id&apos;s">
+    <dynprofield FNAM="%#AUTOTEXT001" DIDX="0000" FLG1="00" FLG2="00" FLG3="00" FMB1="38" FMB2="00" LENG="30" LINE="01" COLN="02" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="0" AGLT="00" ADEZ="00" STXT="Select which Bug&apos;s is this Transport related to."/>
+    <dynprofield FNAM="TRHEADER-TRKORR" DIDX="0000" FLG1="30" FLG2="00" FLG3="00" FMB1="30" FMB2="00" LENG="0F" LINE="03" COLN="02" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="2" AGLT="00" ADEZ="00" STXT="Request/Task" RES1="                                                                                                                                                                                                                                                        X"/>
+    <dynprofield FNAM="GV_TR_STR-TRANSPORT_ID" DIDX="0000" FLG1="80" FLG2="00" FLG3="80" FMB1="30" FMB2="00" LENG="14" LINE="03" COLN="12" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="C" AGLT="00" ADEZ="00" STXT="____________________"/>
+    <dynprofield FNAM="CONTAINER" DIDX="000A" FLG1="00" FLG2="00" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="63" LINE="05" COLN="02" LANF="00" LBLK="00" LREP="00" AUTH="101" AGLT="01" ADEZ="01"/>
+    <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
+    <dynproflowsource>PROCESS BEFORE OUTPUT.
+  MODULE status_0001.
+*
+PROCESS AFTER INPUT.
+  MODULE exit_0001 AT EXIT-COMMAND.
+  MODULE user_command_0001.</dynproflowsource>
+   </dynpro>
+  </dynpros>
+  <pfstatus>
+   <pfstatus_sta CODE="S0001" MODAL="P" PFKCODE="000001" BUTCODE="0001" INT_NOTE="Ask 4 BugId Status Bar"/>
+   <pfstatus_fun CODE="CANCEL" TEXTNO="001" TYPE="E" TEXT_TYPE="S" TEXT_NAME="ICON_CANCEL" ICON_ID="@0W@" FUN_TEXT="Cancel" PATH="A"/>
+   <pfstatus_fun CODE="CONTINUE" TEXTNO="001" TEXT_TYPE="S" TEXT_NAME="ICON_OKAY" ICON_ID="@0V@" FUN_TEXT="Continue"/>
+   <pfstatus_but PFK_CODE="000001" CODE="0001" NO="01" PFNO="11"/>
+   <pfstatus_but PFK_CODE="000001" CODE="0001" NO="02" PFNO="12"/>
+   <pfstatus_pfk CODE="000001" PFNO="11" FUNCODE="CONTINUE" FUNNO="001"/>
+   <pfstatus_pfk CODE="000001" PFNO="12" FUNCODE="CANCEL" FUNNO="001"/>
+   <pfstatus_set STATUS="S0001" FUNCTION="CANCEL"/>
+   <pfstatus_set STATUS="S0001" FUNCTION="CONTINUE"/>
+   <pfstatus_doc OBJ_TYPE="P" OBJ_CODE="000001" MODAL="P" INT_NOTE="Ask 4 BugId Status Bar"/>
+   <pfstatus_doc OBJ_TYPE="B" OBJ_CODE="000001" SUB_CODE="0001" MODAL="P" INT_NOTE="Ask 4 BugId Status Bar"/>
+   <pfstatus_tit CODE="T0001" TEXT="SAPBugTracker: &amp;"/>
+  </pfstatus>
+  <source>*******************************************************************
+*   System-defined Include-files.                                 *
+*******************************************************************
+  INCLUDE LZBT_TR_BUG_GROUPTOP.              &quot; Global Data
+  INCLUDE LZBT_TR_BUG_GROUPUXX.              &quot; Function Modules
+
+*******************************************************************
+*   User-defined Include-files (if necessary).                    *
+*******************************************************************
+* INCLUDE LZBT_TR_BUG_GROUPF...              &quot; Subroutines
+* INCLUDE LZBT_TR_BUG_GROUPO...              &quot; PBO-Modules
+* INCLUDE LZBT_TR_BUG_GROUPI...              &quot; PAI-Modules
+* INCLUDE LZBT_TR_BUG_GROUPE...              &quot; Events
+* INCLUDE LZBT_TR_BUG_GROUPP...              &quot; Local class implement.
+
+INCLUDE LZBT_TR_BUG_GROUPO01.
+
+INCLUDE LZBT_TR_BUG_GROUPI01.
+
+INCLUDE LZBT_TR_BUG_GROUPI02.
+
+INCLUDE LZBT_TR_BUG_GROUPF01.
+
+INCLUDE LZBT_TR_BUG_GROUPF02.</source>
+ </mainprogram>
+ <includeprograms>
+  <include NAME="LZBT_TR_BUG_GROUPF01" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20110209" UNAM="BCUSER" UDAT="20110309" VERN="000006" RMAND="001" RLOAD="E" SDATE="20110309" STIME="234413" IDATE="20110309" ITIME="234414" UCCHECK="X">
+   <include_source>*----------------------------------------------------------------------*
+***INCLUDE LZBT_TR_BUG_GROUPF01 .
+*----------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  STATUS_0001
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM status_0001 .
+
+  SET PF-STATUS &apos;S0001&apos;.
+  SET TITLEBAR &apos;T0001&apos; WITH gv_screen_attributes-title.
+
+  PERFORM create_controls.
+
+ENDFORM.                    &quot; STATUS_0001
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  CREATE_CONTROLS
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM create_controls .
+
+  IF go_custom_container IS INITIAL.
+
+    CREATE OBJECT go_custom_container
+      EXPORTING
+        container_name = &apos;CONTAINER&apos;.
+
+    CREATE OBJECT go_trbug_ctrl
+      EXPORTING
+        tr        = go_tr
+        container = go_custom_container.
+
+    go_trbug_ctrl-&gt;ask_4_bugid( ).
+  ENDIF.
+ENDFORM.                    &quot; CREATE_CONTROLS
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  INITIALIZE
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM initialize .
+  FREE: go_custom_container,
+        go_tr.
+
+  CLEAR: go_custom_container,
+         go_tr,
+         go_trbug_ctrl,
+         gv_continue,
+         gv_tr_str.
+ENDFORM.                    &quot; INITIALIZE</include_source>
+  </include>
+  <include NAME="LZBT_TR_BUG_GROUPF02" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20110209" UNAM="BCUSER" UDAT="20110309" VERN="000007" RMAND="001" RLOAD="E" SDATE="20110309" STIME="234826" IDATE="20110309" ITIME="234826" UCCHECK="X">
+   <include_source>*----------------------------------------------------------------------*
+***INCLUDE LZBT_TR_BUG_GROUPF02 .
+*----------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  USER_COMMAND_0001
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM user_command_0001 .
+  DATA: lo_exception TYPE REF TO zcx_transport_alv_ctrl_exc,
+        l_string     TYPE string.
+
+  CASE sy-ucomm.
+    WHEN &apos;CONTINUE&apos;.
+      TRY .
+          go_trbug_ctrl-&gt;save_data( ).
+          commit WORK.
+          gv_continue = &apos;X&apos;.
+          PERFORM exit.
+        CATCH zcx_transport_alv_ctrl_exc INTO lo_exception.
+          l_string = lo_exception-&gt;get_text( ).
+          MESSAGE l_string TYPE &apos;I&apos; DISPLAY LIKE &apos;E&apos;.
+      ENDTRY.
+
+  ENDCASE.
+ENDFORM.                    &quot; USER_COMMAND_0001
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  EXIT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM exit .
+  LEAVE TO SCREEN 0.
+ENDFORM.                    &quot; EXIT</include_source>
+  </include>
+  <include NAME="LZBT_TR_BUG_GROUPI01" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20110209" UNAM="BCUSER" UDAT="20110209" VERN="000002" RMAND="001" RLOAD="E" SDATE="20110209" STIME="234753" IDATE="20110209" ITIME="234753" UCCHECK="X">
+   <include_source>*----------------------------------------------------------------------*
+***INCLUDE LZBT_TR_BUG_GROUPI01 .
+*----------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  EXIT_0001  INPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE exit_0001 INPUT.
+  PERFORM exit.
+ENDMODULE.                 &quot; EXIT_0001  INPUT</include_source>
+  </include>
+  <include NAME="LZBT_TR_BUG_GROUPI02" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20110209" UNAM="BCUSER" UDAT="20110209" VERN="000002" RMAND="001" RLOAD="E" SDATE="20110209" STIME="234753" IDATE="20110209" ITIME="234753" UCCHECK="X">
+   <include_source>*----------------------------------------------------------------------*
+***INCLUDE LZBT_TR_BUG_GROUPI02 .
+*----------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  USER_COMMAND_0001  INPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE user_command_0001 INPUT.
+  PERFORM user_command_0001.
+ENDMODULE.                 &quot; USER_COMMAND_0001  INPUT</include_source>
+  </include>
+  <include NAME="LZBT_TR_BUG_GROUPO01" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20110209" UNAM="BCUSER" UDAT="20110213" VERN="000005" RMAND="001" RLOAD="E" SDATE="20110213" STIME="223247" IDATE="20110213" ITIME="223247" UCCHECK="X">
+   <include_source>*----------------------------------------------------------------------*
+***INCLUDE LZBT_TR_BUG_GROUPO01 .
+*----------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  STATUS_0001  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE status_0001 OUTPUT.
+  PERFORM status_0001.
+ENDMODULE.                 &quot; STATUS_0001  OUTPUT</include_source>
+  </include>
+  <include NAME="LZBT_TR_BUG_GROUPTOP" VARCL="X" DBAPL="S" DBNA="D$" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20110209" UNAM="BCUSER" UDAT="20110308" VERN="000005" RMAND="001" FIXPT="X" SDATE="20110308" STIME="005630" IDATE="20110308" ITIME="005630" LDBNAME="D$S" UCCHECK="X">
+   <include_source>FUNCTION-POOL zbt_tr_bug_group.             &quot;MESSAGE-ID ..
+
+* INCLUDE LZBT_TR_BUG_GROUPD...              &quot; Local class definition
+
+DATA: gv_screen_attributes TYPE zbt_screen_attributes,
+      gv_continue          TYPE flag,
+      go_trbug_ctrl        TYPE REF TO zcl_tr_bug_ctrl,
+      go_tr                TYPE REF TO zcl_transport,
+      gv_tr_str            TYPE ZBT_TRANSPORT_STR,
+      go_custom_container  TYPE REF TO cl_gui_custom_container.</include_source>
+  </include>
+ </includeprograms>
+ <functionmodules>
+  <functionmodule NAME="ZBT_ASK4_BUGID" STEXT="Ask 4 Bug Id&apos;s">
+   <importing PARAMETER="TRKORR" TYP="TRKORR"/>
+   <importing PARAMETER="SCREEN_ATTRIBUTES" OPTIONAL="X" REFERENCE="X" TYP="ZBT_SCREEN_ATTRIBUTES"/>
+   <exporting PARAMETER="CANCELED_BY_USER" TYP="FLAG"/>
+   <exceptions EXCEPTION="ZCX_NOT_FOUND_EXCEPTION"/>
+   <documentation PARAMETER="TRKORR" KIND="P" STEXT="Allows link a TR to a Bug" INDEX=" 001"/>
+   <documentation PARAMETER="SCREEN_ATTRIBUTES" KIND="P" STEXT="Screen attributes" INDEX=" 002"/>
+   <documentation PARAMETER="CANCELED_BY_USER" KIND="P" STEXT="Action canceled by user" INDEX=" 003"/>
+   <documentation PARAMETER="ZCX_NOT_FOUND_EXCEPTION" KIND="X" STEXT="Transport Request Not Found" INDEX=" 004"/>
+   <fm_source_new>PERFORM initialize.
+
+  gv_screen_attributes = screen_attributes.
+  IF gv_screen_attributes-title IS INITIAL.
+    gv_screen_attributes-title = &apos;SAPBugTracker: Select a Bug Id at least&apos;(001).
+  ENDIF.
+
+  TRY .
+      go_tr = zcl_transport_controller=&gt;find_by_key( trkorr ).
+    CATCH zcx_not_found_exception.
+*     If nothing is found in SAPBugTracker DataBase...
+      SELECT SINGLE trkorr INTO trkorr FROM e070 WHERE trkorr = trkorr.
+      IF sy-subrc IS INITIAL.
+*       Create temporal Transport request
+        CREATE OBJECT go_tr
+          EXPORTING
+            id = trkorr.
+      ELSE.
+*       Transport request doesn&apos;t exist
+        RAISE EXCEPTION TYPE zcx_not_found_exception
+          EXPORTING
+            textid = zcx_not_found_exception=&gt;zcx_not_found_exception.
+      ENDIF.
+  ENDTRY.
+
+  gv_tr_str-transport_id = go_tr-&gt;get_id( ).
+  gv_tr_str-oref         = go_tr.
+
+  CALL SCREEN 0001 STARTING AT gv_screen_attributes-left
+                               gv_screen_attributes-top
+                   ENDING AT   gv_screen_attributes-rigth
+                               gv_screen_attributes-bottom.
+  IF gv_continue IS INITIAL.
+    canceled_by_user = &apos;X&apos;.
+  ENDIF.</fm_source_new>
+   <functionModuleDocumentation/>
+  </functionmodule>
+ </functionmodules>
+</FUGR>
