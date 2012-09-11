@@ -370,11 +370,13 @@ endmethod.</source>
         l_erdat     TYPE zbt_erdat,
         l_texto     TYPE zbt_texto_largo,
         l_comment_id TYPE zbt_id_comentario,
-        l_bug_id    TYPE zbt_id_bug.
+        l_bug_id    TYPE zbt_id_bug,
+        l_bug_id_i  type zbt_id_bug_i.
 
   l_comment_id  = persist-&gt;get_comentario( ).
   l_usuario     = persist-&gt;get_usuario( ).
   l_bug_id      = persist-&gt;get_bug( ).
+*  l_bug_id_i    = persist-&gt;get_bug_i( ).
   l_producto    = persist-&gt;get_producto( ).
   l_erdat       = persist-&gt;get_erdat( ).
   l_texto       = persist-&gt;get_texto( ).
@@ -382,6 +384,7 @@ endmethod.</source>
   IF NOT bug IS BOUND.
     lo_producto = zcl_producto_controller=&gt;find_by_key( l_producto ).
     bug         = zcl_bug_controller=&gt;find_by_key( id       = l_bug_id
+*                                                   id_i     = l_bug_id_i
                                                    producto = lo_producto ).
   ELSEIF l_bug_id &lt;&gt; bug-&gt;get_id( ).
     RAISE EXCEPTION TYPE zcx_validate_exception.
