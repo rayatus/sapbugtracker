@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-16"?>
 <FUGR AREA="ZBT_DYNPRO" SPRAS="E" AREAT="Function Group for Dynpros">
  <functionGroupDocumentation/>
- <mainprogram NAME="SAPLZBT_DYNPRO" VARCL="X" DBAPL="S" DBNA="D$" SUBC="F" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20101227" VERN="000002" RMAND="001" RLOAD="E" FIXPT="X" SDATE="20120903" STIME="233224" IDATE="20101227" ITIME="005453" LDBNAME="D$S" UCCHECK="X">
+ <mainprogram NAME="SAPLZBT_DYNPRO" VARCL="X" DBAPL="S" DBNA="D$" SUBC="F" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20120911" VERN="000003" RMAND="001" RLOAD="E" FIXPT="X" SDATE="20120911" STIME="151312" IDATE="20120911" ITIME="151312" LDBNAME="D$S" UCCHECK="X">
   <textPool>
+   <language SPRAS="D">
+    <textElement ID="I" KEY="001" ENTRY="Ändern" LENGTH="132 "/>
+    <textElement ID="I" KEY="002" ENTRY="Anzeigen" LENGTH="132 "/>
+    <textElement ID="I" KEY="003" ENTRY="Beschreibung" LENGTH="132 "/>
+    <textElement ID="I" KEY="004" ENTRY="Wie zu Reproduzieren?" LENGTH="132 "/>
+    <textElement ID="I" KEY="005" ENTRY="Mehr Informationen" LENGTH="132 "/>
+    <textElement ID="I" KEY="006" ENTRY="Anlegen" LENGTH="132 "/>
+    <textElement ID="I" KEY="007" ENTRY="Aufbau der Initialdaten" LENGTH="132 "/>
+    <textElement ID="I" KEY="008" ENTRY="TAGs" LENGTH="4 "/>
+    <textElement ID="I" KEY="009" ENTRY="Daten wurden modifiziert" LENGTH="132 "/>
+    <textElement ID="I" KEY="010" ENTRY="Ungesicherte Daten gehen verloren. Fortfahren?" LENGTH="132 "/>
+   </language>
    <language SPRAS="E">
     <textElement ID="I" KEY="001" ENTRY="Modify" LENGTH="132 "/>
     <textElement ID="I" KEY="002" ENTRY="Display" LENGTH="132 "/>
@@ -17,7 +29,7 @@
    </language>
   </textPool>
   <dynpros>
-   <dynpro PROG="SAPLZBT_DYNPRO" DNUM="0001" FNUM="0001" BZMX="200 " BZBR="184 " MILI="192 " MICO="37 " MALI="0 " MACO="0 " NOLI="200 " NOCO="255 " VALP="0 " CUAN="G" SPRA="E" DGEN="20111209" TGEN="162036" DTEXT="Main Screen">
+   <dynpro PROG="SAPLZBT_DYNPRO" DNUM="0001" FNUM="0001" BZMX="200 " BZBR="184 " MILI="192 " MICO="37 " MALI="0 " MACO="0 " NOLI="200 " NOCO="255 " VALP="0 " CUAN="G" SPRA="E" DGEN="20120911" TGEN="151302" DTEXT="Main Screen">
     <dynprofield FNAM="MAIN_TC" DIDX="00C8" FLG1="08" FLG2="20" FLG3="00" FILL="I" FMB1="00" FMB2="00" LENG="B8" LINE="01" COLN="02" LTYP="J" LANF="65" LBLK="01" LREP="01" AGLT="13" ADEZ="B8"/>
     <dynprofield FNAM="%#AUTOTEXT007" DIDX="0007" FLG1="00" FLG2="00" FLG3="00" FILL="P" FMB1="30" FMB2="00" LENG="13" LINE="01" COLN="01" LTYP="I" LANF="65" LBLK="01" LREP="01" TYPE="CHAR" AUTH="102" WNAM="MAIN" AGLT="00" ADEZ="00" STXT="@3P\QHeader@ Head" RES1="                                                                                                                                                                        TAB0"/>
     <dynprofield FNAM="%#AUTOTEXT006" DIDX="0007" FLG1="00" FLG2="00" FLG3="00" FILL="P" FMB1="30" FMB2="00" LENG="09" LINE="01" COLN="02" LTYP="I" LANF="65" LBLK="01" LREP="01" TYPE="CHAR" AUTH="103" WNAM="MAIN" AGLT="00" ADEZ="00" STXT="@3Q@ Info" RES1="                                                                                                                                                                        TAB1"/>
@@ -185,14 +197,17 @@ PROCESS AFTER INPUT.
 *
 PROCESS AFTER INPUT.</dynproflowsource>
    </dynpro>
-   <dynpro PROG="SAPLZBT_DYNPRO" DNUM="0400" TYPE="I" FNUM="0400" BZMX="3 " BZBR="6 " MILI="200 " MICO="37 " MALI="0 " MACO="0 " NOLI="200 " NOCO="255 " VALP="0 " CUAN="G" SPRA="E" DGEN="20110604" TGEN="014502" DTEXT="Attachements Screen">
+   <dynpro PROG="SAPLZBT_DYNPRO" DNUM="0400" TYPE="I" FNUM="0400" BZMX="18 " BZBR="54 " MILI="200 " MICO="37 " MALI="0 " MACO="0 " NOLI="200 " NOCO="255 " VALP="0 " CUAN="G" SPRA="E" DGEN="20120911" TGEN="151302" DTEXT="Attachements Screen">
     <dynprofield FNAM="%#AUTOTEXT001" DIDX="0000" FLG1="00" FLG2="00" FLG3="00" FMB1="30" FMB2="00" LENG="04" LINE="03" COLN="04" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" ITYP="0" AGLT="00" ADEZ="00" STXT="Test"/>
+    <dynprofield FNAM="ATTACHMENT_CONTAINER" DIDX="000F" FLG1="00" FLG2="00" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="33" LINE="04" COLN="05" LANF="00" LBLK="00" LREP="00" AUTH="101" AGLT="01" ADEZ="01"/>
     <dynprofield DIDX="0000" FLG1="80" FLG2="10" FLG3="00" FMB1="00" FMB2="00" LENG="14" LINE="FF" COLN="01" LTYP="O" LANF="00" LBLK="00" LREP="00" TYPE="CHAR" AGLT="00" ADEZ="00" STXT="____________________"/>
     <dynproflowsource>PROCESS BEFORE OUTPUT.
-* MODULE STATUS_0300.
+MODULE STATUS_0400.
+MODULE screen_0400.
 *
 PROCESS AFTER INPUT.
-* MODULE USER_COMMAND_0300.</dynproflowsource>
+ module user_command_0400_exit at exit-command.
+ MODULE USER_COMMAND_0400.</dynproflowsource>
    </dynpro>
    <dynpro PROG="SAPLZBT_DYNPRO" DNUM="0500" TYPE="I" FNUM="0500" BZMX="0 " BZBR="0 " MILI="200 " MICO="37 " MALI="0 " MACO="0 " NOLI="200 " NOCO="255 " VALP="0 " CUAN="G" SPRA="E" DGEN="20110604" TGEN="014526" DTEXT="Objects Screen">
     <dynprofield FNAM="OBJECT_CONTAINER" DIDX="00C8" FLG1="00" FLG2="30" FLG3="00" FILL="U" FMB1="30" FMB2="00" LENG="FF" LINE="01" COLN="02" LANF="00" LBLK="00" LREP="00" AUTH="101" AGLT="0A" ADEZ="0A"/>
@@ -301,10 +316,18 @@ INCLUDE LZBT_DYNPROI04.
 
 INCLUDE LZBT_DYNPROF03.
 
-INCLUDE LZBT_DYNPROP01.</source>
+INCLUDE LZBT_DYNPROP01.
+
+INCLUDE LZBT_DYNPROO04.
+
+INCLUDE LZBT_DYNPROF04.
+
+INCLUDE LZBT_DYNPROI05.
+
+INCLUDE LZBT_DYNPROF05.</source>
  </mainprogram>
  <includeprograms>
-  <include NAME="LZBT_DYNPROF01" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20120903" VERN="000006" RMAND="001" RLOAD="E" SDATE="20120903" STIME="233153" IDATE="20120903" ITIME="233153" UCCHECK="X">
+  <include NAME="LZBT_DYNPROF01" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20120911" VERN="000007" RMAND="001" RLOAD="E" SDATE="20120911" STIME="151311" IDATE="20120911" ITIME="151311" UCCHECK="X">
    <include_source>*----------------------------------------------------------------------*
 ***INCLUDE LZBT_DYNPROF01 .
 *----------------------------------------------------------------------*
@@ -366,9 +389,9 @@ FORM set_display_mode  USING p_display_mode TYPE flag.
 
   g_display_mode    = p_display_mode.
   IF g_display_mode IS INITIAL.
-    g_display_mode_txt = &apos;Modificar&apos;(001).
+    g_display_mode_txt = &apos;Modify&apos;(001).
   ELSE.
-    g_display_mode_txt = &apos;Visualizar&apos;(002).
+    g_display_mode_txt = &apos;Display&apos;(002).
   ENDIF.
 ENDFORM.                    &quot; SET_DISPLAY_MODE
 *&amp;---------------------------------------------------------------------*
@@ -578,9 +601,10 @@ ENDFORM.                                                    &quot; PBO_0300
 *----------------------------------------------------------------------*
 FORM save_bug_0001 .
   DATA: l_bug_id    TYPE zbt_id_bug,
+        l_bug_id_i  type zbt_id_bug_i,
         l_string    TYPE string,
         o_exception TYPE REF TO zcx_bugtracker_system.
-
+*BREAK-POINT.
   TRY .
       IF zcl_bug_controller=&gt;exist( go_bug ) = abap_true.
         zcl_bug_controller=&gt;update( go_bug  ).
@@ -593,6 +617,7 @@ FORM save_bug_0001 .
       PERFORM object_to_structures USING go_bug.
 
       l_bug_id = go_bug-&gt;get_id( ).
+      l_bug_id_i = go_bug-&gt;get_id_i( ).
 
       CALL FUNCTION &apos;CONVERSION_EXIT_ALPHA_OUTPUT&apos;
         EXPORTING
@@ -1229,7 +1254,7 @@ FORM clean_html  CHANGING p_html TYPE string.
   p_html = p_html(find_result-offset).
 ENDFORM.                    &quot; CLEAN_HTML</include_source>
   </include>
-  <include NAME="LZBT_DYNPROF02" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20110704" VERN="000003" RMAND="001" RLOAD="E" SDATE="20110704" STIME="232353" IDATE="20110704" ITIME="232353" UCCHECK="X">
+  <include NAME="LZBT_DYNPROF02" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20120911" VERN="000004" RMAND="001" RLOAD="E" SDATE="20120911" STIME="151312" IDATE="20120911" ITIME="151312" UCCHECK="X">
    <include_source>*----------------------------------------------------------------------*
 ***INCLUDE LZBT_DYNPROF02 .
 *----------------------------------------------------------------------*
@@ -1279,6 +1304,9 @@ FORM pbo_0100 .
   PERFORM set_bugstype_status USING go_bug CHANGING g_bug_stype_icon.
 
   PERFORM create_tag_grid.
+
+  perform create_GOS.
+
 
 ENDFORM.                                                    &quot; PBO_0100
 *&amp;---------------------------------------------------------------------*
@@ -1730,7 +1758,7 @@ FORM set_info_subscreen USING p_ucomm TYPE sy-ucomm .
   ENDIF.
 ENDFORM.                    &quot; SET_INFO_SUBSCREEN</include_source>
   </include>
-  <include NAME="LZBT_DYNPROF03" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20101225" VERN="000001" RMAND="001" RLOAD="E" SDATE="20101225" STIME="210317" IDATE="20101225" ITIME="210317" UCCHECK="X">
+  <include NAME="LZBT_DYNPROF03" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20120911" VERN="000003" RMAND="001" RLOAD="E" SDATE="20120911" STIME="151312" IDATE="20120911" ITIME="151312" UCCHECK="X">
    <include_source>*----------------------------------------------------------------------*
 ***INCLUDE LZBT_DYNPROF03 .
 *----------------------------------------------------------------------*
@@ -1760,11 +1788,16 @@ FORM create_initial_bug  CHANGING p_bug TYPE REF TO zcl_bug.
   lt_comps[] = lo_prod-&gt;get_componentes( ).
   READ TABLE lt_comps INDEX 1 INTO lo_comp.
 
+perform get_internal_bug_id.
+
   CREATE OBJECT p_bug
     EXPORTING
       producto   = lo_prod
       id         = c_initial_bug_id
+*     id_i       = lv_BUG_I
       componente = lo_comp.
+
+  p_bug-&gt;SET_ID_I( lv_BUG_I ).
 
   lo_user = zcl_usuario_controller=&gt;find_by_key( ).
   p_bug-&gt;set_reporter( lo_user ).
@@ -1781,6 +1814,170 @@ FORM create_initial_bug  CHANGING p_bug TYPE REF TO zcl_bug.
   p_bug-&gt;set_bug_subtype( lo_stype ).
 
 ENDFORM.                    &quot; CREATE_INITIAL_BUG</include_source>
+  </include>
+  <include NAME="LZBT_DYNPROF04" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20120911" UNAM="BCUSER" UDAT="20120911" VERN="000001" RMAND="001" RLOAD="E" SDATE="20120911" STIME="151312" IDATE="20120911" ITIME="151312" UCCHECK="X">
+   <include_source>*----------------------------------------------------------------------*
+***INCLUDE LZBT_DYNPROF04 .
+*----------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  PBO_0400
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM pbo_0400 .
+
+
+  PERFORM create_attachment_grid.
+ENDFORM.                    &quot; pbo_0400
+
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  create_attachment_grid
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM create_attachment_grid .
+*  DATA: l_title    TYPE lvc_title.
+*
+**  DATA:  lo_objects_gui TYPE REF TO zcl_bug_objects_alv_ctrl.
+*
+*  IF NOT g_attachment_container IS BOUND.
+*    CREATE OBJECT g_attachment_container
+*      EXPORTING
+*        container_name = &apos;OBJECT_CONTAINER&apos;.
+*
+* l_title = &apos;Attachment List&apos;(020).
+*
+*    CREATE OBJECT go_attachment_gui
+*      EXPORTING
+*        bug       = go_bug
+*        container = g_attachment_container
+*               title     = l_title.
+*
+*    go_attachment_gui-&gt;display( ).
+*  ENDIF.
+*
+* go_attachment_gui-&gt;set_display_mode( g_display_mode ).
+
+*  IF NOT g_attachment_container IS BOUND.
+*    CREATE OBJECT g_attachment_container
+*      EXPORTING
+*        container_name = &apos;ATTACHMENT_CONTAINER&apos;.
+*
+*
+*
+*    CREATE OBJECT go_attachment_gui
+*      EXPORTING
+*        bug       = go_bug
+*        container = g_attachment_container
+*        title     = l_title.
+*
+*    go_attachment_gui-&gt;display( ).
+*
+*  ENDIF.
+*  go_attachment_gui-&gt;set_display_mode( g_display_mode ).
+ENDFORM.                    &quot; create_attachment_grid
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  CREATE_GOS
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM CREATE_GOS .
+
+
+ IF g_attachment_GOS   IS INITIAL.
+* Schlüssel für generisches Objekt MUSS eindeutig sein!!!
+   ls_object-objkey = go_bug-&gt;get_id_i( ).
+  move &apos;ZBUG_TRACK&apos; to ls_object-objtype.
+
+* Anlagen liegen in der Tabelle  SRGBTBREL !!!!!
+* Ausblenden verschiedener Standardservices
+* zu finden in der Tabelle SGOSATTR
+   SELECT name FROM sgosattr INTO ls_service-low WHERE
+       name NE &apos;VIEW_ATTA&apos; AND
+       name NE &apos;NOTE_CREA&apos; AND
+       name NE &apos;PERS_NOTE&apos; AND
+       name NE &apos;SO_SENDOBJ&apos; AND
+       name NE &apos;PCATTA_CREA&apos;.
+       ls_service-sign = &apos;E&apos;.
+       ls_service-option = &apos;EQ&apos;.
+*       ls_service-low = sgosattr-name.
+       APPEND ls_service TO lt_service.
+    ENDSELECT.
+
+lv_ip_mode = &apos;E&apos;.
+
+     CREATE OBJECT g_attachment_GOS
+      EXPORTING
+        is_object            = ls_object
+        ip_mode              = lv_ip_mode
+        ip_no_commit         = &apos; &apos;
+        it_service_selection = lt_service
+      EXCEPTIONS
+        OTHERS               = 1.
+
+   endif.
+ENDFORM.                    &quot; CREATE_GOS</include_source>
+  </include>
+  <include NAME="LZBT_DYNPROF05" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20120911" UNAM="BCUSER" UDAT="20120911" VERN="000001" RMAND="001" RLOAD="E" SDATE="20120911" STIME="151312" IDATE="20120911" ITIME="151312" UCCHECK="X">
+   <include_source>*----------------------------------------------------------------------*
+***INCLUDE LZBT_DYNPROF05 .
+*----------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;      Form  GET_INTERNAL_BUG_ID
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  --&gt;  p1        text
+*  &lt;--  p2        text
+*----------------------------------------------------------------------*
+FORM GET_INTERNAL_BUG_ID .
+
+ DATA: l_number_range TYPE tnro-object.
+*
+*  l_number_range = producto-&gt;get_bug_number_range( ).
+*  IF l_number_range IS INITIAL.
+    l_number_range = &apos;ZBT_BUGIDI&apos;. &quot;Default Number Range
+*  ENDIF.
+*
+*  IF bugtype IS SUPPLIED AND bugtype-&gt;get_nrobj( ) IS NOT INITIAL.
+*    l_number_range = bugtype-&gt;get_nrobj( ).
+*  ENDIF.
+
+  CALL FUNCTION &apos;NUMBER_GET_NEXT&apos;
+    EXPORTING
+      nr_range_nr                   = &apos;01&apos;
+      object                        = l_number_range
+      quantity                      = &apos;1&apos;
+*     TOYEAR                        = &apos;0000&apos;
+   IMPORTING
+     number                        = lv_bug_i
+*     QUANTITY                      =
+*     RETURNCODE                    =
+*   EXCEPTIONS
+*     INTERVAL_NOT_FOUND            = 1
+*     NUMBER_RANGE_NOT_INTERN       = 2
+*     OBJECT_NOT_FOUND              = 3
+*     QUANTITY_IS_0                 = 4
+*     QUANTITY_IS_NOT_1             = 5
+*     INTERVAL_OVERFLOW             = 6
+*     BUFFER_OVERFLOW               = 7
+*     OTHERS                        = 8
+            .
+  IF sy-subrc &lt;&gt; 0.
+* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+ENDFORM.                    &quot; GET_INTERNAL_BUG_ID</include_source>
   </include>
   <include NAME="LZBT_DYNPROI01" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20111012" VERN="000004" RMAND="001" RLOAD="E" SDATE="20111012" STIME="125526" IDATE="20111012" ITIME="125526" UCCHECK="X">
    <include_source>*----------------------------------------------------------------------*
@@ -1851,7 +2048,7 @@ MODULE user_command_0200 INPUT.
   PERFORM user_command_0200.
 ENDMODULE.                 &quot; USER_COMMAND_0200  INPUT</include_source>
   </include>
-  <include NAME="LZBT_DYNPROI04" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20101225" VERN="000001" RMAND="001" RLOAD="E" SDATE="20101225" STIME="210318" IDATE="20101225" ITIME="210318" UCCHECK="X">
+  <include NAME="LZBT_DYNPROI04" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20120911" VERN="000003" RMAND="001" RLOAD="E" SDATE="20120911" STIME="151312" IDATE="20120911" ITIME="151312" UCCHECK="X">
    <include_source>*----------------------------------------------------------------------*
 ***INCLUDE LZBT_DYNPROI04 .
 *----------------------------------------------------------------------*
@@ -1862,7 +2059,50 @@ ENDMODULE.                 &quot; USER_COMMAND_0200  INPUT</include_source>
 *----------------------------------------------------------------------*
 MODULE syncronize_structure_object INPUT.
   PERFORM structures_to_object.
-ENDMODULE.                 &quot; SYNCRONIZE_STRUCTURE_OBJECT  INPUT</include_source>
+ENDMODULE.                 &quot; SYNCRONIZE_STRUCTURE_OBJECT  INPUT
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  SCREEN_0400  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE SCREEN_0400 OUTPUT.
+*break-point.
+PERFORM pbo_0400.
+ENDMODULE.                 &quot; SCREEN_0400  OUTPUT</include_source>
+  </include>
+  <include NAME="LZBT_DYNPROI05" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20120911" UNAM="BCUSER" UDAT="20120911" VERN="000001" RMAND="001" RLOAD="E" SDATE="20120911" STIME="151312" IDATE="20120911" ITIME="151312" UCCHECK="X">
+   <include_source>*----------------------------------------------------------------------*
+***INCLUDE LZBT_DYNPROI05 .
+*----------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  USER_COMMAND_0400  INPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE USER_COMMAND_0400 INPUT.
+
+data: lv_objkey  like borident-objkey.
+
+   ls_object-objkey = go_bug-&gt;get_id( ).
+
+call function &apos;SWU_OBJECT_RESTORE&apos;
+exporting
+objtype = &apos;ZBUG_TRACK&apos;
+objkey = lv_objkey.
+*leave screen.
+
+
+ENDMODULE.                 &quot; USER_COMMAND_0400  INPUT
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  USER_COMMAND_0400_EXIT  INPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE USER_COMMAND_0400_EXIT INPUT.
+
+
+
+ENDMODULE.                 &quot; USER_COMMAND_0400_EXIT  INPUT</include_source>
   </include>
   <include NAME="LZBT_DYNPROO01" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20111012" VERN="000003" RMAND="001" RLOAD="E" SDATE="20111012" STIME="115308" IDATE="20111012" ITIME="115308" UCCHECK="X">
    <include_source>*----------------------------------------------------------------------*
@@ -1936,6 +2176,21 @@ MODULE status_0700 OUTPUT.
 
 ENDMODULE.                 &quot; STATUS_0700  OUTPUT</include_source>
   </include>
+  <include NAME="LZBT_DYNPROO04" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20120911" UNAM="BCUSER" UDAT="20120911" VERN="000001" RMAND="001" RLOAD="E" SDATE="20120911" STIME="151312" IDATE="20120911" ITIME="151312" UCCHECK="X">
+   <include_source>*----------------------------------------------------------------------*
+***INCLUDE LZBT_DYNPROO04 .
+*----------------------------------------------------------------------*
+*&amp;---------------------------------------------------------------------*
+*&amp;      Module  STATUS_0400  OUTPUT
+*&amp;---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE STATUS_0400 OUTPUT.
+*  SET PF-STATUS &apos;xxxxxxxx&apos;.
+*  SET TITLEBAR &apos;xxx&apos;.
+
+ENDMODULE.                 &quot; STATUS_0400  OUTPUT</include_source>
+  </include>
   <include NAME="LZBT_DYNPROP01" VARCL="X" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101227" UNAM="BCUSER" UDAT="20101227" VERN="000002" RMAND="001" RLOAD="E" SDATE="20101227" STIME="005453" IDATE="20101227" ITIME="005453" UCCHECK="X">
    <include_source>*----------------------------------------------------------------------*
 ***INCLUDE LZBT_DYNPROP01 .
@@ -1951,7 +2206,7 @@ CLASS lcl_handler IMPLEMENTATION.
   ENDMETHOD.                    &quot;on_comment_added
 ENDCLASS.               &quot;lcl_handler</include_source>
   </include>
-  <include NAME="LZBT_DYNPROTOP" VARCL="X" DBAPL="S" DBNA="D$" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20120903" VERN="000003" RMAND="001" FIXPT="X" SDATE="20120903" STIME="233153" IDATE="20120903" ITIME="233153" LDBNAME="D$S" UCCHECK="X">
+  <include NAME="LZBT_DYNPROTOP" VARCL="X" DBAPL="S" DBNA="D$" SUBC="I" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20120911" VERN="000003" RMAND="001" FIXPT="X" SDATE="20120911" STIME="151312" IDATE="20120911" ITIME="151312" LDBNAME="D$S" UCCHECK="X">
    <include_source>FUNCTION-POOL zbt_dynpro.                   &quot;MESSAGE-ID ..
 
 TYPE-POOLS: abap, icon, vrm.
@@ -2035,6 +2290,11 @@ DATA: g_top_screen                  TYPE sy-dynnr,
       g_problem_section_container   TYPE REF TO cl_gui_custom_container,
       g_steps_section_container     TYPE REF TO cl_gui_custom_container,
       g_more_info_section_container TYPE REF TO cl_gui_custom_container,
+
+      g_attachment_container        TYPE REF TO cl_gui_custom_container,
+      go_attachment_gui             TYPE REF TO zcl_bug_tags_alv_ctrl,
+      g_attachment_GOS              TYPE REF TO cl_gos_manager,
+
 *      g_info_container              TYPE REF TO cl_gui_custom_container,
 *      g_info_splitter_container     TYPE REF TO cl_gui_splitter_container,
       g_bug_tree_container          TYPE REF TO cl_gui_docking_container,
@@ -2042,7 +2302,15 @@ DATA: g_top_screen                  TYPE sy-dynnr,
       g_steps_btf                   TYPE REF TO zcl_btf_editor,
       g_more_info_btf               TYPE REF TO zcl_btf_editor,
       go_tag_gui                    TYPE REF TO zcl_bug_tags_alv_ctrl,
-      go_handler                    TYPE REF TO lcl_handler.</include_source>
+      go_handler                    TYPE REF TO lcl_handler.
+
+       DATA:  ls_object TYPE borident,
+        lv_ip_mode type SGS_RWMOD,
+        ls_service TYPE sgos_sels,
+        lt_service TYPE TABLE OF sgos_sels.
+
+data: lv_BUG_I type zbt_bug-BUG_I.
+DATA: OK_CODE TYPE SY-UCOMM.</include_source>
   </include>
  </includeprograms>
  <functionmodules>

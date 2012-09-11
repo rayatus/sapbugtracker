@@ -305,6 +305,7 @@ endmethod.</source>
   DATA: l_id          TYPE zbt_id_seccion,
         l_id_producto TYPE zbt_id_producto,
         l_id_bug      TYPE zbt_id_bug,
+        l_id_bug_i    type zbt_id_bug_i,
         l_id_comentario  TYPE zbt_id_comentario,
         lo_comentario TYPE REF TO zcl_comment,
         lo_producto   TYPE REF TO zcl_producto.
@@ -312,15 +313,19 @@ endmethod.</source>
   l_id             = persist-&gt;get_seccion( ).
   l_id_producto    = persist-&gt;get_producto( ).
   l_id_bug         = persist-&gt;get_bug( ).
+*  l_id_bug_i       = persist-&gt;get_bug_i( ).
   l_id_comentario  = persist-&gt;get_comentario( ).
 
   IF NOT bug IS BOUND.
     lo_producto = zcl_producto_controller=&gt;find_by_key( l_id_producto ).
 
     bug = zcl_bug_controller=&gt;find_by_key( id       = l_id_bug
+*                                           id_i     = l_id_bug_i
                                            producto = lo_producto  ).
   ELSEIF l_id_bug &lt;&gt; bug-&gt;get_id( ).
     RAISE EXCEPTION TYPE zcx_validate_exception.
+*  elseif l_id_bug_i &lt;&gt; bug-&gt;get_id_i( ).
+*    RAISE EXCEPTION TYPE zcx_validate_exception.
   ELSE.
     lo_producto = bug-&gt;get_producto( ).
     IF lo_producto-&gt;get_id( ) &lt;&gt; l_id_producto.

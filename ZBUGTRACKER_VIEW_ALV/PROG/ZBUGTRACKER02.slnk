@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-16"?>
-<PROG NAME="ZBUGTRACKER02" VARCL="X" SUBC="1" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20101228" VERN="000004" RMAND="001" RLOAD="E" FIXPT="X" SDATE="20120903" STIME="233141" IDATE="20101228" ITIME="000122" UCCHECK="X">
+<PROG NAME="ZBUGTRACKER02" VARCL="X" SUBC="1" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20120911" VERN="000005" RMAND="001" RLOAD="E" FIXPT="X" SDATE="20120911" STIME="151313" IDATE="20120911" ITIME="151313" UCCHECK="X">
  <textPool>
   <language SPRAS="E">
    <textElement ID="I" KEY="001" ENTRY="Modify" LENGTH="6 "/>
@@ -25,6 +25,7 @@ REPORT  zbugtracker02.
 DATA: display_mode TYPE flag,
       o_bug        TYPE REF TO zcl_bug,
       o_prod       TYPE REF TO zcl_producto.
+*      lv_bug_i     type zbt_id_bug_i.
 
 INITIALIZATION.
   CASE sy-tcode.
@@ -51,9 +52,17 @@ AT SELECTION-SCREEN ON p_prod.
   ENDTRY.
 
 AT SELECTION-SCREEN ON BLOCK a.
+
+*    if   lv_bug_i is initial.
+*    select single bug_i from zbt_bug
+*      into lv_bug_i where bug = p_bug and producto = p_prod.
+*  endif.
+
+
   TRY .
       o_bug = zcl_bug_controller=&gt;find_by_key(
           id       = p_bug
+*          id_i     = lv_bug_i
           producto = o_prod
         ).
     CATCH zcx_not_found_exception.

@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="utf-16"?>
 <FUGR AREA="ZBT_SEARCH_GROUP" SPRAS="E" AREAT="Search functions">
  <functionGroupDocumentation/>
- <mainprogram NAME="SAPLZBT_SEARCH_GROUP" VARCL="X" DBAPL="S" DBNA="D$" SUBC="F" APPL="S" CNAM="BCUSER" CDAT="20101228" UNAM="BCUSER" UDAT="20120903" VERN="000005" RMAND="001" RLOAD="E" FIXPT="X" SDATE="20120903" STIME="233159" IDATE="20120903" ITIME="233153" LDBNAME="D$S" UCCHECK="X">
+ <mainprogram NAME="SAPLZBT_SEARCH_GROUP" VARCL="X" DBAPL="S" DBNA="D$" SUBC="F" APPL="S" CNAM="BCUSER" CDAT="20101228" UNAM="BCUSER" UDAT="20120903" VERN="000005" RMAND="001" RLOAD="E" FIXPT="X" SDATE="20120911" STIME="151242" IDATE="20120903" ITIME="233153" LDBNAME="D$S" UCCHECK="X">
   <textPool>
+   <language SPRAS="D">
+    <textElement ID="S" KEY="P_ROWS" ENTRY="        Anzahl Zeilen für Selektion" LENGTH="35 "/>
+    <textElement ID="S" KEY="S_PROD" ENTRY="        Produkt" LENGTH="16 "/>
+    <textElement ID="S" KEY="S_AEDAT" ENTRY="D       ." LENGTH="19 "/>
+    <textElement ID="S" KEY="S_AENAM" ENTRY="D       ." LENGTH="18 "/>
+    <textElement ID="S" KEY="S_BUG" ENTRY="D       ." LENGTH="14 "/>
+    <textElement ID="S" KEY="S_COMP" ENTRY="D       ." LENGTH="18 "/>
+    <textElement ID="S" KEY="S_DEAD" ENTRY="D       ." LENGTH="17 "/>
+    <textElement ID="S" KEY="S_DEV" ENTRY="D       ." LENGTH="17 "/>
+    <textElement ID="S" KEY="S_ENDDAT" ENTRY="D       ." LENGTH="16 "/>
+    <textElement ID="S" KEY="S_ERDAT" ENTRY="D       ." LENGTH="21 "/>
+    <textElement ID="S" KEY="S_ESTADO" ENTRY="D       ." LENGTH="14 "/>
+    <textElement ID="S" KEY="S_HEST" ENTRY="D       ." LENGTH="23 "/>
+    <textElement ID="S" KEY="S_HREAL" ENTRY="D       ." LENGTH="20 "/>
+    <textElement ID="S" KEY="S_REP" ENTRY="D       ." LENGTH="16 "/>
+    <textElement ID="S" KEY="S_RESUM" ENTRY="D       ." LENGTH="19 "/>
+    <textElement ID="S" KEY="S_STYPE" ENTRY="D       ." LENGTH="19 "/>
+    <textElement ID="S" KEY="S_TEST" ENTRY="D       ." LENGTH="14 "/>
+    <textElement ID="S" KEY="S_TYPE" ENTRY="D       ." LENGTH="16 "/>
+   </language>
    <language SPRAS="E">
     <textElement ID="S" KEY="P_ROWS" ENTRY="        Nº of selections" LENGTH="24 "/>
     <textElement ID="S" KEY="S_AEDAT" ENTRY="D       ." LENGTH="19 "/>
     <textElement ID="S" KEY="S_AENAM" ENTRY="D       ." LENGTH="18 "/>
+    <textElement ID="S" KEY="S_ASSIG" ENTRY="D       ." LENGTH="9 "/>
     <textElement ID="S" KEY="S_BUG" ENTRY="D       ." LENGTH="14 "/>
     <textElement ID="S" KEY="S_COMP" ENTRY="D       ." LENGTH="18 "/>
     <textElement ID="S" KEY="S_DEAD" ENTRY="D       ." LENGTH="17 "/>
