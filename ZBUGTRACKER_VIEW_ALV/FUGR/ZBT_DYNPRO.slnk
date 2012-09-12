@@ -4,7 +4,7 @@
  <mainprogram NAME="SAPLZBT_DYNPRO" VARCL="X" DBAPL="S" DBNA="D$" SUBC="F" APPL="S" CNAM="BCUSER" CDAT="20101225" UNAM="BCUSER" UDAT="20120911" VERN="000003" RMAND="001" RLOAD="E" FIXPT="X" SDATE="20120911" STIME="151312" IDATE="20120911" ITIME="151312" LDBNAME="D$S" UCCHECK="X">
   <textPool>
    <language SPRAS="D">
-    <textElement ID="I" KEY="001" ENTRY="Ändern" LENGTH="132 "/>
+    <textElement ID="I" KEY="001" ENTRY="Ã„ndern" LENGTH="132 "/>
     <textElement ID="I" KEY="002" ENTRY="Anzeigen" LENGTH="132 "/>
     <textElement ID="I" KEY="003" ENTRY="Beschreibung" LENGTH="132 "/>
     <textElement ID="I" KEY="004" ENTRY="Wie zu Reproduzieren?" LENGTH="132 "/>
@@ -1894,7 +1894,7 @@ FORM CREATE_GOS .
 
 
  IF g_attachment_GOS   IS INITIAL.
-* Schlüssel für generisches Objekt MUSS eindeutig sein!!!
+* SchlÃ¼ssel fÃ¼r generisches Objekt MUSS eindeutig sein!!!
    ls_object-objkey = go_bug-&gt;get_id_i( ).
   move &apos;ZBUG_TRACK&apos; to ls_object-objtype.
 
@@ -1942,15 +1942,9 @@ ENDFORM.                    &quot; CREATE_GOS</include_source>
 FORM GET_INTERNAL_BUG_ID .
 
  DATA: l_number_range TYPE tnro-object.
-*
-*  l_number_range = producto-&gt;get_bug_number_range( ).
-*  IF l_number_range IS INITIAL.
+
     l_number_range = &apos;ZBT_BUGIDI&apos;. &quot;Default Number Range
-*  ENDIF.
-*
-*  IF bugtype IS SUPPLIED AND bugtype-&gt;get_nrobj( ) IS NOT INITIAL.
-*    l_number_range = bugtype-&gt;get_nrobj( ).
-*  ENDIF.
+
 
   CALL FUNCTION &apos;NUMBER_GET_NEXT&apos;
     EXPORTING
@@ -1962,19 +1956,19 @@ FORM GET_INTERNAL_BUG_ID .
      number                        = lv_bug_i
 *     QUANTITY                      =
 *     RETURNCODE                    =
-*   EXCEPTIONS
-*     INTERVAL_NOT_FOUND            = 1
-*     NUMBER_RANGE_NOT_INTERN       = 2
-*     OBJECT_NOT_FOUND              = 3
-*     QUANTITY_IS_0                 = 4
-*     QUANTITY_IS_NOT_1             = 5
-*     INTERVAL_OVERFLOW             = 6
-*     BUFFER_OVERFLOW               = 7
-*     OTHERS                        = 8
+   EXCEPTIONS
+     INTERVAL_NOT_FOUND            = 1
+     NUMBER_RANGE_NOT_INTERN       = 2
+     OBJECT_NOT_FOUND              = 3
+     QUANTITY_IS_0                 = 4
+     QUANTITY_IS_NOT_1             = 5
+     INTERVAL_OVERFLOW             = 6
+     BUFFER_OVERFLOW               = 7
+     OTHERS                        = 8
             .
   IF sy-subrc &lt;&gt; 0.
-* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
-*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+ MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
   ENDIF.
 
 ENDFORM.                    &quot; GET_INTERNAL_BUG_ID</include_source>
