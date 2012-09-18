@@ -1,0 +1,28 @@
+#summary One-sentence summary of this page.
+ProposedVersioning for the SAPBugTracker
+= Introduction =
+
+suggestion for Versioning
+
+
+= Details =
+
+1. Attachments V8.3
+
+2. ENQUEUE and DEQUEUE V8.5
+
+3. change log V9.0
+
+4. send mail V9.5
+
+5. Build TimeReporting solution V10
+
+6. Fix popup "Data has been changed" V10.1
+
+7. Fix ALVTree where bug hierarchy V10.1
+
+8. information system V11
+
+9. TR list V11.5
+
+10. TR the popup V12
