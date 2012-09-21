@@ -7,7 +7,7 @@ This is just a simple ToDo list
 
 = Details =
 
- * Attachments
+ * Attachments (*Christian*)
   * Use GOS object to store attachements into Bug Id (*DONE*)
   * Create ALVGrid in Attachement tabStrip in order to display/add/delete attachements (*WORKING*)
 
