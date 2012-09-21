@@ -1,28 +1,17 @@
-#summary One-sentence summary of this page.
+#summary Proposed developement order.
 ProposedVersioning for the SAPBugTracker
 = Introduction =
 
 suggestion for Versioning
 
-
 = Details =
-
-1. Attachments V8.3
-
-2. ENQUEUE and DEQUEUE V8.5
-
-3. change log V9.0
-
-4. send mail V9.5
-
-5. Build TimeReporting solution V10
-
-6. Fix popup "Data has been changed" V10.1
-
-7. Fix ALVTree where bug hierarchy V10.1
-
-8. information system V11
-
-9. TR list V11.5
-
-10. TR the popup V12
+  # Fix popup "Data has been changed" v8 (*Jorge*, I think is already fixed, I need to do some tests)
+  # Attachments V8.3 (*Christian*)
+  # Build TimeReporting solution v9.0 (*Jorge*)
+  # send mail V9.5
+  # Fix ALVTree where bug hierarchy V9.8
+  # information system V10
+  # TR list V10.5
+  # TR the popup V10.6
+  # ENQUEUE and DEQUEUE V12
+  # change log V13
