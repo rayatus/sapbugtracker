@@ -27,6 +27,7 @@ This is just a simple ToDo list
  * Fix popup "Data has been changed" (*Jorge*, *DONE*)
 
  * Fix ALVTree where bug hierarchy
+  * Fix issue 1 
 
  * information system
   * Bugs opened by me 
