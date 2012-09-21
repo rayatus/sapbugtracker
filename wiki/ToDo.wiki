@@ -20,9 +20,9 @@ This is just a simple ToDo list
  * Send Mail
   * *?¿?¿ Christian ?¿?¿* 
 
- * Build TimeReporting solution (*Jorge*)
+ * Build Time Reporting solution (*Jorge*)
   * Create custo Master table in order to add concepts, so that workLog could be invested in "design", or "implementation" or "testing" or... anything else.
-  * Create ALVGrid in TimeReporting tabStrip where all the WorkLog will be displayed by Bug Id (also "added" from here)
+  * Create ALVGrid in Time Reporting tabStrip where all the Work Log will be displayed by Bug Id (also "added" from here)
 
  * Fix popup "Data has been changed" (*Jorge*, *DONE*)
 
@@ -34,7 +34,7 @@ This is just a simple ToDo list
   * Bugs assigned to me 
   * Bugs where I'm a tester
   * Bugs by status
-  * WorkLog by User/users/time period/Bug
+  * Work Log by User/users/time period/Bug
  
  * TR list
   * List Bugs by Transport Request
