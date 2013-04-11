@@ -9,7 +9,7 @@ This is just a simple ToDo list
 
  * Attachments (*Christian*)
   * Use GOS object to store attachements into Bug Id (*DONE*)
-  * Create ALVGrid in Attachement tabStrip in order to display attachements list (*WORKING*)
+  * Create ALVGrid in Attachement tabStrip in order to display attachements list (*DONE*)
 
  * ENQUEUE and DEQUEUE
   * Create Lock/Unlock in all entities in order to avoid parallel object edition
@@ -30,7 +30,7 @@ This is just a simple ToDo list
  * Fix ALVTree where bug hierarchy
   * Fix issue 1 
 
- * information system
+ * information system(*WORKING*)
   * Bugs opened by me 
   * Bugs assigned to me 
   * Bugs where I'm a tester
