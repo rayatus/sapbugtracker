@@ -5,12 +5,13 @@ ProposedVersioning for the SAPBugTracker
 suggestion for Versioning
 
 = Details =
-  # Fix popup "Data has been changed" v8 (*Jorge*, I think is already fixed, I need to do some tests)
-  # Attachments V8.3 (*Christian*)
+  # Fix popup "Data has been changed" v8 (*Jorge*, *Christian* We think it is fixed now)
+  # Attachments V8.31 (*Christian*)
   # Build TimeReporting solution v9.0 (*Jorge*)
   # send mail V9.5
   # Fix ALVTree where bug hierarchy V9.8
-  # information system V10
+  # information system V10 -> Report ZBUGTRACKER03_NEW is in V8.31     
+included, prestep for the information system
   # TR list V10.5
   # TR the popup V10.6
   # ENQUEUE and DEQUEUE V12
