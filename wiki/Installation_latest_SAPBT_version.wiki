@@ -1,5 +1,4 @@
-#HowTo Install SAPBT 8.31
-
+#labels HowToInstallSAPBT8.31
 = Introduction =
 
 HowTo Install SAPBT 8.31
