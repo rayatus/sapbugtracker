@@ -9,6 +9,7 @@ SAP-Basis 7.02,
 but is also installable under 7.00 with some manual adjustments
 
 *import the Transport Request*
+
 The following TR K9A000Q.zip contains the version 8.31 
 
 *manual adjustments for SAP BASIS 7.00*
