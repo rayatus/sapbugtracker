@@ -1,4 +1,3 @@
-#labels Featured,Phase-Implementation
 #HowTo Install SAPBT 8.31
 
 = Introduction =
