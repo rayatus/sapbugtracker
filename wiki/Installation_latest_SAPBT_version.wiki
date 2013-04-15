@@ -1,0 +1,61 @@
+#summary One-sentence summary of this page.
+#labels Featured,Phase-Implementation
+
+= Introduction =
+
+HowTo Install SAPBT 8.31
+
+*prerequisite for installation*
+
+SAP-Basis 7.02, 
+but is also installable under 7.00 with some manual adjustments
+
+*import the Transport Request*
+The following TR K9A000Q.zip contains the version 8.31 
+
+*manual adjustments for SAP BASIS 7.00*
+
+*first adjustment*
+Method
+    ZCL_TRANSPORT_CONTROLLER      UPDATE_TR_ATTRIBUTES
+
+*  REPLACE 1 start*
+
+del line   DATA:   lt_attributes     TYPE trwbo_t_e070a,
+
+del line           lt_attributes_aux TYPE trwbo_t_e070a,
+
+    DATA:   lt_attributes     TYPE TRATTRIBUTES,
+
+            lt_attributes_aux TYPE TRATTRIBUTES,
+
+*   REPLACE 1 end*
+
+            l_trkorr          TYPE trkorr,
+
+            lo_producto       TYPE REF TO zcl_producto,
+
+            l_bug_id          TYPE LINE OF zbt_producto_bug_id_tbl,
+
+
+*  REPLACE 2 start*
+
+del line    l_attribute       TYPE LINE OF trwbo_t_e070a,
+
+            l_attribute       TYPE LINE OF TRATTRIBUTES,
+
+*  REPLACE 2 end*
+
+*second adjustment*
+Method     
+ZCB_BUG_TAG_PERSIST    IF_OS_CA_PERSISTENCY~GET_PERSISTENT_BY_QUERY
+
+during the import the following error comes up.
+
+Programm *ZCB_BUG_PERSIST*===============CP, Include ZCB_BUG_PERSIST===============CM00P: Syntaxerror line 000152
+Field 'I_OPTIONS-DATABASE_QUERY_OPTIONS' unknown. (SAP BASIS 7.00)
+
+Programm *ZCB_BUG_TAG_PERSIST*===========CP, Include ZCB_BUG_TAG_PERSIST===========CM00V: Syntaxerror line 000152
+Feld 'I_OPTIONS-DATABASE_QUERY_OPTIONS' unknown.
+
+Well, I don't know if theres a better way, but I played around with "deleting the redefinition" from the methods ZCB_BUG_PERSIST/ZCB_BUG_TAG_PERSIST and redefine again (Create Redefinition) and it worked for me.
