@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZBT_ID_BUG</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>ZBT_BUG</DOMNAME>
+    <MEMORYID>ZBT_BUG_ID</MEMORYID>
+    <LOGFLAG>X</LOGFLAG>
+    <HEADLEN>10</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>15</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>Bug Id</DDTEXT>
+    <REPTEXT>Bug Id</REPTEXT>
+    <SCRTEXT_S>Bug Id</SCRTEXT_S>
+    <SCRTEXT_M>Bug Id</SCRTEXT_M>
+    <SCRTEXT_L>Bug Id</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <SHLPNAME>ZBT_F4_BUG_ID</SHLPNAME>
+    <SHLPFIELD>BUG</SHLPFIELD>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <TPARA>
+    <PARAMID>ZBT_BUG_ID</PARAMID>
+    <PARTEXT>SAPBugTracker Bug Id</PARTEXT>
+   </TPARA>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Fehlernr.</DDTEXT>
+     <REPTEXT>Fehlernr.</REPTEXT>
+     <SCRTEXT_S>Fehlernr.</SCRTEXT_S>
+     <SCRTEXT_M>Fehlernr.</SCRTEXT_M>
+     <SCRTEXT_L>Fehlernr.</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

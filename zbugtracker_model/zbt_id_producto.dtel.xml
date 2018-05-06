@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZBT_ID_PRODUCTO</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>ZBT_PRODUCTO</DOMNAME>
+    <MEMORYID>ZBT_PRODUCT_ID</MEMORYID>
+    <LOGFLAG>X</LOGFLAG>
+    <HEADLEN>08</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>15</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>Product</DDTEXT>
+    <REPTEXT>Product</REPTEXT>
+    <SCRTEXT_S>Product</SCRTEXT_S>
+    <SCRTEXT_M>Product</SCRTEXT_M>
+    <SCRTEXT_L>Product</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <SHLPNAME>ZBT_F4_PRODUCTO_ID</SHLPNAME>
+    <SHLPFIELD>PRODUCTO</SHLPFIELD>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <TPARA>
+    <PARAMID>ZBT_PRODUCT_ID</PARAMID>
+    <PARTEXT>SAPBugTracker Product Id</PARTEXT>
+   </TPARA>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Produkt</DDTEXT>
+     <REPTEXT>Produkt</REPTEXT>
+     <SCRTEXT_S>Produkt</SCRTEXT_S>
+     <SCRTEXT_M>Produkt</SCRTEXT_M>
+     <SCRTEXT_L>Produkt</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZBT_BUGSTYPE_ICON</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>ICONNAME</DOMNAME>
+    <LOGFLAG>X</LOGFLAG>
+    <HEADLEN>30</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>15</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>Bug Subtype Icon</DDTEXT>
+    <REPTEXT>Subtype Icon</REPTEXT>
+    <SCRTEXT_S>Subtype</SCRTEXT_S>
+    <SCRTEXT_M>Subtype Icon</SCRTEXT_M>
+    <SCRTEXT_L>Subtype Icon</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Fehlerunterkategorie Icon</DDTEXT>
+     <REPTEXT>Fehlerunterkategorie Icon</REPTEXT>
+     <SCRTEXT_S>UnKat Icon</SCRTEXT_S>
+     <SCRTEXT_M>Unterkat. Icon</SCRTEXT_M>
+     <SCRTEXT_L>Fehlerunterkategorie</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_TR_BUG_CTRL</CLSNAME>
+    <VERSION>1</VERSION>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Allows link a TR to a Bug</DESCRIPT>
+    <EXPOSURE>2</EXPOSURE>
+    <STATE>1</STATE>
+    <CLSFINAL>X</CLSFINAL>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <TPOOL>
+    <item>
+     <ID>I</ID>
+     <KEY>001</KEY>
+     <ENTRY>Select Bug Id</ENTRY>
+     <LENGTH>23</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>002</KEY>
+     <ENTRY>SAPBugTracker - insert BugId</ENTRY>
+     <LENGTH>28</LENGTH>
+    </item>
+   </TPOOL>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_TR_BUG_CTRL</CLSNAME>
+     <CMPNAME>ASK_4_BUGID</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Shows a Popup asking for bug Id&apos;s</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_TR_BUG_CTRL</CLSNAME>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>CONSTRUCTOR</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_TR_BUG_CTRL</CLSNAME>
+     <CMPNAME>EXCLUDED_BUTTONS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Set Excluded buttons for ALVGrid</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_TR_BUG_CTRL</CLSNAME>
+     <CMPNAME>GET_TR_BUGS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Retrieves related Bugs of a TransportRequest</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_TR_BUG_CTRL</CLSNAME>
+     <CMPNAME>GT_BUGS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>SAPBugTracker: Transport related to Bugs</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_TR_BUG_CTRL</CLSNAME>
+     <CMPNAME>O_CONTAINER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Abstract Container for GUI Controls</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_TR_BUG_CTRL</CLSNAME>
+     <CMPNAME>O_GRID</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ALV List Viewer</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_TR_BUG_CTRL</CLSNAME>
+     <CMPNAME>O_TR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Transport Entity</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_TR_BUG_CTRL</CLSNAME>
+     <CMPNAME>SAVE_DATA</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Saves data into Persistence layer</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_TR_BUG_CTRL</CLSNAME>
+     <CMPNAME>SET_TR_BUGS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Sets Bugs related to a TransportRequest</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_TR_BUG_CTRL</CLSNAME>
+     <CMPNAME>VALIDATE_DATA</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Validates Data before saving</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

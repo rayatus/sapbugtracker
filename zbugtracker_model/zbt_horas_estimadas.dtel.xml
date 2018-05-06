@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZBT_HORAS_ESTIMADAS</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>ZBT_HORAS</DOMNAME>
+    <LOGFLAG>X</LOGFLAG>
+    <HEADLEN>15</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>15</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>Estimated hours</DDTEXT>
+    <REPTEXT>Estimated hours</REPTEXT>
+    <SCRTEXT_S>Est. hours</SCRTEXT_S>
+    <SCRTEXT_M>Estimated hours</SCRTEXT_M>
+    <SCRTEXT_L>Estimated hours</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>geschätzte Dauer (in h)</DDTEXT>
+     <REPTEXT>geschätzte Dauer (in h)</REPTEXT>
+     <SCRTEXT_S>ges. Dauer</SCRTEXT_S>
+     <SCRTEXT_M>geschä. Dauer (in h)</SCRTEXT_M>
+     <SCRTEXT_L>geschätzte Dauer (in h)</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZBT_AEDAT</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>ZBT_TIMESTAMP</DOMNAME>
+    <LOGFLAG>X</LOGFLAG>
+    <HEADLEN>19</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>15</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>Change Date</DDTEXT>
+    <REPTEXT>Change Date</REPTEXT>
+    <SCRTEXT_S>Change Dat</SCRTEXT_S>
+    <SCRTEXT_M>Change Date</SCRTEXT_M>
+    <SCRTEXT_L>Change Date</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Änderungsdatum</DDTEXT>
+     <REPTEXT>Änderungsdatum</REPTEXT>
+     <SCRTEXT_S>Änd. Datum</SCRTEXT_S>
+     <SCRTEXT_M>Änderungsdatum</SCRTEXT_M>
+     <SCRTEXT_L>Änderungsdatum</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

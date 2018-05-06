@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZBT_STYPE_TEXT</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>TEXT20</DOMNAME>
+    <LOGFLAG>X</LOGFLAG>
+    <HEADLEN>20</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>15</SCRLEN2>
+    <SCRLEN3>23</SCRLEN3>
+    <DDTEXT>Description of Bug Subtype</DDTEXT>
+    <REPTEXT>D.B.SubType</REPTEXT>
+    <SCRTEXT_S>SubTyp.</SCRTEXT_S>
+    <SCRTEXT_M>Descri. of Bug Subt</SCRTEXT_M>
+    <SCRTEXT_L>Description of Bug Subtype</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Beschreibung der Fehlerunterkategorie</DDTEXT>
+     <REPTEXT>Beschr. der Fehl. UK</REPTEXT>
+     <SCRTEXT_S>Fehl. UKat</SCRTEXT_S>
+     <SCRTEXT_M>Beschr. Fe. UKa</SCRTEXT_M>
+     <SCRTEXT_L>Beschr. der Fehl UKat</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

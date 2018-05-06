@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_INTF" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOINTERF>
+    <CLSNAME>ZINF_RESULTS_ALV_CTRL</CLSNAME>
+    <VERSION>1</VERSION>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Results ALV Controller</DESCRIPT>
+    <EXPOSURE>2</EXPOSURE>
+    <STATE>1</STATE>
+    <UNICODE>X</UNICODE>
+   </VSEOINTERF>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>ZINF_RESULTS_ALV_CTRL</CLSNAME>
+     <CMPNAME>DISPLAY_RESULTS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Displays Results</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZINF_RESULTS_ALV_CTRL</CLSNAME>
+     <CMPNAME>DO_SEARCH</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Executes Search function</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZINF_RESULTS_ALV_CTRL</CLSNAME>
+     <CMPNAME>ON_RESULTS_SELECTED</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>On Results Selected</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZINF_RESULTS_ALV_CTRL</CLSNAME>
+     <CMPNAME>RESULTS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Bugs</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZBT_PROGRAMA</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>CHAR45</DOMNAME>
+    <LOGFLAG>X</LOGFLAG>
+    <HEADLEN>22</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>15</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>Program</DDTEXT>
+    <REPTEXT>Program</REPTEXT>
+    <SCRTEXT_S>Program</SCRTEXT_S>
+    <SCRTEXT_M>Program</SCRTEXT_M>
+    <SCRTEXT_L>Program</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Programm</DDTEXT>
+     <REPTEXT>Programm</REPTEXT>
+     <SCRTEXT_S>Programm</SCRTEXT_S>
+     <SCRTEXT_M>Programm</SCRTEXT_M>
+     <SCRTEXT_L>Programm</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

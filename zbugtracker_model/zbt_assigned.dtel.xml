@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZBT_ASSIGNED</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>XUBNAME</DOMNAME>
+    <HEADLEN>20</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>15</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>User is Assigned</DDTEXT>
+    <REPTEXT>User is Assigned</REPTEXT>
+    <SCRTEXT_S>Us. Assig.</SCRTEXT_S>
+    <SCRTEXT_M>User is Assign.</SCRTEXT_M>
+    <SCRTEXT_L>User is Assigned</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>zugewiesener Bearbeiter</DDTEXT>
+     <REPTEXT>zugewiesener Bearbei</REPTEXT>
+     <SCRTEXT_S>zug. Bearb</SCRTEXT_S>
+     <SCRTEXT_M>zugew. Bearb.</SCRTEXT_M>
+     <SCRTEXT_L>zugewiesener Bearbei</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

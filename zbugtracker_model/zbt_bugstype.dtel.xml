@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZBT_BUGSTYPE</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>ZBT_BUGSTYPE</DOMNAME>
+    <LOGFLAG>X</LOGFLAG>
+    <HEADLEN>11</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>15</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>Bug Subtype</DDTEXT>
+    <REPTEXT>Bug Subtype</REPTEXT>
+    <SCRTEXT_S>Bug Subtyp</SCRTEXT_S>
+    <SCRTEXT_M>Bug Subtype</SCRTEXT_M>
+    <SCRTEXT_L>Bug Subtype</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Fehlerpriorität</DDTEXT>
+     <REPTEXT>Fehlerprio</REPTEXT>
+     <SCRTEXT_S>Fehlerprio</SCRTEXT_S>
+     <SCRTEXT_M>Fehlerpriorität</SCRTEXT_M>
+     <SCRTEXT_L>Fehlerpriorität</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

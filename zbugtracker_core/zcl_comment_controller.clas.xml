@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_COMMENT_CONTROLLER</CLSNAME>
+    <VERSION>1</VERSION>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Comment Controller</DESCRIPT>
+    <EXPOSURE>2</EXPOSURE>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_COMMENT_CONTROLLER</CLSNAME>
+     <CMPNAME>CREATE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Hace persistentes los datos</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_COMMENT_CONTROLLER</CLSNAME>
+     <CMPNAME>DELETE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Borra el comentario</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_COMMENT_CONTROLLER</CLSNAME>
+     <CMPNAME>ENTITY_TO_PERSIST</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Entity To Persist</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_COMMENT_CONTROLLER</CLSNAME>
+     <CMPNAME>ENTITY_TO_STRUCTURE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Entity To Structure</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_COMMENT_CONTROLLER</CLSNAME>
+     <CMPNAME>EXIST</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Verifica si existe</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_COMMENT_CONTROLLER</CLSNAME>
+     <CMPNAME>FIND_ALL_BUG_COMMENTS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Recupera todos los comentarios de un Bug</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_COMMENT_CONTROLLER</CLSNAME>
+     <CMPNAME>FIND_BY_KEY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Busca un comentario por su Id</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_COMMENT_CONTROLLER</CLSNAME>
+     <CMPNAME>NEXT_ID</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns next Comment Id</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_COMMENT_CONTROLLER</CLSNAME>
+     <CMPNAME>PERSIST_TO_ENTITY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Pasa de Persist a Entity</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_COMMENT_CONTROLLER</CLSNAME>
+     <CMPNAME>UPDATE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Actualizal los datos en persistencia</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

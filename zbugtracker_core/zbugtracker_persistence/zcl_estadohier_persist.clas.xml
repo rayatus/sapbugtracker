@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_ESTADOHIER_PERSIST</CLSNAME>
+    <VERSION>1</VERSION>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Bug Status Hierarchie Persistent</DESCRIPT>
+    <CATEGORY>10</CATEGORY>
+    <EXPOSURE>1</EXPOSURE>
+    <STATE>1</STATE>
+    <CLSFINAL>X</CLSFINAL>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_ESTADOHIER_PERSIST</CLSNAME>
+     <CMPNAME>ESTADO</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Estado</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_ESTADOHIER_PERSIST</CLSNAME>
+     <CMPNAME>GET_ESTADO</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Reads Attribute ESTADO</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_ESTADOHIER_PERSIST</CLSNAME>
+     <CMPNAME>GET_NEXT_ESTADO</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Reads Attribute NEXT_ESTADO</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_ESTADOHIER_PERSIST</CLSNAME>
+     <CMPNAME>NEXT_ESTADO</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Estado siguiente</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

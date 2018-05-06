@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZBT_TRANSPORTREQ</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>TRKORR</DOMNAME>
+    <LOGFLAG>X</LOGFLAG>
+    <HEADLEN>22</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>15</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>Transport Request</DDTEXT>
+    <REPTEXT>Transport Request</REPTEXT>
+    <SCRTEXT_S>Transp.Req</SCRTEXT_S>
+    <SCRTEXT_M>Transport Req</SCRTEXT_M>
+    <SCRTEXT_L>Transport Request</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Transportauftrag</DDTEXT>
+     <REPTEXT>Transportauftrag</REPTEXT>
+     <SCRTEXT_S>Transp.Auf</SCRTEXT_S>
+     <SCRTEXT_M>Transportauftrag</SCRTEXT_M>
+     <SCRTEXT_L>Transportauftrag</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

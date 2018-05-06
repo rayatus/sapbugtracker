@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZBT_RESUMEN</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>TEXT100</DOMNAME>
+    <LOGFLAG>X</LOGFLAG>
+    <HEADLEN>55</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>15</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>Bug Summary</DDTEXT>
+    <REPTEXT>Bug Summary</REPTEXT>
+    <SCRTEXT_S>Bug Summ.</SCRTEXT_S>
+    <SCRTEXT_M>Bug Summary</SCRTEXT_M>
+    <SCRTEXT_L>Bug Summary</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Fehler Zusammenfassung</DDTEXT>
+     <REPTEXT>Fehler Zusammenfassung</REPTEXT>
+     <SCRTEXT_S>Feh. Zusa.</SCRTEXT_S>
+     <SCRTEXT_M>Fehler Zusammen</SCRTEXT_M>
+     <SCRTEXT_L>Fehler Zusammenfassu</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

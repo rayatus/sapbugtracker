@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+    <VERSION>1</VERSION>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Bug Controller</DESCRIPT>
+    <EXPOSURE>2</EXPOSURE>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+    <WITH_UNIT_TESTS>X</WITH_UNIT_TESTS>
+   </VSEOCLASS>
+   <TPOOL>
+    <item>
+     <ID>I</ID>
+     <KEY>001</KEY>
+     <ENTRY>Bug Id</ENTRY>
+     <LENGTH>6</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>002</KEY>
+     <ENTRY>Product Id</ENTRY>
+     <LENGTH>10</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>003</KEY>
+     <ENTRY>Product</ENTRY>
+     <LENGTH>7</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>004</KEY>
+     <ENTRY>Component</ENTRY>
+     <LENGTH>9</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>005</KEY>
+     <ENTRY>Reporter</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>006</KEY>
+     <ENTRY>Developer</ENTRY>
+     <LENGTH>9</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>007</KEY>
+     <ENTRY>Tester</ENTRY>
+     <LENGTH>6</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>008</KEY>
+     <ENTRY>Status</ENTRY>
+     <LENGTH>6</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>009</KEY>
+     <ENTRY>Short Text</ENTRY>
+     <LENGTH>13</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>010</KEY>
+     <ENTRY>Bug Type</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>011</KEY>
+     <ENTRY>Create Time</ENTRY>
+     <LENGTH>11</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>012</KEY>
+     <ENTRY>Bug SubType</ENTRY>
+     <LENGTH>11</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>013</KEY>
+     <ENTRY>Description and Steps to reproduce</ENTRY>
+     <LENGTH>34</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>014</KEY>
+     <ENTRY>Estimated Time</ENTRY>
+     <LENGTH>14</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>015</KEY>
+     <ENTRY>Additional Info</ENTRY>
+     <LENGTH>15</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>016</KEY>
+     <ENTRY>End Date</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>017</KEY>
+     <ENTRY>Assigned</ENTRY>
+     <LENGTH>8</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>018</KEY>
+     <ENTRY>internal Bug Id</ENTRY>
+     <LENGTH>15</LENGTH>
+    </item>
+   </TPOOL>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>BUGS_BUFFER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Bugs</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>CREATE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Persistent ago a bug</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>DELETE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Bug Deletes a persistence layer</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>ENTITY_TO_PERSIST</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Spend Entity to Persist</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>ENTITY_TO_STRUCTURE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Entity to Structure</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>EQUAL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>2 Bug Entities are equal?</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>EQUAL_TAGS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Tags are Equal?</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>EXIST</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Check if exist</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>FIND_BY_KEY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Retrieves a Bug from its key</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>FIND_NEXT_BUGS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Retrieves bugs persistence Next</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>FIND_PREV_BUGS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Retrieves bugs persistence Past</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>LOCK</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Locks Bug</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>NEXT_ID</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Get the next number of Bug</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>PERSIST_TO_ENTITY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Spend to Persist Entity</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>SEARCH</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Searches Bug</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>STRUCTURE_TO_ENTITY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Structure to Entity</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>UNLOCK</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Unlocks Bug</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>UPDATE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Upgrade a bug in the persistence layer</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>VALIDATE_ON_CREATE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Validates before creating a bug</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>VALIDATE_ON_DELETE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Validations to Remove</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_CONTROLLER</CLSNAME>
+     <CMPNAME>VALIDATE_ON_UPDATE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Validates a bug before updating</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

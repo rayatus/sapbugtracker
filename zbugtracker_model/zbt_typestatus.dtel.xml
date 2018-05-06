@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZBT_TYPESTATUS</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>ZBT_TYPESTATUS</DOMNAME>
+    <LOGFLAG>X</LOGFLAG>
+    <HEADLEN>06</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>15</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>Status Type</DDTEXT>
+    <REPTEXT>Status Type</REPTEXT>
+    <SCRTEXT_S>Status Ty.</SCRTEXT_S>
+    <SCRTEXT_M>Status Type</SCRTEXT_M>
+    <SCRTEXT_L>Status Type</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Status Typ</DDTEXT>
+     <REPTEXT>Status Typ</REPTEXT>
+     <SCRTEXT_S>Status Ty.</SCRTEXT_S>
+     <SCRTEXT_M>Status Typ</SCRTEXT_M>
+     <SCRTEXT_L>Status Typ</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

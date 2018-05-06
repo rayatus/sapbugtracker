@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZBUGTRACKER_MSG</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>BugTracker Messages</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBUGTRACKER_MSG</ARBGB>
+     <MSGNR>000</MSGNR>
+     <TEXT>Bug &amp; saved.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBUGTRACKER_MSG</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>Product Id &amp; does not exist.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBUGTRACKER_MSG</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>Bug Id &amp; does not exist.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZBUGTRACKER_MSG</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>It&apos;s mandatory to select one component.</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

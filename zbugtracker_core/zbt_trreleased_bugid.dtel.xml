@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZBT_TRRELEASED_BUGID</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>ZBT_TRRELEASED_BUGID</DOMNAME>
+    <HEADLEN>20</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>15</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>Value Config for TransportReq and Send Mail?</DDTEXT>
+    <REPTEXT>BugId Req/Send Mail</REPTEXT>
+    <SCRTEXT_S>Bug Req.</SCRTEXT_S>
+    <SCRTEXT_M>BugId Required</SCRTEXT_M>
+    <SCRTEXT_L>BugId Req/Send Mail</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>Ist die Fehlernummer nötig, bei Freigabe Transportauftrag?</DDTEXT>
+     <REPTEXT>BugID / Sendma</REPTEXT>
+     <SCRTEXT_S>BugID / Se</SCRTEXT_S>
+     <SCRTEXT_M>BugID / Sendma</SCRTEXT_M>
+     <SCRTEXT_L>BugID / Sendmail</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

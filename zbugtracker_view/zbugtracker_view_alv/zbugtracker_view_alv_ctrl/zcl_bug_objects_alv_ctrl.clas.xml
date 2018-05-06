@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZCL_BUG_OBJECTS_ALV_CTRL</CLSNAME>
+    <VERSION>1</VERSION>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Bug&apos;s Objects ALV Controller</DESCRIPT>
+    <EXPOSURE>2</EXPOSURE>
+    <STATE>1</STATE>
+    <CLSFINAL>X</CLSFINAL>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <TPOOL>
+    <item>
+     <ID>I</ID>
+     <KEY>001</KEY>
+     <ENTRY>Overwiew/Content of Transport Request(s)</ENTRY>
+     <LENGTH>132</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>G01</KEY>
+     <ENTRY>Empty Transport Request</ENTRY>
+     <LENGTH>60</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>G02</KEY>
+     <ENTRY>Transport Request does not exist in E070</ENTRY>
+     <LENGTH>60</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>G03</KEY>
+     <ENTRY>Other Error with Transport Request</ENTRY>
+     <LENGTH>60</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>G04</KEY>
+     <ENTRY>Counter</ENTRY>
+     <LENGTH>7</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>G05</KEY>
+     <ENTRY>Count TR-Entries</ENTRY>
+     <LENGTH>16</LENGTH>
+    </item>
+    <item>
+     <ID>I</ID>
+     <KEY>G06</KEY>
+     <ENTRY>Count of Transport Entries</ENTRY>
+     <LENGTH>26</LENGTH>
+    </item>
+   </TPOOL>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_OBJECTS_ALV_CTRL</CLSNAME>
+     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>CONSTRUCTOR</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_OBJECTS_ALV_CTRL</CLSNAME>
+     <CMPNAME>DISPLAY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Displays Bug Objects in ALV</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_OBJECTS_ALV_CTRL</CLSNAME>
+     <CMPNAME>GET_OBJECTS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Gets Bug&apos;s Object</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_OBJECTS_ALV_CTRL</CLSNAME>
+     <CMPNAME>OBJECTS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Relation of Bug&apos;s Objects</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_OBJECTS_ALV_CTRL</CLSNAME>
+     <CMPNAME>O_BUG</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Bug Entity</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_OBJECTS_ALV_CTRL</CLSNAME>
+     <CMPNAME>O_CONTAINER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Abstract Container for GUI Controls</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_OBJECTS_ALV_CTRL</CLSNAME>
+     <CMPNAME>O_GRID</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Basis Class for Simple Tables</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZCL_BUG_OBJECTS_ALV_CTRL</CLSNAME>
+     <CMPNAME>RETRIEVE_OBJECTS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Retrieves Objects</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

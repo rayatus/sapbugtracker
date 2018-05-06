@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_DTEL" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <DD04V>
+    <ROLLNAME>ZBT_ID_NEXT_BUG</ROLLNAME>
+    <DDLANGUAGE>E</DDLANGUAGE>
+    <DOMNAME>ZBT_BUG</DOMNAME>
+    <LOGFLAG>X</LOGFLAG>
+    <HEADLEN>13</HEADLEN>
+    <SCRLEN1>10</SCRLEN1>
+    <SCRLEN2>15</SCRLEN2>
+    <SCRLEN3>20</SCRLEN3>
+    <DDTEXT>Next Bug</DDTEXT>
+    <REPTEXT>Next Bug</REPTEXT>
+    <SCRTEXT_S>Next Bug</SCRTEXT_S>
+    <SCRTEXT_M>Next Bug</SCRTEXT_M>
+    <SCRTEXT_L>Next Bug</SCRTEXT_L>
+    <DTELMASTER>E</DTELMASTER>
+    <REFKIND>D</REFKIND>
+   </DD04V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD04_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>nächster Fehler</DDTEXT>
+     <REPTEXT>nächster Fehler</REPTEXT>
+     <SCRTEXT_S>nä. Fehler</SCRTEXT_S>
+     <SCRTEXT_M>nächster Fehler</SCRTEXT_M>
+     <SCRTEXT_L>nächster Fehler</SCRTEXT_L>
+    </item>
+   </DD04_TEXTS>
+  </asx:values>
+ </asx:abap>
+</abapGit>
