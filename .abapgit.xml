@@ -11,6 +11,9 @@
     <item>/README.md</item>
     <item>/package.json</item>
     <item>/.travis.yml</item>
+    <item>/wiki/Installation_latest_SAPBT_version.wiki</item>
+    <item>/wiki/ProposedVersioning.wiki</item>
+    <item>/wiki/ToDo.wiki</item>
    </IGNORE>
   </DATA>
  </asx:values>
