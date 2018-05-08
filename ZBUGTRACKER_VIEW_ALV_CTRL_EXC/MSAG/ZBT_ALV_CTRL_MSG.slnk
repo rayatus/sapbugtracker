@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-16"?>
-<MSAG ARBGB="ZBT_ALV_CTRL_MSG" MASTERLANG="E" RESPUSER="BCUSER" LASTUSER="BCUSER" LDATE="20120903" LTIME="233152" STEXT="Messages from ALV Control">
- <t100 SPRSL="E" ARBGB="ZBT_ALV_CTRL_MSG" MSGNR="000" TEXT="Comments doesn&apos;t match the ID Bug &amp;."/>
- <t100 SPRSL="E" ARBGB="ZBT_ALV_CTRL_MSG" MSGNR="001" TEXT="Is mandatory to link the Transport to a Bug at least."/>
- <t100t SPRSL="E" ARBGB="ZBT_ALV_CTRL_MSG" STEXT="Messages from ALV Control"/>
-</MSAG>
