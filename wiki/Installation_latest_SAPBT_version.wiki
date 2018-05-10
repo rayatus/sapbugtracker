@@ -24,10 +24,11 @@ Different components that divides a same product.
 * ZBT_CONFIG	SAPBugtracker: Main Configuration
 * ZBT_ESTADO	Status of a Bug
 Different status for that can be applied to a bug (not only bug types but also improvements, etc...) for instance:
-** Open
-** In development
-** User validation
-** Closed
+
+* Open
+* In development
+* User validation
+* Closed
 
 * ZBT_ESTADO_HIER	Hierarchy of states
 It allows to define from which status can be moved a "bug" to a different status.
