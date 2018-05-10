@@ -1,6 +1,3 @@
-#summary HowTo Install SAPBT 8.31
-#labels Featured,Phase-Implementation
-
 == HowTo Install SAPBT 8.31 ==
 
 Just use ABAPGit (http://www.abapgit.org)
