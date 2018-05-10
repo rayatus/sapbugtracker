@@ -1,61 +1,44 @@
 #summary HowTo Install SAPBT 8.31
 #labels Featured,Phase-Implementation
-= Introduction =
 
-HowTo Install SAPBT 8.31
+== HowTo Install SAPBT 8.31 ==
 
-*prerequisite for installation*
+Just use ABAPGit (http://www.abapgit.org)
 
-SAP-Basis 7.02, 
-but is also installable under 7.00 with some manual adjustments
+== Configuration ==
 
-*import the Transport Request*
+There are some tables that you have to set up:
+* ZBT_PRODUCTO	SAPBugTracker Product
+List of different products that you what to manage via SAPBugTracker, for instance different applications, etc.
 
-The following TR K9A000Q.zip contains the version 8.31 
+* ZBT_BUG_TYPE	Bug Type
+List of different bug types such as: bug, improvement, etc... 
 
-*manual adjustments for SAP BASIS 7.00*
+* ZBT_BUG_STYPE	Bug Subtype
+A bugType can be divident in different types.
 
-*first adjustment*
-Method
-    ZCL_TRANSPORT_CONTROLLER      UPDATE_TR_ATTRIBUTES
+* ZBT_COMPONT	Component of a product
+Different components that divides a same product.
 
-*  REPLACE 1 start*
+* ZBT_CONFIG	SAPBugtracker: Main Configuration
+* ZBT_ESTADO	Status of a Bug
+Different status for that can be applied to a bug (not only bug types but also improvements, etc...) for instance:
+-- Open
+-- In development
+-- User validation
+-- Closed
 
-del line   DATA:   lt_attributes     TYPE trwbo_t_e070a,
+* ZBT_ESTADO_HIER	Hierarchy of states
+It allows to define from which status can be moved a "bug" to a different status.
 
-del line           lt_attributes_aux TYPE trwbo_t_e070a,
+* ZBT_PRODUCTO_TAG	Product Tags
+Allows to define different tags for a given product. All tags will be added to the transport request in order to provide traceability directly in the transport request, for instance: customer's ticket....
 
-    DATA:   lt_attributes     TYPE TRATTRIBUTES,
+* ZBT_USUARIO	Role of Users
+To define which is your team and who is the reporter, assignee, tester and developer, also allows to store the eMail for notification purposes.
 
-            lt_attributes_aux TYPE TRATTRIBUTES,
-
-*   REPLACE 1 end*
-
-            l_trkorr          TYPE trkorr,
-
-            lo_producto       TYPE REF TO zcl_producto,
-
-            l_bug_id          TYPE LINE OF zbt_producto_bug_id_tbl,
+* ZBT_WORKCONCEPT	WrokLog Concepts
+In order to allow managing the spent time during a "bug" resolution here you could differentiate all the different categories for which you want to compute worked hours.
+This part is under developement.
 
 
-*  REPLACE 2 start*
-
-del line    l_attribute       TYPE LINE OF trwbo_t_e070a,
-
-            l_attribute       TYPE LINE OF TRATTRIBUTES,
-
-*  REPLACE 2 end*
-
-*second adjustment*
-Method     
-ZCB_BUG_TAG_PERSIST    IF_OS_CA_PERSISTENCY~GET_PERSISTENT_BY_QUERY
-
-during the import the following error comes up.
-
-Programm *ZCB_BUG_PERSIST*===============CP, Include ZCB_BUG_PERSIST===============CM00P: Syntaxerror line 000152
-Field 'I_OPTIONS-DATABASE_QUERY_OPTIONS' unknown. (SAP BASIS 7.00)
-
-Programm *ZCB_BUG_TAG_PERSIST*===========CP, Include ZCB_BUG_TAG_PERSIST===========CM00V: Syntaxerror line 000152
-Feld 'I_OPTIONS-DATABASE_QUERY_OPTIONS' unknown.
-
-Well, I don't know if theres a better way, but I played around with "deleting the redefinition" from the methods ZCB_BUG_PERSIST/ZCB_BUG_TAG_PERSIST and redefine again (Create Redefinition) and it worked for me.
