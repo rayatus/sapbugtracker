@@ -1,0 +1,12 @@
+==How to execute==
+There are some transactions
+===ZBUGTRACKER01===
+Create new "bug"
+===ZBUGTRACKER02===
+Modify existing one
+===ZBUGTRACKER03===
+Display
+===ZBUGTRACKER_SEARCH===
+For searching existing "bugs"
+===ZBUGTRACKER_SEARCH02===
+Searching "bugs" according to last modification date
