@@ -7,7 +7,8 @@ Just use ABAPGit (http://www.abapgit.org)
 
 == Configuration ==
 
-There are some tables that you have to set up:
+There are some tables that you have to set up via SM30:
+
 * ZBT_PRODUCTO	SAPBugTracker Product
 List of different products that you what to manage via SAPBugTracker, for instance different applications, etc.
 
