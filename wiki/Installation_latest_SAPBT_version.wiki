@@ -9,20 +9,21 @@ Just use ABAPGit (http://www.abapgit.org)
 
 There are some tables that you have to set up via SM30:
 
-* ZBT_PRODUCTO	SAPBugTracker Product
+===ZBT_PRODUCTO===
 List of different products that you what to manage via SAPBugTracker, for instance different applications, etc.
 
-* ZBT_BUG_TYPE	Bug Type
+===ZBT_BUG_TYPE===
 List of different bug types such as: bug, improvement, etc... 
 
-* ZBT_BUG_STYPE	Bug Subtype
+===ZBT_BUG_STYPE===
 A bugType can be divident in different types.
 
-* ZBT_COMPONT	Component of a product
+===ZBT_COMPONT===	
 Different components that divides a same product.
 
-* ZBT_CONFIG	SAPBugtracker: Main Configuration
-* ZBT_ESTADO	Status of a Bug
+===ZBT_CONFIG===
+
+===ZBT_ESTADO===
 Different status for that can be applied to a bug (not only bug types but also improvements, etc...) for instance:
 
 * Open
@@ -30,16 +31,16 @@ Different status for that can be applied to a bug (not only bug types but also i
 * User validation
 * Closed
 
-* ZBT_ESTADO_HIER	Hierarchy of states
+===ZBT_ESTADO_HIER===
 It allows to define from which status can be moved a "bug" to a different status.
 
-* ZBT_PRODUCTO_TAG	Product Tags
+===ZBT_PRODUCTO_TAG===
 Allows to define different tags for a given product. All tags will be added to the transport request in order to provide traceability directly in the transport request, for instance: customer's ticket....
 
-* ZBT_USUARIO	Role of Users
+===ZBT_USUARIO===
 To define which is your team and who is the reporter, assignee, tester and developer, also allows to store the eMail for notification purposes.
 
-* ZBT_WORKCONCEPT	WrokLog Concepts
+===ZBT_WORKCONCEPT===
 In order to allow managing the spent time during a "bug" resolution here you could differentiate all the different categories for which you want to compute worked hours.
 This part is under developement.
 
