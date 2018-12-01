@@ -1,5 +1,5 @@
-# sapbugtracker
-Automatically exported from code.google.com/p/sapbugtracker
+# SAPBugTracker
+
 
 a bugTracker system (like bugZilla) developed in ABAP focused on:
 
