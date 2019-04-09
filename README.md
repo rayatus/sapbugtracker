@@ -8,4 +8,6 @@ Issue Management, STMS Integration, Time Control
 
 --- project for training purposes
 
-![ModifyBugScreen](https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/sapbugtracker/Bild%20004.png)
+![Display Bug Screen]((https://raw.githubusercontent.com/rayatus/sapbugtracker/master/img/SAPBugTracker_display_screen.png))
+
+![Searching for Bugs]((https://raw.githubusercontent.com/rayatus/sapbugtracker/master/img/SAPBugTracker_advanced_search_screen.png))
