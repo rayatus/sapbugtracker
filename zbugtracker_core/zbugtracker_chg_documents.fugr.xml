@@ -170,147 +170,118 @@
       <RSFDO>
        <PARAMETER>OBJECTID</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 001</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>TCODE</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 002</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UTIME</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 003</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UDATE</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 004</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>USERNAME</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 005</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>PLANNED_CHANGE_NUMBER</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 006</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>OBJECT_CHANGE_INDICATOR</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 007</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>PLANNED_OR_REAL_CHANGES</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 008</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>NO_CHANGE_POINTERS</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 009</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UPD_ICDTXT_ZBUGTRACKER</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 010</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UPD_ZBT_ATTACHMENT</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 011</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>N_ZBT_BUG</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 012</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>O_OLD_BUG</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 013</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UPD_ZBT_BUG</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 014</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UPD_ZBT_BUGCOMMENT</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 015</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>XZBT_BUGCOMMENT</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 016</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>YZBT_BUGCOMMENT</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 017</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UPD_ZBT_BUGSECCION</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 018</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UPD_ZBT_PROGRAMS</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 019</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>UPD_ZBT_TRANSPORTER</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 020</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>ICDTXT_ZBUGTRACKER</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 021</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>XZBT_ATTACHMENT</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 022</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>YZBT_ATTACHMENT</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 023</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>XZBT_BUGSECCION</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 024</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>YZBT_BUGSECCION</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 025</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>XZBT_PROGRAMS</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 026</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>YZBT_PROGRAMS</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 027</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>XZBT_TRANSPORTER</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 028</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>YZBT_TRANSPORTER</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 029</INDEX>
       </RSFDO>
      </DOCUMENTATION>
     </item>

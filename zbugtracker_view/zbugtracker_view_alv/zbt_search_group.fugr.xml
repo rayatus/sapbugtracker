@@ -66,43 +66,36 @@
        <PARAMETER>SCREEN_ATTRIBUTES</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Screen attributes</STEXT>
-       <INDEX> 001</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>RESULTS_ALV_CTRL</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Results ALV Controller</STEXT>
-       <INDEX> 002</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>BUG</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Bug Id&apos;s Range</STEXT>
-       <INDEX> 003</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>PRODUCTO</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Range of Product Id&apos;s</STEXT>
-       <INDEX> 004</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>COMPONENTE</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Componente Range</STEXT>
-       <INDEX> 005</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>AEDAT</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Time Stamp Range</STEXT>
-       <INDEX> 006</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>AENAM</PARAMETER>
        <KIND>P</KIND>
        <STEXT>User Range</STEXT>
-       <INDEX> 007</INDEX>
       </RSFDO>
      </DOCUMENTATION>
     </item>
@@ -238,121 +231,101 @@
        <PARAMETER>SCREEN_ATTRIBUTES</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Screen attributes</STEXT>
-       <INDEX> 001</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>RESULTS_ALV_CTRL</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Results ALV Controller</STEXT>
-       <INDEX> 002</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>BUG</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Bug Id&apos;s Range</STEXT>
-       <INDEX> 003</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>BUGSTYPE</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Bug SubType Range</STEXT>
-       <INDEX> 004</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>BUGTYPE</PARAMETER>
        <KIND>P</KIND>
        <STEXT>BugType Range</STEXT>
-       <INDEX> 005</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>COMPONENTE</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Componente Range</STEXT>
-       <INDEX> 006</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DEADLINE</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Dats Range</STEXT>
-       <INDEX> 007</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>ESTADO</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Estado Range</STEXT>
-       <INDEX> 008</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>HORAS_ESTIMADAS</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Horas Range</STEXT>
-       <INDEX> 009</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>HORAS_REALES</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Horas Range</STEXT>
-       <INDEX> 010</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>PRODUCTO</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Range of Product Id&apos;s</STEXT>
-       <INDEX> 011</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>RESUMEN</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Text Range</STEXT>
-       <INDEX> 012</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>CREADO</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Time Stamp Range</STEXT>
-       <INDEX> 013</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>REPORTER</PARAMETER>
        <KIND>P</KIND>
        <STEXT>User Range</STEXT>
-       <INDEX> 014</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>DEVELOPER</PARAMETER>
        <KIND>P</KIND>
        <STEXT>User Range</STEXT>
-       <INDEX> 015</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>ASSIGNED</PARAMETER>
        <KIND>P</KIND>
        <STEXT>User Range</STEXT>
-       <INDEX> 016</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>TESTER</PARAMETER>
        <KIND>P</KIND>
        <STEXT>User Range</STEXT>
-       <INDEX> 017</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>FINALIZADO</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Time Stamp Range</STEXT>
-       <INDEX> 018</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>AEDAT</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Time Stamp Range</STEXT>
-       <INDEX> 019</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>AENAM</PARAMETER>
        <KIND>P</KIND>
        <STEXT>User Range</STEXT>
-       <INDEX> 020</INDEX>
       </RSFDO>
      </DOCUMENTATION>
     </item>
@@ -409,14 +382,14 @@
        <LINE>PROCESS BEFORE OUTPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE status_0001.</LINE>
+       <LINE>  MODULE status_0001.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
-       <LINE>CALL SUBSCREEN sel_screen</LINE>
+       <LINE>  CALL SUBSCREEN sel_screen</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>INCLUDING g_subscreen-repid g_subscreen-dynnr.</LINE>
+       <LINE>    INCLUDING g_subscreen-repid g_subscreen-dynnr.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>*</LINE>
@@ -425,32 +398,17 @@
        <LINE>PROCESS AFTER INPUT.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>MODULE exit_0001 AT EXIT-COMMAND.</LINE>
+       <LINE>  MODULE exit_0001 AT EXIT-COMMAND.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
-       <LINE>CALL SUBSCREEN sel_screen.</LINE>
+       <LINE>  CALL SUBSCREEN sel_screen.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
-       <LINE>MODULE user_command_0001.</LINE>
+       <LINE>  MODULE user_command_0001.</LINE>
       </RPY_DYFLOW>
      </FLOW_LOGIC>
-     <SPACES>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>0</item>
-      <item>2</item>
-      <item>4</item>
-      <item>0</item>
-      <item>0</item>
-      <item>2</item>
-      <item>0</item>
-      <item>2</item>
-      <item>0</item>
-      <item>2</item>
-     </SPACES>
     </item>
    </DYNPROS>
    <CUA>

@@ -78,10 +78,12 @@
     </item>
     <item>
      <VALPOS>0004</VALPOS>
+     <DDLANGUAGE>D</DDLANGUAGE>
      <DOMVALUE_L>4</DOMVALUE_L>
     </item>
     <item>
      <VALPOS>0005</VALPOS>
+     <DDLANGUAGE>D</DDLANGUAGE>
      <DOMVALUE_L>5</DOMVALUE_L>
     </item>
    </DD07_TEXTS>

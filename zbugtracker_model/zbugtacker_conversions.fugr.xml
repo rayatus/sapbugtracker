@@ -28,12 +28,10 @@
       <RSFDO>
        <PARAMETER>INPUT</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 001</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>OUTPUT</PARAMETER>
        <KIND>P</KIND>
-       <INDEX> 002</INDEX>
       </RSFDO>
      </DOCUMENTATION>
     </item>
@@ -59,13 +57,11 @@
        <PARAMETER>INPUT</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Text field length 14</STEXT>
-       <INDEX> 001</INDEX>
       </RSFDO>
       <RSFDO>
        <PARAMETER>OUTPUT</PARAMETER>
        <KIND>P</KIND>
        <STEXT>19 Characters</STEXT>
-       <INDEX> 002</INDEX>
       </RSFDO>
      </DOCUMENTATION>
     </item>

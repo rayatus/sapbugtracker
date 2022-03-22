@@ -10,16 +10,16 @@
 *----------------------------------------------------------------------*
 FORM create_initial_bug  CHANGING p_bug TYPE REF TO zcl_bug.
 
-  DATA:   lo_estado TYPE REF TO zcl_estado,
-          lt_prods  TYPE zbt_productos,
-          lo_prod   TYPE REF TO zcl_producto,
-          lt_comps  TYPE zbt_componentes,
-          lo_comp   TYPE REF TO zcl_componente,
-          lo_user   TYPE REF TO zcl_usuario,
-          lt_types  TYPE zbt_bugtypes,
-          lt_stypes TYPE zbt_bugstypes,
-          lo_stype  TYPE REF TO zcl_bugstype,
-          lo_type   TYPE REF TO zcl_bugtype.
+  DATA: lo_estado TYPE REF TO zcl_estado,
+        lt_prods  TYPE zbt_productos,
+        lo_prod   TYPE REF TO zcl_producto,
+        lt_comps  TYPE zbt_componentes,
+        lo_comp   TYPE REF TO zcl_componente,
+        lo_user   TYPE REF TO zcl_usuario,
+        lt_types  TYPE zbt_bugtypes,
+        lt_stypes TYPE zbt_bugstypes,
+        lo_stype  TYPE REF TO zcl_bugstype,
+        lo_type   TYPE REF TO zcl_bugtype.
 
   lt_prods[] = zcl_producto_controller=>find_all_products( ).
   READ TABLE lt_prods[] INDEX 1 INTO lo_prod.
@@ -27,7 +27,7 @@ FORM create_initial_bug  CHANGING p_bug TYPE REF TO zcl_bug.
   lt_comps[] = lo_prod->get_componentes( ).
   READ TABLE lt_comps INDEX 1 INTO lo_comp.
 
-perform get_internal_bug_id.
+  PERFORM get_internal_bug_id.
 
   CREATE OBJECT p_bug
     EXPORTING
@@ -36,7 +36,7 @@ perform get_internal_bug_id.
 *     id_i       = lv_BUG_I
       componente = lo_comp.
 
-  p_bug->SET_ID_I( lv_BUG_I ).
+  p_bug->set_id_i( lv_BUG_I ).
 
   lo_user = zcl_usuario_controller=>find_by_key( ).
   p_bug->set_reporter( lo_user ).

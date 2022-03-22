@@ -4,7 +4,6 @@
   <asx:values>
    <VSEOCLASS>
     <CLSNAME>ZCL_WRKLOG_CONCEPT_CONTROLLER</CLSNAME>
-    <VERSION>1</VERSION>
     <LANGU>E</LANGU>
     <DESCRIPT>WorkLog Concept Controller</DESCRIPT>
     <STATE>1</STATE>

@@ -4,7 +4,6 @@
   <asx:values>
    <PROGDIR>
     <NAME>ZBUG_TRACKER_GOS</NAME>
-    <STATE>A</STATE>
     <CLAS>SWOP</CLAS>
     <SUBC>S</SUBC>
     <APPL>*</APPL>
