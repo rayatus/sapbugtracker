@@ -108,6 +108,12 @@
      <CHECKTABLE>USR02</CHECKTABLE>
     </DD08V>
    </DD08V_TABLE>
+   <TABL_EXTRAS>
+    <TDDAT>
+     <TABNAME>ZBT_USUARIO</TABNAME>
+     <CCLASS>&amp;NC&amp;</CCLASS>
+    </TDDAT>
+   </TABL_EXTRAS>
   </asx:values>
  </asx:abap>
 </abapGit>
