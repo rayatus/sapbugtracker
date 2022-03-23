@@ -69,7 +69,7 @@ CLASS abap_unit_testclass IMPLEMENTATION.
           l_id_bug       TYPE zbt_bug-bug,
           l_id_bug_i     TYPE zbt_bug-bug_i.
 
-    l_id_producto = 1. "GEEC
+    l_id_producto = 1. "Dummy
     lo_producto   = zcl_producto_controller=>find_by_key( l_id_producto ).
     lo_bugtype = zcl_bugtype_controller=>find_by_key( zcl_bugtype_controller=>bugtype_issue ).
 

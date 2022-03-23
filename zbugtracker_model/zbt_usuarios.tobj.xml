@@ -7,6 +7,7 @@
     <OBJECTTYPE>S</OBJECTTYPE>
     <CLIDEP>X</CLIDEP>
     <OBJCATEG>APPL</OBJCATEG>
+    <OBJTRANSP>2</OBJTRANSP>
     <IMPORTABLE>3</IMPORTABLE>
    </OBJH>
    <OBJT>
@@ -35,7 +36,6 @@
      <TYPE>1</TYPE>
      <LISTE>0003</LISTE>
      <BASTAB>X</BASTAB>
-     <FLAG>X</FLAG>
     </TVDIR>
    </TOBJ>
   </asx:values>

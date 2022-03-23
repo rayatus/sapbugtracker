@@ -62,7 +62,7 @@ FORM user_command_0001 .
         developer       = s_dev[]
         tester          = s_test[]
         finalizado      = s_enddat[]
-        modificado      = s_aedat[] ).
+        aedat           = s_aedat[] ).
 
       go_results_handler->display_results( go_container ).
     WHEN OTHERS.

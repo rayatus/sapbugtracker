@@ -42,7 +42,7 @@ SELECTION-SCREEN BEGIN OF BLOCK a0003 WITH FRAME.
 SELECTION-SCREEN INCLUDE SELECT-OPTIONS: s_bug,
                                          s_prod,
                                          s_comp.
-SELECT-OPTIONS: s_aedat   FOR zbt_bug-modificado.
+SELECT-OPTIONS: s_aedat   FOR zbt_bug-aedat .
 PARAMETERS: p_rows TYPE i.
 SELECTION-SCREEN END OF BLOCK a0003.
 SELECTION-SCREEN END   OF SCREEN 0003.

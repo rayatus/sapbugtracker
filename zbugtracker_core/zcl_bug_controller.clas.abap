@@ -176,7 +176,8 @@ METHOD create.
                  <wrklog>      LIKE LINE OF lt_wrklogs.
 
 * On create, get next Id
-  l_str_bug-bug = bug->get_id( ).  l_str_bug-bug_i = bug->get_id_i( ).
+  l_str_bug-bug   = bug->get_id( ).
+  l_str_bug-bug_i = bug->get_id_i( ).
 
   IF l_str_bug-bug IS INITIAL.
     lo_producto   = bug->get_producto( ).
@@ -705,7 +706,7 @@ method NEXT_ID.
 
   CALL FUNCTION 'NUMBER_GET_NEXT'
     EXPORTING
-      nr_range_nr                   = '1'
+      nr_range_nr                   = '01'
       object                        = l_number_range
       quantity                      = '1'
 *     TOYEAR                        = '0000'
@@ -1177,13 +1178,13 @@ METHOD validate_on_create.
             field = l_field.
 
       ENDIF.
-      IF l_str_bug-bug_i IS INITIAL.
-        l_field = 'internal Bug Id'(018).
-        RAISE EXCEPTION TYPE zcx_mandatory_emptyfield
-          EXPORTING
-            field = l_field.
-
-      ENDIF.
+*      IF l_str_bug-bug_i IS INITIAL.
+*        l_field = 'internal Bug Id'(018).
+*        RAISE EXCEPTION TYPE zcx_mandatory_emptyfield
+*          EXPORTING
+*            field = l_field.
+*
+*      ENDIF.
       IF l_str_bug-producto IS INITIAL.
         l_field = 'Product Id'(002).
         RAISE EXCEPTION TYPE zcx_mandatory_emptyfield
