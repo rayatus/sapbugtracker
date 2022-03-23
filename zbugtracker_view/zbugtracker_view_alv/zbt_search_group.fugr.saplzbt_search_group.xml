@@ -24,20 +24,6 @@
      <ID>S</ID>
      <KEY>S_AEDAT</KEY>
      <ENTRY>.</ENTRY>
-     <LENGTH>19</LENGTH>
-     <SPLIT>D</SPLIT>
-    </item>
-    <item>
-     <ID>S</ID>
-     <KEY>S_AENAM</KEY>
-     <ENTRY>.</ENTRY>
-     <LENGTH>18</LENGTH>
-     <SPLIT>D</SPLIT>
-    </item>
-    <item>
-     <ID>S</ID>
-     <KEY>S_ASSIG</KEY>
-     <ENTRY>.</ENTRY>
      <LENGTH>9</LENGTH>
      <SPLIT>D</SPLIT>
     </item>
@@ -59,7 +45,7 @@
      <ID>S</ID>
      <KEY>S_DEAD</KEY>
      <ENTRY>.</ENTRY>
-     <LENGTH>17</LENGTH>
+     <LENGTH>16</LENGTH>
      <SPLIT>D</SPLIT>
     </item>
     <item>
@@ -73,14 +59,14 @@
      <ID>S</ID>
      <KEY>S_ENDDAT</KEY>
      <ENTRY>.</ENTRY>
-     <LENGTH>16</LENGTH>
+     <LENGTH>21</LENGTH>
      <SPLIT>D</SPLIT>
     </item>
     <item>
      <ID>S</ID>
      <KEY>S_ERDAT</KEY>
      <ENTRY>.</ENTRY>
-     <LENGTH>21</LENGTH>
+     <LENGTH>17</LENGTH>
      <SPLIT>D</SPLIT>
     </item>
     <item>
@@ -107,8 +93,9 @@
     <item>
      <ID>S</ID>
      <KEY>S_PROD</KEY>
-     <ENTRY>Product</ENTRY>
+     <ENTRY>.</ENTRY>
      <LENGTH>16</LENGTH>
+     <SPLIT>D</SPLIT>
     </item>
     <item>
      <ID>S</ID>
@@ -121,14 +108,14 @@
      <ID>S</ID>
      <KEY>S_RESUM</KEY>
      <ENTRY>.</ENTRY>
-     <LENGTH>19</LENGTH>
+     <LENGTH>15</LENGTH>
      <SPLIT>D</SPLIT>
     </item>
     <item>
      <ID>S</ID>
      <KEY>S_STYPE</KEY>
      <ENTRY>.</ENTRY>
-     <LENGTH>19</LENGTH>
+     <LENGTH>20</LENGTH>
      <SPLIT>D</SPLIT>
     </item>
     <item>

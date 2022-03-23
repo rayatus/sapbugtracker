@@ -9,12 +9,3 @@
 MODULE syncronize_structure_object INPUT.
   PERFORM structures_to_object.
 ENDMODULE.                 " SYNCRONIZE_STRUCTURE_OBJECT  INPUT
-*&---------------------------------------------------------------------*
-*&      Module  SCREEN_0400  OUTPUT
-*&---------------------------------------------------------------------*
-*       text
-*----------------------------------------------------------------------*
-MODULE SCREEN_0400 OUTPUT.
-
-PERFORM pbo_0400.
-ENDMODULE.                 " SCREEN_0400  OUTPUT

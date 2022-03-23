@@ -175,6 +175,15 @@
      <FIELDNAME>REIO_ID</FIELDNAME>
     </DD17V>
    </DD17V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD02_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>SRM Records: Eingehende Beziehungen logischer Informationso</DDTEXT>
+    </item>
+   </DD02_TEXTS>
   </asx:values>
  </asx:abap>
 </abapGit>

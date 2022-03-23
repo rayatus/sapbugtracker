@@ -45,12 +45,6 @@ FORM pbo_0100 .
 
   PERFORM set_icon_status     USING go_bug CHANGING g_bug_status_icon.
   PERFORM set_bugstype_status USING go_bug CHANGING g_bug_stype_icon.
-
-  PERFORM create_tag_grid.
-
-  perform create_GOS.
-
-
 ENDFORM.                                                    " PBO_0100
 *&---------------------------------------------------------------------*
 *&      Form  PBO_0200
@@ -72,25 +66,42 @@ ENDFORM.                                                    " PBO_0200
 *  <--  p2        text
 *----------------------------------------------------------------------*
 FORM create_info_container .
-
+  IF g_info_container IS INITIAL.
+    CREATE OBJECT g_info_container
+      EXPORTING
+        container_name = 'INFO_CONTAINER'.
+  ENDIF.
+  IF g_info_splitter_container IS INITIAL.
+    CREATE OBJECT g_info_splitter_container
+      EXPORTING
+        parent  = g_info_container
+        rows    = 3
+        columns = 1.
+  ENDIF.
   IF g_problem_section_container IS INITIAL.
-    CREATE OBJECT g_problem_section_container
+    CALL METHOD g_info_splitter_container->get_container
       EXPORTING
-        container_name = 'PROBLEM_CONTAINER'.
+        row       = 1
+        column    = 1
+      RECEIVING
+        container = g_problem_section_container.
   ENDIF.
-
-  IF g_more_info_section_container IS INITIAL.
-    CREATE OBJECT g_more_info_section_container
-      EXPORTING
-        container_name = 'MORE_INFO_CONTAINER'.
-  ENDIF.
-
   IF g_steps_section_container IS INITIAL.
-    CREATE OBJECT g_steps_section_container
+    CALL METHOD g_info_splitter_container->get_container
       EXPORTING
-        container_name = 'STEPS_CONTAINER'.
+        row       = 2
+        column    = 1
+      RECEIVING
+        container = g_steps_section_container.
   ENDIF.
-
+  IF g_more_info_section_container IS INITIAL.
+    CALL METHOD g_info_splitter_container->get_container
+      EXPORTING
+        row       = 3
+        column    = 1
+      RECEIVING
+        container = g_more_info_section_container.
+  ENDIF.
 ENDFORM.                    " CREATE_INFO_CONTAINER
 *&---------------------------------------------------------------------*
 *&      Form  CREATE_BTF_EDITOR
@@ -100,13 +111,12 @@ ENDFORM.                    " CREATE_INFO_CONTAINER
 *      -->P_CONTAINER  text
 *      <--P_EDITOR  text
 *----------------------------------------------------------------------*
-FORM create_btf_editor  USING    p_container TYPE REF TO cl_gui_custom_container
+FORM create_btf_editor  USING    p_container TYPE REF TO cl_gui_container
                                  p_title
                                  p_text      TYPE string
                                  p_display   TYPE flag
                         CHANGING p_editor    TYPE REF TO zcl_btf_editor.
   DATA: l_title             TYPE vtext,
-*  DATA: l_title             TYPE         VTEXT_BF,
         l_text              TYPE xstring,
         l_exception         TYPE REF TO cx_btf_runtime_error,
         l_system_exception  TYPE REF TO cx_btf_system_error.
@@ -124,7 +134,13 @@ FORM create_btf_editor  USING    p_container TYPE REF TO cl_gui_custom_container
     ENDTRY.
   ENDIF.
 
-  p_editor->set_content_as_string( p_text ).
+  CALL FUNCTION 'SCMS_STRING_TO_XSTRING'
+    EXPORTING
+      text   = p_text
+    IMPORTING
+      buffer = l_text.
+
+  p_editor->set_content( text = l_text ).
   p_editor->display( ).
 ENDFORM.                    " CREATE_BTF_EDITOR
 *&---------------------------------------------------------------------*
@@ -433,71 +449,3 @@ FORM set_bugstype_status USING    value(p_bug) TYPE REF TO zcl_bug
       result     = p_icon.
 
 ENDFORM.                    " SET_BUGSTYPE_STATUS
-*&---------------------------------------------------------------------*
-*&      Form  SET_SUBSCREEN_0200
-*&---------------------------------------------------------------------*
-*       text
-*----------------------------------------------------------------------*
-*  -->  p1        text
-*  <--  p2        text
-*----------------------------------------------------------------------*
-FORM set_subscreen_0200 .
-
-  info_tc-activetab = gt_info_tc_ctr-pressed_tab.
-  CASE gt_info_tc_ctr-pressed_tab.
-    WHEN c_info_tc_def-infotab0.
-      gt_info_tc_ctr-subscreen = '0201'.
-    WHEN c_info_tc_def-infotab1.
-      gt_info_tc_ctr-subscreen = '0202'.
-    WHEN c_info_tc_def-infotab2.
-      gt_info_tc_ctr-subscreen = '0203'.
-    WHEN c_info_tc_def-infotab3.
-      gt_info_tc_ctr-subscreen = '0204'.
-    WHEN OTHERS.
-      gt_info_tc_ctr-subscreen = '0201'.
-  ENDCASE.
-
-  IF gt_info_tc_ctr-prog IS INITIAL.
-    gt_info_tc_ctr-prog = sy-repid.
-  ENDIF.
-ENDFORM.                    " SET_SUBSCREEN_0200
-*&---------------------------------------------------------------------*
-*&      Form  USER_COMMAND_0200
-*&---------------------------------------------------------------------*
-*       text
-*----------------------------------------------------------------------*
-*  -->  p1        text
-*  <--  p2        text
-*----------------------------------------------------------------------*
-FORM user_command_0200.
-  DATA: l_ucomm TYPE sy-ucomm.
-
-  l_ucomm = sy-ucomm.
-  CLEAR sy-ucomm.
-
-  CASE l_ucomm.
-    WHEN OTHERS.
-      IF l_ucomm(7) = 'INFOTAB'.
-        PERFORM set_info_subscreen USING l_ucomm.
-      ENDIF.
-  ENDCASE.
-
-ENDFORM.                    " USER_COMMAND_0200
-*&---------------------------------------------------------------------*
-*&      Form  SET_INFO_SUBSCREEN
-*&---------------------------------------------------------------------*
-*       text
-*----------------------------------------------------------------------*
-*      -->P_UCOMM  text
-*----------------------------------------------------------------------*
-FORM set_info_subscreen USING p_ucomm TYPE sy-ucomm .
-
-  FIELD-SYMBOLS: <tab> TYPE any.
-
-  ASSIGN COMPONENT p_ucomm OF STRUCTURE c_info_tc_def TO <tab>.
-  IF sy-subrc IS INITIAL.
-    gt_info_tc_ctr-pressed_tab = <tab>.
-  ELSE.
-    gt_info_tc_ctr-pressed_tab = c_info_tc_def-infotab0.
-  ENDIF.
-ENDFORM.                    " SET_INFO_SUBSCREEN

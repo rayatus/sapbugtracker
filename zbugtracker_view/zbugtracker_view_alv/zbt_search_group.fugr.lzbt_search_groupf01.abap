@@ -54,9 +54,7 @@ FORM init_global_data .
          s_rep[],
          s_stype[],
          s_type[],
-         s_assig[],
-         s_test[]
-.
+         s_test[].
 
 
 ENDFORM.                    " INIT_GLOBAL_DATA

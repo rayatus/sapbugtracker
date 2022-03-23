@@ -30,6 +30,13 @@
      <COMPTYPE>S</COMPTYPE>
     </DD03P>
    </DD03P_TABLE>
+   <DD08V_TABLE>
+    <DD08V>
+     <FIELDNAME>BUG</FIELDNAME>
+     <CHECKTABLE>*</CHECKTABLE>
+     <NOINHERIT>Y</NOINHERIT>
+    </DD08V>
+   </DD08V_TABLE>
   </asx:values>
  </asx:abap>
 </abapGit>

@@ -42,6 +42,14 @@ MODULE user_command_0001 INPUT.
   PERFORM user_command_0001.
 ENDMODULE.                 " USER_COMMAND_0001  INPUT
 *&---------------------------------------------------------------------*
+*&      Module  USER_COMMAND_0100  INPUT
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+MODULE user_command_0100 INPUT.
+  PERFORM user_command_0100.
+ENDMODULE.                 " USER_COMMAND_0100  INPUT
+*&---------------------------------------------------------------------*
 *&      Module  PAI_0100  INPUT
 *&---------------------------------------------------------------------*
 *       text
@@ -49,19 +57,3 @@ ENDMODULE.                 " USER_COMMAND_0001  INPUT
 MODULE pai_0100 INPUT.
   PERFORM pai_0100.
 ENDMODULE.                 " PAI_0100  INPUT
-*&---------------------------------------------------------------------*
-*&      Module  SET_SUBSCREEN_0200  OUTPUT
-*&---------------------------------------------------------------------*
-*       text
-*----------------------------------------------------------------------*
-MODULE set_subscreen_0200 OUTPUT.
-  PERFORM set_subscreen_0200.
-ENDMODULE.                 " SET_SUBSCREEN_0200  OUTPUT
-*&---------------------------------------------------------------------*
-*&      Module  USER_COMMAND_0200  INPUT
-*&---------------------------------------------------------------------*
-*       text
-*----------------------------------------------------------------------*
-MODULE user_command_0200 INPUT.
-  PERFORM user_command_0200.
-ENDMODULE.                 " USER_COMMAND_0200  INPUT

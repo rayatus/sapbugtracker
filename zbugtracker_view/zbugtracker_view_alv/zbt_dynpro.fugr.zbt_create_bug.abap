@@ -1,8 +1,6 @@
 FUNCTION zbt_create_bug.
 *"----------------------------------------------------------------------
 *"*"Local Interface:
-*"  IMPORTING
-*"     REFERENCE(SCREEN_ATTRIBUTES) TYPE  ZBT_SCREEN_POPUP OPTIONAL
 *"  EXPORTING
 *"     REFERENCE(BUG) TYPE REF TO  ZCL_BUG
 *"----------------------------------------------------------------------
@@ -13,16 +11,12 @@ FUNCTION zbt_create_bug.
   CREATE OBJECT go_handler.
 
   PERFORM create_initial_bug CHANGING lo_bug.
-  g_oldhash = lo_bug->get_hash( ).
+  go_old_bug = lo_bug.
   PERFORM set_create_mode.
 
   PERFORM object_to_structures USING lo_bug.
 
-  CALL SCREEN 0001 STARTING AT screen_attributes-top
-                             screen_attributes-left
-                 ENDING AT   screen_attributes-bottom
-                             screen_attributes-rigth.
-
+  CALL SCREEN '0001'.
   zcl_bug_controller=>unlock( lo_bug ).
 
 * Free global data

@@ -1,6 +1,6 @@
 FUNCTION zbt_search_bug.
 *"----------------------------------------------------------------------
-*"*"Lokale Schnittstelle:
+*"*"Local Interface:
 *"  IMPORTING
 *"     REFERENCE(SCREEN_ATTRIBUTES) TYPE  ZBT_SCREEN_ATTRIBUTES
 *"       OPTIONAL
@@ -19,11 +19,8 @@ FUNCTION zbt_search_bug.
 *"     REFERENCE(CREADO) TYPE  ZBT_TIMESTAMP_RANGE OPTIONAL
 *"     REFERENCE(REPORTER) TYPE  ZBT_USER_RANGE OPTIONAL
 *"     REFERENCE(DEVELOPER) TYPE  ZBT_USER_RANGE OPTIONAL
-*"     REFERENCE(ASSIGNED) TYPE  ZBT_USER_RANGE OPTIONAL
 *"     REFERENCE(TESTER) TYPE  ZBT_USER_RANGE OPTIONAL
 *"     REFERENCE(FINALIZADO) TYPE  ZBT_TIMESTAMP_RANGE OPTIONAL
-*"     REFERENCE(AEDAT) TYPE  ZBT_TIMESTAMP_RANGE OPTIONAL
-*"     REFERENCE(AENAM) TYPE  ZBT_USER_RANGE OPTIONAL
 *"----------------------------------------------------------------------
 
   PERFORM init_global_data.
@@ -45,9 +42,7 @@ FUNCTION zbt_search_bug.
   s_rep[]     = reporter[].
   s_stype[]   = bugstype[].
   s_type[]    = bugtype[].
-  s_assig[]   = assigned[].
   s_test[]    = tester[].
-
 
   CALL SCREEN 0001 STARTING AT screen_attributes-top
                                screen_attributes-left
@@ -65,7 +60,6 @@ FUNCTION zbt_search_bug.
   reporter[]   = s_rep[].
   bugstype[]   = s_stype[].
   bugtype[]    = s_type[].
-  assigned[]   = s_assig[].
   tester[]     = s_test[].
 
-  endfunction.
+ENDFUNCTION.

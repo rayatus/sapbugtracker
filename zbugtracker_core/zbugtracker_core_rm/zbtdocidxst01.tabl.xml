@@ -163,6 +163,15 @@
      <FIELDNAME>STATUS</FIELDNAME>
     </DD17V>
    </DD17V>
+   <I18N_LANGS>
+    <LANGU>D</LANGU>
+   </I18N_LANGS>
+   <DD02_TEXTS>
+    <item>
+     <DDLANGUAGE>D</DDLANGUAGE>
+     <DDTEXT>SRM Records: Statustabelle für Indexieren von Dokumenten</DDTEXT>
+    </item>
+   </DD02_TEXTS>
   </asx:values>
  </asx:abap>
 </abapGit>

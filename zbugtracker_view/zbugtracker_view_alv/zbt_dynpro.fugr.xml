@@ -7,13 +7,9 @@
     <SOBJ_NAME>LZBT_DYNPROF01</SOBJ_NAME>
     <SOBJ_NAME>LZBT_DYNPROF02</SOBJ_NAME>
     <SOBJ_NAME>LZBT_DYNPROF03</SOBJ_NAME>
-    <SOBJ_NAME>LZBT_DYNPROF04</SOBJ_NAME>
-    <SOBJ_NAME>LZBT_DYNPROF05</SOBJ_NAME>
     <SOBJ_NAME>LZBT_DYNPROI01</SOBJ_NAME>
     <SOBJ_NAME>LZBT_DYNPROI04</SOBJ_NAME>
-    <SOBJ_NAME>LZBT_DYNPROI05</SOBJ_NAME>
     <SOBJ_NAME>LZBT_DYNPROO01</SOBJ_NAME>
-    <SOBJ_NAME>LZBT_DYNPROO04</SOBJ_NAME>
     <SOBJ_NAME>LZBT_DYNPROP01</SOBJ_NAME>
     <SOBJ_NAME>LZBT_DYNPROTOP</SOBJ_NAME>
     <SOBJ_NAME>SAPLZBT_DYNPRO</SOBJ_NAME>
@@ -22,14 +18,6 @@
     <item>
      <FUNCNAME>ZBT_CREATE_BUG</FUNCNAME>
      <SHORT_TEXT>Creates a new bug</SHORT_TEXT>
-     <IMPORT>
-      <RSIMP>
-       <PARAMETER>SCREEN_ATTRIBUTES</PARAMETER>
-       <OPTIONAL>X</OPTIONAL>
-       <REFERENCE>X</REFERENCE>
-       <TYP>ZBT_SCREEN_POPUP</TYP>
-      </RSIMP>
-     </IMPORT>
      <EXPORT>
       <RSEXP>
        <PARAMETER>BUG</PARAMETER>
@@ -39,11 +27,6 @@
       </RSEXP>
      </EXPORT>
      <DOCUMENTATION>
-      <RSFDO>
-       <PARAMETER>SCREEN_ATTRIBUTES</PARAMETER>
-       <KIND>P</KIND>
-       <STEXT>Screen Popup</STEXT>
-      </RSFDO>
       <RSFDO>
        <PARAMETER>BUG</PARAMETER>
        <KIND>P</KIND>
@@ -67,12 +50,6 @@
        <REFERENCE>X</REFERENCE>
        <TYP>FLAG</TYP>
       </RSIMP>
-      <RSIMP>
-       <PARAMETER>SCREEN_ATTRIBUTES</PARAMETER>
-       <OPTIONAL>X</OPTIONAL>
-       <REFERENCE>X</REFERENCE>
-       <TYP>ZBT_SCREEN_POPUP</TYP>
-      </RSIMP>
      </IMPORT>
      <DOCUMENTATION>
       <RSFDO>
@@ -84,11 +61,6 @@
        <PARAMETER>DISPLAY_MODE</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Display Mode</STEXT>
-      </RSFDO>
-      <RSFDO>
-       <PARAMETER>SCREEN_ATTRIBUTES</PARAMETER>
-       <KIND>P</KIND>
-       <STEXT>Screen Popup</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>
@@ -111,13 +83,22 @@
        <NAME>SCREEN</NAME>
       </RPY_DYCATT>
       <RPY_DYCATT>
-       <TYPE>STRIP_CTRL</TYPE>
-       <NAME>MAIN_TC</NAME>
+       <TYPE>SUBSCREEN</TYPE>
+       <NAME>TOP</NAME>
        <ELEMENT_OF>SCREEN</ELEMENT_OF>
        <LINE>001</LINE>
        <COLUMN>001</COLUMN>
        <LENGTH>184</LENGTH>
-       <HEIGHT>200</HEIGHT>
+       <HEIGHT>008</HEIGHT>
+      </RPY_DYCATT>
+      <RPY_DYCATT>
+       <TYPE>STRIP_CTRL</TYPE>
+       <NAME>MAIN_TC</NAME>
+       <ELEMENT_OF>SCREEN</ELEMENT_OF>
+       <LINE>009</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>184</LENGTH>
+       <HEIGHT>192</HEIGHT>
        <C_RESIZE_V>X</C_RESIZE_V>
        <C_LINE_MIN>019</C_LINE_MIN>
       </RPY_DYCATT>
@@ -125,10 +106,10 @@
        <TYPE>SUBSCREEN</TYPE>
        <NAME>MAIN</NAME>
        <ELEMENT_OF>MAIN_TC</ELEMENT_OF>
-       <LINE>003</LINE>
+       <LINE>011</LINE>
        <COLUMN>002</COLUMN>
        <LENGTH>182</LENGTH>
-       <HEIGHT>197</HEIGHT>
+       <HEIGHT>189</HEIGHT>
        <C_RESIZE_V>X</C_RESIZE_V>
        <C_LINE_MIN>003</C_LINE_MIN>
        <C_SCROLL_V>X</C_SCROLL_V>
@@ -151,34 +132,14 @@
        <CONT_TYPE>STRIP_CTRL</CONT_TYPE>
        <CONT_NAME>MAIN_TC</CONT_NAME>
        <TYPE>PUSH</TYPE>
-       <NAME>%#AUTOTEXT007</NAME>
-       <TEXT>Head________</TEXT>
-       <ICON_NAME>ICON_HEADER</ICON_NAME>
-       <ICON_QINFO>Header</ICON_QINFO>
-       <ICON_QSPEC>X</ICON_QSPEC>
-       <WITH_ICON>X</WITH_ICON>
-       <LINE>001</LINE>
-       <COLUMN>001</COLUMN>
-       <LENGTH>025</LENGTH>
-       <VISLENGTH>015</VISLENGTH>
-       <HEIGHT>001</HEIGHT>
-       <PUSH_FCODE>TAB0</PUSH_FCODE>
-       <FORMAT>CHAR</FORMAT>
-       <REQU_ENTRY>N</REQU_ENTRY>
-       <REF_FIELD>MAIN</REF_FIELD>
-      </RPY_DYFATC>
-      <RPY_DYFATC>
-       <CONT_TYPE>STRIP_CTRL</CONT_TYPE>
-       <CONT_NAME>MAIN_TC</CONT_NAME>
-       <TYPE>PUSH</TYPE>
        <NAME>%#AUTOTEXT006</NAME>
-       <TEXT>Info________</TEXT>
+       <TEXT>Info</TEXT>
        <ICON_NAME>ICON_OVERVIEW</ICON_NAME>
        <WITH_ICON>X</WITH_ICON>
        <LINE>001</LINE>
-       <COLUMN>002</COLUMN>
-       <LENGTH>017</LENGTH>
-       <VISLENGTH>015</VISLENGTH>
+       <COLUMN>001</COLUMN>
+       <LENGTH>009</LENGTH>
+       <VISLENGTH>007</VISLENGTH>
        <HEIGHT>001</HEIGHT>
        <PUSH_FCODE>TAB1</PUSH_FCODE>
        <FORMAT>CHAR</FORMAT>
@@ -190,13 +151,13 @@
        <CONT_NAME>MAIN_TC</CONT_NAME>
        <TYPE>PUSH</TYPE>
        <NAME>%#AUTOTEXT002</NAME>
-       <TEXT>Comments___</TEXT>
+       <TEXT>Comentarios</TEXT>
        <ICON_NAME>ICON_PROTOCOL</ICON_NAME>
        <WITH_ICON>X</WITH_ICON>
        <LINE>001</LINE>
-       <COLUMN>003</COLUMN>
+       <COLUMN>002</COLUMN>
        <LENGTH>016</LENGTH>
-       <VISLENGTH>011</VISLENGTH>
+       <VISLENGTH>014</VISLENGTH>
        <HEIGHT>001</HEIGHT>
        <PUSH_FCODE>TAB2</PUSH_FCODE>
        <FORMAT>CHAR</FORMAT>
@@ -208,13 +169,13 @@
        <CONT_NAME>MAIN_TC</CONT_NAME>
        <TYPE>PUSH</TYPE>
        <NAME>%#AUTOTEXT003</NAME>
-       <TEXT>Attachments</TEXT>
+       <TEXT>Adjuntos</TEXT>
        <ICON_NAME>ICON_ATTACHMENT</ICON_NAME>
        <WITH_ICON>X</WITH_ICON>
        <LINE>001</LINE>
-       <COLUMN>004</COLUMN>
-       <LENGTH>016</LENGTH>
-       <VISLENGTH>014</VISLENGTH>
+       <COLUMN>003</COLUMN>
+       <LENGTH>013</LENGTH>
+       <VISLENGTH>011</VISLENGTH>
        <HEIGHT>001</HEIGHT>
        <PUSH_FCODE>TAB3</PUSH_FCODE>
        <FORMAT>CHAR</FORMAT>
@@ -225,34 +186,14 @@
        <CONT_TYPE>STRIP_CTRL</CONT_TYPE>
        <CONT_NAME>MAIN_TC</CONT_NAME>
        <TYPE>PUSH</TYPE>
-       <NAME>%#AUTOTEXT008</NAME>
-       <TEXT>Time_Reporting</TEXT>
-       <ICON_NAME>ICON_TIME</ICON_NAME>
-       <WITH_ICON>X</WITH_ICON>
-       <LINE>001</LINE>
-       <COLUMN>005</COLUMN>
-       <LENGTH>019</LENGTH>
-       <VISLENGTH>017</VISLENGTH>
-       <HEIGHT>001</HEIGHT>
-       <PUSH_FCODE>TAB6</PUSH_FCODE>
-       <FORMAT>CHAR</FORMAT>
-       <REQU_ENTRY>N</REQU_ENTRY>
-       <REF_FIELD>MAIN</REF_FIELD>
-      </RPY_DYFATC>
-      <RPY_DYFATC>
-       <CONT_TYPE>STRIP_CTRL</CONT_TYPE>
-       <CONT_NAME>MAIN_TC</CONT_NAME>
-       <TYPE>PUSH</TYPE>
        <NAME>%#AUTOTEXT004</NAME>
-       <TEXT>Transport_Objects__</TEXT>
-       <ICON_NAME>ICON_IMPORT_TRANSPORT_REQUEST</ICON_NAME>
-       <ICON_QINFO>Import_List</ICON_QINFO>
-       <ICON_QSPEC>X</ICON_QSPEC>
+       <TEXT>Objetos</TEXT>
+       <ICON_NAME>ICON_OBJECT_LIST</ICON_NAME>
        <WITH_ICON>X</WITH_ICON>
        <LINE>001</LINE>
-       <COLUMN>006</COLUMN>
-       <LENGTH>037</LENGTH>
-       <VISLENGTH>020</VISLENGTH>
+       <COLUMN>004</COLUMN>
+       <LENGTH>012</LENGTH>
+       <VISLENGTH>010</VISLENGTH>
        <HEIGHT>001</HEIGHT>
        <PUSH_FCODE>TAB4</PUSH_FCODE>
        <FORMAT>CHAR</FORMAT>
@@ -268,7 +209,7 @@
        <ICON_NAME>ICON_HISTORY</ICON_NAME>
        <WITH_ICON>X</WITH_ICON>
        <LINE>001</LINE>
-       <COLUMN>007</COLUMN>
+       <COLUMN>005</COLUMN>
        <LENGTH>014</LENGTH>
        <VISLENGTH>012</VISLENGTH>
        <HEIGHT>001</HEIGHT>
@@ -291,10 +232,10 @@
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
-       <LINE>*  CALL SUBSCREEN top</LINE>
+       <LINE>  CALL SUBSCREEN top</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
-       <LINE>*    INCLUDING sy-repid g_top_screen.</LINE>
+       <LINE>    INCLUDING sy-repid g_top_screen.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>  CALL SUBSCREEN main</LINE>
@@ -312,19 +253,20 @@
       <RPY_DYFLOW>
        <LINE>PROCESS AFTER INPUT.</LINE>
       </RPY_DYFLOW>
-      <RPY_DYFLOW>
-       <LINE>  MODULE syncronize_structure_object.</LINE>
-      </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
        <LINE>  MODULE exit_0001 AT EXIT-COMMAND.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
-       <LINE>*  CALL SUBSCREEN top.</LINE>
+       <LINE>  CALL SUBSCREEN top.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW>
        <LINE>  CALL SUBSCREEN main.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>  MODULE syncronize_structure_object.</LINE>
       </RPY_DYFLOW>
       <RPY_DYFLOW/>
       <RPY_DYFLOW>
@@ -332,7 +274,1535 @@
       </RPY_DYFLOW>
      </FLOW_LOGIC>
     </item>
+    <item>
+     <HEADER>
+      <PROGRAM>SAPLZBT_DYNPRO</PROGRAM>
+      <SCREEN>0100</SCREEN>
+      <LANGUAGE>E</LANGUAGE>
+      <DESCRIPT>Main Top Screen - Expanded</DESCRIPT>
+      <TYPE>I</TYPE>
+      <NEXTSCREEN>0100</NEXTSCREEN>
+      <LINES>007</LINES>
+      <COLUMNS>134</COLUMNS>
+      <KEEP_SCPOS>X</KEEP_SCPOS>
+     </HEADER>
+     <CONTAINERS>
+      <RPY_DYCATT>
+       <TYPE>SCREEN</TYPE>
+       <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+     </CONTAINERS>
+     <FIELDS>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>PUSH</TYPE>
+       <NAME>BT_HIDE_TOP</NAME>
+       <ICON_NAME>ICON_DATA_AREA_COLLAPSE</ICON_NAME>
+       <ICON_QINFO>Collapse</ICON_QINFO>
+       <ICON_QSPEC>X</ICON_QSPEC>
+       <WITH_ICON>X</WITH_ICON>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>014</LENGTH>
+       <VISLENGTH>003</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <GROUP1>BTN</GROUP1>
+       <PUSH_FCODE>HIDETOP</PUSH_FCODE>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>ZBT_BUG-BUG</NAME>
+       <TEXT>Bug</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>005</COLUMN>
+       <LENGTH>003</LENGTH>
+       <VISLENGTH>003</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>F</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <LABELLEFT>X</LABELLEFT>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>G_BUG_STATUS_ICON</NAME>
+       <TEXT>____________________________</TEXT>
+       <WITH_ICON>X</WITH_ICON>
+       <LINE>001</LINE>
+       <COLUMN>017</COLUMN>
+       <LENGTH>033</LENGTH>
+       <VISLENGTH>003</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <_--32_DIMENS>X</_--32_DIMENS>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>G_BUG-BUG</NAME>
+       <TEXT>__________</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>021</COLUMN>
+       <LENGTH>010</LENGTH>
+       <VISLENGTH>010</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>NUMC</FORMAT>
+       <PARAM_ID>ZBT_BUG_ID</PARAM_ID>
+       <SET_PARAM>X</SET_PARAM>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <RIGHT_JUST>X</RIGHT_JUST>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>G_BUG-RESUMEN</NAME>
+       <TEXT>_______________________________________________________________________________________________________</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>032</COLUMN>
+       <LENGTH>103</LENGTH>
+       <VISLENGTH>103</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <UP_LOWER>X</UP_LOWER>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>O</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>ZBT_BUG-PRODUCTO</NAME>
+       <TEXT>Product________</TEXT>
+       <LINE>002</LINE>
+       <COLUMN>005</COLUMN>
+       <LENGTH>015</LENGTH>
+       <VISLENGTH>015</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>2</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <LABELLEFT>X</LABELLEFT>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>G_PRODUCTO-PRODUCTO</NAME>
+       <TEXT>_____</TEXT>
+       <DROPDOWN>L</DROPDOWN>
+       <LINE>002</LINE>
+       <COLUMN>021</COLUMN>
+       <LENGTH>005</LENGTH>
+       <VISLENGTH>027</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <PUSH_FCODE>BUGPROD</PUSH_FCODE>
+       <FORMAT>NUMC</FORMAT>
+       <PARAM_ID>ZBT_PRODUCT_ID</PARAM_ID>
+       <SET_PARAM>X</SET_PARAM>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>O</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>ZBT_BUG-BUGTYPE</NAME>
+       <TEXT>Bug_type_______</TEXT>
+       <LINE>002</LINE>
+       <COLUMN>051</COLUMN>
+       <LENGTH>015</LENGTH>
+       <VISLENGTH>015</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>2</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <LABELLEFT>X</LABELLEFT>
+       <DICT_I_VAL>X</DICT_I_VAL>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>G_BUG-BUGTYPE</NAME>
+       <TEXT>_</TEXT>
+       <DROPDOWN>L</DROPDOWN>
+       <LINE>002</LINE>
+       <COLUMN>067</COLUMN>
+       <LENGTH>001</LENGTH>
+       <VISLENGTH>023</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <PUSH_FCODE>BUGTYPE</PUSH_FCODE>
+       <FORMAT>NUMC</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>O</REQU_ENTRY>
+       <POSS_ENTRY>1</POSS_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>ZBT_BUG-ESTADO</NAME>
+       <TEXT>Status</TEXT>
+       <LINE>002</LINE>
+       <COLUMN>096</COLUMN>
+       <LENGTH>006</LENGTH>
+       <VISLENGTH>006</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>4</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <LABELLEFT>X</LABELLEFT>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>G_BUG-ESTADO</NAME>
+       <TEXT>_____</TEXT>
+       <DROPDOWN>L</DROPDOWN>
+       <LINE>002</LINE>
+       <COLUMN>111</COLUMN>
+       <LENGTH>005</LENGTH>
+       <VISLENGTH>024</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <PUSH_FCODE>BUGSTATUS</PUSH_FCODE>
+       <FORMAT>NUMC</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>O</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>ZBT_BUG-COMPONENTE</NAME>
+       <TEXT>Component______</TEXT>
+       <LINE>003</LINE>
+       <COLUMN>005</COLUMN>
+       <LENGTH>015</LENGTH>
+       <VISLENGTH>015</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>2</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <LABELLEFT>X</LABELLEFT>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>G_COMPONENTE-COMPONENTE</NAME>
+       <TEXT>_____</TEXT>
+       <DROPDOWN>L</DROPDOWN>
+       <LINE>003</LINE>
+       <COLUMN>021</COLUMN>
+       <LENGTH>005</LENGTH>
+       <VISLENGTH>027</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <PUSH_FCODE>BUGCOMP</PUSH_FCODE>
+       <FORMAT>NUMC</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>R</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>ZBT_BUG-BUGSTYPE</NAME>
+       <TEXT>Sub_Tipo__</TEXT>
+       <LINE>003</LINE>
+       <COLUMN>051</COLUMN>
+       <LENGTH>010</LENGTH>
+       <VISLENGTH>010</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>F</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <LABELLEFT>X</LABELLEFT>
+       <DICT_I_VAL>X</DICT_I_VAL>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>G_BUG_STYPE_ICON</NAME>
+       <TEXT>____________________________</TEXT>
+       <WITH_ICON>X</WITH_ICON>
+       <LINE>003</LINE>
+       <COLUMN>062</COLUMN>
+       <LENGTH>033</LENGTH>
+       <VISLENGTH>004</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <_--32_DIMENS>X</_--32_DIMENS>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>G_BUG-BUGSTYPE</NAME>
+       <TEXT>_</TEXT>
+       <DROPDOWN>L</DROPDOWN>
+       <LINE>003</LINE>
+       <COLUMN>067</COLUMN>
+       <LENGTH>001</LENGTH>
+       <VISLENGTH>023</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <PUSH_FCODE>BUGSTYPE</PUSH_FCODE>
+       <FORMAT>NUMC</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>R</REQU_ENTRY>
+       <POSS_ENTRY>1</POSS_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>ZBT_BUG-CREADO</NAME>
+       <TEXT>Creation_date__</TEXT>
+       <LINE>005</LINE>
+       <COLUMN>005</COLUMN>
+       <LENGTH>015</LENGTH>
+       <VISLENGTH>015</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>2</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <LABELLEFT>X</LABELLEFT>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>G_BUG-CREADO</NAME>
+       <TEXT>___________________</TEXT>
+       <LINE>005</LINE>
+       <COLUMN>021</COLUMN>
+       <LENGTH>019</LENGTH>
+       <VISLENGTH>019</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <CONV_EXIT>ZBTTS</CONV_EXIT>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>ZBT_BUG-REPORTER</NAME>
+       <TEXT>Reporter_______</TEXT>
+       <LINE>005</LINE>
+       <COLUMN>051</COLUMN>
+       <LENGTH>015</LENGTH>
+       <VISLENGTH>015</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>2</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <LABELLEFT>X</LABELLEFT>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>G_BUG-REPORTER</NAME>
+       <TEXT>____________</TEXT>
+       <LINE>005</LINE>
+       <COLUMN>067</COLUMN>
+       <LENGTH>012</LENGTH>
+       <VISLENGTH>012</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <MATCHCODE>ZBT_F4_REPORTERS</MATCHCODE>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>G_USERS_TXT-REPORTER</NAME>
+       <TEXT>________________________________________________________________________________</TEXT>
+       <ROLLING>X</ROLLING>
+       <LINE>005</LINE>
+       <COLUMN>080</COLUMN>
+       <LENGTH>080</LENGTH>
+       <VISLENGTH>014</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <OUTPUTONLY>X</OUTPUTONLY>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>ZBT_BUG-HORAS_EST</NAME>
+       <TEXT>Estimated_hours</TEXT>
+       <LINE>005</LINE>
+       <COLUMN>096</COLUMN>
+       <LENGTH>015</LENGTH>
+       <VISLENGTH>015</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>2</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <LABELLEFT>X</LABELLEFT>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>G_BUG-HORAS_EST</NAME>
+       <TEXT>___</TEXT>
+       <LINE>005</LINE>
+       <COLUMN>112</COLUMN>
+       <LENGTH>003</LENGTH>
+       <VISLENGTH>003</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>DEC</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>ZBT_BUG-FINALIZADO</NAME>
+       <TEXT>End_Date_______</TEXT>
+       <LINE>006</LINE>
+       <COLUMN>005</COLUMN>
+       <LENGTH>015</LENGTH>
+       <VISLENGTH>015</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>2</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <LABELLEFT>X</LABELLEFT>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>G_BUG-FINALIZADO</NAME>
+       <TEXT>___________________</TEXT>
+       <LINE>006</LINE>
+       <COLUMN>021</COLUMN>
+       <LENGTH>019</LENGTH>
+       <VISLENGTH>019</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <CONV_EXIT>ZBTTS</CONV_EXIT>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>ZBT_BUG-DEVELOPER</NAME>
+       <TEXT>Developer______</TEXT>
+       <LINE>006</LINE>
+       <COLUMN>051</COLUMN>
+       <LENGTH>015</LENGTH>
+       <VISLENGTH>015</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>2</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <LABELLEFT>X</LABELLEFT>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>G_BUG-DEVELOPER</NAME>
+       <TEXT>____________</TEXT>
+       <LINE>006</LINE>
+       <COLUMN>067</COLUMN>
+       <LENGTH>012</LENGTH>
+       <VISLENGTH>012</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <MATCHCODE>ZBT_F4_DEVELOPERS</MATCHCODE>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>G_USERS_TXT-DEVELOPER</NAME>
+       <TEXT>________________________________________________________________________________</TEXT>
+       <ROLLING>X</ROLLING>
+       <LINE>006</LINE>
+       <COLUMN>080</COLUMN>
+       <LENGTH>080</LENGTH>
+       <VISLENGTH>014</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <OUTPUTONLY>X</OUTPUTONLY>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>ZBT_BUG-HORAS_REA</NAME>
+       <TEXT>Actual_hours___</TEXT>
+       <LINE>006</LINE>
+       <COLUMN>096</COLUMN>
+       <LENGTH>015</LENGTH>
+       <VISLENGTH>015</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>2</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <LABELLEFT>X</LABELLEFT>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>G_BUG-HORAS_REA</NAME>
+       <TEXT>___</TEXT>
+       <LINE>006</LINE>
+       <COLUMN>112</COLUMN>
+       <LENGTH>003</LENGTH>
+       <VISLENGTH>003</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>DEC</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>ZBT_BUG-DEADLINE</NAME>
+       <TEXT>Dead_Line______</TEXT>
+       <LINE>007</LINE>
+       <COLUMN>005</COLUMN>
+       <LENGTH>015</LENGTH>
+       <VISLENGTH>015</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>2</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <LABELLEFT>X</LABELLEFT>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>G_BUG-DEADLINE</NAME>
+       <TEXT>__________</TEXT>
+       <LINE>007</LINE>
+       <COLUMN>021</COLUMN>
+       <LENGTH>010</LENGTH>
+       <VISLENGTH>010</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>DATS</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>ZBT_BUG-TESTER</NAME>
+       <TEXT>Tester_________</TEXT>
+       <LINE>007</LINE>
+       <COLUMN>051</COLUMN>
+       <LENGTH>015</LENGTH>
+       <VISLENGTH>015</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <FROM_DICT>X</FROM_DICT>
+       <MODIFIC>2</MODIFIC>
+       <REQU_ENTRY>N</REQU_ENTRY>
+       <LABELLEFT>X</LABELLEFT>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>G_BUG-TESTER</NAME>
+       <TEXT>____________</TEXT>
+       <LINE>007</LINE>
+       <COLUMN>067</COLUMN>
+       <LENGTH>012</LENGTH>
+       <VISLENGTH>012</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <MATCHCODE>ZBT_F4_TESTERS</MATCHCODE>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEMPLATE</TYPE>
+       <NAME>G_USERS_TXT-TESTER</NAME>
+       <TEXT>________________________________________________________________________________</TEXT>
+       <ROLLING>X</ROLLING>
+       <LINE>007</LINE>
+       <COLUMN>080</COLUMN>
+       <LENGTH>080</LENGTH>
+       <VISLENGTH>014</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <OUTPUT_FLD>X</OUTPUT_FLD>
+       <OUTPUTONLY>X</OUTPUTONLY>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>OKCODE</TYPE>
+       <TEXT>____________________</TEXT>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+      </RPY_DYFATC>
+     </FIELDS>
+     <FLOW_LOGIC>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>PROCESS BEFORE OUTPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE status_0100.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE pbo_0100.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE set_display_mode.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>PROCESS AFTER INPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE exit_0100 AT EXIT-COMMAND.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  chain.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    field:</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    G_PRODUCTO-PRODUCTO,</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    G_BUG-RESUMEN,</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    G_BUG-BUGTYPE,</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    G_COMPONENTE-COMPONENTE,</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    G_BUG-BUGSTYPE,</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    G_BUG-ESTADO,</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    G_BUG-CREADO,</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    G_BUG-FINALIZADO,</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    G_BUG-DEADLINE,</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    G_BUG-REPORTER,</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    G_BUG-DEVELOPER,</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    G_BUG-TESTER,</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    G_BUG-HORAS_EST,</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    G_BUG-HORAS_REA,</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    G_BUG-BUG.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>    module pai_0100.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  endchain.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>  MODULE user_command_0100.</LINE>
+      </RPY_DYFLOW>
+     </FLOW_LOGIC>
+    </item>
+    <item>
+     <HEADER>
+      <PROGRAM>SAPLZBT_DYNPRO</PROGRAM>
+      <SCREEN>0101</SCREEN>
+      <LANGUAGE>E</LANGUAGE>
+      <DESCRIPT>Main Top Screen - Collapsed</DESCRIPT>
+      <TYPE>I</TYPE>
+      <NEXTSCREEN>0101</NEXTSCREEN>
+      <LINES>001</LINES>
+      <COLUMNS>184</COLUMNS>
+      <KEEP_SCPOS>X</KEEP_SCPOS>
+     </HEADER>
+     <CONTAINERS>
+      <RPY_DYCATT>
+       <TYPE>SCREEN</TYPE>
+       <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+     </CONTAINERS>
+     <FIELDS>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>PUSH</TYPE>
+       <NAME>BT_SHOW_TOP</NAME>
+       <TEXT>____________</TEXT>
+       <ICON_NAME>ICON_DATA_AREA_EXPAND</ICON_NAME>
+       <ICON_QINFO>Expand</ICON_QINFO>
+       <ICON_QSPEC>X</ICON_QSPEC>
+       <WITH_ICON>X</WITH_ICON>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>025</LENGTH>
+       <VISLENGTH>003</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <GROUP1>BTN</GROUP1>
+       <PUSH_FCODE>SHOWTOP</PUSH_FCODE>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>%#AUTOTEXT001</NAME>
+       <TEXT>Header_Data</TEXT>
+       <LINE>001</LINE>
+       <COLUMN>006</COLUMN>
+       <LENGTH>011</LENGTH>
+       <VISLENGTH>011</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>OKCODE</TYPE>
+       <TEXT>____________________</TEXT>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+      </RPY_DYFATC>
+     </FIELDS>
+     <FLOW_LOGIC>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>PROCESS BEFORE OUTPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE status_0100.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE pbo_0100.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE set_display_mode.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>PROCESS AFTER INPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE exit_0100 AT EXIT-COMMAND.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE user_command_0100.</LINE>
+      </RPY_DYFLOW>
+     </FLOW_LOGIC>
+    </item>
+    <item>
+     <HEADER>
+      <PROGRAM>SAPLZBT_DYNPRO</PROGRAM>
+      <SCREEN>0200</SCREEN>
+      <LANGUAGE>E</LANGUAGE>
+      <DESCRIPT>Info Screen</DESCRIPT>
+      <TYPE>I</TYPE>
+      <NEXTSCREEN>0200</NEXTSCREEN>
+      <LINES>030</LINES>
+      <COLUMNS>159</COLUMNS>
+      <KEEP_SCPOS>X</KEEP_SCPOS>
+     </HEADER>
+     <CONTAINERS>
+      <RPY_DYCATT>
+       <TYPE>SCREEN</TYPE>
+       <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+      <RPY_DYCATT>
+       <TYPE>CUST_CTRL</TYPE>
+       <NAME>INFO_CONTAINER</NAME>
+       <ELEMENT_OF>SCREEN</ELEMENT_OF>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>159</LENGTH>
+       <HEIGHT>030</HEIGHT>
+      </RPY_DYCATT>
+     </CONTAINERS>
+     <FIELDS>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>OKCODE</TYPE>
+       <TEXT>____________________</TEXT>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+      </RPY_DYFATC>
+     </FIELDS>
+     <FLOW_LOGIC>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>PROCESS BEFORE OUTPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>* MODULE STATUS_0200.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE pbo_0200.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>PROCESS AFTER INPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>* MODULE USER_COMMAND_0200.</LINE>
+      </RPY_DYFLOW>
+     </FLOW_LOGIC>
+    </item>
+    <item>
+     <HEADER>
+      <PROGRAM>SAPLZBT_DYNPRO</PROGRAM>
+      <SCREEN>0300</SCREEN>
+      <LANGUAGE>E</LANGUAGE>
+      <DESCRIPT>Comments Screen</DESCRIPT>
+      <TYPE>I</TYPE>
+      <NEXTSCREEN>0300</NEXTSCREEN>
+      <LINES>027</LINES>
+      <COLUMNS>120</COLUMNS>
+      <NO_COMPR>X</NO_COMPR>
+      <KEEP_SCPOS>X</KEEP_SCPOS>
+     </HEADER>
+     <CONTAINERS>
+      <RPY_DYCATT>
+       <TYPE>SCREEN</TYPE>
+       <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+      <RPY_DYCATT>
+       <TYPE>CUST_CTRL</TYPE>
+       <NAME>COMMENTS</NAME>
+       <ELEMENT_OF>SCREEN</ELEMENT_OF>
+       <LINE>001</LINE>
+       <COLUMN>001</COLUMN>
+       <LENGTH>120</LENGTH>
+       <HEIGHT>027</HEIGHT>
+      </RPY_DYCATT>
+     </CONTAINERS>
+     <FIELDS>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>OKCODE</TYPE>
+       <TEXT>____________________</TEXT>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+      </RPY_DYFATC>
+     </FIELDS>
+     <FLOW_LOGIC>
+      <RPY_DYFLOW/>
+      <RPY_DYFLOW>
+       <LINE>PROCESS BEFORE OUTPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>* MODULE STATUS_0300.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>  MODULE pbo_0300.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>PROCESS AFTER INPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>* MODULE USER_COMMAND_0300.</LINE>
+      </RPY_DYFLOW>
+     </FLOW_LOGIC>
+    </item>
+    <item>
+     <HEADER>
+      <PROGRAM>SAPLZBT_DYNPRO</PROGRAM>
+      <SCREEN>0400</SCREEN>
+      <LANGUAGE>E</LANGUAGE>
+      <DESCRIPT>Attachements Screen</DESCRIPT>
+      <TYPE>I</TYPE>
+      <NEXTSCREEN>0400</NEXTSCREEN>
+      <LINES>027</LINES>
+      <COLUMNS>120</COLUMNS>
+      <NO_COMPR>X</NO_COMPR>
+      <KEEP_SCPOS>X</KEEP_SCPOS>
+     </HEADER>
+     <CONTAINERS>
+      <RPY_DYCATT>
+       <TYPE>SCREEN</TYPE>
+       <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+     </CONTAINERS>
+     <FIELDS>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>%#AUTOTEXT001</NAME>
+       <TEXT>Test</TEXT>
+       <LINE>003</LINE>
+       <COLUMN>003</COLUMN>
+       <LENGTH>004</LENGTH>
+       <VISLENGTH>004</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>OKCODE</TYPE>
+       <TEXT>____________________</TEXT>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+      </RPY_DYFATC>
+     </FIELDS>
+     <FLOW_LOGIC>
+      <RPY_DYFLOW>
+       <LINE>PROCESS BEFORE OUTPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>* MODULE STATUS_0300.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>PROCESS AFTER INPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>* MODULE USER_COMMAND_0300.</LINE>
+      </RPY_DYFLOW>
+     </FLOW_LOGIC>
+    </item>
+    <item>
+     <HEADER>
+      <PROGRAM>SAPLZBT_DYNPRO</PROGRAM>
+      <SCREEN>0500</SCREEN>
+      <LANGUAGE>E</LANGUAGE>
+      <DESCRIPT>Objects Screen</DESCRIPT>
+      <TYPE>I</TYPE>
+      <NEXTSCREEN>0500</NEXTSCREEN>
+      <LINES>027</LINES>
+      <COLUMNS>120</COLUMNS>
+      <NO_COMPR>X</NO_COMPR>
+      <KEEP_SCPOS>X</KEEP_SCPOS>
+     </HEADER>
+     <CONTAINERS>
+      <RPY_DYCATT>
+       <TYPE>SCREEN</TYPE>
+       <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+     </CONTAINERS>
+     <FIELDS>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>%#AUTOTEXT001</NAME>
+       <TEXT>Test</TEXT>
+       <LINE>003</LINE>
+       <COLUMN>003</COLUMN>
+       <LENGTH>004</LENGTH>
+       <VISLENGTH>004</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>OKCODE</TYPE>
+       <TEXT>____________________</TEXT>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+      </RPY_DYFATC>
+     </FIELDS>
+     <FLOW_LOGIC>
+      <RPY_DYFLOW>
+       <LINE>PROCESS BEFORE OUTPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>* MODULE STATUS_0300.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>PROCESS AFTER INPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>* MODULE USER_COMMAND_0300.</LINE>
+      </RPY_DYFLOW>
+     </FLOW_LOGIC>
+    </item>
+    <item>
+     <HEADER>
+      <PROGRAM>SAPLZBT_DYNPRO</PROGRAM>
+      <SCREEN>0600</SCREEN>
+      <LANGUAGE>E</LANGUAGE>
+      <DESCRIPT>ChangeLog Screen</DESCRIPT>
+      <TYPE>I</TYPE>
+      <NEXTSCREEN>0600</NEXTSCREEN>
+      <LINES>027</LINES>
+      <COLUMNS>120</COLUMNS>
+      <NO_COMPR>X</NO_COMPR>
+      <KEEP_SCPOS>X</KEEP_SCPOS>
+     </HEADER>
+     <CONTAINERS>
+      <RPY_DYCATT>
+       <TYPE>SCREEN</TYPE>
+       <NAME>SCREEN</NAME>
+      </RPY_DYCATT>
+     </CONTAINERS>
+     <FIELDS>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>TEXT</TYPE>
+       <NAME>%#AUTOTEXT001</NAME>
+       <TEXT>Test</TEXT>
+       <LINE>003</LINE>
+       <COLUMN>003</COLUMN>
+       <LENGTH>004</LENGTH>
+       <VISLENGTH>004</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <REQU_ENTRY>N</REQU_ENTRY>
+      </RPY_DYFATC>
+      <RPY_DYFATC>
+       <CONT_TYPE>SCREEN</CONT_TYPE>
+       <CONT_NAME>SCREEN</CONT_NAME>
+       <TYPE>OKCODE</TYPE>
+       <TEXT>____________________</TEXT>
+       <LENGTH>020</LENGTH>
+       <VISLENGTH>020</VISLENGTH>
+       <HEIGHT>001</HEIGHT>
+       <FORMAT>CHAR</FORMAT>
+       <INPUT_FLD>X</INPUT_FLD>
+      </RPY_DYFATC>
+     </FIELDS>
+     <FLOW_LOGIC>
+      <RPY_DYFLOW>
+       <LINE>PROCESS BEFORE OUTPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>* MODULE STATUS_0300.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>*</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>PROCESS AFTER INPUT.</LINE>
+      </RPY_DYFLOW>
+      <RPY_DYFLOW>
+       <LINE>* MODULE USER_COMMAND_0300.</LINE>
+      </RPY_DYFLOW>
+     </FLOW_LOGIC>
+    </item>
    </DYNPROS>
+   <CUA>
+    <ADM>
+     <ACTCODE>000001</ACTCODE>
+     <MENCODE>000007</MENCODE>
+     <PFKCODE>000001</PFKCODE>
+    </ADM>
+    <STA>
+     <RSMPE_STAT>
+      <CODE>S0001</CODE>
+      <MODAL>D</MODAL>
+      <ACTCODE>000001</ACTCODE>
+      <PFKCODE>000001</PFKCODE>
+      <BUTCODE>0001</BUTCODE>
+      <INT_NOTE>Main Status</INT_NOTE>
+     </RSMPE_STAT>
+    </STA>
+    <FUN>
+     <RSMPE_FUNT>
+      <CODE>BACK</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Back</FUN_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>CANCEL</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TYPE>E</TYPE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_CANCEL</TEXT_NAME>
+      <ICON_ID>@0W@</ICON_ID>
+      <FUN_TEXT>Cancel</FUN_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>CHGMODE</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT_NAME>ICON_TOGGLE_DISPLAY_CHANGE</TEXT_NAME>
+      <ICON_ID>@3I@</ICON_ID>
+      <FUN_TEXT>Change Mode</FUN_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>EXIT</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TYPE>E</TYPE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Exit</FUN_TEXT>
+     </RSMPE_FUNT>
+     <RSMPE_FUNT>
+      <CODE>SAVE</CODE>
+      <TEXTNO>001</TEXTNO>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <FUN_TEXT>Save</FUN_TEXT>
+     </RSMPE_FUNT>
+    </FUN>
+    <MEN>
+     <RSMPE_MEN>
+      <CODE>000001</CODE>
+      <NO>01</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&lt;01&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000001</CODE>
+      <NO>02</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>CHGMODE</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000001</CODE>
+      <NO>03</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&lt;02&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000001</CODE>
+      <NO>04</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&lt;03&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000001</CODE>
+      <NO>05</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&lt;04&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000001</CODE>
+      <NO>06</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&lt;05&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000001</CODE>
+      <NO>07</NO>
+      <REF_TYPE>S</REF_TYPE>
+      <REF_CODE>&lt;S1&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000001</CODE>
+      <NO>08</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>SAVE</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000001</CODE>
+      <NO>09</NO>
+      <REF_TYPE>S</REF_TYPE>
+      <REF_CODE>&lt;S1&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000001</CODE>
+      <NO>10</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&lt;09&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000001</CODE>
+      <NO>11</NO>
+      <REF_TYPE>S</REF_TYPE>
+      <REF_CODE>&lt;S1&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000001</CODE>
+      <NO>12</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&lt;10&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000001</CODE>
+      <NO>13</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>EXIT</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000002</CODE>
+      <NO>01</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&lt;12&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000002</CODE>
+      <NO>02</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&lt;13&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000002</CODE>
+      <NO>03</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&lt;24&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000002</CODE>
+      <NO>04</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&lt;14&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000002</CODE>
+      <NO>05</NO>
+      <REF_TYPE>S</REF_TYPE>
+      <REF_CODE>&lt;S1&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000002</CODE>
+      <NO>06</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&lt;16&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000002</CODE>
+      <NO>07</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&lt;17&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000002</CODE>
+      <NO>08</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&lt;18&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000002</CODE>
+      <NO>09</NO>
+      <REF_TYPE>S</REF_TYPE>
+      <REF_CODE>&lt;S1&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000002</CODE>
+      <NO>10</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&lt;26&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000002</CODE>
+      <NO>11</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&lt;27&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000002</CODE>
+      <NO>12</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>&lt;20&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000002</CODE>
+      <NO>13</NO>
+      <REF_TYPE>S</REF_TYPE>
+      <REF_CODE>&lt;S1&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000002</CODE>
+      <NO>14</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>CANCEL</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000003</CODE>
+      <NO>01</NO>
+      <REF_TYPE>S</REF_TYPE>
+      <REF_CODE>&lt;S1&gt;</REF_CODE>
+     </RSMPE_MEN>
+     <RSMPE_MEN>
+      <CODE>000003</CODE>
+      <NO>02</NO>
+      <REF_TYPE>F</REF_TYPE>
+      <REF_CODE>BACK</REF_CODE>
+      <REF_NO>001</REF_NO>
+     </RSMPE_MEN>
+    </MEN>
+    <MTX>
+     <RSMPE_MNLT>
+      <CODE>000001</CODE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT>Bug</TEXT>
+      <INT_NOTE>Standard Supplement</INT_NOTE>
+     </RSMPE_MNLT>
+     <RSMPE_MNLT>
+      <CODE>000002</CODE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT>Edit</TEXT>
+      <PATH>E</PATH>
+      <INT_NOTE>Standard Supplement</INT_NOTE>
+     </RSMPE_MNLT>
+     <RSMPE_MNLT>
+      <CODE>000003</CODE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT>Goto</TEXT>
+      <PATH>G</PATH>
+      <INT_NOTE>Standard Supplement</INT_NOTE>
+     </RSMPE_MNLT>
+     <RSMPE_MNLT>
+      <CODE>000004</CODE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT>Extras</TEXT>
+      <PATH>A</PATH>
+      <INT_NOTE>Standard Supplement</INT_NOTE>
+     </RSMPE_MNLT>
+     <RSMPE_MNLT>
+      <CODE>000005</CODE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT>Environment</TEXT>
+      <PATH>V</PATH>
+      <INT_NOTE>Standard Supplement</INT_NOTE>
+     </RSMPE_MNLT>
+     <RSMPE_MNLT>
+      <CODE>000006</CODE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT>Extras</TEXT>
+      <PATH>A</PATH>
+      <INT_NOTE>Standard Supplement</INT_NOTE>
+     </RSMPE_MNLT>
+     <RSMPE_MNLT>
+      <CODE>000007</CODE>
+      <TEXT_TYPE>S</TEXT_TYPE>
+      <TEXT>Environment</TEXT>
+      <PATH>V</PATH>
+      <INT_NOTE>Standard Supplement</INT_NOTE>
+     </RSMPE_MNLT>
+    </MTX>
+    <ACT>
+     <RSMPE_ACT>
+      <CODE>000001</CODE>
+      <NO>01</NO>
+      <MENUCODE>000001</MENUCODE>
+     </RSMPE_ACT>
+     <RSMPE_ACT>
+      <CODE>000001</CODE>
+      <NO>02</NO>
+      <MENUCODE>000002</MENUCODE>
+     </RSMPE_ACT>
+     <RSMPE_ACT>
+      <CODE>000001</CODE>
+      <NO>03</NO>
+      <MENUCODE>000003</MENUCODE>
+     </RSMPE_ACT>
+     <RSMPE_ACT>
+      <CODE>000001</CODE>
+      <NO>04</NO>
+      <MENUCODE>000006</MENUCODE>
+     </RSMPE_ACT>
+     <RSMPE_ACT>
+      <CODE>000001</CODE>
+      <NO>05</NO>
+      <MENUCODE>000007</MENUCODE>
+     </RSMPE_ACT>
+    </ACT>
+    <BUT>
+     <RSMPE_BUT>
+      <PFK_CODE>000001</PFK_CODE>
+      <CODE>0001</CODE>
+      <NO>01</NO>
+      <PFNO>25</PFNO>
+     </RSMPE_BUT>
+    </BUT>
+    <PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>03</PFNO>
+      <FUNCODE>BACK</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>11</PFNO>
+      <FUNCODE>SAVE</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>12</PFNO>
+      <FUNCODE>CANCEL</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>15</PFNO>
+      <FUNCODE>EXIT</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+     <RSMPE_PFK>
+      <CODE>000001</CODE>
+      <PFNO>25</PFNO>
+      <FUNCODE>CHGMODE</FUNCODE>
+      <FUNNO>001</FUNNO>
+     </RSMPE_PFK>
+    </PFK>
+    <SET>
+     <RSMPE_STAF>
+      <STATUS>S0001</STATUS>
+      <FUNCTION>BACK</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>S0001</STATUS>
+      <FUNCTION>CANCEL</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>S0001</STATUS>
+      <FUNCTION>CHGMODE</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>S0001</STATUS>
+      <FUNCTION>EXIT</FUNCTION>
+     </RSMPE_STAF>
+     <RSMPE_STAF>
+      <STATUS>S0001</STATUS>
+      <FUNCTION>SAVE</FUNCTION>
+     </RSMPE_STAF>
+    </SET>
+    <DOC>
+     <RSMPE_ATRT>
+      <OBJ_TYPE>A</OBJ_TYPE>
+      <OBJ_CODE>000001</OBJ_CODE>
+      <MODAL>D</MODAL>
+      <NORM>X</NORM>
+      <INT_NOTE>Main Status</INT_NOTE>
+     </RSMPE_ATRT>
+     <RSMPE_ATRT>
+      <OBJ_TYPE>P</OBJ_TYPE>
+      <OBJ_CODE>000001</OBJ_CODE>
+      <MODAL>D</MODAL>
+      <INT_NOTE>Main Status</INT_NOTE>
+     </RSMPE_ATRT>
+     <RSMPE_ATRT>
+      <OBJ_TYPE>B</OBJ_TYPE>
+      <OBJ_CODE>000001</OBJ_CODE>
+      <SUB_CODE>0001</SUB_CODE>
+      <MODAL>D</MODAL>
+      <INT_NOTE>Main Status</INT_NOTE>
+     </RSMPE_ATRT>
+    </DOC>
+    <TIT>
+     <RSMPE_TITT>
+      <CODE>T0001</CODE>
+      <TEXT>Bug &amp; : &amp;</TEXT>
+     </RSMPE_TITT>
+    </TIT>
+   </CUA>
   </asx:values>
  </asx:abap>
 </abapGit>

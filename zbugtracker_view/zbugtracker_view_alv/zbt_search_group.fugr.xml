@@ -49,16 +49,10 @@
        <TYP>ZBT_COMPONENTE_RANGE</TYP>
       </RSCHA>
       <RSCHA>
-       <PARAMETER>AEDAT</PARAMETER>
+       <PARAMETER>MODIFICADO</PARAMETER>
        <OPTIONAL>X</OPTIONAL>
        <REFERENCE>X</REFERENCE>
        <TYP>ZBT_TIMESTAMP_RANGE</TYP>
-      </RSCHA>
-      <RSCHA>
-       <PARAMETER>AENAM</PARAMETER>
-       <OPTIONAL>X</OPTIONAL>
-       <REFERENCE>X</REFERENCE>
-       <TYP>ZBT_USER_RANGE</TYP>
       </RSCHA>
      </CHANGING>
      <DOCUMENTATION>
@@ -88,14 +82,9 @@
        <STEXT>Componente Range</STEXT>
       </RSFDO>
       <RSFDO>
-       <PARAMETER>AEDAT</PARAMETER>
+       <PARAMETER>MODIFICADO</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Time Stamp Range</STEXT>
-      </RSFDO>
-      <RSFDO>
-       <PARAMETER>AENAM</PARAMETER>
-       <KIND>P</KIND>
-       <STEXT>User Range</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>
@@ -196,12 +185,6 @@
        <TYP>ZBT_USER_RANGE</TYP>
       </RSCHA>
       <RSCHA>
-       <PARAMETER>ASSIGNED</PARAMETER>
-       <OPTIONAL>X</OPTIONAL>
-       <REFERENCE>X</REFERENCE>
-       <TYP>ZBT_USER_RANGE</TYP>
-      </RSCHA>
-      <RSCHA>
        <PARAMETER>TESTER</PARAMETER>
        <OPTIONAL>X</OPTIONAL>
        <REFERENCE>X</REFERENCE>
@@ -212,18 +195,6 @@
        <OPTIONAL>X</OPTIONAL>
        <REFERENCE>X</REFERENCE>
        <TYP>ZBT_TIMESTAMP_RANGE</TYP>
-      </RSCHA>
-      <RSCHA>
-       <PARAMETER>AEDAT</PARAMETER>
-       <OPTIONAL>X</OPTIONAL>
-       <REFERENCE>X</REFERENCE>
-       <TYP>ZBT_TIMESTAMP_RANGE</TYP>
-      </RSCHA>
-      <RSCHA>
-       <PARAMETER>AENAM</PARAMETER>
-       <OPTIONAL>X</OPTIONAL>
-       <REFERENCE>X</REFERENCE>
-       <TYP>ZBT_USER_RANGE</TYP>
       </RSCHA>
      </CHANGING>
      <DOCUMENTATION>
@@ -303,11 +274,6 @@
        <STEXT>User Range</STEXT>
       </RSFDO>
       <RSFDO>
-       <PARAMETER>ASSIGNED</PARAMETER>
-       <KIND>P</KIND>
-       <STEXT>User Range</STEXT>
-      </RSFDO>
-      <RSFDO>
        <PARAMETER>TESTER</PARAMETER>
        <KIND>P</KIND>
        <STEXT>User Range</STEXT>
@@ -316,16 +282,6 @@
        <PARAMETER>FINALIZADO</PARAMETER>
        <KIND>P</KIND>
        <STEXT>Time Stamp Range</STEXT>
-      </RSFDO>
-      <RSFDO>
-       <PARAMETER>AEDAT</PARAMETER>
-       <KIND>P</KIND>
-       <STEXT>Time Stamp Range</STEXT>
-      </RSFDO>
-      <RSFDO>
-       <PARAMETER>AENAM</PARAMETER>
-       <KIND>P</KIND>
-       <STEXT>User Range</STEXT>
       </RSFDO>
      </DOCUMENTATION>
     </item>
@@ -339,8 +295,8 @@
       <DESCRIPT>Dynpro for embeding Selection screens</DESCRIPT>
       <TYPE>N</TYPE>
       <NEXTSCREEN>0001</NEXTSCREEN>
-      <LINES>023</LINES>
-      <COLUMNS>138</COLUMNS>
+      <LINES>018</LINES>
+      <COLUMNS>120</COLUMNS>
      </HEADER>
      <CONTAINERS>
       <RPY_DYCATT>
@@ -353,8 +309,8 @@
        <ELEMENT_OF>SCREEN</ELEMENT_OF>
        <LINE>001</LINE>
        <COLUMN>001</COLUMN>
-       <LENGTH>138</LENGTH>
-       <HEIGHT>023</HEIGHT>
+       <LENGTH>120</LENGTH>
+       <HEIGHT>018</HEIGHT>
        <C_RESIZE_V>X</C_RESIZE_V>
        <C_RESIZE_H>X</C_RESIZE_H>
        <C_LINE_MIN>009</C_LINE_MIN>

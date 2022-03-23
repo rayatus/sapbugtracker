@@ -18,7 +18,7 @@
      <ID>I</ID>
      <KEY>001</KEY>
      <ENTRY>SAPBugTracker: Select a Bug Id at least</ENTRY>
-     <LENGTH>70</LENGTH>
+     <LENGTH>40</LENGTH>
     </item>
    </TPOOL>
   </asx:values>

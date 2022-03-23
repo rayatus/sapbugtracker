@@ -61,11 +61,8 @@ FORM user_command_0001 .
         reporter        = s_rep[]
         developer       = s_dev[]
         tester          = s_test[]
-        assigned        = s_assig[]
         finalizado      = s_enddat[]
-        aedat           = s_aedat[]
-        aenam           = s_aenam[]
-        max_rows        = p_rows ).
+        modificado      = s_aedat[] ).
 
       go_results_handler->display_results( go_container ).
     WHEN OTHERS.

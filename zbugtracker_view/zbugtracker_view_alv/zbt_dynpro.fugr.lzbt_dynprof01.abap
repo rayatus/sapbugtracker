@@ -59,9 +59,9 @@ FORM set_display_mode  USING p_display_mode TYPE flag.
 
   g_display_mode    = p_display_mode.
   IF g_display_mode IS INITIAL.
-    g_display_mode_txt = 'Modify'(001).
+    g_display_mode_txt = 'Modificar'(001).
   ELSE.
-    g_display_mode_txt = 'Display'(002).
+    g_display_mode_txt = 'Visualizar'(002).
   ENDIF.
 ENDFORM.                    " SET_DISPLAY_MODE
 *&---------------------------------------------------------------------*
@@ -76,35 +76,22 @@ FORM free_global_data .
   DATA lo_container TYPE REF TO cl_gui_container.
 
 * Free InfoContainer
-  lo_container ?= g_more_info_section_container.
+  PERFORM free_container CHANGING g_more_info_section_container.
+  PERFORM free_container CHANGING g_steps_section_container.
+  PERFORM free_container CHANGING g_problem_section_container.
+  lo_container ?= g_info_splitter_container.
   PERFORM free_container CHANGING lo_container.
-  lo_container ?= g_steps_section_container.
+  lo_container ?= g_info_container.
   PERFORM free_container CHANGING lo_container.
-  lo_container ?= g_problem_section_container.
-  PERFORM free_container CHANGING lo_container.
-  lo_container ?= g_tag_container.
-  PERFORM free_container CHANGING lo_container.
-  lo_container ?= g_bug_tree_container.
-  PERFORM free_container CHANGING lo_container.
-
-  lo_container ?= g_attachment_container.
-  PERFORM free_container CHANGING lo_container.
+  CLEAR: g_info_splitter_container, g_info_container.
 
 * Free BTF Editor
   PERFORM free_btf_editor USING g_problem_btf.
   PERFORM free_btf_editor USING g_steps_btf.
   PERFORM free_btf_editor USING g_more_info_btf.
 
-  FREE:  go_handler,
-         go_tag_gui,
-         go_comment_gui.
-  CLEAR: gt_main_tc_ctr,
-         gt_info_tc_ctr,
-         go_handler,
-         g_do_not_show_pfstatus,
-         go_comment_gui,
-         g_bug_tree_container,
-         go_tag_gui.
+  FREE go_handler.
+  CLEAR: gt_main_tc_ctr, go_handler.
 ENDFORM.                    " FREE_GLOBAL_DATA
 *&---------------------------------------------------------------------*
 *&      Form  FREE_CONTAINER
@@ -117,11 +104,7 @@ FORM free_container  CHANGING p_container TYPE REF TO  cl_gui_container.
   DATA: l_is_valid   TYPE i.
 
   IF NOT p_container IS INITIAL.
-    CALL METHOD p_container->free
-      EXCEPTIONS
-        cntl_error        = 1
-        cntl_system_error = 2
-        OTHERS            = 3.
+    p_container->free( ).
     CLEAR p_container.
     FREE p_container.
   ENDIF.
@@ -151,13 +134,11 @@ ENDFORM.                    " FREE_BTF_EDITOR
 FORM set_subscreens_0001 .
 
   IF g_top_screen IS INITIAL.
-    g_top_screen = 101.
+    g_top_screen = 100.
   ENDIF.
 
   main_tc-activetab = gt_main_tc_ctr-pressed_tab.
   CASE gt_main_tc_ctr-pressed_tab.
-    WHEN c_main_tc_def-tab0.
-      gt_main_tc_ctr-subscreen = '0100'.
     WHEN c_main_tc_def-tab1.
       gt_main_tc_ctr-subscreen = '0200'.
     WHEN c_main_tc_def-tab2.
@@ -168,10 +149,8 @@ FORM set_subscreens_0001 .
       gt_main_tc_ctr-subscreen = '0500'.
     WHEN c_main_tc_def-tab5.
       gt_main_tc_ctr-subscreen = '0600'.
-    WHEN c_main_tc_def-tab6.
-      gt_main_tc_ctr-subscreen = '0700'.
     WHEN OTHERS.
-      gt_main_tc_ctr-subscreen = '0100'.
+      gt_main_tc_ctr-subscreen = '0200'.
   ENDCASE.
 
   IF gt_main_tc_ctr-prog IS INITIAL.
@@ -190,8 +169,6 @@ ENDFORM.                    " SET_SUBSCREENS_0001
 FORM user_command_0001 .
   DATA: l_ucomm TYPE sy-ucomm.
 
-  cl_gui_cfw=>flush( ).
-
   l_ucomm = sy-ucomm.
   CLEAR sy-ucomm.
 
@@ -202,8 +179,6 @@ FORM user_command_0001 .
       PERFORM exit_0001.
     WHEN 'SAVE'.
       PERFORM save_bug_0001.
-    WHEN 'BUGTREE'.
-      PERFORM bugtree_0001.
     WHEN OTHERS.
       IF l_ucomm(3) = 'TAB'.
         PERFORM set_main_tc_screen USING l_ucomm.
@@ -225,10 +200,26 @@ FORM set_main_tc_screen USING p_ucomm TYPE sy-ucomm .
   IF sy-subrc IS INITIAL.
     gt_main_tc_ctr-pressed_tab = <tab>.
   ELSE.
-    gt_main_tc_ctr-pressed_tab = c_main_tc_def-tab0.
+    gt_main_tc_ctr-pressed_tab = c_main_tc_def-tab1.
   ENDIF.
 
 ENDFORM.                    " SET_MAIN_TC_SCREEN
+*&---------------------------------------------------------------------*
+*&      Form  USER_COMMAND_0100
+*&---------------------------------------------------------------------*
+*       text
+*----------------------------------------------------------------------*
+*  -->  p1        text
+*  <--  p2        text
+*----------------------------------------------------------------------*
+FORM user_command_0100 .
+  CASE sy-ucomm.
+    WHEN 'HIDETOP'.
+      g_top_screen = 101.
+    WHEN 'SHOWTOP'.
+      g_top_screen = 100.
+  ENDCASE.
+ENDFORM.                    " USER_COMMAND_0100
 *&---------------------------------------------------------------------*
 *&      Form  PBO_0300
 *&---------------------------------------------------------------------*
@@ -239,7 +230,8 @@ ENDFORM.                    " SET_MAIN_TC_SCREEN
 *----------------------------------------------------------------------*
 FORM pbo_0300 .
 
-  DATA: lt_comentarios TYPE zbt_comentarios,
+  DATA: lo_comment_gui TYPE REF TO zcl_comment_gui_controller,
+        lt_comentarios TYPE zbt_comentarios,
         l_id_producto  TYPE zbt_producto-producto,
         l_id_bug       TYPE zbt_id_bug.
 
@@ -249,14 +241,14 @@ FORM pbo_0300 .
           EXPORTING
             container_name = 'COMMENTS'.
 
-        CREATE OBJECT go_comment_gui
+        CREATE OBJECT lo_comment_gui
           EXPORTING
             bug          = go_bug
             container    = g_comments_container
             display_mode = g_display_mode.
 
-        SET HANDLER go_handler->on_comment_added FOR go_comment_gui.
-        go_comment_gui->display( ).
+        SET HANDLER go_handler->on_comment_added FOR lo_comment_gui.
+        lo_comment_gui->display( ).
 
       CATCH zcx_not_found_exception .
     ENDTRY.
@@ -274,10 +266,9 @@ ENDFORM.                                                    " PBO_0300
 *----------------------------------------------------------------------*
 FORM save_bug_0001 .
   DATA: l_bug_id    TYPE zbt_id_bug,
-        l_bug_id_i  type zbt_id_bug_i,
         l_string    TYPE string,
         o_exception TYPE REF TO zcx_bugtracker_system.
-*BREAK-POINT.
+
   TRY .
       IF zcl_bug_controller=>exist( go_bug ) = abap_true.
         zcl_bug_controller=>update( go_bug  ).
@@ -290,7 +281,6 @@ FORM save_bug_0001 .
       PERFORM object_to_structures USING go_bug.
 
       l_bug_id = go_bug->get_id( ).
-      l_bug_id_i = go_bug->get_id_i( ).
 
       CALL FUNCTION 'CONVERSION_EXIT_ALPHA_OUTPUT'
         EXPORTING
@@ -303,8 +293,7 @@ FORM save_bug_0001 .
       l_string = o_exception->get_text( ).
       MESSAGE l_string TYPE 'S' DISPLAY LIKE 'E'.
   ENDTRY.
-  clear g_hash_after_save.
-  g_hash_after_save = go_bug->get_hash( ).
+
 
 ENDFORM.                    " SAVE_BUG_0001
 *&---------------------------------------------------------------------*
@@ -317,8 +306,9 @@ ENDFORM.                    " SAVE_BUG_0001
 *----------------------------------------------------------------------*
 FORM structures_to_object .
   DATA: lo_producto   TYPE REF TO zcl_producto,
-        lo_user       TYPE REF TO zcl_usuario,
         lo_componente TYPE REF TO zcl_componente.
+
+
 
   lo_producto   = zcl_producto_controller=>find_by_key( g_producto-producto ).
   lo_componente = zcl_componente_controller=>find_by_key( id       = g_componente-componente
@@ -335,34 +325,6 @@ FORM structures_to_object .
   PERFORM update_bugsection USING go_bug g_problem_btf   1.
   PERFORM update_bugsection USING go_bug g_steps_btf     2.
   PERFORM update_bugsection USING go_bug g_more_info_btf 3.
-
-  TRY .
-      lo_user = zcl_usuario_controller=>find_by_key( g_bug-tester ).
-      IF lo_user IS BOUND.
-        g_users_txt-tester = lo_user->get_name( ).
-      ENDIF.
-    CATCH zcx_not_found_exception.
-      CLEAR g_users_txt-tester.
-  ENDTRY.
-
-  TRY .
-      lo_user = zcl_usuario_controller=>find_by_key( g_bug-assigned ).
-      IF lo_user IS BOUND.
-        g_users_txt-assigned = lo_user->get_name( ).
-      ENDIF.
-    CATCH zcx_not_found_exception.
-      CLEAR g_users_txt-assigned.
-  ENDTRY.
-
-  TRY .
-      lo_user = zcl_usuario_controller=>find_by_key( g_bug-developer ).
-      IF lo_user IS BOUND.
-        g_users_txt-developer = lo_user->get_name( ).
-      ENDIF.
-    CATCH zcx_not_found_exception.
-      CLEAR g_users_txt-developer.
-  ENDTRY.
-
 
 ENDFORM.                    " STRUCTURES_TO_OBJECT
 *&---------------------------------------------------------------------*
@@ -383,8 +345,7 @@ FORM object_to_structures USING p_bug TYPE REF TO zcl_bug.
         l_field(30)    TYPE c,
         l_section_txt1 TYPE string,
         l_section_txt2 TYPE string,
-        l_section_txt3 TYPE string,
-        lo_container   TYPE REF TO cl_gui_container.
+        l_section_txt3 TYPE string.
 
   FIELD-SYMBOLS <symbol> TYPE any.
 
@@ -398,6 +359,9 @@ FORM object_to_structures USING p_bug TYPE REF TO zcl_bug.
 
   PERFORM set_bug_status_icon USING g_bug-estado.
 
+* Creates Main Container separated into 3 containers
+  PERFORM create_info_container.
+
   lt_sections = go_bug->get_sections( ).
   LOOP AT lt_sections INTO l_section.
     lo_comment = l_section-oref->get_comment( ).
@@ -408,8 +372,6 @@ FORM object_to_structures USING p_bug TYPE REF TO zcl_bug.
     <symbol> = lo_comment->get_texto( ).
   ENDLOOP.
 
-* Creates Main Container
-  PERFORM create_info_container.
 * Creates corresponding editors in separated containers
   PERFORM create_btf_editor USING    g_problem_section_container
                                      'Description'(003)
@@ -417,7 +379,7 @@ FORM object_to_structures USING p_bug TYPE REF TO zcl_bug.
                                      g_display_mode
                             CHANGING g_problem_btf.
   PERFORM create_btf_editor USING    g_steps_section_container
-                                     'How to Reproduce'(004)
+                                     'Steps to Reproduce'(004)
                                      l_section_txt2
                                      g_display_mode
                             CHANGING g_steps_btf.
@@ -432,11 +394,6 @@ FORM object_to_structures USING p_bug TYPE REF TO zcl_bug.
     g_users_txt-reporter = lo_user->get_name( ).
   ENDIF.
 
-  lo_user = go_bug->get_assigned( ).
-  IF lo_user IS BOUND.
-    g_users_txt-assigned = lo_user->get_name( ).
-  ENDIF.
-
   lo_user = go_bug->get_developer( ).
   IF lo_user IS BOUND.
     g_users_txt-developer = lo_user->get_name( ).
@@ -445,11 +402,6 @@ FORM object_to_structures USING p_bug TYPE REF TO zcl_bug.
   lo_user = go_bug->get_tester( ).
   IF lo_user IS BOUND.
     g_users_txt-tester = lo_user->get_name( ).
-  ENDIF.
-
-  lo_user = go_bug->get_aenam( ).
-  IF lo_user IS BOUND.
-    g_users_txt-aenam = lo_user->get_name( ).
   ENDIF.
 ENDFORM.                    " OBJECT_TO_STRUCTURES
 *&---------------------------------------------------------------------*
@@ -484,11 +436,7 @@ FORM update_bugsection  USING    p_bug         TYPE REF TO zcl_bug
   IF sy-subrc IS INITIAL.
     lo_comment = l_section-oref->get_comment( ).
     l_aux_str = lo_comment->get_texto( ).
-
-    PERFORM html_text_equal USING    l_aux_str
-                                     l_string
-                            CHANGING sy-subrc.
-    IF NOT sy-subrc IS INITIAL.
+    IF l_aux_str <> l_string.
       lo_comment->set_texto( l_string ).
       lo_comment->set_erdat( ).
       lo_comment->set_usuario( lo_usuario ).
@@ -542,14 +490,8 @@ FORM status_0001 .
     WHEN OTHERS.
   ENDCASE.
 
-  IF g_do_not_show_pfstatus <> abap_true.
-    SET PF-STATUS 'S0001' EXCLUDING lt_fcodes.
-  ELSE.
-    SET PF-STATUS 'EMPTY' EXCLUDING lt_fcodes.
-  ENDIF.
-
+  SET PF-STATUS 'S0001' EXCLUDING lt_fcodes.
   SET TITLEBAR  'T0001' WITH l_bug g_display_mode_txt.
-
 ENDFORM.                    " STATUS_0001
 *&---------------------------------------------------------------------*
 *&      Form  SET_DYNPRO_DISPLAY_MODE
@@ -598,50 +540,17 @@ ENDFORM.                    "set_create_mode
 *----------------------------------------------------------------------*
 FORM pai_0100 .
   DATA: lo_producto    TYPE REF TO zcl_producto,
-        l_string       TYPE string,
-        lo_exception   TYPE REF TO zcx_bugtracker_system,
-        lo_estado      TYPE REF TO zcl_estado,
-        lo_usuario     TYPE REF TO zcl_usuario,
-        l_estado_type  TYPE zbt_typestatus,
-        l_timestamp    TYPE timestamp,
         lt_componentes TYPE zbt_componentes.
 
 * If product has components then is mandatory to select one
   IF g_componente-componente IS INITIAL.
-    lo_producto = zcl_producto_controller=>find_by_key( g_bug-producto ).
+    lo_producto = go_bug->get_producto( ).
     lt_componentes[] = lo_producto->get_componentes( ).
     IF NOT lt_componentes[] IS INITIAL.
       MESSAGE e003(zbugtracker_msg).
     ENDIF.
 
   ENDIF.
-
-* If status is "ended" then EndDate must be fulfilled
-  lo_estado = zcl_estado_controller=>find_by_key( g_bug-estado ).
-  l_estado_type = lo_estado->get_type( ) .
-  IF g_bug-finalizado IS INITIAL AND l_estado_type = zcl_estado_controller=>status_finished.
-    GET TIME STAMP FIELD l_timestamp.
-    g_bug-finalizado = l_timestamp.
-  ELSEIF l_estado_type <> zcl_estado_controller=>status_finished.
-    CLEAR g_bug-finalizado.
-  ENDIF.
-
-  TRY .
-      IF NOT g_bug-tester IS INITIAL.
-        lo_usuario = zcl_usuario_controller=>find_by_key( g_bug-tester ).
-      ENDIF.
-      IF NOT g_bug-developer IS INITIAL.
-        lo_usuario = zcl_usuario_controller=>find_by_key( g_bug-developer ).
-      ENDIF.
-      IF NOT g_bug-assigned IS INITIAL.
-        lo_usuario = zcl_usuario_controller=>find_by_key( g_bug-assigned ).
-      ENDIF.
-    CATCH zcx_not_found_exception INTO lo_exception.
-      l_string = lo_exception->get_text( ).
-      MESSAGE l_string TYPE 'E'.
-  ENDTRY.
-
-
 
 ENDFORM.                                                    " PAI_0100
 *&---------------------------------------------------------------------*
@@ -705,30 +614,23 @@ ENDFORM.                    " ASK_4CONTINUE
 *      <--P_L_IS_MODIFIED  text
 *----------------------------------------------------------------------*
 FORM is_modified  USING    p_bug         TYPE REF TO zcl_bug
-                           p_oldhash     TYPE hash160
+                           p_old_bug     TYPE REF TO zcl_bug
                   CHANGING p_is_modified TYPE flag.
+  DATA: l_equal TYPE flag.
 
-  DATA: newhash TYPE hash160.
+  CALL METHOD zcl_bug_controller=>equal
+    EXPORTING
+      bug1  = p_bug
+      bug2  = p_old_bug
+    RECEIVING
+      equal = l_equal.
 
-  newhash = p_bug->get_hash( ).
+  IF l_equal IS INITIAL.
+    p_is_modified = 'X'.
+  ELSE.
+    p_is_modified = space.
+  ENDIF.
 
-* check the new hash against the hash from last save
-  if g_hash_after_save is not initial
-     and p_oldhash <> g_hash_after_save.
-
-    IF newhash <> g_hash_after_save.
-      p_is_modified = 'X'.
-    ELSE.
-      p_is_modified = space.
-    ENDIF.
-
-  else.
-    IF newhash <> p_oldhash.
-      p_is_modified = 'X'.
-    ELSE.
-      p_is_modified = space.
-    ENDIF.
-  endif.
 ENDFORM.                    " IS_MODIFIED
 *&---------------------------------------------------------------------*
 *&      Form  ASK_4data_lose
@@ -745,12 +647,12 @@ FORM ask_4data_lose  CHANGING p_continue TYPE flag.
   p_continue = 'X'.
 
   PERFORM is_modified USING go_bug
-                            g_oldhash
+                            go_old_bug
                       CHANGING l_is_modified.
   IF NOT l_is_modified IS INITIAL.
     PERFORM ask_4continue USING
           'Data has been modified'(009)
-          'Unsaved data will be lost. Continue?'(010)
+          'Not saved data will be lost. Continue?'(010)
           CHANGING p_continue.
   ENDIF.
 
@@ -769,9 +671,7 @@ FORM chgmode_0001 .
 
   PERFORM ask_4data_lose CHANGING l_continue.
   IF NOT l_continue IS INITIAL.
-*   Reset to original data
-* TODO
-**    PERFORM object_to_structures USING go_old_bug.
+    PERFORM object_to_structures USING go_old_bug.
 
     IF g_display_mode IS INITIAL.
       l_new_mode = 'X'.
@@ -781,182 +681,6 @@ FORM chgmode_0001 .
 
     PERFORM set_display_mode USING l_new_mode.
 
-    IF go_comment_gui IS BOUND.
-      go_comment_gui->set_display_mode( g_display_mode ).
-    ENDIF.
-    IF g_more_info_btf IS BOUND.
-      g_more_info_btf->set_display_mode( g_display_mode ).
-    ENDIF.
-    IF g_steps_btf IS BOUND.
-      g_steps_btf->set_display_mode( g_display_mode ).
-    ENDIF.
-    IF g_problem_btf IS BOUND.
-      g_problem_btf->set_display_mode( g_display_mode ).
-    ENDIF.
-
-    IF go_tag_gui IS BOUND.
-      go_tag_gui->set_display_mode( g_display_mode ).
-    ENDIF.
-
   ENDIF.
+
 ENDFORM.                    " CHGMODE_0001
-*&---------------------------------------------------------------------*
-*&      Form  PBO_0500
-*&---------------------------------------------------------------------*
-*       text
-*----------------------------------------------------------------------*
-*  -->  p1        text
-*  <--  p2        text
-*----------------------------------------------------------------------*
-FORM pbo_0500 .
-  DATA: lo_objects_gui TYPE REF TO zcl_bug_objects_alv_ctrl.
-
-  IF NOT g_objects_container IS BOUND.
-    CREATE OBJECT g_objects_container
-      EXPORTING
-        container_name = 'OBJECT_CONTAINER'.
-
-    CREATE OBJECT lo_objects_gui
-      EXPORTING
-        bug       = go_bug
-        container = g_objects_container.
-
-    lo_objects_gui->display( ).
-  ENDIF.
-ENDFORM.                                                    " PBO_0500
-*&---------------------------------------------------------------------*
-*&      Form  BUGTREE_001
-*&---------------------------------------------------------------------*
-*       text
-*----------------------------------------------------------------------*
-*  -->  p1        text
-*  <--  p2        text
-*----------------------------------------------------------------------*
-FORM bugtree_0001 .
-  DATA: lo_bugtree TYPE REF TO zcl_bug_alvtree_ctrl.
-
-  IF NOT g_bug_tree_container IS BOUND.
-    CREATE OBJECT g_bug_tree_container
-      EXPORTING
-        extension = 250.
-  ENDIF.
-
-  CREATE OBJECT lo_bugtree
-    EXPORTING
-      container = g_bug_tree_container
-      bug       = go_bug.
-
-  lo_bugtree->display( ).
-
-ENDFORM.                    " BUGTREE_001
-*&---------------------------------------------------------------------*
-*&      Form  PBO_0101
-*&---------------------------------------------------------------------*
-*       text
-*----------------------------------------------------------------------*
-*  -->  p1        text
-*  <--  p2        text
-*----------------------------------------------------------------------*
-FORM pbo_0101 .
-  PERFORM  create_tag_grid.
-ENDFORM.                                                    " PBO_0101
-*&---------------------------------------------------------------------*
-*&      Form  CREATE_TAG_GRID
-*&---------------------------------------------------------------------*
-*       text
-*----------------------------------------------------------------------*
-*  -->  p1        text
-*  <--  p2        text
-*----------------------------------------------------------------------*
-FORM create_tag_grid .
-  DATA: l_title    TYPE lvc_title.
-
-
-  free: g_tag_container, go_tag_gui.
-
-  IF NOT g_tag_container IS BOUND.
-
-    CREATE OBJECT g_tag_container
-      EXPORTING
-        container_name = 'TAG_CONTAINER'.
-
-    l_title = 'TAGs'(008).
-
-    CREATE OBJECT go_tag_gui
-      EXPORTING
-        bug       = go_bug
-        container = g_tag_container
-        title     = l_title.
-
-    go_tag_gui->display( ).
-  else.
-
-    CREATE OBJECT g_tag_container
-      EXPORTING
-        container_name = 'TAG_CONTAINER'.
-
-    l_title = 'TAGs'(008).
-    CREATE OBJECT go_tag_gui
-      EXPORTING
-        bug       = go_bug
-        container = g_tag_container
-        title     = l_title.
-
-    go_tag_gui->display( ).
-
-
-  ENDIF.
-  go_tag_gui->set_display_mode( g_display_mode ).
-
-ENDFORM.                    " CREATE_TAG_GRID
-*&---------------------------------------------------------------------*
-*&      Form  PBO_0700
-*&---------------------------------------------------------------------*
-*       text
-*----------------------------------------------------------------------*
-*  -->  p1        text
-*  <--  p2        text
-*----------------------------------------------------------------------*
-FORM pbo_0700 .
-
-ENDFORM.                                                    " PBO_0700
-*&---------------------------------------------------------------------*
-*&      Form  HTML_TEXT_EQUAL
-*&---------------------------------------------------------------------*
-*       text
-*----------------------------------------------------------------------*
-*      -->P_OLD  text
-*      -->P_NEW  text
-*      <--P_SY_SUBRC  text
-*----------------------------------------------------------------------*
-FORM html_text_equal  USING    value(p_old) TYPE string
-                               value(p_new) TYPE string
-                      CHANGING value(p_subrc) TYPE sy-subrc.
-
-  PERFORM clean_html CHANGING p_old.
-  PERFORM clean_html CHANGING p_new.
-
-  IF p_old <> p_new.
-    p_subrc = 9999.
-  ELSE.
-    CLEAR p_subrc.
-  ENDIF.
-
-ENDFORM.                    " HTML_TEXT_EQUAL
-*&---------------------------------------------------------------------*
-*&      Form  CLEAN_HTML
-*&---------------------------------------------------------------------*
-*       text
-*----------------------------------------------------------------------*
-*      <--P_STRING  text
-*----------------------------------------------------------------------*
-FORM clean_html  CHANGING p_html TYPE string.
-  DATA: find_result TYPE match_result.
-
-  FIND '<BODY>' IN p_html RESULTS find_result.
-  find_result-offset = find_result-offset + find_result-length.
-  p_html = p_html+find_result-offset.
-
-  FIND '</BODY>' IN p_html RESULTS find_result.
-  p_html = p_html(find_result-offset).
-ENDFORM.                    " CLEAN_HTML

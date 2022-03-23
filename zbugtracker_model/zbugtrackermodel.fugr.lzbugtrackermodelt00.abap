@@ -1,6 +1,6 @@
 *---------------------------------------------------------------------*
 *    view related data declarations
-*   generation date: 22.03.2022 at 20:19:01
+*   generation date: 17.05.2010 at 23:28:18 by user BCUSER
 *   view maintenance generator version: #001407#
 *---------------------------------------------------------------------*
 *...processing: ZBT_BUG_STYPE...................................*
@@ -8,19 +8,19 @@ DATA:  BEGIN OF STATUS_ZBT_BUG_STYPE                 .   "state vector
          INCLUDE STRUCTURE VIMSTATUS.
 DATA:  END OF STATUS_ZBT_BUG_STYPE                 .
 CONTROLS: TCTRL_ZBT_BUG_STYPE
-            TYPE TABLEVIEW USING SCREEN '0007'.
+            TYPE TABLEVIEW USING SCREEN '0006'.
 *...processing: ZBT_BUG_TYPE....................................*
 DATA:  BEGIN OF STATUS_ZBT_BUG_TYPE                  .   "state vector
          INCLUDE STRUCTURE VIMSTATUS.
 DATA:  END OF STATUS_ZBT_BUG_TYPE                  .
 CONTROLS: TCTRL_ZBT_BUG_TYPE
-            TYPE TABLEVIEW USING SCREEN '0006'.
+            TYPE TABLEVIEW USING SCREEN '0007'.
 *...processing: ZBT_COMPONT.....................................*
 DATA:  BEGIN OF STATUS_ZBT_COMPONT                   .   "state vector
          INCLUDE STRUCTURE VIMSTATUS.
 DATA:  END OF STATUS_ZBT_COMPONT                   .
 CONTROLS: TCTRL_ZBT_COMPONT
-            TYPE TABLEVIEW USING SCREEN '0002'.
+            TYPE TABLEVIEW USING SCREEN '0001'.
 *...processing: ZBT_ESTADO......................................*
 DATA:  BEGIN OF STATUS_ZBT_ESTADO                    .   "state vector
          INCLUDE STRUCTURE VIMSTATUS.
@@ -38,7 +38,7 @@ DATA:  BEGIN OF STATUS_ZBT_PRODUCTO                  .   "state vector
          INCLUDE STRUCTURE VIMSTATUS.
 DATA:  END OF STATUS_ZBT_PRODUCTO                  .
 CONTROLS: TCTRL_ZBT_PRODUCTO
-            TYPE TABLEVIEW USING SCREEN '0001'.
+            TYPE TABLEVIEW USING SCREEN '0002'.
 *...processing: ZBT_USUARIO.....................................*
 DATA:  BEGIN OF STATUS_ZBT_USUARIO                   .   "state vector
          INCLUDE STRUCTURE VIMSTATUS.

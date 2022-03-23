@@ -1,6 +1,9 @@
-* regenerated at 17.03.2013 21:51:28 by  BCUSER
+*---------------------------------------------------------------------*
+*    generated viewmaintenance function pool top
+*   generation date: 17.05.2010 at 23:26:01 by user BCUSER
+*   view maintenance generator version: #001407#
+*---------------------------------------------------------------------*
 FUNCTION-POOL ZBUGTRACKERMODEL           MESSAGE-ID SV.
 
-* INCLUDE LZBUGTRACKERMODELD...              " Local class definition
   INCLUDE LSVIMDAT                                . "general data decl.
   INCLUDE LZBUGTRACKERMODELT00                    . "view rel. data dcl.
