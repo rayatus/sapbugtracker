@@ -1,3 +1,7 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/rayatus/sapbugtracker/blob/master/LICENSE)
+![ABAP 7.40sp08+](https://img.shields.io/badge/ABAP-7.40sp08+-brightgreen)
+[![Code Statistics](https://img.shields.io/badge/CodeStatistics-abaplint-blue)](https://abaplint.app/stats/rayatus/sapbugtracker)
+
 # SAPBugTracker
 
 Previously in GoogleCode --> https://code.google.com/archive/p/sapbugtracker/
